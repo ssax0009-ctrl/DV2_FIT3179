@@ -252,7 +252,7 @@
         "labelAngle": 0,
         "labelColor": "#536b73",
         "labelFontSize": 11,
-        "title": null,
+        "title": "Age group",
         "padding": 8
       },
       "spacing": 4

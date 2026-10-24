@@ -16,12 +16,14 @@ const C = {
     spec: "specs/map-hyst-rate.json",
     title: "Where are rates higher?",
     idiom: "Choropleth map",
+    axisTitles: {},
     summary: "Colour shows age-standardised rates by state."
   },
   volumeMap: {
     spec: "specs/map-hyst-volume.json",
     title: "Where are more hospitalisations recorded?",
     idiom: "Proportional-symbol map",
+    axisTitles: {},
     summary: "Circle area represents the state hospitalisation count."
   },
   dotMap: {
@@ -30,66 +32,77 @@ const C = {
     linkLabel: "Data",
     title: "SA3 rates across Australia.",
     idiom: "Dot map",
+    axisTitles: {},
     summary: "Each dot represents one SA3 area; dots use a consistent size and colour."
   },
   strip: {
     spec: "specs/chart-sa3-strip.json",
     title: "Local rates spread within each state.",
     idiom: "Regional strip plot",
+    axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
     summary: "Each point is an SA3-area rate; suppressed values are omitted."
   },
   range: {
     spec: "specs/chart-sa3-range.json",
     title: "The lowest and highest areas are far apart.",
     idiom: "Interval plot",
+    axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
     summary: "Lines span the lowest to highest SA3 rate."
   },
   slope: {
     spec: "specs/chart-hyst-slopegraph.json",
     title: "Rates moved in different directions.",
     idiom: "Slopegraph",
+    axisTitles: { x: "Financial year", y: "Hospitalisations per 100,000 women" },
     summary: "Compare each state’s first and latest rate."
   },
   bump: {
     spec: "specs/chart-hyst-bump.json",
     title: "The state ranking is not fixed.",
     idiom: "Bump chart",
+    axisTitles: { x: "Financial year", y: "State rank (1 = highest)" },
     summary: "Rank 1 indicates the highest observed rate."
   },
   heatmap: {
     spec: "specs/chart-hyst-heatmap.json",
     title: "The time pattern differs by state.",
     idiom: "Heatmap",
+    axisTitles: { x: "Financial year", y: "State or territory" },
     summary: "Hover a tile for the exact annual rate."
   },
   ridgeline: {
     spec: "specs/chart-endo-ridgeline.json",
     title: "Mental health prevalence varies by age and sex.",
     idiom: "Ridgeline distribution",
+    axisTitles: { x: "Prevalence (%)" },
     summary: "Each ridge shows how long-term mental health prevalence is distributed across a broad age group for women and men."
   },
   endoLine: {
     spec: "specs/chart-endo-rate-line.json",
     title: "Endometriosis admissions rose over the decade.",
     idiom: "Line chart",
+    axisTitles: { x: "Financial year", y: "Admissions per 100,000 population" },
     summary: "Crude admission rate per 100,000 population."
   },
   waterfall: {
     spec: "specs/chart-endo-waterfall.json",
     title: "More admissions account for the total rise.",
     idiom: "Waterfall",
+    axisTitles: { x: "Urgency group", y: "Hospitalisations" },
     summary: "Urgency groups show their contribution to the change."
   },
   parallel: {
     spec: "specs/chart-endo-parallel.json",
     title: "Procedure rates peak at different ages.",
     idiom: "Parallel-coordinates plot",
+    axisTitles: { x: "Age group", y: "Hospitalisations per 100,000 women" },
     summary: "Trace each selected procedure across age groups."
   },
   scatter: {
     spec: "specs/chart-endo-age-scatter.json",
     title: "Some procedures favour different age profiles.",
     idiom: "Scatterplot",
+    axisTitles: { x: "Rate at age 25–34 (per 100,000)", y: "Rate at age 35–44 (per 100,000)" },
     summary: "Compare rates for ages 25–34 and 35–44."
   },
   sankey: {
@@ -98,6 +111,7 @@ const C = {
     linkLabel: "Data",
     title: "Age group flows into procedure type and sector.",
     idiom: "Sankey",
+    axisTitles: {},
     summary: "Select a year to compare reported age-group and hospital-sector counts through procedure groups."
   }
 };
@@ -234,35 +248,35 @@ function createChartCard(item, container) {
   const index = chartCounter++;
 
   const card = el("figure", "chart-card");
-
-  const caption = el("figcaption", "chart-caption");
-
-  const heading = el("h4", "", item.title);
-  heading.id = `chart-title-${index}`;
-
-  const idiom = el("span", "idiom", item.idiom);
-
-  const specLink = el("a", "spec-link", item.linkLabel || "JSON");
-  specLink.href = item.spec;
-  specLink.setAttribute(
-    "aria-label",
-    item.linkLabel
-      ? `Open ${item.linkLabel.toLowerCase()} for ${item.title}`
-      : `Open JSON specification for ${item.title}`
-  );
-
-  caption.append(heading, idiom, specLink);
-
   const summary = el("p", "chart-summary", item.summary);
 
   const view = el("div", "chart-view");
   view.id = `chart-view-${index}`;
   view.setAttribute("role", "img");
-  view.setAttribute("aria-labelledby", heading.id);
+  view.setAttribute("aria-label", `${item.title} ${item.summary}`);
 
-  card.append(caption, summary, view);
+  card.append(summary, view);
   container.append(card);
   return view;
+}
+
+function applyAxisTitles(specification, titles) {
+  function visit(node) {
+    if (!node || typeof node !== "object") return;
+    if (node.encoding) {
+      ["x", "y"].forEach((axis) => {
+        const channel = node.encoding[axis];
+        if (titles[axis] && channel && typeof channel === "object" && channel.axis !== null) {
+          channel.title = titles[axis];
+        }
+      });
+    }
+    Object.values(node).forEach((value) => {
+      if (Array.isArray(value)) value.forEach(visit);
+      else if (value && typeof value === "object") visit(value);
+    });
+  }
+  visit(specification);
 }
 
 async function renderDotMap(target, specification) {
@@ -679,6 +693,8 @@ async function renderChart(item, container) {
       throw new Error(`Could not load ${item.spec}: ${response.status}`);
     }
     const specification = await response.json();
+    specification.title = null;
+    applyAxisTitles(specification, item.axisTitles || {});
     if (item.renderer === "dotmap") {
       await renderDotMap(target, specification);
       return;
