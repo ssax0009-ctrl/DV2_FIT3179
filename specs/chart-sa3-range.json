@@ -1,0 +1,248 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Lowest and highest SA3 rates within each state · 2021–22",
+  "data": {
+    "values": [
+      {
+        "state": "NSW",
+        "low": 134.0,
+        "high": 428.0,
+        "stateRate": 217.0,
+        "ratio": 3.2
+      },
+      {
+        "state": "Vic",
+        "low": 124.0,
+        "high": 519.0,
+        "stateRate": 204.0,
+        "ratio": 4.2
+      },
+      {
+        "state": "Qld",
+        "low": 161.0,
+        "high": 520.0,
+        "stateRate": 286.0,
+        "ratio": 3.2
+      },
+      {
+        "state": "SA",
+        "low": 139.0,
+        "high": 390.0,
+        "stateRate": 236.0,
+        "ratio": 2.8
+      },
+      {
+        "state": "WA",
+        "low": 145.0,
+        "high": 421.0,
+        "stateRate": 236.0,
+        "ratio": 2.9
+      },
+      {
+        "state": "Tas",
+        "low": 203.0,
+        "high": 496.0,
+        "stateRate": 279.0,
+        "ratio": 2.4
+      },
+      {
+        "state": "NT",
+        "low": 114.0,
+        "high": 272.0,
+        "stateRate": 163.0,
+        "ratio": 2.4
+      },
+      {
+        "state": "ACT",
+        "low": 152.0,
+        "high": 270.0,
+        "stateRate": 192.0,
+        "ratio": 1.8
+      }
+    ]
+  },
+  "width": 480,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#7a9691"
+      },
+      "encoding": {
+        "x": {
+          "field": "low",
+          "type": "quantitative",
+          "title": "Hospitalisations per 100,000 women",
+          "scale": {
+            "zero": false
+          }
+        },
+        "x2": {
+          "field": "high"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ],
+          "title": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "low",
+            "type": "quantitative",
+            "title": "Lowest SA3",
+            "format": ".0f"
+          },
+          {
+            "field": "high",
+            "type": "quantitative",
+            "title": "Highest SA3",
+            "format": ".0f"
+          },
+          {
+            "field": "ratio",
+            "type": "quantitative",
+            "title": "High/low ratio",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "#0072b2",
+        "thickness": 2,
+        "size": 18
+      },
+      "encoding": {
+        "x": {
+          "field": "low",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ]
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "low",
+            "type": "quantitative",
+            "title": "Lowest SA3 rate",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "#d88700",
+        "thickness": 2,
+        "size": 18
+      },
+      "encoding": {
+        "x": {
+          "field": "high",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ]
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "high",
+            "type": "quantitative",
+            "title": "Highest SA3 rate",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ]
+}

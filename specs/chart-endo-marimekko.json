@@ -1,0 +1,374 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Procedure hospitalisations by sector and year",
+  "data": {
+    "values": [
+      {
+        "year": "2015-16",
+        "sector": "Private",
+        "x0": 0.0,
+        "x1": 0.08604732316314148,
+        "y0": 0,
+        "y1": 0.6568609648326372,
+        "count": 10852,
+        "share": 0.6568609648326372,
+        "total": 16521
+      },
+      {
+        "year": "2015-16",
+        "sector": "Public",
+        "x0": 0.0,
+        "x1": 0.08604732316314148,
+        "y0": 0.6568609648326372,
+        "y1": 1.0,
+        "count": 5669,
+        "share": 0.34313903516736277,
+        "total": 16521
+      },
+      {
+        "year": "2016-17",
+        "sector": "Private",
+        "x0": 0.08604732316314148,
+        "x1": 0.17251652352356,
+        "y0": 0,
+        "y1": 0.6495000602337068,
+        "count": 10783,
+        "share": 0.6495000602337068,
+        "total": 16602
+      },
+      {
+        "year": "2016-17",
+        "sector": "Public",
+        "x0": 0.08604732316314148,
+        "x1": 0.17251652352356,
+        "y0": 0.6495000602337068,
+        "y1": 1.0,
+        "count": 5819,
+        "share": 0.35049993976629323,
+        "total": 16602
+      },
+      {
+        "year": "2017-18",
+        "sector": "Private",
+        "x0": 0.17251652352356,
+        "x1": 0.26314199553122675,
+        "y0": 0,
+        "y1": 0.6589080459770115,
+        "count": 11465,
+        "share": 0.6589080459770115,
+        "total": 17400
+      },
+      {
+        "year": "2017-18",
+        "sector": "Public",
+        "x0": 0.17251652352356,
+        "x1": 0.26314199553122675,
+        "y0": 0.6589080459770115,
+        "y1": 1.0,
+        "count": 5935,
+        "share": 0.34109195402298853,
+        "total": 17400
+      },
+      {
+        "year": "2018-19",
+        "sector": "Private",
+        "x0": 0.26314199553122675,
+        "x1": 0.35849145047630454,
+        "y0": 0,
+        "y1": 0.6674496094390124,
+        "count": 12219,
+        "share": 0.6674496094390124,
+        "total": 18307
+      },
+      {
+        "year": "2018-19",
+        "sector": "Public",
+        "x0": 0.26314199553122675,
+        "x1": 0.35849145047630454,
+        "y0": 0.6674496094390124,
+        "y1": 1.0,
+        "count": 6088,
+        "share": 0.3325503905609876,
+        "total": 18307
+      },
+      {
+        "year": "2019-20",
+        "sector": "Private",
+        "x0": 0.35849145047630454,
+        "x1": 0.44507523476684774,
+        "y0": 0,
+        "y1": 0.677213666987488,
+        "count": 11258,
+        "share": 0.677213666987488,
+        "total": 16624
+      },
+      {
+        "year": "2019-20",
+        "sector": "Public",
+        "x0": 0.35849145047630454,
+        "x1": 0.44507523476684774,
+        "y0": 0.677213666987488,
+        "y1": 1.0,
+        "count": 5366,
+        "share": 0.32278633301251203,
+        "total": 16624
+      },
+      {
+        "year": "2020-21",
+        "sector": "Private",
+        "x0": 0.44507523476684774,
+        "x1": 0.553903926582951,
+        "y0": 0,
+        "y1": 0.7001196458482891,
+        "count": 14629,
+        "share": 0.7001196458482891,
+        "total": 20895
+      },
+      {
+        "year": "2020-21",
+        "sector": "Public",
+        "x0": 0.44507523476684774,
+        "x1": 0.553903926582951,
+        "y0": 0.7001196458482891,
+        "y1": 1.0,
+        "count": 6266,
+        "share": 0.29988035415171094,
+        "total": 20895
+      },
+      {
+        "year": "2021-22",
+        "sector": "Private",
+        "x0": 0.553903926582951,
+        "x1": 0.6552429960572711,
+        "y0": 0,
+        "y1": 0.738294701135838,
+        "count": 14365,
+        "share": 0.738294701135838,
+        "total": 19457
+      },
+      {
+        "year": "2021-22",
+        "sector": "Public",
+        "x0": 0.553903926582951,
+        "x1": 0.6552429960572711,
+        "y0": 0.738294701135838,
+        "y1": 1.0,
+        "count": 5092,
+        "share": 0.261705298864162,
+        "total": 19457
+      },
+      {
+        "year": "2022-23",
+        "sector": "Private",
+        "x0": 0.6552429960572711,
+        "x1": 0.7648112750587243,
+        "y0": 0,
+        "y1": 0.7093692066359272,
+        "count": 14923,
+        "share": 0.7093692066359272,
+        "total": 21037
+      },
+      {
+        "year": "2022-23",
+        "sector": "Public",
+        "x0": 0.6552429960572711,
+        "x1": 0.7648112750587243,
+        "y0": 0.7093692066359272,
+        "y1": 1.0,
+        "count": 6114,
+        "share": 0.2906307933640728,
+        "total": 21037
+      },
+      {
+        "year": "2023-24",
+        "sector": "Private",
+        "x0": 0.7648112750587243,
+        "x1": 0.8827858478429575,
+        "y0": 0,
+        "y1": 0.720983621032184,
+        "count": 16331,
+        "share": 0.720983621032184,
+        "total": 22651
+      },
+      {
+        "year": "2023-24",
+        "sector": "Public",
+        "x0": 0.7648112750587243,
+        "x1": 0.8827858478429575,
+        "y0": 0.720983621032184,
+        "y1": 1.0,
+        "count": 6320,
+        "share": 0.279016378967816,
+        "total": 22651
+      },
+      {
+        "year": "2024-25",
+        "sector": "Private",
+        "x0": 0.8827858478429575,
+        "x1": 1.0,
+        "y0": 0,
+        "y1": 0.714507887136192,
+        "count": 16080,
+        "share": 0.714507887136192,
+        "total": 22505
+      },
+      {
+        "year": "2024-25",
+        "sector": "Public",
+        "x0": 0.8827858478429575,
+        "x1": 1.0,
+        "y0": 0.714507887136192,
+        "y1": 1.0,
+        "count": 6425,
+        "share": 0.28549211286380805,
+        "total": 22505
+      }
+    ]
+  },
+  "width": 480,
+  "height": 310,
+  "mark": {
+    "type": "rect",
+    "stroke": "#ffffff",
+    "strokeWidth": 1.2
+  },
+  "encoding": {
+    "x": {
+      "field": "x0",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "title": "Annual volume (bar width scaled to admissions)",
+      "axis": {
+        "values": [
+          0.04302,
+          0.12928,
+          0.21783,
+          0.31082,
+          0.40178,
+          0.49949,
+          0.60457,
+          0.71003,
+          0.8238,
+          0.94139
+        ],
+        "labelExpr": "datum.value < 0.04302 ? '2015-16' : datum.value < 0.12928 ? '2016-17' : datum.value < 0.21783 ? '2017-18' : datum.value < 0.31082 ? '2018-19' : datum.value < 0.40178 ? '2019-20' : datum.value < 0.49949 ? '2020-21' : datum.value < 0.60457 ? '2021-22' : datum.value < 0.71003 ? '2022-23' : datum.value < 0.8238 ? '2023-24' : datum.value < 0.94139 ? '2024-25' : '2024-25'",
+        "labelAngle": -35,
+        "grid": false,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "x2": {
+      "field": "x1"
+    },
+    "y": {
+      "field": "y0",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "title": "Share within year",
+      "axis": {
+        "format": "%",
+        "values": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1
+        ]
+      }
+    },
+    "y2": {
+      "field": "y1"
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "title": "Hospital sector",
+      "scale": {
+        "domain": [
+          "Private",
+          "Public"
+        ],
+        "range": [
+          "#0072b2",
+          "#e69f00"
+        ]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "sector",
+        "type": "nominal",
+        "title": "Sector"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Hospitalisations",
+        "format": ","
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Share",
+        "format": ".1%"
+      },
+      {
+        "field": "total",
+        "type": "quantitative",
+        "title": "Total that year",
+        "format": ","
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Crude endometriosis hospitalisation rate",
+  "data": {
+    "values": [
+      {
+        "year": "2015-16",
+        "admissions": 17630,
+        "rate": 145.9,
+        "withProcedure": 16521
+      },
+      {
+        "year": "2016-17",
+        "admissions": 17820,
+        "rate": 145.0,
+        "withProcedure": 16602
+      },
+      {
+        "year": "2017-18",
+        "admissions": 18868,
+        "rate": 151.3,
+        "withProcedure": 17400
+      },
+      {
+        "year": "2018-19",
+        "admissions": 20052,
+        "rate": 158.3,
+        "withProcedure": 18307
+      },
+      {
+        "year": "2019-20",
+        "admissions": 18305,
+        "rate": 142.4,
+        "withProcedure": 16624
+      },
+      {
+        "year": "2020-21",
+        "admissions": 22816,
+        "rate": 176.7,
+        "withProcedure": 20895
+      },
+      {
+        "year": "2021-22",
+        "admissions": 21048,
+        "rate": 162.2,
+        "withProcedure": 19457
+      },
+      {
+        "year": "2022-23",
+        "admissions": 22731,
+        "rate": 171.5,
+        "withProcedure": 21037
+      },
+      {
+        "year": "2023-24",
+        "admissions": 24734,
+        "rate": 182.3,
+        "withProcedure": 22651
+      },
+      {
+        "year": "2024-25",
+        "admissions": 24689,
+        "rate": 179.0,
+        "withProcedure": 22505
+      }
+    ]
+  },
+  "width": 480,
+  "height": 285,
+  "mark": {
+    "type": "line",
+    "color": "#007f79",
+    "strokeWidth": 3,
+    "point": {
+      "filled": true,
+      "size": 64
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": [
+        "2015-16",
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "title": null,
+      "axis": {
+        "labelAngle": -35
+      }
+    },
+    "y": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Admissions per 100,000 population",
+      "scale": {
+        "zero": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "admissions",
+        "type": "quantitative",
+        "title": "Hospitalisations",
+        "format": ","
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Crude rate per 100,000",
+        "format": ".1f"
+      },
+      {
+        "field": "withProcedure",
+        "type": "quantitative",
+        "title": "Hospitalisations involving a procedure",
+        "format": ","
+      }
+    ]
+  }
+}

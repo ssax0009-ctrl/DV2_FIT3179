@@ -1,0 +1,436 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Age-specific procedure rates · 2024–25",
+  "data": {
+    "values": [
+      {
+        "procedure": "Laparoscopic excision of lesion of pelvic cavity",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 68.2,
+        "total": 12770.0
+      },
+      {
+        "procedure": "Laparoscopic excision of lesion of pelvic cavity",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 258.7,
+        "total": 12770.0
+      },
+      {
+        "procedure": "Laparoscopic excision of lesion of pelvic cavity",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 202.5,
+        "total": 12770.0
+      },
+      {
+        "procedure": "Laparoscopic excision of lesion of pelvic cavity",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 14.6,
+        "total": 12770.0
+      },
+      {
+        "procedure": "Diagnostic hysteroscopy",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 61.1,
+        "total": 11112.0
+      },
+      {
+        "procedure": "Diagnostic hysteroscopy",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 238.5,
+        "total": 11112.0
+      },
+      {
+        "procedure": "Diagnostic hysteroscopy",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 165.2,
+        "total": 11112.0
+      },
+      {
+        "procedure": "Diagnostic hysteroscopy",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 10.6,
+        "total": 11112.0
+      },
+      {
+        "procedure": "Dilation and curettage of uterus [D&C]",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 48.1,
+        "total": 9460.0
+      },
+      {
+        "procedure": "Dilation and curettage of uterus [D&C]",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 194.6,
+        "total": 9460.0
+      },
+      {
+        "procedure": "Dilation and curettage of uterus [D&C]",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 150.4,
+        "total": 9460.0
+      },
+      {
+        "procedure": "Dilation and curettage of uterus [D&C]",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 11.4,
+        "total": 9460.0
+      },
+      {
+        "procedure": "Laparoscopic division of abdominal adhesions",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 21.0,
+        "total": 6767.0
+      },
+      {
+        "procedure": "Laparoscopic division of abdominal adhesions",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 115.2,
+        "total": 6767.0
+      },
+      {
+        "procedure": "Laparoscopic division of abdominal adhesions",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 131.2,
+        "total": 6767.0
+      },
+      {
+        "procedure": "Laparoscopic division of abdominal adhesions",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 17.8,
+        "total": 6767.0
+      },
+      {
+        "procedure": "Test for tubal patency",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 10.6,
+        "total": 4333.0
+      },
+      {
+        "procedure": "Test for tubal patency",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 123.4,
+        "total": 4333.0
+      },
+      {
+        "procedure": "Test for tubal patency",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 70.3,
+        "total": 4333.0
+      },
+      {
+        "procedure": "Test for tubal patency",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 0.7,
+        "total": 4333.0
+      },
+      {
+        "procedure": "Insertion of intrauterine device [IUD]",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 36.8,
+        "total": 3958.0
+      },
+      {
+        "procedure": "Insertion of intrauterine device [IUD]",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 66.1,
+        "total": 3958.0
+      },
+      {
+        "procedure": "Insertion of intrauterine device [IUD]",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 45.1,
+        "total": 3958.0
+      },
+      {
+        "procedure": "Insertion of intrauterine device [IUD]",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 4.5,
+        "total": 3958.0
+      },
+      {
+        "procedure": "Laparoscopic diathermy of lesion of pelvic cavity",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 21.0,
+        "total": 3515.0
+      },
+      {
+        "procedure": "Laparoscopic diathermy of lesion of pelvic cavity",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 72.6,
+        "total": 3515.0
+      },
+      {
+        "procedure": "Laparoscopic diathermy of lesion of pelvic cavity",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 51.2,
+        "total": 3515.0
+      },
+      {
+        "procedure": "Laparoscopic diathermy of lesion of pelvic cavity",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 3.5,
+        "total": 3515.0
+      },
+      {
+        "procedure": "Cystoscopy",
+        "ageGroup": "Under 25",
+        "ageOrder": 0,
+        "rate": 6.9,
+        "total": 3475.0
+      },
+      {
+        "procedure": "Cystoscopy",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 38.5,
+        "total": 3475.0
+      },
+      {
+        "procedure": "Cystoscopy",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 74.6,
+        "total": 3475.0
+      },
+      {
+        "procedure": "Cystoscopy",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 16.6,
+        "total": 3475.0
+      },
+      {
+        "procedure": "Laparoscopic total abdominal hysterectomy",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 13.2,
+        "total": 2893.0
+      },
+      {
+        "procedure": "Laparoscopic total abdominal hysterectomy",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 74.7,
+        "total": 2893.0
+      },
+      {
+        "procedure": "Laparoscopic total abdominal hysterectomy",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 19.9,
+        "total": 2893.0
+      },
+      {
+        "procedure": "Laparoscopic salpingectomy, bilateral",
+        "ageGroup": "25–34",
+        "ageOrder": 1,
+        "rate": 16.2,
+        "total": 2841.0
+      },
+      {
+        "procedure": "Laparoscopic salpingectomy, bilateral",
+        "ageGroup": "35–44",
+        "ageOrder": 2,
+        "rate": 80.3,
+        "total": 2841.0
+      },
+      {
+        "procedure": "Laparoscopic salpingectomy, bilateral",
+        "ageGroup": "45 and over",
+        "ageOrder": 3,
+        "rate": 16.1,
+        "total": 2841.0
+      }
+    ]
+  },
+  "width": 480,
+  "height": 330,
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ],
+          "title": null
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "Hospitalisations per 100,000",
+          "scale": {
+            "zero": false
+          }
+        },
+        "color": {
+          "field": "procedure",
+          "type": "nominal",
+          "title": "Procedure",
+          "scale": {
+            "scheme": "tableau10"
+          }
+        },
+        "detail": {
+          "field": "procedure"
+        },
+        "order": {
+          "field": "ageOrder",
+          "sort": "ascending"
+        },
+        "tooltip": [
+          {
+            "field": "procedure",
+            "type": "nominal",
+            "title": "Procedure"
+          },
+          {
+            "field": "ageGroup",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate per 100,000",
+            "format": ".1f"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Total hospitalisations",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 42
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "color": {
+          "field": "procedure",
+          "type": "nominal",
+          "scale": {
+            "scheme": "tableau10"
+          }
+        },
+        "detail": {
+          "field": "procedure"
+        },
+        "tooltip": [
+          {
+            "field": "procedure",
+            "type": "nominal",
+            "title": "Procedure"
+          },
+          {
+            "field": "ageGroup",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate per 100,000",
+            "format": ".1f"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Total hospitalisations",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}

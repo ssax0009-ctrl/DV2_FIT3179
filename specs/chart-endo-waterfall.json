@@ -1,0 +1,186 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Change in endometriosis admissions by urgency",
+  "data": {
+    "values": [
+      {
+        "step": "2015–16 total",
+        "lower": 0,
+        "upper": 17630.0,
+        "label": "17,630",
+        "kind": "Total"
+      },
+      {
+        "step": "Elective",
+        "lower": 17630.0,
+        "upper": 22970.0,
+        "label": "+5,340",
+        "kind": "Increase",
+        "change": 5340.0
+      },
+      {
+        "step": "Emergency",
+        "lower": 22970.0,
+        "upper": 24168.0,
+        "label": "+1,198",
+        "kind": "Increase",
+        "change": 1198.0
+      },
+      {
+        "step": "Not Assigned / Unknown",
+        "lower": 24168.0,
+        "upper": 24689.0,
+        "label": "+521",
+        "kind": "Increase",
+        "change": 521.0
+      },
+      {
+        "step": "2024–25 total",
+        "lower": 0,
+        "upper": 24689.0,
+        "label": "24,689",
+        "kind": "Total"
+      }
+    ]
+  },
+  "width": 480,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "step",
+          "type": "ordinal",
+          "sort": [
+            "2015–16 total",
+            "Elective",
+            "Emergency",
+            "Not Assigned / Unknown",
+            "2024–25 total"
+          ],
+          "title": null,
+          "axis": {
+            "labelAngle": -25
+          }
+        },
+        "y": {
+          "field": "lower",
+          "type": "quantitative",
+          "title": "Hospitalisations",
+          "scale": {
+            "zero": true
+          }
+        },
+        "y2": {
+          "field": "upper"
+        },
+        "color": {
+          "field": "kind",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Total",
+              "Increase"
+            ],
+            "range": [
+              "#007f79",
+              "#d88700"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "step",
+            "type": "nominal",
+            "title": "Step"
+          },
+          {
+            "field": "lower",
+            "type": "quantitative",
+            "title": "From",
+            "format": ","
+          },
+          {
+            "field": "upper",
+            "type": "quantitative",
+            "title": "To",
+            "format": ","
+          },
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Change"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -7,
+        "fontSize": 10,
+        "fontWeight": 700,
+        "color": "#18313b"
+      },
+      "encoding": {
+        "x": {
+          "field": "step",
+          "type": "ordinal",
+          "sort": [
+            "2015–16 total",
+            "Elective",
+            "Emergency",
+            "Not Assigned / Unknown",
+            "2024–25 total"
+          ]
+        },
+        "y": {
+          "field": "upper",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

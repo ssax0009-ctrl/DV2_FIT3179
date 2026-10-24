@@ -1,0 +1,751 @@
+:root {
+  color-scheme: light;
+  --ink: #18313b;
+  --muted: #536b73;
+  --paper: #f4f6f2;
+  --card: #ffffff;
+  --line: #d7e0dd;
+  --teal: #007f79;
+  --blue: #0072b2;
+  --orange: #d88700;
+  --purple: #8c5aa7;
+  --soft: #e7efeb;
+  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+}
+
+a {
+  color: #005d81;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #003c54;
+}
+
+.masthead {
+  padding: 4.5rem max(1.5rem, calc((100vw - 1180px) / 2)) 3rem;
+  color: #f5f8f5;
+  background: #173c49;
+}
+
+.masthead-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.eyebrow,
+.section-number {
+  margin: 0;
+  color: #4b777c;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.masthead .eyebrow {
+  color: #a9d2c9;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+.opening h2,
+.section-heading h2,
+.reading-note h2,
+.sources h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 1rem 0 0.75rem;
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.98;
+}
+
+.standfirst {
+  margin: 1.25rem 0 2rem;
+  color: #d3e0dc;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  line-height: 1.45;
+}
+
+.hero-rule {
+  width: 100%;
+  height: 1px;
+  background: #54717a;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.8rem;
+  color: #c0d2ce;
+  font-size: 0.84rem;
+}
+
+main {
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.opening {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.9fr) minmax(360px, 1.1fr);
+  gap: 2rem;
+  align-items: end;
+  padding: 3.6rem 0 3.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.opening h2 {
+  margin: 0.6rem 0 1rem;
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  line-height: 1.08;
+}
+
+.opening-copy p:not(.eyebrow) {
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+}
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #b9cbc6;
+  border-bottom: 1px solid #b9cbc6;
+}
+
+.stat {
+  min-width: 0;
+  padding: 1.15rem 0.9rem 1.15rem 0;
+}
+
+.stat + .stat {
+  padding-left: 1rem;
+  border-left: 1px solid #b9cbc6;
+}
+
+.stat strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.brief-meta {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #b9cbc6;
+}
+
+.brief-meta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.brief-meta strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #4b777c;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.story-section {
+  padding: 3.7rem 0 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.section-number {
+  padding-top: 0.7rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.1;
+}
+
+.section-heading p:not(.section-number) {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+}
+
+.story-note {
+  margin: 1.55rem 0 1.7rem 156px;
+  color: #3e5a63;
+  font-size: 0.92rem;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.chart-card {
+  min-width: 0;
+  padding: 1.15rem 1.15rem 0.8rem;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid #e0e7e4;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgb(24 49 59 / 4%);
+}
+
+.chart-card.wide {
+  grid-column: 1 / -1;
+}
+
+.chart-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: start;
+  margin-bottom: 0.2rem;
+}
+
+.chart-caption h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.idiom {
+  flex: none;
+  padding: 0.14rem 0.45rem;
+  color: #31515b;
+  background: #e9f0ed;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.spec-link {
+  flex: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.chart-summary {
+  min-height: 2.7em;
+  margin: 0.4rem 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.chart-view {
+  min-height: 250px;
+}
+
+.chart-view .vega-embed {
+  width: 100%;
+  max-width: 100%;
+}
+
+.chart-view svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.chart-error {
+  padding: 1rem;
+  color: #762a28;
+  background: #fff0ee;
+  border: 1px solid #e5b8b2;
+  font-size: 0.9rem;
+}
+
+.sankey-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.sankey-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sankey-year {
+  padding: 0.3rem 0.5rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font: inherit;
+}
+
+.chart-view svg[role="img"] {
+  width: 100%;
+  height: auto;
+}
+
+.sankey-column-title {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sankey-node-label {
+  fill: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sankey-node-value {
+  fill: var(--muted);
+  font-size: 11px;
+}
+
+.sankey-note {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.dotmap-title {
+  fill: var(--ink);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.dotmap-state-label {
+  fill: #405b63;
+  font-size: 11px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: #f4f6f2;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+.dotmap-note {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.reading-note {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.reading-note h2,
+.sources h2 {
+  margin: 0.55rem 0 1.5rem;
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+}
+
+.reading-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.reading-columns p {
+  margin: 0;
+  padding-top: 0.85rem;
+  color: var(--muted);
+  border-top: 2px solid #8eaaa5;
+  font-size: 0.92rem;
+}
+
+.sources {
+  padding: 3.3rem 0 2.5rem;
+}
+
+.sources ul {
+  max-width: 880px;
+  padding-left: 1.2rem;
+}
+
+.sources li {
+  margin-bottom: 0.8rem;
+  padding-left: 0.25rem;
+  color: #415d65;
+  font-size: 0.88rem;
+}
+
+.method-note,
+.credit {
+  max-width: 900px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.credit {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem max(1.5rem, calc((100vw - 1180px) / 2));
+  color: #d4e1dd;
+  background: #173c49;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+}
+
+footer a {
+  color: #d4e1dd;
+}
+
+:focus-visible {
+  outline: 3px solid #d88700;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .masthead {
+    padding-top: 3.2rem;
+  }
+
+  main {
+    width: min(100% - 2rem, 600px);
+  }
+
+  .opening {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2.6rem 0;
+  }
+
+  .brief-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .section-number {
+    padding-top: 0;
+  }
+
+  .story-note {
+    margin-left: 0;
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card.wide {
+    grid-column: auto;
+  }
+
+  .reading-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .hero-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .stat,
+  .stat + .stat {
+    padding: 0.8rem 0;
+    border-left: 0;
+  }
+
+  .stat + .stat {
+    border-top: 1px solid #b9cbc6;
+  }
+
+  .chart-card {
+    padding: 0.8rem 0.65rem 0.55rem;
+  }
+
+  footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+.theme-header {
+  border-left: 4px solid #1b9e77;
+  padding-left: 1rem;
+  margin: 5rem 0 2.5rem;
+}
+
+.story-theme + .story-theme {
+  margin-top: 5rem;
+}
+
+.theme-title { margin: 0; }
+.theme-thesis { margin: .25rem 0 0; color: #536b73; }
+.group-label {
+  margin: 0 0 1.5rem;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #536b73;
+}
+.evidence-group {
+  margin-top: 2.5rem;
+}
+.finding {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-block: 2.5rem;
+}
+.finding-text { border-left: 4px solid #1b9e77; padding-left: 1rem; }
+.finding-text h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.finding-text p { margin: 0; max-width: 56ch; line-height: 1.6; }
+.finding-charts { display: grid; gap: 1.5rem; }
+@media (max-width: 800px) { .finding { grid-template-columns: 1fr; } }
+
+/* ==========================================================
+   FINDING LAYOUTS
+   Replace the old `.finding`, `.finding-text`, `.finding-charts`
+   rules (the last block in your stylesheet) with everything below.
+
+   Usage: <section class="finding finding--VARIANT"> ... </section>
+   Variants: (none) | --flip | --lead | --wide | --pair | --note
+   ========================================================== */
+
+/* ---------- shared ---------- */
+.finding {
+  --text-col: minmax(240px, 340px);
+  display: grid;
+  gap: 1.75rem 3rem;
+  margin-block: 3rem;
+  align-items: center;
+}
+
+.finding-text {
+  border-left: 4px solid #1b9e77;
+  padding-left: 1rem;
+}
+.finding-text h3 { margin: 0 0 .5rem; font-size: 1.1rem; line-height: 1.3; }
+.finding-text p  { margin: 0; max-width: 56ch; line-height: 1.6; color: var(--muted); }
+
+.finding-charts { display: grid; gap: 1.25rem; min-width: 0; }
+.finding-charts > .chart-card { min-width: 0; }
+
+/* ---------- 1. DEFAULT: text left, charts right ----------
+   Best for: one chart, or two short charts.
+   Text now sticks to the top while the charts scroll past,
+   instead of floating in the vertical middle of a tall stack. */
+.finding {
+  grid-template-columns: var(--text-col) minmax(0, 1fr);
+}
+.finding > .finding-text {
+  position: static;
+}
+
+/* ---------- 2. --flip: charts left, text right ---------- */
+.finding--flip {
+  grid-template-columns: minmax(0, 1fr) var(--text-col);
+}
+.finding--flip > .finding-text   { grid-column: 2; grid-row: 1; }
+.finding--flip > .finding-charts { grid-column: 1; grid-row: 1; }
+.finding--flip > .finding-text {
+  border-left: 0;
+  padding-left: 0;
+  border-right: 4px solid #1b9e77;
+  padding-right: 1rem;
+}
+
+/* ---------- 3. --lead: text across the top, charts side by side below ----------
+   Best for: two or more charts that should be compared directly
+   (e.g. the choropleth + proportional-symbol maps in your screenshot). */
+.finding--lead {
+  grid-template-columns: 1fr;
+}
+.finding--lead > .finding-text {
+  position: static;
+  max-width: 68ch;
+}
+.finding--lead > .finding-charts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+/* ---------- 4. --wide: one big chart full width, text as a caption strip below ----------
+   Best for: a single wide chart (time series, big map, dense bar chart). */
+.finding--wide {
+  grid-template-columns: 1fr;
+}
+.finding--wide > .finding-charts { order: 1; }
+.finding--wide > .finding-text {
+  order: 2;
+  position: static;
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 0 2.5rem;
+  align-items: baseline;
+  border-left: 0;
+  padding-left: 0;
+  border-top: 4px solid #1b9e77;
+  padding-top: .9rem;
+}
+.finding--wide > .finding-text h3 { margin: 0; }
+.finding--wide > .finding-text p  { max-width: 70ch; }
+
+/* ---------- 5. --pair: charts as equal columns, centered text beneath both ----------
+   Best for: exactly two charts that make one comparison. */
+.finding--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.finding--pair > .finding-text {
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  width: min(100%, 70ch);
+  max-width: none;
+  padding: 0 0 .9rem;
+  border: 0;
+  border-bottom: 4px solid #1b9e77;
+  text-align: center;
+}
+.finding--pair > .finding-text p { max-width: none; }
+.finding--pair > .finding-charts {
+  display: contents;                /* let the cards become grid items directly */
+}
+.finding--pair > .finding-charts > .chart-card { grid-row: 1; }
+
+/* ---------- 6. --note: chart dominates, text is a slim margin note ----------
+   Best for: a small supporting insight that doesn't deserve a full column. */
+.finding--note {
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 1.5rem 2rem;
+  align-items: end;                 /* note aligns with the bottom of the chart */
+}
+.finding--note > .finding-text   { grid-column: 2; grid-row: 1; position: static; }
+.finding--note > .finding-charts { grid-column: 1; grid-row: 1; }
+.finding--note > .finding-text p { font-size: .88rem; }
+
+/* ---------- Smart fallback ----------
+   If you forget a modifier and the finding has 2+ charts,
+   automatically use the --lead layout instead of a tall narrow stack. */
+@supports selector(:has(*)) {
+  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) {
+    grid-template-columns: 1fr;
+  }
+  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) > .finding-text {
+    position: static;
+    max-width: 68ch;
+  }
+  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) > .finding-charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Responsive: everything collapses to one column ---------- */
+@media (max-width: 900px) {
+  .finding--note { grid-template-columns: 1fr; }
+  .finding--note > .finding-text   { grid-column: 1; grid-row: 2; }
+  .finding--note > .finding-charts { grid-column: 1; grid-row: 1; }
+}
+
+@media (max-width: 800px) {
+  .finding,
+  .finding--flip,
+  .finding--lead,
+  .finding--wide,
+  .finding--pair {
+    grid-template-columns: 1fr;
+  }
+  .finding > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--lead > .finding-text,
+  .finding--pair > .finding-text {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;                    /* text first on mobile */
+    max-width: none;
+  }
+  .finding--flip > .finding-charts,
+  .finding--lead > .finding-charts { grid-column: 1; grid-row: 2; }
+  .finding--lead > .finding-charts { grid-template-columns: 1fr; }
+  .finding--flip > .finding-text {
+    border-right: 0; padding-right: 0;
+    border-left: 4px solid #1b9e77; padding-left: 1rem;
+  }
+  .finding--wide > .finding-text { grid-template-columns: 1fr; }
+  .finding--wide > .finding-text h3 { margin-bottom: .4rem; }
+
+  /* --pair: put each chart in its own row, text last */
+  .finding--pair > .finding-charts > .chart-card { grid-row: auto; }
+  .finding--pair > .finding-text {
+    grid-row: auto;
+    order: 1;
+    width: 100%;
+  }
+}

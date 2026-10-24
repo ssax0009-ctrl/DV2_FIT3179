@@ -1,0 +1,2327 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "SA3 age-standardised rates within each state · 2021–22",
+  "data": {
+    "values": [
+      {
+        "state": "NSW",
+        "region": "Queanbeyan",
+        "rate": 303.0,
+        "population": 25659.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Snowy Mountains",
+        "rate": 165.0,
+        "population": 8363.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "South Coast",
+        "rate": 200.0,
+        "population": 33077.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Goulburn - Mulwaree",
+        "rate": 265.0,
+        "population": 15608.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Young - Yass",
+        "rate": 259.0,
+        "population": 15451.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Gosford",
+        "rate": 347.0,
+        "population": 76659.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Wyong",
+        "rate": 338.0,
+        "population": 71233.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Bathurst",
+        "rate": 278.0,
+        "population": 19619.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Lachlan Valley",
+        "rate": 346.0,
+        "population": 22070.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Lithgow - Mudgee",
+        "rate": 254.0,
+        "population": 19237.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Orange",
+        "rate": 407.0,
+        "population": 24699.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Clarence Valley",
+        "rate": 295.0,
+        "population": 22357.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Coffs Harbour",
+        "rate": 394.0,
+        "population": 39149.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Bourke - Cobar - Coonamble",
+        "rate": 428.0,
+        "population": 8828.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "NSW",
+        "region": "Broken Hill and Far West",
+        "rate": 211.0,
+        "population": 8347.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Dubbo",
+        "rate": 415.0,
+        "population": 29840.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Lower Hunter",
+        "rate": 366.0,
+        "population": 38389.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Maitland",
+        "rate": 317.0,
+        "population": 35170.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Port Stephens",
+        "rate": 287.0,
+        "population": 32120.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Upper Hunter",
+        "rate": 271.0,
+        "population": 12046.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Dapto - Port Kembla",
+        "rate": 264.0,
+        "population": 32721.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Kiama - Shellharbour",
+        "rate": 269.0,
+        "population": 41407.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Wollongong",
+        "rate": 198.0,
+        "population": 56637.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Great Lakes",
+        "rate": 181.0,
+        "population": 14713.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Kempsey - Nambucca",
+        "rate": 317.0,
+        "population": 21391.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Port Macquarie",
+        "rate": 219.0,
+        "population": 37817.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Taree - Gloucester",
+        "rate": 178.0,
+        "population": 24484.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Albury",
+        "rate": 243.0,
+        "population": 27755.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Lower Murray",
+        "rate": 201.0,
+        "population": 5110.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Upper Murray exc. Albury",
+        "rate": 243.0,
+        "population": 18131.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Armidale",
+        "rate": 288.0,
+        "population": 15952.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Inverell - Tenterfield",
+        "rate": 321.0,
+        "population": 16140.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Moree - Narrabri",
+        "rate": 223.0,
+        "population": 9789.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Tamworth - Gunnedah",
+        "rate": 339.0,
+        "population": 34495.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Lake Macquarie - East",
+        "rate": 258.0,
+        "population": 52974.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Lake Macquarie - West",
+        "rate": 299.0,
+        "population": 35507.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Newcastle",
+        "rate": 262.0,
+        "population": 75931.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond Valley - Coastal",
+        "rate": 171.0,
+        "population": 38010.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond Valley - Hinterland",
+        "rate": 231.0,
+        "population": 30000.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Tweed Valley",
+        "rate": 225.0,
+        "population": 42153.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Griffith - Murrumbidgee (West)",
+        "rate": 261.0,
+        "population": 19694.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Tumut - Tumbarumba",
+        "rate": 302.0,
+        "population": 5991.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Wagga Wagga",
+        "rate": 328.0,
+        "population": 40180.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Shoalhaven",
+        "rate": 180.0,
+        "population": 45567.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Southern Highlands",
+        "rate": 207.0,
+        "population": 22614.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Baulkham Hills",
+        "rate": 203.0,
+        "population": 63983.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Dural - Wisemans Ferry",
+        "rate": 156.0,
+        "population": 11436.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Rouse Hill - McGraths Hill",
+        "rate": 236.0,
+        "population": 21559.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Blacktown",
+        "rate": 212.0,
+        "population": 57312.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Blacktown - North",
+        "rate": 209.0,
+        "population": 53474.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Mount Druitt",
+        "rate": 134.0,
+        "population": 45413.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Botany",
+        "rate": 190.0,
+        "population": 24976.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Marrickville - Sydenham - Petersham",
+        "rate": 214.0,
+        "population": 24050.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Sydney Inner City",
+        "rate": 143.0,
+        "population": 96400.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Eastern Suburbs - North",
+        "rate": 136.0,
+        "population": 56924.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Eastern Suburbs - South",
+        "rate": 171.0,
+        "population": 58688.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Bankstown",
+        "rate": 176.0,
+        "population": 74692.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Canterbury",
+        "rate": 154.0,
+        "population": 56111.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Hurstville",
+        "rate": 142.0,
+        "population": 56622.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Kogarah - Rockdale",
+        "rate": 165.0,
+        "population": 62416.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Canada Bay",
+        "rate": 232.0,
+        "population": 38209.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Leichhardt",
+        "rate": 174.0,
+        "population": 24387.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Strathfield - Burwood - Ashfield",
+        "rate": 159.0,
+        "population": 70590.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Chatswood - Lane Cove",
+        "rate": 167.0,
+        "population": 49871.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Hornsby",
+        "rate": 208.0,
+        "population": 35972.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Ku-ring-gai",
+        "rate": 161.0,
+        "population": 52428.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "North Sydney - Mosman",
+        "rate": 170.0,
+        "population": 43992.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Manly",
+        "rate": 176.0,
+        "population": 18357.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Pittwater",
+        "rate": 157.0,
+        "population": 26699.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Warringah",
+        "rate": 193.0,
+        "population": 65325.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Camden",
+        "rate": 230.0,
+        "population": 29004.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Campbelltown (NSW)",
+        "rate": 190.0,
+        "population": 71575.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Wollondilly",
+        "rate": 187.0,
+        "population": 18051.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "NSW",
+        "region": "Blue Mountains",
+        "rate": 223.0,
+        "population": 33356.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Penrith",
+        "rate": 268.0,
+        "population": 64347.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond - Windsor",
+        "rate": 365.0,
+        "population": 15775.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "St Marys",
+        "rate": 262.0,
+        "population": 22534.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Carlingford",
+        "rate": 165.0,
+        "population": 30151.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Merrylands - Guildford",
+        "rate": 219.0,
+        "population": 63583.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Parramatta",
+        "rate": 174.0,
+        "population": 60808.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Pennant Hills - Epping",
+        "rate": 180.0,
+        "population": 23017.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Ryde - Hunters Hill",
+        "rate": 154.0,
+        "population": 63538.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Bringelly - Green Valley",
+        "rate": 197.0,
+        "population": 54897.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Fairfield",
+        "rate": 142.0,
+        "population": 81828.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Liverpool",
+        "rate": 141.0,
+        "population": 53423.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Cronulla - Miranda - Caringbah",
+        "rate": 192.0,
+        "population": 50133.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "NSW",
+        "region": "Sutherland - Menai - Heathcote",
+        "rate": 254.0,
+        "population": 46189.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Ballarat",
+        "rate": 519.0,
+        "population": 48988.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Creswick - Daylesford - Ballan",
+        "rate": 397.0,
+        "population": 12824.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Maryborough - Pyrenees",
+        "rate": 476.0,
+        "population": 10962.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Bendigo",
+        "rate": 208.0,
+        "population": 43687.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Heathcote - Castlemaine - Kyneton",
+        "rate": 233.0,
+        "population": 21798.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Barwon - West",
+        "rate": 251.0,
+        "population": 8643.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Geelong",
+        "rate": 240.0,
+        "population": 89611.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Surf Coast - Bellarine Peninsula",
+        "rate": 304.0,
+        "population": 39386.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Upper Goulburn Valley",
+        "rate": 222.0,
+        "population": 24893.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Wangaratta - Benalla",
+        "rate": 242.0,
+        "population": 20778.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Wodonga - Alpine",
+        "rate": 222.0,
+        "population": 31496.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Baw Baw",
+        "rate": 281.0,
+        "population": 24084.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Gippsland - East",
+        "rate": 168.0,
+        "population": 20940.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Gippsland - South West",
+        "rate": 286.0,
+        "population": 30584.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Latrobe Valley",
+        "rate": 186.0,
+        "population": 32435.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Wellington",
+        "rate": 195.0,
+        "population": 18609.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Brunswick - Coburg",
+        "rate": 164.0,
+        "population": 41250.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Darebin - South",
+        "rate": 132.0,
+        "population": 24100.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Essendon",
+        "rate": 203.0,
+        "population": 30499.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Melbourne City",
+        "rate": 145.0,
+        "population": 71687.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Port Phillip",
+        "rate": 128.0,
+        "population": 46855.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Stonnington - West",
+        "rate": 147.0,
+        "population": 30363.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Yarra",
+        "rate": 147.0,
+        "population": 42125.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Boroondara",
+        "rate": 141.0,
+        "population": 74523.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Manningham - West",
+        "rate": 164.0,
+        "population": 43399.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Whitehorse - West",
+        "rate": 124.0,
+        "population": 47554.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Bayside",
+        "rate": 176.0,
+        "population": 44356.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Glen Eira",
+        "rate": 158.0,
+        "population": 67577.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Kingston",
+        "rate": 208.0,
+        "population": 53242.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Stonnington - East",
+        "rate": 184.0,
+        "population": 18887.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Banyule",
+        "rate": 136.0,
+        "population": 53904.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Darebin - North",
+        "rate": 149.0,
+        "population": 41725.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Nillumbik - Kinglake",
+        "rate": 198.0,
+        "population": 27725.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Whittlesea - Wallan",
+        "rate": 208.0,
+        "population": 100731.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Keilor",
+        "rate": 244.0,
+        "population": 26473.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Macedon Ranges",
+        "rate": 345.0,
+        "population": 13218.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Moreland - North",
+        "rate": 193.0,
+        "population": 33601.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Sunbury",
+        "rate": 315.0,
+        "population": 18745.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Tullamarine - Broadmeadows",
+        "rate": 204.0,
+        "population": 79071.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Knox",
+        "rate": 192.0,
+        "population": 68202.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Manningham - East",
+        "rate": 162.0,
+        "population": 11249.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Maroondah",
+        "rate": 183.0,
+        "population": 49019.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Whitehorse - East",
+        "rate": 185.0,
+        "population": 27117.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Yarra Ranges",
+        "rate": 215.0,
+        "population": 64596.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Cardinia",
+        "rate": 217.0,
+        "population": 47060.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Casey - North",
+        "rate": 217.0,
+        "population": 56015.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Casey - South",
+        "rate": 193.0,
+        "population": 87239.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Dandenong",
+        "rate": 147.0,
+        "population": 79843.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Monash",
+        "rate": 158.0,
+        "population": 78387.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Brimbank",
+        "rate": 173.0,
+        "population": 77429.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Hobsons Bay",
+        "rate": 176.0,
+        "population": 36615.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Maribyrnong",
+        "rate": 172.0,
+        "population": 36404.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Melton - Bacchus Marsh",
+        "rate": 240.0,
+        "population": 76572.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Wyndham",
+        "rate": 221.0,
+        "population": 111139.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Frankston",
+        "rate": 206.0,
+        "population": 58780.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Mornington Peninsula",
+        "rate": 199.0,
+        "population": 73940.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Vic",
+        "region": "Grampians",
+        "rate": 379.0,
+        "population": 24831.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Mildura",
+        "rate": 240.0,
+        "population": 23505.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Murray River - Swan Hill",
+        "rate": 282.0,
+        "population": 15566.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Campaspe",
+        "rate": 203.0,
+        "population": 16249.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Shepparton",
+        "rate": 163.0,
+        "population": 27780.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Glenelg - Southern Grampians",
+        "rate": 328.0,
+        "population": 15491.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Colac - Corangamite",
+        "rate": 301.0,
+        "population": 15890.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Vic",
+        "region": "Warrnambool",
+        "rate": 300.0,
+        "population": 22367.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Capalaba",
+        "rate": 320.0,
+        "population": 30906.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Cleveland - Stradbroke",
+        "rate": 311.0,
+        "population": 40297.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Wynnum - Manly",
+        "rate": 227.0,
+        "population": 30385.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Bald Hills - Everton Park",
+        "rate": 280.0,
+        "population": 19497.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Chermside",
+        "rate": 270.0,
+        "population": 32246.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Nundah",
+        "rate": 256.0,
+        "population": 18321.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Sandgate",
+        "rate": 216.0,
+        "population": 26196.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Carindale",
+        "rate": 240.0,
+        "population": 23315.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Holland Park - Yeronga",
+        "rate": 208.0,
+        "population": 35129.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Mt Gravatt",
+        "rate": 252.0,
+        "population": 33319.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Nathan",
+        "rate": 205.0,
+        "population": 16437.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Rocklea - Acacia Ridge",
+        "rate": 235.0,
+        "population": 27370.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Sunnybank",
+        "rate": 234.0,
+        "population": 20714.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Centenary",
+        "rate": 229.0,
+        "population": 13864.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Kenmore - Brookfield - Moggill",
+        "rate": 236.0,
+        "population": 19431.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Sherwood - Indooroopilly",
+        "rate": 181.0,
+        "population": 23750.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "The Gap - Enoggera",
+        "rate": 258.0,
+        "population": 22421.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner",
+        "rate": 221.0,
+        "population": 40282.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - East",
+        "rate": 207.0,
+        "population": 19045.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - North",
+        "rate": 199.0,
+        "population": 44570.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - West",
+        "rate": 214.0,
+        "population": 25900.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Cairns - North",
+        "rate": 167.0,
+        "population": 24228.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Cairns - South",
+        "rate": 161.0,
+        "population": 43657.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Innisfail - Cassowary Coast",
+        "rate": 169.0,
+        "population": 14263.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Tablelands (East) - Kuranda",
+        "rate": 184.0,
+        "population": 18086.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Darling Downs (West) - Maranoa",
+        "rate": 262.0,
+        "population": 17423.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Darling Downs - East",
+        "rate": 520.0,
+        "population": 17130.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Granite Belt",
+        "rate": 323.0,
+        "population": 17570.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Central Highlands (Qld)",
+        "rate": 235.0,
+        "population": 10507.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Rockhampton",
+        "rate": 216.0,
+        "population": 49208.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Gladstone",
+        "rate": 247.0,
+        "population": 24652.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Broadbeach - Burleigh",
+        "rate": 274.0,
+        "population": 30052.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Coolangatta",
+        "rate": 229.0,
+        "population": 25382.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Gold Coast - North",
+        "rate": 367.0,
+        "population": 32140.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Gold Coast Hinterland",
+        "rate": 400.0,
+        "population": 8536.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Mudgeeraba - Tallebudgera",
+        "rate": 322.0,
+        "population": 14628.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Nerang",
+        "rate": 396.0,
+        "population": 28998.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Ormeau - Oxenford",
+        "rate": 384.0,
+        "population": 63125.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Robina",
+        "rate": 383.0,
+        "population": 24105.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Southport",
+        "rate": 262.0,
+        "population": 28995.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Surfers Paradise",
+        "rate": 347.0,
+        "population": 20248.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Forest Lake - Oxley",
+        "rate": 242.0,
+        "population": 31181.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Ipswich Hinterland",
+        "rate": 344.0,
+        "population": 27524.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Ipswich Inner",
+        "rate": 295.0,
+        "population": 47571.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Springfield - Redbank",
+        "rate": 255.0,
+        "population": 40043.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Beaudesert",
+        "rate": 420.0,
+        "population": 6122.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Beenleigh",
+        "rate": 321.0,
+        "population": 18931.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Browns Plains",
+        "rate": 220.0,
+        "population": 36884.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Jimboomba",
+        "rate": 400.0,
+        "population": 23651.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Loganlea - Carbrook",
+        "rate": 278.0,
+        "population": 26602.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Springwood - Kingston",
+        "rate": 291.0,
+        "population": 31413.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Bowen Basin - North",
+        "rate": 344.0,
+        "population": 13006.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Mackay",
+        "rate": 390.0,
+        "population": 48739.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Whitsunday",
+        "rate": 226.0,
+        "population": 9600.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Bribie - Beachmere",
+        "rate": 279.0,
+        "population": 17134.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Caboolture",
+        "rate": 351.0,
+        "population": 32909.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Caboolture Hinterland",
+        "rate": 389.0,
+        "population": 5465.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Narangba - Burpengary",
+        "rate": 346.0,
+        "population": 28580.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Redcliffe",
+        "rate": 341.0,
+        "population": 28735.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "The Hills District",
+        "rate": 322.0,
+        "population": 36515.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "North Lakes",
+        "rate": 309.0,
+        "population": 35612.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Strathpine",
+        "rate": 231.0,
+        "population": 16433.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Far North",
+        "rate": 168.0,
+        "population": 11721.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "Qld",
+        "region": "Outback - North",
+        "rate": 344.0,
+        "population": 11406.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "Qld",
+        "region": "Outback - South",
+        "rate": 277.0,
+        "population": 7138.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "Qld",
+        "region": "Buderim",
+        "rate": 335.0,
+        "population": 25938.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Caloundra",
+        "rate": 287.0,
+        "population": 42517.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Maroochy",
+        "rate": 232.0,
+        "population": 29048.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Noosa",
+        "rate": 204.0,
+        "population": 20579.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Sunshine Coast Hinterland",
+        "rate": 356.0,
+        "population": 25102.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Nambour",
+        "rate": 306.0,
+        "population": 20948.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "Qld",
+        "region": "Noosa Hinterland",
+        "rate": 253.0,
+        "population": 10297.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Toowoomba",
+        "rate": 457.0,
+        "population": 68584.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Charters Towers - Ayr - Ingham",
+        "rate": 272.0,
+        "population": 16957.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Townsville",
+        "rate": 342.0,
+        "population": 79106.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Bundaberg",
+        "rate": 326.0,
+        "population": 40401.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Burnett",
+        "rate": 267.0,
+        "population": 20702.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Gympie - Cooloola",
+        "rate": 256.0,
+        "population": 22578.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Hervey Bay",
+        "rate": 295.0,
+        "population": 28448.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Qld",
+        "region": "Maryborough",
+        "rate": 315.0,
+        "population": 20153.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Adelaide City",
+        "rate": 143.0,
+        "population": 11769.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Adelaide Hills",
+        "rate": 309.0,
+        "population": 33514.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Burnside",
+        "rate": 139.0,
+        "population": 20393.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Campbelltown (SA)",
+        "rate": 225.0,
+        "population": 24344.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Norwood - Payneham - St Peters",
+        "rate": 200.0,
+        "population": 16871.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Prospect - Walkerville",
+        "rate": 183.0,
+        "population": 13059.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Unley",
+        "rate": 221.0,
+        "population": 17648.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Gawler - Two Wells",
+        "rate": 276.0,
+        "population": 15957.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Playford",
+        "rate": 264.0,
+        "population": 39747.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Port Adelaide - East",
+        "rate": 244.0,
+        "population": 31823.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Salisbury",
+        "rate": 229.0,
+        "population": 59078.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Tea Tree Gully",
+        "rate": 280.0,
+        "population": 41457.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Holdfast Bay",
+        "rate": 343.0,
+        "population": 16531.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Marion",
+        "rate": 249.0,
+        "population": 42732.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Mitcham",
+        "rate": 283.0,
+        "population": 28731.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Onkaparinga",
+        "rate": 256.0,
+        "population": 75315.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Charles Sturt",
+        "rate": 188.0,
+        "population": 52363.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Port Adelaide - West",
+        "rate": 246.0,
+        "population": 26593.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "West Torrens",
+        "rate": 182.0,
+        "population": 28847.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "SA",
+        "region": "Barossa",
+        "rate": 180.0,
+        "population": 15753.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Lower North",
+        "rate": 259.0,
+        "population": 9434.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Mid North",
+        "rate": 274.0,
+        "population": 11466.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Yorke Peninsula",
+        "rate": 390.0,
+        "population": 11399.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Eyre Peninsula and South West",
+        "rate": 166.0,
+        "population": 23354.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "SA",
+        "region": "Outback - North and East",
+        "rate": 156.0,
+        "population": 9934.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Fleurieu - Kangaroo Island",
+        "rate": 301.0,
+        "population": 24792.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Limestone Coast",
+        "rate": 240.0,
+        "population": 27467.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "SA",
+        "region": "Murray and Mallee",
+        "rate": 172.0,
+        "population": 29433.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Augusta - Margaret River - Busselton",
+        "rate": 230.0,
+        "population": 24387.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Bunbury",
+        "rate": 358.0,
+        "population": 45374.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Manjimup",
+        "rate": 242.0,
+        "population": 10201.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Mandurah",
+        "rate": 421.0,
+        "population": 47359.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Cottesloe - Claremont",
+        "rate": 249.0,
+        "population": 31502.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Perth City",
+        "rate": 219.0,
+        "population": 49373.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Bayswater - Bassendean",
+        "rate": 177.0,
+        "population": 36988.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Mundaring",
+        "rate": 179.0,
+        "population": 17971.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Swan",
+        "rate": 204.0,
+        "population": 60599.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Joondalup",
+        "rate": 255.0,
+        "population": 67924.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Stirling",
+        "rate": 202.0,
+        "population": 92051.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Wanneroo",
+        "rate": 239.0,
+        "population": 85605.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Armadale",
+        "rate": 220.0,
+        "population": 37754.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Belmont - Victoria Park",
+        "rate": 213.0,
+        "population": 32308.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Canning",
+        "rate": 190.0,
+        "population": 42246.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Gosnells",
+        "rate": 184.0,
+        "population": 51508.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Kalamunda",
+        "rate": 219.0,
+        "population": 24732.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Serpentine - Jarrahdale",
+        "rate": 288.0,
+        "population": 12531.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "South Perth",
+        "rate": 237.0,
+        "population": 19736.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Cockburn",
+        "rate": 227.0,
+        "population": 48936.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Fremantle",
+        "rate": 245.0,
+        "population": 18051.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Kwinana",
+        "rate": 233.0,
+        "population": 17790.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Melville",
+        "rate": 247.0,
+        "population": 47197.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Rockingham",
+        "rate": 335.0,
+        "population": 55657.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "WA",
+        "region": "Albany",
+        "rate": 219.0,
+        "population": 26236.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Wheat Belt - North",
+        "rate": 216.0,
+        "population": 23013.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Wheat Belt - South",
+        "rate": 339.0,
+        "population": 7903.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Kimberley",
+        "rate": 156.0,
+        "population": 14988.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "WA",
+        "region": "Gascoyne",
+        "rate": 300.0,
+        "population": 3915.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "WA",
+        "region": "Goldfields",
+        "rate": 155.0,
+        "population": 14327.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "WA",
+        "region": "Mid West",
+        "rate": 145.0,
+        "population": 22701.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Brighton",
+        "rate": 348.0,
+        "population": 7966.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - North East",
+        "rate": 280.0,
+        "population": 25621.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - North West",
+        "rate": 317.0,
+        "population": 24941.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - South and West",
+        "rate": 300.0,
+        "population": 15917.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart Inner",
+        "rate": 258.0,
+        "population": 25065.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Sorell - Dodges Ferry",
+        "rate": 368.0,
+        "population": 7875.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Launceston",
+        "rate": 246.0,
+        "population": 37907.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Meander Valley - West Tamar",
+        "rate": 381.0,
+        "population": 10330.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "North East",
+        "rate": 204.0,
+        "population": 16763.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Central Highlands (Tas.)",
+        "rate": 387.0,
+        "population": 4931.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Huon - Bruny Island",
+        "rate": 348.0,
+        "population": 9108.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "South East Coast",
+        "rate": 496.0,
+        "population": 3289.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Burnie - Ulverstone",
+        "rate": 203.0,
+        "population": 21953.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "Devonport",
+        "rate": 249.0,
+        "population": 20963.0,
+        "remoteness": "2. Inner Regional"
+      },
+      {
+        "state": "Tas",
+        "region": "West Coast",
+        "rate": 307.0,
+        "population": 7126.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NT",
+        "region": "Darwin City",
+        "rate": 114.0,
+        "population": 11871.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NT",
+        "region": "Darwin Suburbs",
+        "rate": 150.0,
+        "population": 22931.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NT",
+        "region": "Litchfield",
+        "rate": 272.0,
+        "population": 7946.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NT",
+        "region": "Palmerston",
+        "rate": 261.0,
+        "population": 14719.0,
+        "remoteness": "3. Outer Regional"
+      },
+      {
+        "state": "NT",
+        "region": "Alice Springs",
+        "rate": 117.0,
+        "population": 16516.0,
+        "remoteness": "4. Remote"
+      },
+      {
+        "state": "ACT",
+        "region": "Belconnen",
+        "rate": 175.0,
+        "population": 44011.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "ACT",
+        "region": "Gungahlin",
+        "rate": 173.0,
+        "population": 34099.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "ACT",
+        "region": "North Canberra",
+        "rate": 166.0,
+        "population": 27490.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "ACT",
+        "region": "South Canberra",
+        "rate": 152.0,
+        "population": 14144.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "ACT",
+        "region": "Tuggeranong",
+        "rate": 270.0,
+        "population": 36864.0,
+        "remoteness": "1. Major Cities"
+      },
+      {
+        "state": "ACT",
+        "region": "Weston Creek",
+        "rate": 221.0,
+        "population": 10257.0,
+        "remoteness": "1. Major Cities"
+      }
+    ]
+  },
+  "width": 480,
+  "height": 340,
+  "mark": {
+    "type": "circle",
+    "opacity": 0.66,
+    "size": 32,
+    "stroke": "#ffffff",
+    "strokeWidth": 0.45
+  },
+  "encoding": {
+    "x": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Hospitalisations per 100,000 women",
+      "scale": {
+        "zero": false
+      }
+    },
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "NSW",
+        "Vic",
+        "Qld",
+        "SA",
+        "WA",
+        "Tas",
+        "NT",
+        "ACT"
+      ]
+    },
+    "color": {
+      "field": "remoteness",
+      "type": "nominal",
+      "title": "Remoteness",
+      "scale": {
+        "scheme": "tableau10"
+      },
+      "legend": {
+        "orient": "bottom",
+        "columns": 2
+      }
+    },
+    "tooltip": [
+      {
+        "field": "region",
+        "type": "nominal",
+        "title": "SA3 area"
+      },
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Rate",
+        "format": ".0f"
+      },
+      {
+        "field": "population",
+        "type": "quantitative",
+        "title": "Female population",
+        "format": ","
+      },
+      {
+        "field": "remoteness",
+        "type": "nominal",
+        "title": "Remoteness"
+      }
+    ]
+  }
+}

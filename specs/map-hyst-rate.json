@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Age-standardised hysterectomy rate · 2021–22",
+  "data": {
+    "url": "data/australia-states-v1.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.shapeName",
+      "from": {
+        "data": {
+          "values": [
+            {
+              "year": "2021–22",
+              "state": "NSW",
+              "stateName": "New South Wales",
+              "count": 7059.0,
+              "population": 3346246.0,
+              "crude": 211.0,
+              "rate": 217.0,
+              "low": 134.0,
+              "high": 428.0,
+              "variation": 3.2
+            },
+            {
+              "year": "2021–22",
+              "state": "Vic",
+              "stateName": "Victoria",
+              "count": 5447.0,
+              "population": 2730256.0,
+              "crude": 200.0,
+              "rate": 204.0,
+              "low": 124.0,
+              "high": 519.0,
+              "variation": 4.2
+            },
+            {
+              "year": "2021–22",
+              "state": "Qld",
+              "stateName": "Queensland",
+              "count": 5997.0,
+              "population": 2151263.0,
+              "crude": 279.0,
+              "rate": 286.0,
+              "low": 161.0,
+              "high": 520.0,
+              "variation": 3.2
+            },
+            {
+              "year": "2021–22",
+              "state": "SA",
+              "stateName": "South Australia",
+              "count": 1747.0,
+              "population": 759804.0,
+              "crude": 230.0,
+              "rate": 236.0,
+              "low": 139.0,
+              "high": 390.0,
+              "variation": 2.8
+            },
+            {
+              "year": "2021–22",
+              "state": "WA",
+              "stateName": "Western Australia",
+              "count": 2636.0,
+              "population": 1116208.0,
+              "crude": 236.0,
+              "rate": 236.0,
+              "low": 145.0,
+              "high": 421.0,
+              "variation": 2.9
+            },
+            {
+              "year": "2021–22",
+              "state": "Tas",
+              "stateName": "Tasmania",
+              "count": 616.0,
+              "population": 239755.0,
+              "crude": 257.0,
+              "rate": 279.0,
+              "low": 203.0,
+              "high": 496.0,
+              "variation": 2.4
+            },
+            {
+              "year": "2021–22",
+              "state": "NT",
+              "stateName": "Northern Territory",
+              "count": 153.0,
+              "population": 96822.0,
+              "crude": 158.0,
+              "rate": 163.0,
+              "low": 114.0,
+              "high": 272.0,
+              "variation": 2.4
+            },
+            {
+              "year": "2021–22",
+              "state": "ACT",
+              "stateName": "Australian Capital Territory",
+              "count": 341.0,
+              "population": 188943.0,
+              "crude": 180.0,
+              "rate": 192.0,
+              "low": 152.0,
+              "high": 270.0,
+              "variation": 1.8
+            }
+          ]
+        },
+        "key": "stateName",
+        "fields": [
+          "state",
+          "count",
+          "population",
+          "rate",
+          "low",
+          "high",
+          "variation"
+        ]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 0.8
+  },
+  "encoding": {
+    "color": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Rate per 100,000 women",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Rate per 100,000",
+        "format": ".0f"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Hospitalisations",
+        "format": ","
+      },
+      {
+        "field": "population",
+        "type": "quantitative",
+        "title": "Female population",
+        "format": ","
+      }
+    ]
+  },
+  "width": 480,
+  "height": 330,
+  "projection": {
+    "type": "conicEqualArea",
+    "rotate": [-134, 0, 0],
+    "parallels": [-18, -36]
+  }
+}

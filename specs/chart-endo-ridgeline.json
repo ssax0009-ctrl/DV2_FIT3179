@@ -1,0 +1,329 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Ridgeline profiles of mental health condition prevalence by age and sex.",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Arial, sans-serif",
+      "fontSize": 14,
+      "fontWeight": 700,
+      "color": "#2f4550",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#c9d2ce",
+      "tickColor": "#c9d2ce",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "titleColor": "#344f58",
+      "labelColor": "#536b73",
+      "labelFontSize": 11,
+      "orientation": "bottom",
+      "columns": 2,
+      "padding": 12,
+      "symbolType": "circle"
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "title": {
+    "text": "Mental health condition distribution by age and sex",
+    "subtitle": "Ridgeline profiles of long-term condition prevalence",
+    "font": "Arial, sans-serif",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#2f4550",
+    "anchor": "start",
+    "offset": 12,
+    "subtitleFont": "Arial, sans-serif",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#536b73",
+    "subtitlePadding": 2
+  },
+  "data": {
+    "values": [
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 3.5},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 5.5},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 7.2},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 9.8},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 12.1},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 11.4},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 9.3},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 7.0},
+      {"ageGroup": "15-17", "sex": "Female", "prevalence": 4.8},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 2.6},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 4.2},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 6.0},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 8.7},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 10.2},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 9.8},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 7.6},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 5.5},
+      {"ageGroup": "15-17", "sex": "Male", "prevalence": 3.8},
+
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 6.4},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 9.0},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 11.8},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 14.9},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 17.4},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 16.6},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 14.5},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 11.9},
+      {"ageGroup": "18-24", "sex": "Female", "prevalence": 8.8},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 5.5},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 7.9},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 10.1},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 13.4},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 15.2},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 14.0},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 12.3},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 9.4},
+      {"ageGroup": "18-24", "sex": "Male", "prevalence": 7.2},
+
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 7.4},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 10.1},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 13.5},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 16.4},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 18.8},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 17.5},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 15.2},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 11.8},
+      {"ageGroup": "25-34", "sex": "Female", "prevalence": 9.4},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 6.1},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 8.6},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 11.5},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 14.4},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 16.6},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 15.8},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 13.4},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 10.7},
+      {"ageGroup": "25-34", "sex": "Male", "prevalence": 8.1},
+
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 6.2},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 9.3},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 12.4},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 15.0},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 17.1},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 15.9},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 13.7},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 10.2},
+      {"ageGroup": "35-44", "sex": "Female", "prevalence": 7.3},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 4.8},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 7.4},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 10.5},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 12.9},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 14.8},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 13.9},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 11.5},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 8.4},
+      {"ageGroup": "35-44", "sex": "Male", "prevalence": 6.1},
+
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 5.3},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 8.1},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 10.8},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 13.2},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 15.1},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 13.7},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 10.4},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 8.0},
+      {"ageGroup": "45-54", "sex": "Female", "prevalence": 5.2},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 4.1},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 6.8},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 9.2},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 11.7},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 13.4},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 12.1},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 9.4},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 6.8},
+      {"ageGroup": "45-54", "sex": "Male", "prevalence": 4.4},
+
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 4.6},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 6.9},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 9.3},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 11.8},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 13.3},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 11.9},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 9.0},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 6.5},
+      {"ageGroup": "55-64", "sex": "Female", "prevalence": 4.3},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 3.8},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 5.6},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 7.8},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 10.0},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 11.7},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 10.6},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 8.7},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 6.3},
+      {"ageGroup": "55-64", "sex": "Male", "prevalence": 4.0},
+
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 3.7},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 5.5},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 7.6},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 9.4},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 10.9},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 10.2},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 8.1},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 5.8},
+      {"ageGroup": "65-74", "sex": "Female", "prevalence": 3.8},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 3.1},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 4.7},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 6.4},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 8.1},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 9.3},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 8.6},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 6.9},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 5.2},
+      {"ageGroup": "65-74", "sex": "Male", "prevalence": 3.5},
+
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 2.5},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 4.1},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 6.0},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 7.9},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 9.4},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 8.5},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 6.7},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 4.7},
+      {"ageGroup": "75-84", "sex": "Female", "prevalence": 2.9},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 2.0},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 3.4},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 5.2},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 6.8},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 8.1},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 7.4},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 5.8},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 4.0},
+      {"ageGroup": "75-84", "sex": "Male", "prevalence": 2.4},
+
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 1.8},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 3.0},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 4.4},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 5.9},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 7.1},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 6.8},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 5.2},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 3.5},
+      {"ageGroup": "85 and over", "sex": "Female", "prevalence": 2.1},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 1.4},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 2.6},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 3.8},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 5.1},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 6.1},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 5.7},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 4.4},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 3.0},
+      {"ageGroup": "85 and over", "sex": "Male", "prevalence": 1.8}
+    ]
+  },
+  "transform": [
+    {
+      "density": "prevalence",
+      "groupby": ["ageGroup", "sex"],
+      "extent": [0, 22],
+      "steps": 180,
+      "bandwidth": 2,
+      "as": ["prevalenceValue", "density"]
+    },
+    {
+      "joinaggregate": [
+        {"op": "max", "field": "density", "as": "maxDensity"}
+      ],
+      "groupby": ["ageGroup", "sex"]
+    },
+    {
+      "calculate": "datum.density / datum.maxDensity",
+      "as": "ridgeHeight"
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "ageGroup",
+      "type": "ordinal",
+      "sort": ["15-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75-84", "85 and over"],
+      "header": {
+        "labelAngle": 0,
+        "labelColor": "#536b73",
+        "labelFontSize": 11,
+        "title": null,
+        "padding": 8
+      },
+      "spacing": 4
+    }
+  },
+  "spec": {
+    "width": 430,
+    "height": 32,
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "opacity": 0.75,
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+          "x": {
+            "field": "prevalenceValue",
+            "type": "quantitative",
+            "scale": {"domain": [0, 22]},
+            "title": "Prevalence (%)",
+            "axis": {
+              "tickCount": 6,
+              "format": ".0f"
+            }
+          },
+          "y": {
+            "field": "ridgeHeight",
+            "type": "quantitative",
+            "scale": {"domain": [0, 1.08]},
+            "axis": null
+          },
+          "color": {
+            "field": "sex",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Female", "Male"],
+              "range": ["#3F7FB3", "#D9773C"]
+            },
+            "legend": {
+              "title": "Sex",
+              "orient": "bottom",
+              "symbolSize": 12
+            }
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 1.5
+        },
+        "encoding": {
+          "x": {
+            "field": "prevalenceValue",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "ridgeHeight",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "sex",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Female", "Male"],
+              "range": ["#235D8B", "#B85C1A"]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

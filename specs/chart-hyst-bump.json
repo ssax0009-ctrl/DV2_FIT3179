@@ -1,0 +1,615 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "State rank by age-standardised rate",
+  "data": {
+    "values": [
+      {
+        "state": "Qld",
+        "year": "2014–15",
+        "rank": 1,
+        "rate": 326.0
+      },
+      {
+        "state": "Tas",
+        "year": "2014–15",
+        "rank": 2,
+        "rate": 321.0
+      },
+      {
+        "state": "SA",
+        "year": "2014–15",
+        "rank": 3,
+        "rate": 320.0
+      },
+      {
+        "state": "WA",
+        "year": "2014–15",
+        "rank": 4,
+        "rate": 312.0
+      },
+      {
+        "state": "Vic",
+        "year": "2014–15",
+        "rank": 5,
+        "rate": 279.0
+      },
+      {
+        "state": "NSW",
+        "year": "2014–15",
+        "rank": 6,
+        "rate": 264.0
+      },
+      {
+        "state": "NT",
+        "year": "2014–15",
+        "rank": 7,
+        "rate": 237.0
+      },
+      {
+        "state": "ACT",
+        "year": "2014–15",
+        "rank": 8,
+        "rate": 223.0
+      },
+      {
+        "state": "Tas",
+        "year": "2015–16",
+        "rank": 1,
+        "rate": 383.0
+      },
+      {
+        "state": "WA",
+        "year": "2015–16",
+        "rank": 2,
+        "rate": 328.0
+      },
+      {
+        "state": "Qld",
+        "year": "2015–16",
+        "rank": 3,
+        "rate": 324.0
+      },
+      {
+        "state": "SA",
+        "year": "2015–16",
+        "rank": 4,
+        "rate": 301.0
+      },
+      {
+        "state": "Vic",
+        "year": "2015–16",
+        "rank": 5,
+        "rate": 277.0
+      },
+      {
+        "state": "NSW",
+        "year": "2015–16",
+        "rank": 6,
+        "rate": 260.0
+      },
+      {
+        "state": "NT",
+        "year": "2015–16",
+        "rank": 7,
+        "rate": 240.0
+      },
+      {
+        "state": "ACT",
+        "year": "2015–16",
+        "rank": 8,
+        "rate": 222.0
+      },
+      {
+        "state": "Tas",
+        "year": "2016–17",
+        "rank": 1,
+        "rate": 420.0
+      },
+      {
+        "state": "WA",
+        "year": "2016–17",
+        "rank": 2,
+        "rate": 337.0
+      },
+      {
+        "state": "Qld",
+        "year": "2016–17",
+        "rank": 3,
+        "rate": 308.0
+      },
+      {
+        "state": "SA",
+        "year": "2016–17",
+        "rank": 4,
+        "rate": 281.0
+      },
+      {
+        "state": "Vic",
+        "year": "2016–17",
+        "rank": 5,
+        "rate": 266.0
+      },
+      {
+        "state": "NSW",
+        "year": "2016–17",
+        "rank": 6,
+        "rate": 254.0
+      },
+      {
+        "state": "ACT",
+        "year": "2016–17",
+        "rank": 7,
+        "rate": 248.0
+      },
+      {
+        "state": "NT",
+        "year": "2016–17",
+        "rank": 8,
+        "rate": 200.0
+      },
+      {
+        "state": "WA",
+        "year": "2017–18",
+        "rank": 1,
+        "rate": 316.0
+      },
+      {
+        "state": "Tas",
+        "year": "2017–18",
+        "rank": 2,
+        "rate": 309.0
+      },
+      {
+        "state": "Qld",
+        "year": "2017–18",
+        "rank": 3,
+        "rate": 301.0
+      },
+      {
+        "state": "SA",
+        "year": "2017–18",
+        "rank": 4,
+        "rate": 266.0
+      },
+      {
+        "state": "Vic",
+        "year": "2017–18",
+        "rank": 5,
+        "rate": 252.0
+      },
+      {
+        "state": "NSW",
+        "year": "2017–18",
+        "rank": 6,
+        "rate": 247.0
+      },
+      {
+        "state": "ACT",
+        "year": "2017–18",
+        "rank": 7,
+        "rate": 208.0
+      },
+      {
+        "state": "NT",
+        "year": "2017–18",
+        "rank": 8,
+        "rate": 185.0
+      },
+      {
+        "state": "Tas",
+        "year": "2018–19",
+        "rank": 1,
+        "rate": 303.0
+      },
+      {
+        "state": "Qld",
+        "year": "2018–19",
+        "rank": 2,
+        "rate": 302.0
+      },
+      {
+        "state": "WA",
+        "year": "2018–19",
+        "rank": 3,
+        "rate": 288.0
+      },
+      {
+        "state": "SA",
+        "year": "2018–19",
+        "rank": 4,
+        "rate": 258.0
+      },
+      {
+        "state": "Vic",
+        "year": "2018–19",
+        "rank": 5,
+        "rate": 237.0
+      },
+      {
+        "state": "NSW",
+        "year": "2018–19",
+        "rank": 6,
+        "rate": 236.0
+      },
+      {
+        "state": "NT",
+        "year": "2018–19",
+        "rank": 7,
+        "rate": 207.0
+      },
+      {
+        "state": "ACT",
+        "year": "2018–19",
+        "rank": 8,
+        "rate": 172.0
+      },
+      {
+        "state": "Qld",
+        "year": "2019–20",
+        "rank": 1,
+        "rate": 285.0
+      },
+      {
+        "state": "SA",
+        "year": "2019–20",
+        "rank": 2,
+        "rate": 254.0
+      },
+      {
+        "state": "Tas",
+        "year": "2019–20",
+        "rank": 3,
+        "rate": 245.0
+      },
+      {
+        "state": "WA",
+        "year": "2019–20",
+        "rank": 4,
+        "rate": 240.0
+      },
+      {
+        "state": "Vic",
+        "year": "2019–20",
+        "rank": 5,
+        "rate": 209.0
+      },
+      {
+        "state": "ACT",
+        "year": "2019–20",
+        "rank": 6,
+        "rate": 209.0
+      },
+      {
+        "state": "NSW",
+        "year": "2019–20",
+        "rank": 7,
+        "rate": 208.0
+      },
+      {
+        "state": "NT",
+        "year": "2019–20",
+        "rank": 8,
+        "rate": 198.0
+      },
+      {
+        "state": "Qld",
+        "year": "2020–21",
+        "rank": 1,
+        "rate": 330.0
+      },
+      {
+        "state": "Tas",
+        "year": "2020–21",
+        "rank": 2,
+        "rate": 290.0
+      },
+      {
+        "state": "WA",
+        "year": "2020–21",
+        "rank": 3,
+        "rate": 286.0
+      },
+      {
+        "state": "ACT",
+        "year": "2020–21",
+        "rank": 4,
+        "rate": 274.0
+      },
+      {
+        "state": "NSW",
+        "year": "2020–21",
+        "rank": 5,
+        "rate": 261.0
+      },
+      {
+        "state": "SA",
+        "year": "2020–21",
+        "rank": 6,
+        "rate": 246.0
+      },
+      {
+        "state": "Vic",
+        "year": "2020–21",
+        "rank": 7,
+        "rate": 221.0
+      },
+      {
+        "state": "NT",
+        "year": "2020–21",
+        "rank": 8,
+        "rate": 215.0
+      },
+      {
+        "state": "Qld",
+        "year": "2021–22",
+        "rank": 1,
+        "rate": 286.0
+      },
+      {
+        "state": "Tas",
+        "year": "2021–22",
+        "rank": 2,
+        "rate": 279.0
+      },
+      {
+        "state": "SA",
+        "year": "2021–22",
+        "rank": 3,
+        "rate": 236.0
+      },
+      {
+        "state": "WA",
+        "year": "2021–22",
+        "rank": 4,
+        "rate": 236.0
+      },
+      {
+        "state": "NSW",
+        "year": "2021–22",
+        "rank": 5,
+        "rate": 217.0
+      },
+      {
+        "state": "Vic",
+        "year": "2021–22",
+        "rank": 6,
+        "rate": 204.0
+      },
+      {
+        "state": "ACT",
+        "year": "2021–22",
+        "rank": 7,
+        "rate": 192.0
+      },
+      {
+        "state": "NT",
+        "year": "2021–22",
+        "rank": 8,
+        "rate": 163.0
+      }
+    ]
+  },
+  "width": 480,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.3
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2015–16",
+            "2016–17",
+            "2017–18",
+            "2018–19",
+            "2019–20",
+            "2020–21",
+            "2021–22"
+          ],
+          "title": null,
+          "axis": {
+            "labelAngle": -35
+          }
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "title": "Rank · 1 = highest",
+          "scale": {
+            "domain": [
+              8,
+              1
+            ]
+          },
+          "axis": {
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "NSW",
+              "Vic",
+              "Qld",
+              "SA",
+              "WA",
+              "Tas",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#0072B2",
+              "#D55E00",
+              "#009E73",
+              "#CC79A7",
+              "#E69F00",
+              "#56B4E9",
+              "#6B705C",
+              "#6A6A6A"
+            ]
+          }
+        },
+        "detail": {
+          "field": "state"
+        },
+        "order": {
+          "field": "year",
+          "sort": "ascending"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Rank"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate per 100,000",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 45
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2015–16",
+            "2016–17",
+            "2017–18",
+            "2018–19",
+            "2019–20",
+            "2020–21",
+            "2021–22"
+          ]
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              8,
+              1
+            ]
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "NSW",
+              "Vic",
+              "Qld",
+              "SA",
+              "WA",
+              "Tas",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#0072B2",
+              "#D55E00",
+              "#009E73",
+              "#CC79A7",
+              "#E69F00",
+              "#56B4E9",
+              "#6B705C",
+              "#6A6A6A"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Rank"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate per 100,000",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ]
+}

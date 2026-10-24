@@ -1,0 +1,234 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Recorded hysterectomy hospitalisations · 2021–22",
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia-states-v1.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e5ece8",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": "2021–22",
+            "state": "NSW",
+            "stateName": "New South Wales",
+            "count": 7059.0,
+            "population": 3346246.0,
+            "crude": 211.0,
+            "rate": 217.0,
+            "low": 134.0,
+            "high": 428.0,
+            "variation": 3.2,
+            "longitude": 147.01479622360483,
+            "latitude": -32.1655643438379
+          },
+          {
+            "year": "2021–22",
+            "state": "Vic",
+            "stateName": "Victoria",
+            "count": 5447.0,
+            "population": 2730256.0,
+            "crude": 200.0,
+            "rate": 204.0,
+            "low": 124.0,
+            "high": 519.0,
+            "variation": 4.2,
+            "longitude": 144.30589795840604,
+            "latitude": -36.852270983630596
+          },
+          {
+            "year": "2021–22",
+            "state": "Qld",
+            "stateName": "Queensland",
+            "count": 5997.0,
+            "population": 2151263.0,
+            "crude": 279.0,
+            "rate": 286.0,
+            "low": 161.0,
+            "high": 520.0,
+            "variation": 3.2,
+            "longitude": 144.54633181286812,
+            "latitude": -22.567758783615393
+          },
+          {
+            "year": "2021–22",
+            "state": "SA",
+            "stateName": "South Australia",
+            "count": 1747.0,
+            "population": 759804.0,
+            "crude": 230.0,
+            "rate": 236.0,
+            "low": 139.0,
+            "high": 390.0,
+            "variation": 2.8,
+            "longitude": 135.83044390157104,
+            "latitude": -30.112180181886686
+          },
+          {
+            "year": "2021–22",
+            "state": "WA",
+            "stateName": "Western Australia",
+            "count": 2636.0,
+            "population": 1116208.0,
+            "crude": 236.0,
+            "rate": 236.0,
+            "low": 145.0,
+            "high": 421.0,
+            "variation": 2.9,
+            "longitude": 122.18038983186159,
+            "latitude": -25.471205917572753
+          },
+          {
+            "year": "2021–22",
+            "state": "Tas",
+            "stateName": "Tasmania",
+            "count": 616.0,
+            "population": 239755.0,
+            "crude": 257.0,
+            "rate": 279.0,
+            "low": 203.0,
+            "high": 496.0,
+            "variation": 2.4,
+            "longitude": 146.59742353199263,
+            "latitude": -41.935713021117415
+          },
+          {
+            "year": "2021–22",
+            "state": "NT",
+            "stateName": "Northern Territory",
+            "count": 153.0,
+            "population": 96822.0,
+            "crude": 158.0,
+            "rate": 163.0,
+            "low": 114.0,
+            "high": 272.0,
+            "variation": 2.4,
+            "longitude": 133.36528710915206,
+            "latitude": -19.413126819716865
+          },
+          {
+            "year": "2021–22",
+            "state": "ACT",
+            "stateName": "Australian Capital Territory",
+            "count": 341.0,
+            "population": 188943.0,
+            "crude": 180.0,
+            "rate": 192.0,
+            "low": 152.0,
+            "high": 270.0,
+            "variation": 1.8,
+            "longitude": 149.0027612561212,
+            "latitude": -35.492529614139876
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.88,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.4,
+        "color": "#0072b2"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Hospitalisations",
+          "scale": {
+            "range": [
+              60,
+              900
+            ]
+          },
+          "legend": {
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate per 100,000",
+            "format": ".0f"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Hospitalisations",
+            "format": ","
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "title": "Female population",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+  "width": 480,
+  "height": 330,
+  "projection": {
+    "type": "conicEqualArea",
+    "rotate": [-134, 0, 0],
+    "parallels": [-18, -36]
+  }
+}

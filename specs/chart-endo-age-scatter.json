@@ -1,0 +1,233 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Procedure rates across two central age groups · 2024–25",
+  "data": {
+    "values": [
+      {
+        "procedure": "Cystoscopy",
+        "rate2534": 38.5,
+        "rate3544": 74.6,
+        "total": 3475.0
+      },
+      {
+        "procedure": "Diagnostic hysteroscopy",
+        "rate2534": 238.5,
+        "rate3544": 165.2,
+        "total": 11112.0
+      },
+      {
+        "procedure": "Dilation and curettage of uterus [D&C]",
+        "rate2534": 194.6,
+        "rate3544": 150.4,
+        "total": 9460.0
+      },
+      {
+        "procedure": "Insertion of intrauterine device [IUD]",
+        "rate2534": 66.1,
+        "rate3544": 45.1,
+        "total": 3958.0
+      },
+      {
+        "procedure": "Laparoscopic diathermy of lesion of pelvic cavity",
+        "rate2534": 72.6,
+        "rate3544": 51.2,
+        "total": 3515.0
+      },
+      {
+        "procedure": "Laparoscopic division of abdominal adhesions",
+        "rate2534": 115.2,
+        "rate3544": 131.2,
+        "total": 6767.0
+      },
+      {
+        "procedure": "Laparoscopic excision of lesion of pelvic cavity",
+        "rate2534": 258.7,
+        "rate3544": 202.5,
+        "total": 12770.0
+      },
+      {
+        "procedure": "Laparoscopic partial oophorectomy",
+        "rate2534": 6.4,
+        "rate3544": 6.1,
+        "total": 338.0
+      },
+      {
+        "procedure": "Laparoscopic salpingectomy, bilateral",
+        "rate2534": 16.2,
+        "rate3544": 80.3,
+        "total": 2841.0
+      },
+      {
+        "procedure": "Laparoscopic salpingectomy, unilateral",
+        "rate2534": 5.3,
+        "rate3544": 14.1,
+        "total": 541.0
+      },
+      {
+        "procedure": "Laparoscopic total abdominal hysterectomy",
+        "rate2534": 13.2,
+        "rate3544": 74.7,
+        "total": 2893.0
+      },
+      {
+        "procedure": "Replacement of intrauterine device [IUD]",
+        "rate2534": 35.4,
+        "rate3544": 17.4,
+        "total": 1841.0
+      },
+      {
+        "procedure": "Test for tubal patency",
+        "rate2534": 123.4,
+        "rate3544": 70.3,
+        "total": 4333.0
+      }
+    ]
+  },
+  "width": 480,
+  "height": 310,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "rate": 0
+          },
+          {
+            "rate": 258.7
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "color": "#8a9995",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": true
+          }
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": true
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.82,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "rate2534",
+          "type": "quantitative",
+          "title": "Age 25–34 · rate per 100,000",
+          "scale": {
+            "zero": true
+          }
+        },
+        "y": {
+          "field": "rate3544",
+          "type": "quantitative",
+          "title": "Age 35–44 · rate per 100,000",
+          "scale": {
+            "zero": true
+          }
+        },
+        "size": {
+          "field": "total",
+          "type": "quantitative",
+          "title": "Procedure hospitalisations",
+          "scale": {
+            "range": [
+              45,
+              480
+            ]
+          }
+        },
+        "color": {
+          "field": "procedure",
+          "type": "nominal",
+          "title": "Procedure",
+          "scale": {
+            "scheme": "tableau10"
+          },
+          "legend": {
+            "orient": "bottom",
+            "columns": 2
+          }
+        },
+        "tooltip": [
+          {
+            "field": "procedure",
+            "type": "nominal",
+            "title": "Procedure"
+          },
+          {
+            "field": "rate2534",
+            "type": "quantitative",
+            "title": "Age 25–34 rate",
+            "format": ".1f"
+          },
+          {
+            "field": "rate3544",
+            "type": "quantitative",
+            "title": "Age 35–44 rate",
+            "format": ".1f"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Hospitalisations",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,501 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "title": {
+      "font": "Georgia, serif",
+      "fontSize": 15,
+      "fontWeight": 500,
+      "color": "#18313b",
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelLimit": 150
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
+  "title": "Hysterectomy rate by state and year",
+  "data": {
+    "values": [
+      {
+        "state": "NSW",
+        "year": "2014–15",
+        "rate": 264.0,
+        "count": 8044.0
+      },
+      {
+        "state": "Vic",
+        "year": "2014–15",
+        "rate": 279.0,
+        "count": 6744.0
+      },
+      {
+        "state": "Qld",
+        "year": "2014–15",
+        "rate": 326.0,
+        "count": 6187.0
+      },
+      {
+        "state": "SA",
+        "year": "2014–15",
+        "rate": 320.0,
+        "count": 2223.0
+      },
+      {
+        "state": "WA",
+        "year": "2014–15",
+        "rate": 312.0,
+        "count": 3111.0
+      },
+      {
+        "state": "Tas",
+        "year": "2014–15",
+        "rate": 321.0,
+        "count": 673.0
+      },
+      {
+        "state": "NT",
+        "year": "2014–15",
+        "rate": 237.0,
+        "count": 211.0
+      },
+      {
+        "state": "ACT",
+        "year": "2014–15",
+        "rate": 223.0,
+        "count": 337.0
+      },
+      {
+        "state": "NSW",
+        "year": "2015–16",
+        "rate": 260.0,
+        "count": 8003.0
+      },
+      {
+        "state": "Vic",
+        "year": "2015–16",
+        "rate": 277.0,
+        "count": 6804.0
+      },
+      {
+        "state": "Qld",
+        "year": "2015–16",
+        "rate": 324.0,
+        "count": 6225.0
+      },
+      {
+        "state": "SA",
+        "year": "2015–16",
+        "rate": 301.0,
+        "count": 2102.0
+      },
+      {
+        "state": "WA",
+        "year": "2015–16",
+        "rate": 328.0,
+        "count": 3298.0
+      },
+      {
+        "state": "Tas",
+        "year": "2015–16",
+        "rate": 383.0,
+        "count": 788.0
+      },
+      {
+        "state": "NT",
+        "year": "2015–16",
+        "rate": 240.0,
+        "count": 215.0
+      },
+      {
+        "state": "ACT",
+        "year": "2015–16",
+        "rate": 222.0,
+        "count": 346.0
+      },
+      {
+        "state": "NSW",
+        "year": "2016–17",
+        "rate": 254.0,
+        "count": 7915.0
+      },
+      {
+        "state": "Vic",
+        "year": "2016–17",
+        "rate": 266.0,
+        "count": 6664.0
+      },
+      {
+        "state": "Qld",
+        "year": "2016–17",
+        "rate": 308.0,
+        "count": 5998.0
+      },
+      {
+        "state": "SA",
+        "year": "2016–17",
+        "rate": 281.0,
+        "count": 1989.0
+      },
+      {
+        "state": "WA",
+        "year": "2016–17",
+        "rate": 337.0,
+        "count": 3418.0
+      },
+      {
+        "state": "Tas",
+        "year": "2016–17",
+        "rate": 420.0,
+        "count": 871.0
+      },
+      {
+        "state": "NT",
+        "year": "2016–17",
+        "rate": 200.0,
+        "count": 176.0
+      },
+      {
+        "state": "ACT",
+        "year": "2016–17",
+        "rate": 248.0,
+        "count": 391.0
+      },
+      {
+        "state": "NSW",
+        "year": "2017–18",
+        "rate": 247.0,
+        "count": 7774.0
+      },
+      {
+        "state": "Vic",
+        "year": "2017–18",
+        "rate": 252.0,
+        "count": 6414.0
+      },
+      {
+        "state": "Qld",
+        "year": "2017–18",
+        "rate": 301.0,
+        "count": 5979.0
+      },
+      {
+        "state": "SA",
+        "year": "2017–18",
+        "rate": 266.0,
+        "count": 1885.0
+      },
+      {
+        "state": "WA",
+        "year": "2017–18",
+        "rate": 316.0,
+        "count": 3251.0
+      },
+      {
+        "state": "Tas",
+        "year": "2017–18",
+        "rate": 309.0,
+        "count": 657.0
+      },
+      {
+        "state": "NT",
+        "year": "2017–18",
+        "rate": 185.0,
+        "count": 162.0
+      },
+      {
+        "state": "ACT",
+        "year": "2017–18",
+        "rate": 208.0,
+        "count": 336.0
+      },
+      {
+        "state": "NSW",
+        "year": "2018–19",
+        "rate": 236.0,
+        "count": 7517.0
+      },
+      {
+        "state": "Vic",
+        "year": "2018–19",
+        "rate": 237.0,
+        "count": 6169.0
+      },
+      {
+        "state": "Qld",
+        "year": "2018–19",
+        "rate": 302.0,
+        "count": 6064.0
+      },
+      {
+        "state": "SA",
+        "year": "2018–19",
+        "rate": 258.0,
+        "count": 1855.0
+      },
+      {
+        "state": "WA",
+        "year": "2018–19",
+        "rate": 288.0,
+        "count": 3009.0
+      },
+      {
+        "state": "Tas",
+        "year": "2018–19",
+        "rate": 303.0,
+        "count": 641.0
+      },
+      {
+        "state": "NT",
+        "year": "2018–19",
+        "rate": 207.0,
+        "count": 190.0
+      },
+      {
+        "state": "ACT",
+        "year": "2018–19",
+        "rate": 172.0,
+        "count": 287.0
+      },
+      {
+        "state": "NSW",
+        "year": "2019–20",
+        "rate": 208.0,
+        "count": 6694.0
+      },
+      {
+        "state": "Vic",
+        "year": "2019–20",
+        "rate": 209.0,
+        "count": 5493.0
+      },
+      {
+        "state": "Qld",
+        "year": "2019–20",
+        "rate": 285.0,
+        "count": 5815.0
+      },
+      {
+        "state": "SA",
+        "year": "2019–20",
+        "rate": 254.0,
+        "count": 1845.0
+      },
+      {
+        "state": "WA",
+        "year": "2019–20",
+        "rate": 240.0,
+        "count": 2552.0
+      },
+      {
+        "state": "Tas",
+        "year": "2019–20",
+        "rate": 245.0,
+        "count": 524.0
+      },
+      {
+        "state": "NT",
+        "year": "2019–20",
+        "rate": 198.0,
+        "count": 181.0
+      },
+      {
+        "state": "ACT",
+        "year": "2019–20",
+        "rate": 209.0,
+        "count": 356.0
+      },
+      {
+        "state": "NSW",
+        "year": "2020–21",
+        "rate": 261.0,
+        "count": 8447.0
+      },
+      {
+        "state": "Vic",
+        "year": "2020–21",
+        "rate": 221.0,
+        "count": 5931.0
+      },
+      {
+        "state": "Qld",
+        "year": "2020–21",
+        "rate": 330.0,
+        "count": 6805.0
+      },
+      {
+        "state": "SA",
+        "year": "2020–21",
+        "rate": 246.0,
+        "count": 1775.0
+      },
+      {
+        "state": "WA",
+        "year": "2020–21",
+        "rate": 286.0,
+        "count": 3112.0
+      },
+      {
+        "state": "Tas",
+        "year": "2020–21",
+        "rate": 290.0,
+        "count": 641.0
+      },
+      {
+        "state": "NT",
+        "year": "2020–21",
+        "rate": 215.0,
+        "count": 201.0
+      },
+      {
+        "state": "ACT",
+        "year": "2020–21",
+        "rate": 274.0,
+        "count": 477.0
+      },
+      {
+        "state": "NSW",
+        "year": "2021–22",
+        "rate": 217.0,
+        "count": 7059.0
+      },
+      {
+        "state": "Vic",
+        "year": "2021–22",
+        "rate": 204.0,
+        "count": 5447.0
+      },
+      {
+        "state": "Qld",
+        "year": "2021–22",
+        "rate": 286.0,
+        "count": 5997.0
+      },
+      {
+        "state": "SA",
+        "year": "2021–22",
+        "rate": 236.0,
+        "count": 1747.0
+      },
+      {
+        "state": "WA",
+        "year": "2021–22",
+        "rate": 236.0,
+        "count": 2636.0
+      },
+      {
+        "state": "Tas",
+        "year": "2021–22",
+        "rate": 279.0,
+        "count": 616.0
+      },
+      {
+        "state": "NT",
+        "year": "2021–22",
+        "rate": 163.0,
+        "count": 153.0
+      },
+      {
+        "state": "ACT",
+        "year": "2021–22",
+        "rate": 192.0,
+        "count": 341.0
+      }
+    ]
+  },
+  "width": 480,
+  "height": 285,
+  "mark": {
+    "type": "rect",
+    "stroke": "#ffffff",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": [
+        "2014–15",
+        "2015–16",
+        "2016–17",
+        "2017–18",
+        "2018–19",
+        "2019–20",
+        "2020–21",
+        "2021–22"
+      ],
+      "title": null,
+      "axis": {
+        "labelAngle": -35
+      }
+    },
+    "y": {
+      "field": "state",
+      "type": "ordinal",
+      "sort": [
+        "NSW",
+        "Vic",
+        "Qld",
+        "SA",
+        "WA",
+        "Tas",
+        "NT",
+        "ACT"
+      ],
+      "title": null
+    },
+    "color": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Rate per 100,000",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Rate per 100,000",
+        "format": ".0f"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Hospitalisations",
+        "format": ","
+      }
+    ]
+  }
+}
