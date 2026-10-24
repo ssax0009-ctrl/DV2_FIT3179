@@ -68,6 +68,27 @@ const C = {
     axisTitles: { x: "Financial year", y: "State or territory" },
     summary: "Hover a tile for the exact annual rate."
   },
+  indigenousDumbbell: {
+    spec: "specs/chart-hyst-indigenous-dumbbell.json",
+    title: "Indigenous status rates by state, 2021–22.",
+    idiom: "Dumbbell plot",
+    axisTitles: { x: "Age-standardised rate per 100,000 women" },
+    summary: "Dots compare First Nations and other Australian women; Tasmania and the ACT are labelled as suppressed."
+  },
+  privateShare: {
+    spec: "specs/chart-hyst-private-lollipop.json",
+    title: "Private share of hysterectomy hospitalisations by state, 2021–22.",
+    idiom: "Lollipop plot",
+    axisTitles: { x: "Private patients (% of hysterectomy hospitalisations)", y: "State or territory" },
+    summary: "The dashed line marks the national private share of 63%."
+  },
+  remotenessSes: {
+    spec: "specs/chart-hyst-remoteness-ses.json",
+    title: "Hysterectomy rates by remoteness and socioeconomic quintile, 2021–22.",
+    idiom: "Dot plot",
+    axisTitles: { x: "Age-standardised rate per 100,000 women" },
+    summary: "Quintile numbers are labelled in each dot; diamonds show overall rates. SES 1 is the lowest-SES area quintile."
+  },
   ridgeline: {
     spec: "specs/chart-endo-ridgeline.json",
     title: "Mental health prevalence varies by age and sex.",
@@ -84,7 +105,7 @@ const C = {
   },
   waterfall: {
     spec: "specs/chart-endo-waterfall.json",
-    title: "More admissions account for the total rise.",
+    title: "Elective admissions drove three-quarters of the rise.",
     idiom: "Waterfall",
     axisTitles: { x: "Urgency group", y: "Hospitalisations" },
     summary: "Urgency groups show their contribution to the change."
@@ -128,7 +149,7 @@ const story = {
             {
               heading: "Highest rates are not where most procedures occur",
               text:
-                "Queensland has the highest age-standardised rate, at 286 per 100,000 women, followed by Tasmania at 279. New South Wales records the most hospitalisations (7,059), yet its rate is 217. New South Wales, Victoria and Queensland together account for 77% of the 23,996 hospitalisations recorded. Counts largely follow population size, so the rate map gives the fairer comparison between states.",
+                "Queensland has the highest age-standardised rate, at 286 per 100,000 women, followed by Tasmania at 279. New South Wales records the most hospitalisations (7,059), yet its rate is 217. New South Wales, Victoria and Queensland together account for 77% of the 23,996 hospitalisations summed across the eight states and territories. The national total is 24,030; the state sum is not the national figure. Counts largely follow population size, so the rate map gives the fairer comparison between states.",
               layout: "pair",
               charts: [C.rateMap, C.volumeMap]
             }
@@ -138,17 +159,28 @@ const story = {
           label: "Behind the state averages",
           findings: [
             {
-              heading: "The highest and lowest areas are far apart",
+              heading: "Victoria’s local rates differ fourfold between similar-sized areas",
               text:
-                "The highest local rate is 520, in Queensland, and the lowest is 114, in the Northern Territory: about 4.6 times higher. Queensland’s highest area (520) and Victoria’s (519) are almost identical, even though their state rates are 286 and 204. A state average says little about any single area, which matters when targeting services.",
+                "In Victoria, Ballarat recorded 519 hospitalisations per 100,000 women (235 hospitalisations among 48,988 women), while Whitehorse–West recorded 124 (56 among 47,554 women)—a 4.2-fold difference between similarly sized populations. This is a more robust comparison than the national extremes: Darwin City’s rate of 114 is based on only 12 hospitalisations. SA3 rates are suppressed for 24 areas; the workbook’s caution flags do not identify the fragile Darwin estimate. Across the states, the number of plotted SA3 areas ranges from 5 in the Northern Territory to 87 in New South Wales.",
               layout: "pair",
               charts: [C.strip, C.range]
             },
             {
               heading: "Victoria’s average hides the widest spread",
               text:
-                "Victoria’s state rate of 204 is the third lowest of the eight, yet its local areas run from 124 to 519. That is a 4.2 ratio, the widest of any state. Queensland and New South Wales both show 3.2, while the Australian Capital Territory is the most uniform at 1.8. The dot map marks the 316 SA3 areas across Australia. Every dot is the same size and colour; positions are approximate within state outlines, not exact SA3 centroids.",
+                "Victoria’s state rate of 204 is the third lowest of the eight, yet its local rates range from 124 to 519—the widest spread among the states. Queensland and New South Wales both show a 3.2 ratio, while the Australian Capital Territory is the most uniform at 1.8. The dot map shows the 316 SA3 rates available across Australia; the 24 suppressed areas are omitted. Every dot is the same size and colour, and positions are approximate within state outlines, not exact SA3 centroids.",
               charts: [C.dotMap]
+            }
+          ]
+        },
+        {
+          label: "Beyond state lines",
+          findings: [
+            {
+              heading: "Inner regional areas have the highest rate",
+              text:
+                "In 2021–22, the age-standardised hysterectomy rate was highest in inner regional areas (292 per 100,000 women), followed by outer regional areas (243), major cities (218) and remote areas (193). The remoteness-by-SES table adds variation within these groups: reported SES quintile rates range from 195 to 241 in major cities and from 279 to 298 in inner regional areas. Some outer regional and remote SES values are suppressed, so those within-group comparisons are incomplete.",
+              charts: [C.remotenessSes]
             }
           ]
         }
@@ -181,6 +213,36 @@ const story = {
       ]
     },
     {
+      id: "who",
+      title: "Who receives care, and in which sector?",
+      thesis:
+        "Hospital records can be split by Indigenous status and by public or private funding, but they don’t show need.",
+      groups: [
+        {
+          label: "Indigenous status",
+          findings: [
+            {
+              heading: "National Indigenous-status rates conceal a mixed state pattern",
+              text:
+                "In 2021–22, the national age-standardised hysterectomy rate was 251 per 100,000 First Nations women and 231 for other Australian women. The state pattern is not uniform: Queensland rates were 311 and 287 respectively, while in the Northern Territory they were 94 and 193. Tasmania and the ACT values are suppressed. These are hospitalisation rates, not measures of prevalence or need; small counts and suppression mean the state differences should be interpreted cautiously.",
+              charts: [C.indigenousDumbbell]
+            }
+          ]
+        },
+        {
+          label: "Public and private funding",
+          findings: [
+            {
+              heading: "Most hysterectomy hospitalisations were privately funded",
+              text:
+                "In 2021–22, 15,089 of the 24,030 national hysterectomy hospitalisations (about 63%) were recorded as private patients, compared with 8,941 (37%) public patients. The age-standardised rates were 144 and 87 per 100,000 women respectively. The private-patient share varied by state, from 53% in the Northern Territory to 71% in Western Australia. In the separate endometriosis dataset, private patients made up 65.7% of procedure-involving admissions in 2015–16 and 71.5% in 2024–25. These figures describe different conditions and periods; the datasets are not linked and should not be treated as a direct comparison.",
+              charts: [C.privateShare]
+            }
+          ]
+        }
+      ]
+    },
+    {
       id: "endometriosis",
       title: "Endometriosis: how admissions grew and who they involve",
       thesis:
@@ -190,9 +252,9 @@ const story = {
           label: "The rise in admissions",
           findings: [
             {
-              heading: "Elective admissions account for most of the increase",
+              heading: "Elective admissions drove three-quarters of the rise",
               text:
-                "Endometriosis admissions increased from 17,630 in 2015–16 to 24,689 in 2024–25. The crude rate rose from 145.9 to 179.0 per 100,000 population, after reaching 182.3 in 2023–24. Elective admissions contributed the largest part of the count increase (+5,340, compared with +1,198 emergency and +521 not assigned/unknown). These crude rates are not age-adjusted and do not explain why admissions changed.",
+                "The total admission count rose by 7,059, from 17,630 in 2015–16 to 24,689 in 2024–25. Elective admissions contributed 5,340—about 76% of the increase—compared with 1,198 emergency and 521 not assigned/unknown. The crude rate rose about 23%, from 145.9 to 179.0 per 100,000 population, but the path was uneven: it dipped to 142.4 in 2019–20, jumped to 176.7 in 2020–21, peaked at 182.3 in 2023–24 and eased to 179.0. These crude rates are not age-adjusted and do not explain why admissions changed.",
               layout: "pair",
               charts: [C.endoLine, C.waterfall]
             }
@@ -217,7 +279,7 @@ const story = {
             {
               heading: "Age group flows into procedure type and sector",
               text:
-                "The Sankey uses Table 9 counts to compare procedure groups by age and by hospital sector, with a year selector spanning 2015–16 to 2024–25. Age and sector are reported as separate totals, not cross-tabulated together, so the links show two separate comparisons through the procedure groups. A path is not an individual patient’s journey; suppressed age counts are omitted.",
+                "The Sankey uses Table 9 counts to compare procedure groups by age and hospital sector, with a year selector spanning 2015–16 to 2024–25. Age and sector are separate published totals, not cross-tabulated; links do not represent individual patient journeys, and suppressed age counts are omitted. Separately, private patients’ share of procedure-involving admissions rose from 65.7% in 2015–16 to 71.5% in 2024–25, peaking at 73.8% in 2021–22. In 2024–25, those admissions averaged 4.2 procedures per private hospitalisation and 3.7 per public one. Missing ACT private-hospital data in 2024–25 means the private share is slightly understated.",
               charts: [C.sankey]
             }
           ]
@@ -714,20 +776,22 @@ async function renderChart(item, container) {
 
 function buildFinding(finding, parent) {
   const article = el(
-  "article",
-  "finding" + (finding.layout ? ` finding--${finding.layout}` : "")
-);
+    "article",
+    `finding${finding.layout ? ` finding--${finding.layout}` : ""}${finding.charts.length ? "" : " finding--text-only"}`
+  );
 
   const text = el("div", "finding-text");
   text.append(el("h3", "", finding.heading), el("p", "", finding.text));
 
-  const charts = el("div", "finding-charts");
-  charts.dataset.count = finding.charts.length;
-
-  article.append(text, charts);
+  let charts = null;
+  article.append(text);
+  if (finding.charts.length) {
+    charts = el("div", "finding-charts");
+    charts.dataset.count = finding.charts.length;
+    article.append(charts);
+  }
   parent.append(article);
-
-  finding.charts.forEach((item) => renderChart(item, charts));
+  if (charts) finding.charts.forEach((item) => renderChart(item, charts));
 }
 
 function buildGroup(group, parent) {
@@ -792,7 +856,7 @@ if (typeof vegaEmbed !== "function") {
 }
 
 function alternateFindings() {
-  const skip = ".finding--lead, .finding--wide, .finding--pair, .finding--note";
+  const skip = ".finding--lead, .finding--wide, .finding--pair, .finding--note, .finding--text-only";
   let n = 0;
   document.querySelectorAll(".finding").forEach(el => {
     if (el.matches(skip)) return;                      // leave special layouts alone

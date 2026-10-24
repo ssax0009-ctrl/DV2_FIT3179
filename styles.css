@@ -550,6 +550,13 @@ footer a {
   position: static;
 }
 
+.finding--text-only {
+  grid-template-columns: 1fr;
+}
+.finding--text-only > .finding-text {
+  max-width: 74ch;
+}
+
 /* ---------- 2. --flip: charts left, text right ---------- */
 .finding--flip {
   grid-template-columns: minmax(0, 1fr) var(--text-col);

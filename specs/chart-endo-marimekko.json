@@ -288,7 +288,7 @@
           0.8238,
           0.94139
         ],
-        "labelExpr": "datum.value < 0.04302 ? '2015-16' : datum.value < 0.12928 ? '2016-17' : datum.value < 0.21783 ? '2017-18' : datum.value < 0.31082 ? '2018-19' : datum.value < 0.40178 ? '2019-20' : datum.value < 0.49949 ? '2020-21' : datum.value < 0.60457 ? '2021-22' : datum.value < 0.71003 ? '2022-23' : datum.value < 0.8238 ? '2023-24' : datum.value < 0.94139 ? '2024-25' : '2024-25'",
+        "labelExpr": "datum.value < 0.08615 ? '2015-16' : datum.value < 0.173555 ? '2016-17' : datum.value < 0.264325 ? '2017-18' : datum.value < 0.3563 ? '2018-19' : datum.value < 0.450635 ? '2019-20' : datum.value < 0.55203 ? '2020-21' : datum.value < 0.6573 ? '2021-22' : datum.value < 0.766915 ? '2022-23' : datum.value < 0.882595 ? '2023-24' : '2024-25'",
         "labelAngle": -35,
         "grid": false,
         "ticks": false,

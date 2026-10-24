@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Age-standardised hysterectomy rate by Indigenous status and state, 2021–22.",
+  "data": {
+    "values": [
+      { "state": "NSW", "firstNations": 276, "other": 216, "labelX": null, "label": "" },
+      { "state": "Vic", "firstNations": 262, "other": 203, "labelX": null, "label": "" },
+      { "state": "Qld", "firstNations": 311, "other": 287, "labelX": null, "label": "" },
+      { "state": "Australia", "firstNations": 251, "other": 231, "labelX": null, "label": "" },
+      { "state": "SA", "firstNations": 235, "other": 236, "labelX": null, "label": "" },
+      { "state": "WA", "firstNations": 197, "other": 239, "labelX": null, "label": "" },
+      { "state": "NT", "firstNations": 94, "other": 193, "labelX": null, "label": "" },
+      { "state": "Tas", "firstNations": null, "other": null, "labelX": 78, "label": "Suppressed" },
+      { "state": "ACT", "firstNations": null, "other": null, "labelX": 78, "label": "Suppressed" }
+    ]
+  },
+  "width": 500,
+  "height": 310,
+  "config": {
+    "background": "transparent",
+    "font": "Arial, sans-serif",
+    "axis": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "gridColor": "#edf1ef",
+      "domainColor": "#aabbb6",
+      "tickColor": "#aabbb6",
+      "labelFontSize": 11,
+      "titleFontSize": 11
+    },
+    "legend": {
+      "labelColor": "#536b73",
+      "titleColor": "#344f58",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "view": { "stroke": null }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#aabbb6",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "firstNations",
+          "type": "quantitative",
+          "scale": { "domain": [70, 330], "nice": false },
+          "axis": { "tickCount": 6, "grid": true }
+        },
+        "x2": { "field": "other" },
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": ["NSW", "Vic", "Qld", "Australia", "SA", "WA", "NT", "Tas", "ACT"],
+          "axis": { "title": "State or territory" }
+        },
+        "tooltip": [
+          { "field": "state", "type": "nominal", "title": "State" },
+          { "field": "firstNations", "type": "quantitative", "title": "First Nations women" },
+          { "field": "other", "type": "quantitative", "title": "Other Australian women" }
+        ]
+      }
+    },
+    {
+      "transform": [
+        { "fold": ["firstNations", "other"], "as": ["group", "rate"] },
+        { "filter": "isValid(datum.rate)" }
+      ],
+      "mark": { "type": "point", "filled": true, "size": 90 },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": { "domain": [70, 330], "nice": false },
+          "axis": { "tickCount": 6, "grid": true }
+        },
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": ["NSW", "Vic", "Qld", "Australia", "SA", "WA", "NT", "Tas", "ACT"],
+          "axis": { "title": "State or territory" }
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": "Hospitalisation rate",
+          "scale": {
+            "domain": ["firstNations", "other"],
+            "range": ["#0072b2", "#d55e00"]
+          },
+          "legend": {
+            "labelExpr": "datum.label === 'firstNations' ? 'First Nations women' : 'Other Australian women'",
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          { "field": "state", "type": "nominal", "title": "State" },
+          { "field": "group", "type": "nominal", "title": "Group" },
+          { "field": "rate", "type": "quantitative", "title": "Rate per 100,000", "format": ".0f" }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.label === 'Suppressed'" }],
+      "mark": { "type": "text", "align": "left", "dx": 2, "fontSize": 10, "color": "#536b73" },
+      "encoding": {
+        "x": {
+          "field": "labelX",
+          "type": "quantitative",
+          "scale": { "domain": [70, 330], "nice": false }
+        },
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": ["NSW", "Vic", "Qld", "Australia", "SA", "WA", "NT", "Tas", "ACT"]
+        },
+        "text": { "field": "label" }
+      }
+    }
+  ]
+}
