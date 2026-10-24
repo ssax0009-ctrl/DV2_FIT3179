@@ -7,8 +7,6 @@
           └─ Finding (analysis text + 1 or 2 charts)
    Standalone findings sit outside any theme.
 
-   Entries marked NEEDS DATA were written from chart titles only.
-   Check their wording against the charts before submitting.
 ------------------------------------------------------------------- */
 
 const C = {
@@ -51,7 +49,7 @@ const C = {
   },
   slope: {
     spec: "specs/chart-hyst-slopegraph.json",
-    title: "Rates moved in different directions.",
+    title: "Every state rate declined.",
     idiom: "Slopegraph",
     axisTitles: { x: "Financial year", y: "Hospitalisations per 100,000 women" },
     summary: "Compare each state’s first and latest rate."
@@ -166,18 +164,16 @@ const story = {
           label: "Change across the years",
           findings: [
             {
-              // NEEDS DATA: add first/latest years and the biggest movers.
-              heading: "States did not move together",
+              heading: "Rates fell, but by different amounts",
               text:
-                "Between the first and latest year, state rates moved in different directions: some rose while others fell. Because they changed at different speeds, the ranking of states shifted as well. A single year, such as the 2021–22 maps above, shows only one point in a changing picture.",
+                "From 2014–15 to 2021–22, the age-standardised rate fell in every state and territory. South Australia had the largest decline, from 320 to 236 per 100,000 women (down 84); the ACT had the smallest, from 223 to 192 (down 31). The bump chart shows how states’ relative ranks also changed across the period.",
               layout: "pair",
               charts: [C.slope, C.bump]
             },
             {
-              // NEEDS DATA: name the state and year of the clearest pattern.
-              heading: "Each state follows its own time pattern",
+              heading: "Tasmania’s peak came early",
               text:
-                "The heatmap shows every state’s annual rate side by side. The timing of highs and lows differs from state to state, so no single trend describes the whole country. Hover a tile for the exact rate before comparing years.",
+                "Tasmania reached 420 hospitalisations per 100,000 women in 2016–17, the highest rate in the eight-year series, then fell to 279 by 2021–22. In the final year, Queensland had the highest rate (286) and the Northern Territory the lowest (163). The heatmap shows how those state patterns varied by year.",
               charts: [C.heatmap]
             }
           ]
@@ -194,10 +190,9 @@ const story = {
           label: "The rise in admissions",
           findings: [
             {
-              // NEEDS DATA: add start/end rates and the largest urgency group.
-              heading: "Admissions rose, and urgency shows where",
+              heading: "Elective admissions account for most of the increase",
               text:
-                "The crude endometriosis admission rate rose over the decade. The waterfall splits that rise by urgency group, showing which groups contributed most to the total change. Crude rates are not adjusted for age, so part of the rise may reflect a changing age profile rather than a change in need.",
+                "Endometriosis admissions increased from 17,630 in 2015–16 to 24,689 in 2024–25. The crude rate rose from 145.9 to 179.0 per 100,000 population, after reaching 182.3 in 2023–24. Elective admissions contributed the largest part of the count increase (+5,340, compared with +1,198 emergency and +521 not assigned/unknown). These crude rates are not age-adjusted and do not explain why admissions changed.",
               layout: "pair",
               charts: [C.endoLine, C.waterfall]
             }
@@ -207,10 +202,9 @@ const story = {
           label: "Procedures and age",
           findings: [
             {
-              // NEEDS DATA: name procedures that peak at each age.
-              heading: "Procedures differ by age profile",
+              heading: "Selected procedure rates peak at different ages",
               text:
-                "These two charts compare procedure rates across age groups. The parallel-coordinates plot traces selected procedures across age bands, while the scatterplot compares rates at ages 25–34 and 35–44. This finding applies only to the two charts above; the ridgeline below is a separate view of female procedure rates by age group.",
+                "Among the 10 selected procedures, six have their highest rate at ages 25–34 and four at ages 35–44. Laparoscopic excision of a pelvic-cavity lesion is higher at 25–34 (258.7 per 100,000) than at 35–44 (202.5); cystoscopy shows the reverse (38.5 and 74.6, respectively). These are procedure rates, not counts of unique people. The ridgeline below is a separate view of mental-health prevalence.",
               layout: "pair",
               charts: [C.parallel, C.scatter]
             },
