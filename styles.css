@@ -355,13 +355,6 @@ main {
   line-height: 1.45;
 }
 
-.dotmap-title {
-  fill: var(--ink);
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-}
-
 .dotmap-state-label {
   fill: #405b63;
   font-size: 11px;

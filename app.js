@@ -380,12 +380,6 @@ async function renderDotMap(target, specification) {
     return [...state].reduce((total, character) => total + character.charCodeAt(0), 1) * 100;
   }
 
-  const mapTitle = textNode("AUSTRALIA · SA3 AREAS", 380, 25, {
-    "text-anchor": "middle",
-    class: "dotmap-title"
-  });
-  svg.append(mapTitle);
-
   boundaries.features.forEach((feature) => {
     const paths = geometryRings(feature.geometry).map((rings) =>
       rings[0].map(([longitude, latitude], index) => {
