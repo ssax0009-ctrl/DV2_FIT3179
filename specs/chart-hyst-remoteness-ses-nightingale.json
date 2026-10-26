@@ -1,0 +1,173 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Nightingale chart data for hysterectomy hospitalisations by remoteness and SES group. Arc span represents the age-standardised rate per 100,000 women; radial height represents hospitalisations, 2021–22.",
+  "data": [
+    {
+      "name": "tree",
+      "values": [
+        {
+          "id": 0,
+          "name": "All areas"
+        },
+        {
+          "id": 1,
+          "parent": 0,
+          "name": "Inner regional",
+          "remoteness": "Inner regional",
+          "overall": 292,
+          "order": 1
+        },
+        {
+          "id": 2,
+          "parent": 0,
+          "name": "Outer regional",
+          "remoteness": "Outer regional",
+          "overall": 243,
+          "order": 2
+        },
+        {
+          "id": 3,
+          "parent": 0,
+          "name": "Major cities",
+          "remoteness": "Major cities",
+          "overall": 218,
+          "order": 3
+        },
+        {
+          "id": 4,
+          "parent": 0,
+          "name": "Remote",
+          "remoteness": "Remote",
+          "overall": 193,
+          "order": 4
+        },
+        {
+          "id": 5,
+          "parent": 1,
+          "name": "SES 1",
+          "remoteness": "Inner regional",
+          "rate": 294,
+          "value": 2280,
+          "order": 1
+        },
+        {
+          "id": 6,
+          "parent": 1,
+          "name": "SES 2",
+          "remoteness": "Inner regional",
+          "rate": 298,
+          "value": 1870,
+          "order": 2
+        },
+        {
+          "id": 7,
+          "parent": 1,
+          "name": "SES 3",
+          "remoteness": "Inner regional",
+          "rate": 281,
+          "value": 566,
+          "order": 3
+        },
+        {
+          "id": 8,
+          "parent": 1,
+          "name": "SES 4",
+          "remoteness": "Inner regional",
+          "rate": 279,
+          "value": 606,
+          "order": 4
+        },
+        {
+          "id": 9,
+          "parent": 2,
+          "name": "SES 1",
+          "remoteness": "Outer regional",
+          "rate": 240,
+          "value": 1041,
+          "order": 1
+        },
+        {
+          "id": 10,
+          "parent": 2,
+          "name": "SES 2",
+          "remoteness": "Outer regional",
+          "rate": 288,
+          "value": 540,
+          "order": 2
+        },
+        {
+          "id": 11,
+          "parent": 2,
+          "name": "SES 3",
+          "remoteness": "Outer regional",
+          "rate": 201,
+          "value": 301,
+          "order": 3
+        },
+        {
+          "id": 12,
+          "parent": 3,
+          "name": "SES 1",
+          "remoteness": "Major cities",
+          "rate": 210,
+          "value": 2840,
+          "order": 1
+        },
+        {
+          "id": 13,
+          "parent": 3,
+          "name": "SES 2",
+          "remoteness": "Major cities",
+          "rate": 226,
+          "value": 2277,
+          "order": 2
+        },
+        {
+          "id": 14,
+          "parent": 3,
+          "name": "SES 3",
+          "remoteness": "Major cities",
+          "rate": 241,
+          "value": 3116,
+          "order": 3
+        },
+        {
+          "id": 15,
+          "parent": 3,
+          "name": "SES 4",
+          "remoteness": "Major cities",
+          "rate": 236,
+          "value": 3670,
+          "order": 4
+        },
+        {
+          "id": 16,
+          "parent": 3,
+          "name": "SES 5",
+          "remoteness": "Major cities",
+          "rate": 195,
+          "value": 4587,
+          "order": 5
+        },
+        {
+          "id": 17,
+          "parent": 4,
+          "name": "SES 1",
+          "remoteness": "Remote",
+          "rate": 164,
+          "value": 157,
+          "order": 1
+        },
+        {
+          "id": 18,
+          "parent": 4,
+          "name": "SES 2",
+          "remoteness": "Remote",
+          "rate": 247,
+          "value": 125,
+          "order": 2
+        }
+      ]
+    }
+  ]
+}

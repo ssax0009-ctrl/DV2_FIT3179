@@ -93,12 +93,13 @@ const C = {
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   remotenessSes: {
-    spec: "specs/chart-hyst-remoteness-ses.json",
-    renderer: "treemap",
-    title: "Rates by remoteness and SES group",
-    idiom: "Treemap",
+    spec: "specs/chart-hyst-remoteness-ses-nightingale.json",
+    renderer: "nightingale",
+    cardClass: "chart-card--nightingale",
+    title: "Hysterectomy rates by remoteness and SES group · 2021–22",
+    idiom: "Nightingale chart",
     axisTitles: {},
-    caveat: "Tile area represents female population; suppressed SES groups have no tile.",
+    caveat: "Arc span shows the age-standardised rate per 100,000; radial height shows hospitalisations. Colour identifies remoteness; hover a slice for its SES group and values.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   endoLine: {
@@ -237,6 +238,7 @@ const story = {
                 "is incomplete; remote areas show just two values, about",
                 "164 and 247. These are area-level rates, not individual need."
               ].join("\n"),
+              layout: "wide",
               charts: [C.remotenessSes]
             }
           ]
@@ -728,9 +730,6 @@ async function renderDotMap(target, specification) {
 
 function renderTreemap(target, specification) {
   const records = specification.data?.values;
-  if (!Array.isArray(records) || records.length === 0) {
-    throw new Error("The remoteness treemap has no SES group records to display.");
-  }
 
   const groups = ["Inner regional", "Outer regional", "Major cities", "Remote"].map((name) => {
     const children = records.filter((record) => record.remoteness === name);
@@ -980,6 +979,208 @@ function renderTreemap(target, specification) {
   target.setAttribute("aria-label", "Hysterectomy rate treemap by remoteness and SES group");
 }
 
+function renderNightingale(target, specification) {
+  const hierarchy = specification.data?.find((dataset) => dataset.name === "tree")?.values;
+  if (!Array.isArray(hierarchy)) {
+    throw new Error("The remoteness Nightingale chart has no hierarchy data.");
+  }
+
+  const regions = hierarchy.filter((record) => record.id !== 0 && record.parent === 0);
+  const regionById = new Map(regions.map((region) => [region.id, region]));
+  const regionOrder = ["Major cities", "Inner regional", "Outer regional", "Remote"];
+  const palette = {
+    "Major cities": "#4477aa",
+    "Inner regional": "#228833",
+    "Outer regional": "#cc9b00",
+    Remote: "#aa3377"
+  };
+  const groups = regionOrder.map((name) => {
+    const region = regions.find((record) => record.name === name);
+    if (!region) {
+      throw new Error(`The remoteness Nightingale chart is missing ${name} data.`);
+    }
+    const slices = hierarchy
+      .filter((record) => record.parent === region.id)
+      .sort((left, right) => left.order - right.order);
+    if (slices.length === 0) {
+      throw new Error(`The remoteness Nightingale chart is missing SES groups for ${name}.`);
+    }
+    slices.forEach((slice) => {
+      if (!Number.isFinite(slice.rate) || slice.rate <= 0 ||
+          !Number.isFinite(slice.value) || slice.value <= 0) {
+        throw new Error(`The remoteness Nightingale chart has invalid data for ${name}, ${slice.name}.`);
+      }
+    });
+    return { ...region, slices };
+  });
+
+  const totalRate = groups.reduce(
+    (sum, group) => sum + group.slices.reduce((groupSum, slice) => groupSum + slice.rate, 0),
+    0
+  );
+  const maxHospitalisations = Math.max(...groups.flatMap((group) => group.slices.map((slice) => slice.value)));
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  const width = 900;
+  const height = 680;
+  const centerX = 330;
+  const centerY = 308;
+  const innerRadius = 42;
+  const maximumRadius = 420;
+  const radialHeight = maximumRadius - innerRadius;
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute(
+    "aria-label",
+    "Nightingale chart of hysterectomy rates and hospitalisations by remoteness and SES group"
+  );
+
+  function svgElement(name, attributes = {}) {
+    const element = document.createElementNS(svgNS, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  }
+
+  function textNode(text, x, y, attributes = {}) {
+    const element = svgElement("text", { x, y, ...attributes });
+    element.textContent = text;
+    return element;
+  }
+
+  function point(angle, radius) {
+    return {
+      x: centerX + radius * Math.cos(angle),
+      y: centerY + radius * Math.sin(angle)
+    };
+  }
+
+  function sectorPath(startAngle, endAngle, outerRadius) {
+    const outerStart = point(startAngle, outerRadius);
+    const outerEnd = point(endAngle, outerRadius);
+    const innerEnd = point(endAngle, innerRadius);
+    const innerStart = point(startAngle, innerRadius);
+    const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
+    return [
+      `M ${outerStart.x} ${outerStart.y}`,
+      `A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y}`,
+      `L ${innerEnd.x} ${innerEnd.y}`,
+      `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y}`,
+      "Z"
+    ].join(" ");
+  }
+
+  let angle = -Math.PI / 2;
+  groups.forEach((group) => {
+    const groupStart = angle;
+    group.slices.forEach((slice) => {
+      const angleSpan = (slice.rate / totalRate) * Math.PI * 2;
+      const endAngle = angle + angleSpan;
+      const outerRadius = innerRadius + (slice.value / maxHospitalisations) * radialHeight;
+      const sector = svgElement("path", {
+        d: sectorPath(angle, endAngle, outerRadius),
+        fill: palette[group.name],
+        stroke: "#ffffff",
+        "stroke-width": 1.5,
+        class: "nightingale-sector"
+      });
+      const tooltip = svgElement("title");
+      tooltip.textContent = `${group.name}, ${slice.name}: ${slice.rate} per 100,000 women; ${slice.value.toLocaleString("en-AU")} hospitalisations`;
+      sector.append(tooltip);
+      svg.append(sector);
+
+      const middleAngle = (angle + endAngle) / 2;
+      const middleRadius = (innerRadius + outerRadius) / 2;
+      if (outerRadius - innerRadius >= 28 && middleRadius * angleSpan >= 34) {
+        const labelPoint = point(middleAngle, middleRadius);
+        svg.append(textNode(slice.name, labelPoint.x, labelPoint.y, {
+          class: "nightingale-slice-label"
+        }));
+      }
+      angle = endAngle;
+    });
+
+    const groupEnd = angle;
+    const middleAngle = (groupStart + groupEnd) / 2;
+    const groupMaximum = Math.max(...group.slices.map((slice) => slice.value));
+    const groupRadius = innerRadius + (groupMaximum / maxHospitalisations) * radialHeight;
+    const labelPoint = point(middleAngle, groupRadius + 14);
+    const labelPosition = group.name === "Remote"
+      ? { x: 345, y: 216 }
+      : group.name === "Outer regional"
+        ? { x: 193, y: 300 }
+        : labelPoint;
+    const needsLeftOffset = group.name === "Remote" || group.name === "Outer regional";
+    const textAnchor = needsLeftOffset
+      ? "end"
+      : Math.abs(labelPosition.x - centerX) < 8
+      ? "middle"
+      : labelPosition.x < centerX ? "start" : "end";
+    svg.append(textNode(`${group.name} · ${group.overall}`, labelPosition.x, labelPosition.y, {
+      class: "nightingale-region-label",
+      style: `fill: ${palette[group.name]}`,
+      "text-anchor": textAnchor
+    }));
+  });
+
+  const radialTicks = [1000, 2000, 3000, 4000];
+  radialTicks.forEach((value) => {
+    if (value >= maxHospitalisations) return;
+    const radius = innerRadius + (value / maxHospitalisations) * radialHeight;
+    svg.append(svgElement("circle", {
+      cx: centerX,
+      cy: centerY,
+      r: radius,
+      class: "nightingale-guide"
+    }));
+  });
+
+  svg.append(svgElement("circle", {
+    cx: centerX,
+    cy: centerY,
+    r: innerRadius,
+    fill: "#ffffff",
+    stroke: "#d7e0dd",
+    "stroke-width": 1
+  }));
+  svg.append(textNode("Hospitalisations", centerX, centerY - 3, {
+    class: "nightingale-center-label",
+    "text-anchor": "middle"
+  }));
+  svg.append(textNode(`0–${maxHospitalisations.toLocaleString("en-AU")}`, centerX, centerY + 13, {
+    class: "nightingale-center-value",
+    "text-anchor": "middle"
+  }));
+
+  const legendY = 640;
+  svg.append(textNode("Arc: rate per 100,000 · Radial height: hospitalisations", 18, legendY - 3, {
+    class: "nightingale-legend-label"
+  }));
+  const legendGroups = groups.map((group, index) => {
+    const x = 470 + index * 96;
+    svg.append(svgElement("rect", {
+      x,
+      y: legendY - 12,
+      width: 10,
+      height: 10,
+      fill: palette[group.name]
+    }));
+    svg.append(textNode(group.name, x + 15, legendY - 3, {
+      class: "nightingale-legend-label"
+    }));
+    return group.name;
+  });
+  if (legendGroups.length !== regionById.size) {
+    throw new Error("The remoteness Nightingale chart has unmatched remoteness groups.");
+  }
+
+  target.replaceChildren(svg);
+  target.setAttribute("role", "group");
+  target.setAttribute(
+    "aria-label",
+    "Hysterectomy rates and hospitalisations by remoteness and SES group"
+  );
+}
+
 function renderSankey(target, records) {
   const ageGroups = [
     { field: "under25", label: "Under 25" },
@@ -1223,8 +1424,8 @@ async function renderChart(item, container) {
       await renderDotMap(target, specification);
       return;
     }
-    if (item.renderer === "treemap") {
-      renderTreemap(target, specification);
+    if (item.renderer === "nightingale") {
+      renderNightingale(target, specification);
       return;
     }
     if (item.renderer === "sankey") {

@@ -231,6 +231,10 @@ main {
   line-height: 1.35;
 }
 
+.chart-card--nightingale .chart-title {
+  text-align: center;
+}
+
 .chart-caveat,
 .chart-source {
   margin: 0.3rem 0 0;
@@ -358,6 +362,48 @@ main {
 .treemap-legend-label {
   fill: var(--muted);
   font-size: 11px;
+}
+
+.nightingale-sector {
+  cursor: pointer;
+}
+
+.nightingale-slice-label {
+  fill: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: rgb(24 49 59 / 45%);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.nightingale-region-label {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nightingale-guide {
+  fill: none;
+  stroke: rgb(255 255 255 / 65%);
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.nightingale-center-label,
+.nightingale-center-value,
+.nightingale-legend-label {
+  fill: var(--muted);
+  font-size: 10px;
+}
+
+.nightingale-center-label {
+  fill: var(--ink);
+  font-weight: 700;
 }
 
 .sankey-node-value {
