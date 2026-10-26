@@ -271,6 +271,36 @@ main {
   font-size: 12px;
 }
 
+.lhn-waiting-map {
+  width: 100%;
+  height: auto;
+}
+
+.lhn-map-legend-heading {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.lhn-map-extreme-label {
+  fill: #303a3e;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.lhn-map-leader {
+  fill: none;
+  stroke: #8b9692;
+  stroke-width: 0.65;
+  opacity: 0.75;
+}
+
+.lhn-map-legend-label {
+  fill: #536b73;
+  font-size: 9px;
+}
+
 .chart-view {
   min-height: 250px;
 }

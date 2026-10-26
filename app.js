@@ -10,13 +10,14 @@
 ------------------------------------------------------------------- */
 
 const C = {
-  rateMap: {
-    spec: "specs/map-hyst-rate.json",
-    title: "Age-standardised hysterectomy rates by state · 2021–22",
-    idiom: "Choropleth map",
+  waitingMap: {
+    spec: "specs/map-hyst-waiting-times-lhn.json",
+    renderer: "lhnWaitingMap",
+    title: "Longest hysterectomy waits cluster in NSW and Queensland networks",
+    idiom: "Choropleth + proportional symbols",
     axisTitles: {},
-    caveat: "Rates are age-standardised to the 2001 Australian population.",
-    source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
+    caveat: "48 of 71 LHNs published; state values unpublished for ACT and NT",
+    source: "Source: AIHW state waiting-time table, 2024–25; supplied LHN waiting-time data and coordinates."
   },
   volumeMap: {
     spec: "specs/map-hyst-volume.json",
@@ -151,30 +152,24 @@ const story = {
       id: "place",
       title: "Where you live shapes the care you receive",
       thesis:
-        "State and local results show how hysterectomy rates vary across Australia in 2021–22.",
+        "Hospitalisation rates, local variation and waiting times show different ways care varies across Australia.",
       groups: [
         {
           label: "The state picture",
           findings: [
             {
-              heading: "Queensland has the highest rate; NSW has the most hospitalisations",
+              heading: "Waiting times differ across states and local hospital networks",
               text: [
-                "Queensland has the highest age-standardised rate at 286 per",
-                "100,000 women, followed closely by Tasmania at 279, while",
-                "the Northern Territory sits lowest. The picture changes when",
-                "counts replace rates. New South Wales records the most",
-                "hospitalisations (7,059), with Victoria and Queensland also showing large",
-                "circles, yet its rate of 217 sits mid-range on the",
-                "map. Counts mostly follow where people live, so a large",
-                "circle signals a large population as much as high activity.",
-                "The rate map is therefore the fairer comparison. Read",
-                "together, the maps show that the places with the highest",
-                "rates are not the places where the most procedures happen."
+                "State shading shows the published 50th-percentile wait, from",
+                "50 days in Victoria to 99 days in New South Wales. Framed",
+                "yellow bars show the LHN 50th-percentile wait; longer bars",
+                "mean longer waits. Insets magnify Sydney, Melbourne and",
+                "south-east Queensland. ACT and NT state percentiles are",
+                "unpublished. Of 71 LHN records, 48 have numeric waits, 18",
+                "are marked NP, five have no value, and four lack coordinates."
               ].join("\n"),
-              footnote:
-                "Across eight states and territories the count is 23,996; the national total is 24,030.",
-              layout: "pair",
-              charts: [C.rateMap, C.volumeMap]
+              layout: "wide",
+              charts: [C.waitingMap]
             }
           ]
         },
@@ -468,6 +463,216 @@ function applyAxisTitles(specification, titles) {
   visit(specification);
 }
 
+async function renderLhnWaitingMap(target, specification) {
+  const [boundaryResponse, dataResponse] = await Promise.all([
+    fetch(specification.boundariesUrl),
+    fetch(specification.dataUrl)
+  ]);
+  if (!boundaryResponse.ok) {
+    throw new Error(`Could not load Australia state boundaries: ${boundaryResponse.status}`);
+  }
+  if (!dataResponse.ok) {
+    throw new Error(`Could not load LHN waiting-time data: ${dataResponse.status}`);
+  }
+
+  const boundaries = await boundaryResponse.json();
+  const data = await dataResponse.json();
+  const stateRecords = data.states;
+  const networks = data.localHospitalNetworks;
+  if (!Array.isArray(stateRecords) || !Array.isArray(networks) || networks.length === 0) {
+    throw new Error("The waiting-time map is missing state or LHN records.");
+  }
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 900 520");
+  svg.setAttribute("class", "lhn-waiting-map");
+  svg.setAttribute("role", "img");
+  const published = networks.filter((network) =>
+    network.availability === "published" && Number.isFinite(network.medianWaitDays)
+  );
+  const publishedCount = published.length;
+  svg.setAttribute(
+    "aria-label",
+    `Australia map of state hysterectomy waiting times and ${publishedCount} published LHN waits.`
+  );
+
+  const element = (name, attributes = {}) => {
+    const node = document.createElementNS(svgNS, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
+    return node;
+  };
+  const label = (text, x, y, className, attributes = {}) => {
+    const node = element("text", { x, y, class: className, ...attributes });
+    node.textContent = text;
+    return node;
+  };
+  const ringsFor = (geometry) => {
+    if (geometry.type === "Polygon") return [geometry.coordinates];
+    if (geometry.type === "MultiPolygon") return geometry.coordinates;
+    throw new Error(`Unsupported state boundary geometry: ${geometry.type}`);
+  };
+  const stateByName = new Map(stateRecords.map((state) => [state.stateName, state]));
+  const stateColor = (wait) => {
+    if (!Number.isFinite(wait)) return "#d9d9d9";
+    const fraction = Math.max(0, Math.min(1, (wait - 50) / 50));
+    const start = [222, 235, 247];
+    const end = [33, 113, 181];
+    const rgb = start.map((channel, index) =>
+      Math.round(channel + (end[index] - channel) * fraction)
+    );
+    return `rgb(${rgb.join(", ")})`;
+  };
+  const radiusFor = (wait) => 12 * Math.sqrt(Math.min(wait, 350) / 350);
+  const defs = element("defs");
+  const stateGradientId = `lhn-state-wait-gradient-${target.id}`;
+  const stateGradient = element("linearGradient", {
+    id: stateGradientId,
+    x1: "0%",
+    y1: "0%",
+    x2: "100%",
+    y2: "0%"
+  });
+  stateGradient.append(
+    element("stop", { offset: "0%", "stop-color": "#deebf7" }),
+    element("stop", { offset: "100%", "stop-color": "#2171b5" })
+  );
+  defs.append(stateGradient);
+  svg.append(defs);
+
+  const extent = { west: 110, east: 155, south: -45, north: -5 };
+  const mapArea = { x: 22, y: 22, width: 585, height: 455 };
+  const centerLatitude = (extent.south + extent.north) / 2;
+  const longitudeScale = Math.cos(centerLatitude * Math.PI / 180);
+  const geoWidth = (extent.east - extent.west) * longitudeScale;
+  const geoHeight = extent.north - extent.south;
+  const scale = Math.min(mapArea.width / geoWidth, mapArea.height / geoHeight);
+  const fittedWidth = geoWidth * scale;
+  const fittedHeight = geoHeight * scale;
+  const left = mapArea.x + (mapArea.width - fittedWidth) / 2;
+  const top = mapArea.y + (mapArea.height - fittedHeight) / 2;
+  const project = (longitude, latitude) => ({
+    x: left + (longitude - extent.west) * longitudeScale * scale,
+    y: top + (extent.north - latitude) * scale
+  });
+
+  boundaries.features.forEach((feature) => {
+    const state = stateByName.get(feature.properties.shapeName);
+    const path = ringsFor(feature.geometry).map((rings) =>
+      rings.map((ring) => ring.map(([longitude, latitude], index) => {
+        const point = project(longitude, latitude);
+        return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
+      }).join(" ") + " Z").join(" ")
+    ).join(" ");
+    svg.append(element("path", {
+      d: path,
+      fill: stateColor(state?.medianWaitDays),
+      stroke: "#ffffff",
+      "stroke-width": 1.1,
+      "fill-rule": "evenodd",
+      class: "lhn-map-state"
+    }));
+  });
+
+  const coordinatesAvailable = (network) =>
+    Number.isFinite(network.longitude) && Number.isFinite(network.latitude);
+  const numericWithCoordinates = published.filter(coordinatesAvailable);
+  const selectedForLabels = new Set([
+    ...[...published].sort((a, b) => a.medianWaitDays - b.medianWaitDays || a.network.localeCompare(b.network)).slice(0, 3),
+    ...[...published].sort((a, b) => b.medianWaitDays - a.medianWaitDays || a.network.localeCompare(b.network)).slice(0, 5)
+  ].map((network) => network.aihwCode));
+
+  numericWithCoordinates
+    .sort((a, b) => b.medianWaitDays - a.medianWaitDays)
+    .forEach((network) => {
+      const point = project(network.longitude, network.latitude);
+      const circle = element("circle", {
+        cx: point.x,
+        cy: point.y,
+        r: radiusFor(network.medianWaitDays),
+        fill: "#f2c94c",
+        "fill-opacity": 0.6,
+        stroke: "#4d4b3f",
+        "stroke-width": 0.8,
+        class: "lhn-map-circle"
+      });
+      const title = element("title");
+      title.textContent = `${network.network}: ${network.medianWaitDays} days`;
+      circle.append(title);
+      svg.append(circle);
+    });
+
+  const labelNetworks = numericWithCoordinates
+    .filter((network) => selectedForLabels.has(network.aihwCode))
+    .map((network) => ({ network, point: project(network.longitude, network.latitude) }))
+    .sort((a, b) => a.point.y - b.point.y);
+  const labelX = 650;
+  const firstLabelY = 285;
+  const lastLabelY = 465;
+  labelNetworks.forEach(({ network, point }, index) => {
+    const y = labelNetworks.length === 1
+      ? (firstLabelY + lastLabelY) / 2
+      : firstLabelY + index * (lastLabelY - firstLabelY) / (labelNetworks.length - 1);
+    const leaderEndX = labelX - 8;
+    svg.append(element("path", {
+      d: `M ${point.x} ${point.y} L ${leaderEndX} ${y - 3}`,
+      class: "lhn-map-leader"
+    }));
+    svg.append(label(
+      `${network.network}: ${network.medianWaitDays} days`,
+      labelX,
+      y,
+      "lhn-map-extreme-label"
+    ));
+  });
+
+  const legendX = 650;
+  svg.append(label("LHN WAIT (DAYS)", legendX, 36, "lhn-map-legend-heading"));
+  [100, 200, 300].forEach((wait, index) => {
+    const x = legendX + 22 + index * 70;
+    const cy = 72;
+    svg.append(element("circle", {
+      cx: x,
+      cy,
+      r: radiusFor(wait),
+      fill: "#f2c94c",
+      "fill-opacity": 0.6,
+      stroke: "#4d4b3f",
+      "stroke-width": 0.8,
+      class: "lhn-map-circle"
+    }));
+    svg.append(label(String(wait), x, 101, "lhn-map-legend-label", { "text-anchor": "middle" }));
+  });
+  svg.append(label("State median wait (days)", legendX, 157, "lhn-map-legend-heading"));
+  svg.append(element("rect", {
+    x: legendX,
+    y: 166,
+    width: 180,
+    height: 10,
+    rx: 1,
+    fill: `url(#${stateGradientId})`,
+    stroke: "#b9c5ca",
+    "stroke-width": 0.5
+  }));
+  svg.append(label("50", legendX, 190, "lhn-map-legend-label"));
+  svg.append(label("100", legendX + 180, 190, "lhn-map-legend-label", { "text-anchor": "end" }));
+  svg.append(element("rect", {
+    x: legendX,
+    y: 201,
+    width: 10,
+    height: 10,
+    fill: "#d9d9d9",
+    stroke: "#aab3b6",
+    "stroke-width": 0.6
+  }));
+  svg.append(label("Not published (ACT, NT)", legendX + 16, 210, "lhn-map-legend-label"));
+  target.replaceChildren(svg);
+  target.setAttribute("role", "img");
+  target.setAttribute(
+    "aria-label",
+    `Map of Australian state waiting times and ${publishedCount} published LHN median waits. Circle size shows waits from 0 to 350 days.`
+  );
+}
 async function renderDotMap(target, specification) {
   const boundaryResponse = await fetch("data/australia-states-v1.geojson");
   if (!boundaryResponse.ok) {
@@ -1418,6 +1623,10 @@ async function renderChart(item, container) {
       throw new Error(`Could not load ${item.spec}: ${response.status}`);
     }
     const specification = await response.json();
+    if (item.renderer === "lhnWaitingMap") {
+      await renderLhnWaitingMap(target, specification);
+      return;
+    }
     specification.title = null;
     applyAxisTitles(specification, item.axisTitles || {});
     if (item.renderer === "dotmap") {

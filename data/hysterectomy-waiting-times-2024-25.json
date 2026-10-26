@@ -1,0 +1,773 @@
+{
+  "year": "2024-25",
+  "states": [
+    {
+      "state": "NSW",
+      "stateName": "New South Wales",
+      "medianWaitDays": 99,
+      "admissions": 2971,
+      "year": "2024-25"
+    },
+    {
+      "state": "Vic",
+      "stateName": "Victoria",
+      "medianWaitDays": 50,
+      "admissions": 2957,
+      "year": "2024-25"
+    },
+    {
+      "state": "Qld",
+      "stateName": "Queensland",
+      "medianWaitDays": 84,
+      "admissions": 904,
+      "year": "2024-25"
+    },
+    {
+      "state": "WA",
+      "stateName": "Western Australia",
+      "medianWaitDays": 64,
+      "admissions": 1043,
+      "year": "2024-25"
+    },
+    {
+      "state": "SA",
+      "stateName": "South Australia",
+      "medianWaitDays": 80,
+      "admissions": 819,
+      "year": "2024-25"
+    },
+    {
+      "state": "Tas",
+      "stateName": "Tasmania",
+      "medianWaitDays": 77,
+      "admissions": 298,
+      "year": "2024-25"
+    },
+    {
+      "state": "ACT",
+      "stateName": "Australian Capital Territory",
+      "medianWaitDays": null,
+      "admissions": 80,
+      "year": "2024-25"
+    },
+    {
+      "state": "NT",
+      "stateName": "Northern Territory",
+      "medianWaitDays": null,
+      "admissions": 91,
+      "year": "2024-25"
+    }
+  ],
+  "localHospitalNetworks": [
+    {
+      "network": "Australian Capital Territory",
+      "state": "ACT",
+      "aihwCode": "LHN801",
+      "medianWaitDays": 94,
+      "availability": "published",
+      "longitude": 149.0879008,
+      "latitude": -35.28882675,
+      "year": "2024-25"
+    },
+    {
+      "network": "Central Coast",
+      "state": "NSW",
+      "aihwCode": "LHN107",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 151.4026448,
+      "latitude": -33.386573,
+      "year": "2024-25"
+    },
+    {
+      "network": "Far West",
+      "state": "NSW",
+      "aihwCode": "LHN115",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 142.7225033,
+      "latitude": -32.42593114,
+      "year": "2024-25"
+    },
+    {
+      "network": "Hunter New England",
+      "state": "NSW",
+      "aihwCode": "LHN109",
+      "medianWaitDays": 104,
+      "availability": "published",
+      "longitude": 151.1775734,
+      "latitude": -31.39002042,
+      "year": "2024-25"
+    },
+    {
+      "network": "Illawarra Shoalhaven",
+      "state": "NSW",
+      "aihwCode": "LHN108",
+      "medianWaitDays": 294,
+      "availability": "published",
+      "longitude": 150.7953555,
+      "latitude": -34.6161468,
+      "year": "2024-25"
+    },
+    {
+      "network": "Mid North Coast",
+      "state": "NSW",
+      "aihwCode": "LHN110",
+      "medianWaitDays": 290,
+      "availability": "published",
+      "longitude": 152.863867,
+      "latitude": -30.82951443,
+      "year": "2024-25"
+    },
+    {
+      "network": "Murrumbidgee",
+      "state": "NSW",
+      "aihwCode": "LHN114",
+      "medianWaitDays": 275,
+      "availability": "published",
+      "longitude": 146.8558414,
+      "latitude": -35.00247668,
+      "year": "2024-25"
+    },
+    {
+      "network": "Nepean Blue Mountains",
+      "state": "NSW",
+      "aihwCode": "LHN105",
+      "medianWaitDays": 338,
+      "availability": "published",
+      "longitude": 150.463507,
+      "latitude": -33.62625814,
+      "year": "2024-25"
+    },
+    {
+      "network": "Northern NSW",
+      "state": "NSW",
+      "aihwCode": "LHN111",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 153.1705604,
+      "latitude": -28.77213095,
+      "year": "2024-25"
+    },
+    {
+      "network": "Northern Sydney",
+      "state": "NSW",
+      "aihwCode": "LHN106",
+      "medianWaitDays": 68,
+      "availability": "published",
+      "longitude": 151.1589627,
+      "latitude": -33.7727766,
+      "year": "2024-25"
+    },
+    {
+      "network": "South Eastern Sydney",
+      "state": "NSW",
+      "aihwCode": "LHN101",
+      "medianWaitDays": 71,
+      "availability": "published",
+      "longitude": 152.175018625,
+      "latitude": -33.639868,
+      "year": "2024-25"
+    },
+    {
+      "network": "South Western Sydney",
+      "state": "NSW",
+      "aihwCode": "LHN103",
+      "medianWaitDays": 84,
+      "availability": "published",
+      "longitude": 150.8309134,
+      "latitude": -34.01003263,
+      "year": "2024-25"
+    },
+    {
+      "network": "Southern NSW",
+      "state": "NSW",
+      "aihwCode": "LHN113",
+      "medianWaitDays": 74,
+      "availability": "published",
+      "longitude": 149.56412,
+      "latitude": -35.69672257,
+      "year": "2024-25"
+    },
+    {
+      "network": "St Vincent's Health Network",
+      "state": "NSW",
+      "aihwCode": "LHN118",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 151.124732,
+      "latitude": -33.8641755,
+      "year": "2024-25"
+    },
+    {
+      "network": "Sydney",
+      "state": "NSW",
+      "aihwCode": "LHN102",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 151.133066285714,
+      "latitude": -33.8778497142857,
+      "year": "2024-25"
+    },
+    {
+      "network": "Sydney Children's Hospitals Network",
+      "state": "NSW",
+      "aihwCode": "LHN117",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 151.1150465,
+      "latitude": -33.8593665,
+      "year": "2024-25"
+    },
+    {
+      "network": "Western NSW",
+      "state": "NSW",
+      "aihwCode": "LHN112",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 148.3750001,
+      "latitude": -32.09984457,
+      "year": "2024-25"
+    },
+    {
+      "network": "Western Sydney",
+      "state": "NSW",
+      "aihwCode": "LHN104",
+      "medianWaitDays": 44,
+      "availability": "published",
+      "longitude": 150.9526888,
+      "latitude": -33.80146,
+      "year": "2024-25"
+    },
+    {
+      "network": "Central Australia (NT)",
+      "state": "NT",
+      "aihwCode": "",
+      "medianWaitDays": null,
+      "availability": "no-value",
+      "longitude": null,
+      "latitude": null,
+      "year": "2024-25"
+    },
+    {
+      "network": "NT Regional Health Services (NTRHS)",
+      "state": "NT",
+      "aihwCode": "LHN703",
+      "medianWaitDays": 57,
+      "availability": "published",
+      "longitude": 133.0246298,
+      "latitude": -15.801576,
+      "year": "2024-25"
+    },
+    {
+      "network": "Top End (NT)",
+      "state": "NT",
+      "aihwCode": "",
+      "medianWaitDays": null,
+      "availability": "no-value",
+      "longitude": null,
+      "latitude": null,
+      "year": "2024-25"
+    },
+    {
+      "network": "Cairns and Hinterland",
+      "state": "Qld",
+      "aihwCode": "LHN312",
+      "medianWaitDays": 165,
+      "availability": "published",
+      "longitude": 145.6761338,
+      "latitude": -17.20963,
+      "year": "2024-25"
+    },
+    {
+      "network": "Central Queensland",
+      "state": "Qld",
+      "aihwCode": "LHN316",
+      "medianWaitDays": 183,
+      "availability": "published",
+      "longitude": 149.8185449,
+      "latitude": -23.95471764,
+      "year": "2024-25"
+    },
+    {
+      "network": "Central West (Qld)",
+      "state": "Qld",
+      "aihwCode": "LHN317",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 144.935506,
+      "latitude": -23.4890564,
+      "year": "2024-25"
+    },
+    {
+      "network": "Darling Downs",
+      "state": "Qld",
+      "aihwCode": "LHN325",
+      "medianWaitDays": 84,
+      "availability": "published",
+      "longitude": 151.3224767,
+      "latitude": -27.27085251,
+      "year": "2024-25"
+    },
+    {
+      "network": "Gold Coast",
+      "state": "Qld",
+      "aihwCode": "LHN323",
+      "medianWaitDays": 160,
+      "availability": "published",
+      "longitude": 153.3792285,
+      "latitude": -28.015547,
+      "year": "2024-25"
+    },
+    {
+      "network": "Mackay",
+      "state": "Qld",
+      "aihwCode": "LHN314",
+      "medianWaitDays": 324,
+      "availability": "published",
+      "longitude": 148.3836934,
+      "latitude": -21.36640563,
+      "year": "2024-25"
+    },
+    {
+      "network": "Metro North (Qld)",
+      "state": "Qld",
+      "aihwCode": "LHN320",
+      "medianWaitDays": 56,
+      "availability": "published",
+      "longitude": 152.951053,
+      "latitude": -27.256131,
+      "year": "2024-25"
+    },
+    {
+      "network": "Metro South (Qld)",
+      "state": "Qld",
+      "aihwCode": "LHN322",
+      "medianWaitDays": 83,
+      "availability": "published",
+      "longitude": 153.0956082,
+      "latitude": -27.650821,
+      "year": "2024-25"
+    },
+    {
+      "network": "North West (Qld)",
+      "state": "Qld",
+      "aihwCode": "LHN315",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 140.1435853,
+      "latitude": -19.06299683,
+      "year": "2024-25"
+    },
+    {
+      "network": "South West (Qld)",
+      "state": "Qld",
+      "aihwCode": "LHN326",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 147.5436972,
+      "latitude": -27.13968491,
+      "year": "2024-25"
+    },
+    {
+      "network": "Sunshine Coast",
+      "state": "Qld",
+      "aihwCode": "LHN319",
+      "medianWaitDays": 111,
+      "availability": "published",
+      "longitude": 152.93781,
+      "latitude": -26.6216594,
+      "year": "2024-25"
+    },
+    {
+      "network": "Townsville",
+      "state": "Qld",
+      "aihwCode": "LHN313",
+      "medianWaitDays": 120,
+      "availability": "published",
+      "longitude": 146.0946479,
+      "latitude": -19.6969429,
+      "year": "2024-25"
+    },
+    {
+      "network": "West Moreton",
+      "state": "Qld",
+      "aihwCode": "LHN324",
+      "medianWaitDays": 74,
+      "availability": "published",
+      "longitude": 152.5738275,
+      "latitude": -27.60981783,
+      "year": "2024-25"
+    },
+    {
+      "network": "Wide Bay",
+      "state": "Qld",
+      "aihwCode": "LHN318",
+      "medianWaitDays": 81,
+      "availability": "published",
+      "longitude": 151.9260293,
+      "latitude": -25.28893,
+      "year": "2024-25"
+    },
+    {
+      "network": "Barossa Hills Fleurieu",
+      "state": "SA",
+      "aihwCode": "LHN406",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 138.793658272727,
+      "latitude": -34.8440563636364,
+      "year": "2024-25"
+    },
+    {
+      "network": "Central Adelaide",
+      "state": "SA",
+      "aihwCode": "LHN402",
+      "medianWaitDays": 34,
+      "availability": "published",
+      "longitude": 138.5654925,
+      "latitude": -34.88928217,
+      "year": "2024-25"
+    },
+    {
+      "network": "Country Health SA",
+      "state": "SA",
+      "aihwCode": "",
+      "medianWaitDays": null,
+      "availability": "no-value",
+      "longitude": null,
+      "latitude": null,
+      "year": "2024-25"
+    },
+    {
+      "network": "Eyre and Far North",
+      "state": "SA",
+      "aihwCode": "LHN407",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 135.502746,
+      "latitude": -33.1365555454545,
+      "year": "2024-25"
+    },
+    {
+      "network": "Flinders and Upper North",
+      "state": "SA",
+      "aihwCode": "LHN408",
+      "medianWaitDays": 50,
+      "availability": "published",
+      "longitude": 137.7428156,
+      "latitude": -32.0700956,
+      "year": "2024-25"
+    },
+    {
+      "network": "Limestone Coast",
+      "state": "SA",
+      "aihwCode": "LHN410",
+      "medianWaitDays": 48,
+      "availability": "published",
+      "longitude": 140.556824166667,
+      "latitude": -37.1501188333333,
+      "year": "2024-25"
+    },
+    {
+      "network": "Northern Adelaide",
+      "state": "SA",
+      "aihwCode": "LHN401",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 138.6641953,
+      "latitude": -34.810518,
+      "year": "2024-25"
+    },
+    {
+      "network": "Riverland Mallee Coorong",
+      "state": "SA",
+      "aihwCode": "LHN409",
+      "medianWaitDays": 68,
+      "availability": "published",
+      "longitude": 140.08758,
+      "latitude": -34.8333760833333,
+      "year": "2024-25"
+    },
+    {
+      "network": "Southern Adelaide",
+      "state": "SA",
+      "aihwCode": "LHN403",
+      "medianWaitDays": 65,
+      "availability": "published",
+      "longitude": 138.5382063,
+      "latitude": -35.127838,
+      "year": "2024-25"
+    },
+    {
+      "network": "Women's and Children's Health Network (SA)",
+      "state": "SA",
+      "aihwCode": "LHN405",
+      "medianWaitDays": 106,
+      "availability": "published",
+      "longitude": 138.599631,
+      "latitude": -34.911444,
+      "year": "2024-25"
+    },
+    {
+      "network": "Yorke and Northern",
+      "state": "SA",
+      "aihwCode": "LHN411",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 138.414725625,
+      "latitude": -33.8435791875,
+      "year": "2024-25"
+    },
+    {
+      "network": "Tasmanian Health Service",
+      "state": "Tas",
+      "aihwCode": "LHN604",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 146.9303757,
+      "latitude": -41.71304023,
+      "year": "2024-25"
+    },
+    {
+      "network": "Albury Wodonga Health",
+      "state": "Vic",
+      "aihwCode": "LHN249",
+      "medianWaitDays": 100,
+      "availability": "published",
+      "longitude": 146.9092815,
+      "latitude": -36.105096,
+      "year": "2024-25"
+    },
+    {
+      "network": "Austin Health (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN266",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 145.0438137,
+      "latitude": -37.76728333,
+      "year": "2024-25"
+    },
+    {
+      "network": "Ballarat Health Services",
+      "state": "Vic",
+      "aihwCode": "",
+      "medianWaitDays": null,
+      "availability": "no-value",
+      "longitude": null,
+      "latitude": null,
+      "year": "2024-25"
+    },
+    {
+      "network": "Barwon Health",
+      "state": "Vic",
+      "aihwCode": "LHN231",
+      "medianWaitDays": 55,
+      "availability": "published",
+      "longitude": 144.350346,
+      "latitude": -38.135164,
+      "year": "2024-25"
+    },
+    {
+      "network": "Bass Coast Regional Health",
+      "state": "Vic",
+      "aihwCode": "LHN253",
+      "medianWaitDays": 53,
+      "availability": "published",
+      "longitude": 145.580906,
+      "latitude": -38.608747,
+      "year": "2024-25"
+    },
+    {
+      "network": "Bendigo Health Care Group",
+      "state": "Vic",
+      "aihwCode": "LHN210",
+      "medianWaitDays": 96,
+      "availability": "published",
+      "longitude": 144.2818855,
+      "latitude": -36.749823,
+      "year": "2024-25"
+    },
+    {
+      "network": "Eastern Health (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN234",
+      "medianWaitDays": 69,
+      "availability": "published",
+      "longitude": 145.2643231,
+      "latitude": -37.807123,
+      "year": "2024-25"
+    },
+    {
+      "network": "Goulburn Valley Health",
+      "state": "Vic",
+      "aihwCode": "LHN235",
+      "medianWaitDays": 41,
+      "availability": "published",
+      "longitude": 145.213013,
+      "latitude": -36.46351133,
+      "year": "2024-25"
+    },
+    {
+      "network": "Grampians Health",
+      "state": "Vic",
+      "aihwCode": "LHN294",
+      "medianWaitDays": 44,
+      "availability": "published",
+      "longitude": 142.6655908,
+      "latitude": -37.063527,
+      "year": "2024-25"
+    },
+    {
+      "network": "Latrobe Regional Hospital",
+      "state": "Vic",
+      "aihwCode": "LHN260",
+      "medianWaitDays": 78,
+      "availability": "published",
+      "longitude": 146.471335,
+      "latitude": -38.218475,
+      "year": "2024-25"
+    },
+    {
+      "network": "Monash Health",
+      "state": "Vic",
+      "aihwCode": "LHN269",
+      "medianWaitDays": 94,
+      "availability": "published",
+      "longitude": 145.1788109,
+      "latitude": -37.97779,
+      "year": "2024-25"
+    },
+    {
+      "network": "Northeast Health Wangaratta",
+      "state": "Vic",
+      "aihwCode": "LHN243",
+      "medianWaitDays": 52,
+      "availability": "published",
+      "longitude": 146.313889,
+      "latitude": -36.354035,
+      "year": "2024-25"
+    },
+    {
+      "network": "Northern Health (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN226",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 144.975584,
+      "latitude": -37.65871925,
+      "year": "2024-25"
+    },
+    {
+      "network": "Peninsula Health (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN270",
+      "medianWaitDays": 35,
+      "availability": "published",
+      "longitude": 145.0675846,
+      "latitude": -38.214196,
+      "year": "2024-25"
+    },
+    {
+      "network": "Peter MacCallum Cancer Institute (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN264",
+      "medianWaitDays": 8,
+      "availability": "published",
+      "longitude": 144.956607,
+      "latitude": -37.80001,
+      "year": "2024-25"
+    },
+    {
+      "network": "Royal Women's Hospital (Melbourne)",
+      "state": "Vic",
+      "aihwCode": "LHN224",
+      "medianWaitDays": 28,
+      "availability": "published",
+      "longitude": 144.986491,
+      "latitude": -37.8799105,
+      "year": "2024-25"
+    },
+    {
+      "network": "South West Healthcare (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN284",
+      "medianWaitDays": 79,
+      "availability": "published",
+      "longitude": 142.8053455,
+      "latitude": -38.308593,
+      "year": "2024-25"
+    },
+    {
+      "network": "St Vincent's Hospital (Melbourne) Limited",
+      "state": "Vic",
+      "aihwCode": "LHN262",
+      "medianWaitDays": null,
+      "availability": "no-value",
+      "longitude": 145.0144577,
+      "latitude": -37.80677867,
+      "year": "2024-25"
+    },
+    {
+      "network": "West Gippsland Healthcare Group",
+      "state": "Vic",
+      "aihwCode": "LHN252",
+      "medianWaitDays": 47,
+      "availability": "published",
+      "longitude": 145.926804,
+      "latitude": -38.173009,
+      "year": "2024-25"
+    },
+    {
+      "network": "Western Health (Vic)",
+      "state": "Vic",
+      "aihwCode": "LHN209",
+      "medianWaitDays": 35,
+      "availability": "published",
+      "longitude": 144.7200382,
+      "latitude": -37.726128,
+      "year": "2024-25"
+    },
+    {
+      "network": "East Metropolitan Health Service (WA)",
+      "state": "WA",
+      "aihwCode": "LHN504",
+      "medianWaitDays": 115,
+      "availability": "published",
+      "longitude": 115.9587558,
+      "latitude": -31.9845823,
+      "year": "2024-25"
+    },
+    {
+      "network": "North Metropolitan Health Service (WA)",
+      "state": "WA",
+      "aihwCode": "LHN501",
+      "medianWaitDays": null,
+      "availability": "np",
+      "longitude": 115.7988247,
+      "latitude": -31.91767657,
+      "year": "2024-25"
+    },
+    {
+      "network": "South Metropolitan Health Service (WA)",
+      "state": "WA",
+      "aihwCode": "LHN502",
+      "medianWaitDays": 59,
+      "availability": "published",
+      "longitude": 115.8008698,
+      "latitude": -32.3184048,
+      "year": "2024-25"
+    },
+    {
+      "network": "WA Country Health Service",
+      "state": "WA",
+      "aihwCode": "LHN503",
+      "medianWaitDays": 114,
+      "availability": "published",
+      "longitude": 117.9483351,
+      "latitude": -29.49116183,
+      "year": "2024-25"
+    }
+  ]
+}

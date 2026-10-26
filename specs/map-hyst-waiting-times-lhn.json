@@ -1,0 +1,6 @@
+{
+  "description": "State 50th-percentile hysterectomy waits and Local Hospital Network waits for 2024–25, with city insets.",
+  "boundariesUrl": "data/australia-states-v1.geojson",
+  "dataUrl": "data/hysterectomy-waiting-times-2024-25.json",
+  "maximumWaitDays": 350
+}

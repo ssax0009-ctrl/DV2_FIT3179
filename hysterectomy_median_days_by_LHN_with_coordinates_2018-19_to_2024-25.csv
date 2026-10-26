@@ -1,0 +1,72 @@
+lhn_dashboard_name,state,aihw_code,aihw_name,latitude,longitude,match_type,2018-19,2019-20,2020-21,2021-22,2022-23,2023-24,2024-25
+Australian Capital Territory,ACT,LHN801,Australian Capital Territory,-35.28882675,149.0879008,exact,42,66,83,91,168,121,94
+Central Coast,NSW,LHN107,Central Coast,-33.386573,151.4026448,exact,130,200,410,NP,NP,256,NP
+Far West,NSW,LHN115,Far West,-32.42593114,142.7225033,exact,NP,NP,67,76,169,NP,NP
+Hunter New England,NSW,LHN109,Hunter New England,-31.39002042,151.1775734,exact,88,101,199,127,133,113,104
+Illawarra Shoalhaven,NSW,LHN108,Illawarra Shoalhaven,-34.6161468,150.7953555,exact,234,203,316,279,347,330,294
+Mid North Coast,NSW,LHN110,Mid North Coast,-30.82951443,152.863867,exact,68,91,135,NP,NP,197,290
+Murrumbidgee,NSW,LHN114,Murrumbidgee,-35.00247668,146.8558414,exact,NP,NP,NP,76,122,76,275
+Nepean Blue Mountains,NSW,LHN105,Nepean Blue Mountains,-33.62625814,150.463507,exact,NP,81,162,97,185,NP,338
+Northern NSW,NSW,LHN111,Northern NSW,-28.77213095,153.1705604,exact,NP,73,91,85,117,92,NP
+Northern Sydney,NSW,LHN106,Northern Sydney,-33.7727766,151.1589627,exact,42,29,34,28,28,56,68
+South Eastern Sydney,NSW,LHN101,South Eastern Sydney,-33.639868,152.175018625,exact,35,37,43,24,48,NP,71
+South Western Sydney,NSW,LHN103,South Western Sydney,-34.01003263,150.8309134,exact,66,67,85,114,92,NP,84
+Southern NSW,NSW,LHN113,Southern NSW,-35.69672257,149.56412,exact,59,NP,100,85,83,85,74
+St Vincent's Health Network,NSW,LHN118,St Vincent's Health Network,-33.8641755,151.124732,exact,NP,NP,NP,NP,NP,NP,NP
+Sydney,NSW,LHN102,Sydney,-33.8778497142857,151.133066285714,exact,29,43,71,NP,65,45,NP
+Sydney Children's Hospitals Network,NSW,LHN117,Sydney Children's Hospitals Network,-33.8593665,151.1150465,exact,,,,,,,NP
+Western NSW,NSW,LHN112,Western NSW,-32.09984457,148.3750001,exact,93,121,302,262,NP,NP,NP
+Western Sydney,NSW,LHN104,Western Sydney,-33.80146,150.9526888,exact,29,35,47,30,39,47,44
+Central Australia (NT),NT,,,,,unmatched,57,83,62,39,,,
+NT Regional Health Services (NTRHS),NT,LHN703,NT Regional Health Services (NTRHS),-15.801576,133.0246298,exact,,,,,NP,60,57
+Top End (NT),NT,,,,,unmatched,NP,50,39,42,,,
+Cairns and Hinterland,Qld,LHN312,Cairns and Hinterland,-17.20963,145.6761338,exact,58,79,83,83,116,208,165
+Central Queensland,Qld,LHN316,Central Queensland,-23.95471764,149.8185449,exact,89,224,91,NP,NP,NP,183
+Central West (Qld),Qld,LHN317,Central West (Qld),-23.4890564,144.935506,exact,NP,NP,NP,NP,NP,NP,NP
+Darling Downs,Qld,LHN325,Darling Downs,-27.27085251,151.3224767,exact,99,127,87,94,85,111,84
+Gold Coast,Qld,LHN323,Gold Coast,-28.015547,153.3792285,exact,66,87,82,70,149,114,160
+Mackay,Qld,LHN314,Mackay,-21.36640563,148.3836934,exact,NP,NP,82,91,97,149,324
+Metro North (Qld),Qld,LHN320,Metro North (Qld),-27.256131,152.951053,exact,62,73,72,59,NP,NP,56
+Metro South (Qld),Qld,LHN322,Metro South (Qld),-27.650821,153.0956082,exact,69,75,77,85,86,NP,83
+North West (Qld),Qld,LHN315,North West (Qld),-19.06299683,140.1435853,exact,44,44,50,78,NP,,NP
+South West (Qld),Qld,LHN326,South West (Qld),-27.13968491,147.5436972,exact,72,NP,340,NP,NP,NP,NP
+Sunshine Coast,Qld,LHN319,Sunshine Coast,-26.6216594,152.93781,exact,70,84,69,90,97,75,111
+Townsville,Qld,LHN313,Townsville,-19.6969429,146.0946479,exact,89,70,89,76,146,172,120
+West Moreton,Qld,LHN324,West Moreton,-27.60981783,152.5738275,exact,100,85,84,159,194,146,74
+Wide Bay,Qld,LHN318,Wide Bay,-25.28893,151.9260293,exact,53,66,83,103,184,133,81
+Barossa Hills Fleurieu,SA,LHN406,Barossa Hills Fleurieu,-34.8440563636364,138.793658272727,exact,,,83,177,146,132,NP
+Central Adelaide,SA,LHN402,Central Adelaide,-34.88928217,138.5654925,exact,37,32,27,27,29,26,34
+Country Health SA,SA,,,,,unmatched,33,33,,,,,
+Eyre and Far North,SA,LHN407,Eyre and Far North,-33.1365555454545,135.502746,exact,,,NP,NP,NP,,NP
+Flinders and Upper North,SA,LHN408,Flinders and Upper North,-32.0700956,137.7428156,exact,,,36,NP,14,NP,50
+Limestone Coast,SA,LHN410,Limestone Coast,-37.1501188333333,140.556824166667,exact,,,21,35,NP,55,48
+Northern Adelaide,SA,LHN401,Northern Adelaide,-34.810518,138.6641953,exact,106,300,132,NP,NP,96,NP
+Riverland Mallee Coorong,SA,LHN409,Riverland Mallee Coorong,-34.8333760833333,140.08758,exact,,,83,62,NP,61,68
+Southern Adelaide,SA,LHN403,Southern Adelaide,-35.127838,138.5382063,exact,88,78,89,NP,NP,NP,65
+Women's and Children's Health Network (SA),SA,LHN405,Women's and Children's Health Network (SA),-34.911444,138.599631,exact,88,85,94,128,100,93,106
+Yorke and Northern,SA,LHN411,Yorke and Northern,-33.8435791875,138.414725625,exact,,,40,26,39,NP,NP
+Tasmanian Health Service,Tas,LHN604,Tasmanian Health Service,-41.71304023,146.9303757,exact,134,164,121,174,98,65,NP
+Albury Wodonga Health,Vic,LHN249,Albury Wodonga Health,-36.105096,146.9092815,exact,47,54,54,55,163,115,100
+Austin Health (Vic),Vic,LHN266,Austin Health (Vic),-37.76728333,145.0438137,exact,,NP,,,NP,NP,NP
+Ballarat Health Services,Vic,,,,,unmatched,53,34,47,26,,,
+Barwon Health,Vic,LHN231,Barwon Health,-38.135164,144.350346,exact,52,63,87,76,99,61,55
+Bass Coast Regional Health,Vic,LHN253,Bass Coast Regional Health,-38.608747,145.580906,exact,,,,,,,53
+Bendigo Health Care Group,Vic,LHN210,Bendigo Health Care Group,-36.749823,144.2818855,exact,68,77,84,113,111,91,96
+Eastern Health (Vic),Vic,LHN234,Eastern Health (Vic),-37.807123,145.2643231,exact,35,40,81,28,176,86,69
+Goulburn Valley Health,Vic,LHN235,Goulburn Valley Health,-36.46351133,145.213013,exact,34,23,66,NP,79,42,41
+Grampians Health,Vic,LHN294,Grampians Health,-37.063527,142.6655908,exact,,,,,50,53,44
+Latrobe Regional Hospital,Vic,LHN260,Latrobe Regional Hospital,-38.218475,146.471335,exact,49,61,50,65,80,99,78
+Monash Health,Vic,LHN269,Monash Health,-37.97779,145.1788109,exact,59,48,NP,NP,105,86,94
+Northeast Health Wangaratta,Vic,LHN243,Northeast Health Wangaratta,-36.354035,146.313889,exact,58,81,71,98,55,79,52
+Northern Health (Vic),Vic,LHN226,Northern Health (Vic),-37.65871925,144.975584,exact,51,59,74,79,112,84,NP
+Peninsula Health (Vic),Vic,LHN270,Peninsula Health (Vic),-38.214196,145.0675846,exact,112,40,93,85,185,80,35
+Peter MacCallum Cancer Institute (Vic),Vic,LHN264,Peter MacCallum Cancer Institute (Vic),-37.80001,144.956607,exact,NP,NP,NP,NP,27,NP,8
+Royal Women's Hospital (Melbourne),Vic,LHN224,Royal Women's Hospital (Melbourne),-37.8799105,144.986491,exact,27,26,29,28,28,27,28
+South West Healthcare (Vic),Vic,LHN284,South West Healthcare (Vic),-38.308593,142.8053455,exact,90,102,130,147,137,61,79
+St Vincent's Hospital (Melbourne) Limited,Vic,LHN262,St Vincent's Hospital (Melbourne) Limited,-37.80677867,145.0144577,exact,,,,,,NP,
+West Gippsland Healthcare Group,Vic,LHN252,West Gippsland Healthcare Group,-38.173009,145.926804,exact,130,216,154,85,79,77,47
+Western Health (Vic),Vic,LHN209,Western Health (Vic),-37.726128,144.7200382,exact,81,NP,NP,NP,51,56,35
+East Metropolitan Health Service (WA),WA,LHN504,East Metropolitan Health Service (WA),-31.9845823,115.9587558,exact,76,83,NP,116,NP,NP,115
+North Metropolitan Health Service (WA),WA,LHN501,North Metropolitan Health Service (WA),-31.91767657,115.7988247,exact,40,35,50,39,32,NP,NP
+South Metropolitan Health Service (WA),WA,LHN502,South Metropolitan Health Service (WA),-32.3184048,115.8008698,exact,81,66,84,92,90,69,59
+WA Country Health Service,WA,LHN503,WA Country Health Service,-29.49116183,117.9483351,exact,49,57,75,88,104,94,114

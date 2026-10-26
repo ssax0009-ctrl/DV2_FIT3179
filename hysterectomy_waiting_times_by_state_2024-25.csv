@@ -1,0 +1,10 @@
+state_territory,year,admissions,days_waited_50th_percentile,days_waited_90th_percentile,pct_waited_over_365_days
+NSW,2024-25,2971,99,373,12.1844
+Vic,2024-25,2957,50,214,2.7054
+Qld,2024-25,904,84,357,8.2965
+WA,2024-25,1043,64,252,5.2733
+SA,2024-25,819,80,361,9.2796
+Tas,2024-25,298,77,312,6.7114
+ACT,2024-25,80,,,
+NT,2024-25,91,,,
+Total,2024-25,9163,74,352,7.3666
