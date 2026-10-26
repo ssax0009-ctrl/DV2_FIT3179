@@ -775,8 +775,8 @@ footer a {
   align-items: center;
   border-left: 0;
   padding-left: 0;
-  border-top: 4px solid var(--ink);
-  padding-top: .9rem;
+  border-bottom: 4px solid var(--ink);
+  padding-bottom: .9rem;
 }
 .finding--wide > .finding-text h3 { margin: 0; }
 .finding--wide > .finding-text p  { max-width: 68ch; text-align: center; }
@@ -940,3 +940,32 @@ footer a {
   font-style: italic;
   line-height: 1.4;
 }
+
+/* ---------- Tag key ---------- */
+.chart-key {
+  max-width: 68ch;
+  margin: 2.5rem auto 0;
+  padding: 0.9rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.chart-key-title {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.chart-key-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.chart-key-row:last-child { margin-bottom: 0; }
+.chart-key-row .chart-tag { flex: 0 0 5.2rem; margin: 0; text-align: center; }
+.chart-key-text { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
