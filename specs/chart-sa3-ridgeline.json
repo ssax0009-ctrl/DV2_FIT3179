@@ -1,0 +1,1820 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": null,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "axis": {
+      "labelColor": "#18313b",
+      "titleColor": "#536b73",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "#b9c5ca",
+      "tickColor": "#b9c5ca",
+      "gridColor": "#e6ecea"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelColor": "#18313b",
+      "titleColor": "#536b73"
+    }
+  },
+  "description": "Ridgeline plot of SA3 age-standardised hysterectomy hospitalisation rates by state, 2021-22.",
+  "data": {
+    "values": [
+      {
+        "state": "NSW",
+        "region": "Queanbeyan",
+        "rate": 303
+      },
+      {
+        "state": "NSW",
+        "region": "Snowy Mountains",
+        "rate": 165
+      },
+      {
+        "state": "NSW",
+        "region": "South Coast",
+        "rate": 200
+      },
+      {
+        "state": "NSW",
+        "region": "Goulburn - Mulwaree",
+        "rate": 265
+      },
+      {
+        "state": "NSW",
+        "region": "Young - Yass",
+        "rate": 259
+      },
+      {
+        "state": "NSW",
+        "region": "Gosford",
+        "rate": 347
+      },
+      {
+        "state": "NSW",
+        "region": "Wyong",
+        "rate": 338
+      },
+      {
+        "state": "NSW",
+        "region": "Bathurst",
+        "rate": 278
+      },
+      {
+        "state": "NSW",
+        "region": "Lachlan Valley",
+        "rate": 346
+      },
+      {
+        "state": "NSW",
+        "region": "Lithgow - Mudgee",
+        "rate": 254
+      },
+      {
+        "state": "NSW",
+        "region": "Orange",
+        "rate": 407
+      },
+      {
+        "state": "NSW",
+        "region": "Clarence Valley",
+        "rate": 295
+      },
+      {
+        "state": "NSW",
+        "region": "Coffs Harbour",
+        "rate": 394
+      },
+      {
+        "state": "NSW",
+        "region": "Bourke - Cobar - Coonamble",
+        "rate": 428
+      },
+      {
+        "state": "NSW",
+        "region": "Broken Hill and Far West",
+        "rate": 211
+      },
+      {
+        "state": "NSW",
+        "region": "Dubbo",
+        "rate": 415
+      },
+      {
+        "state": "NSW",
+        "region": "Lower Hunter",
+        "rate": 366
+      },
+      {
+        "state": "NSW",
+        "region": "Maitland",
+        "rate": 317
+      },
+      {
+        "state": "NSW",
+        "region": "Port Stephens",
+        "rate": 287
+      },
+      {
+        "state": "NSW",
+        "region": "Upper Hunter",
+        "rate": 271
+      },
+      {
+        "state": "NSW",
+        "region": "Dapto - Port Kembla",
+        "rate": 264
+      },
+      {
+        "state": "NSW",
+        "region": "Kiama - Shellharbour",
+        "rate": 269
+      },
+      {
+        "state": "NSW",
+        "region": "Wollongong",
+        "rate": 198
+      },
+      {
+        "state": "NSW",
+        "region": "Great Lakes",
+        "rate": 181
+      },
+      {
+        "state": "NSW",
+        "region": "Kempsey - Nambucca",
+        "rate": 317
+      },
+      {
+        "state": "NSW",
+        "region": "Port Macquarie",
+        "rate": 219
+      },
+      {
+        "state": "NSW",
+        "region": "Taree - Gloucester",
+        "rate": 178
+      },
+      {
+        "state": "NSW",
+        "region": "Albury",
+        "rate": 243
+      },
+      {
+        "state": "NSW",
+        "region": "Lower Murray",
+        "rate": 201
+      },
+      {
+        "state": "NSW",
+        "region": "Upper Murray exc. Albury",
+        "rate": 243
+      },
+      {
+        "state": "NSW",
+        "region": "Armidale",
+        "rate": 288
+      },
+      {
+        "state": "NSW",
+        "region": "Inverell - Tenterfield",
+        "rate": 321
+      },
+      {
+        "state": "NSW",
+        "region": "Moree - Narrabri",
+        "rate": 223
+      },
+      {
+        "state": "NSW",
+        "region": "Tamworth - Gunnedah",
+        "rate": 339
+      },
+      {
+        "state": "NSW",
+        "region": "Lake Macquarie - East",
+        "rate": 258
+      },
+      {
+        "state": "NSW",
+        "region": "Lake Macquarie - West",
+        "rate": 299
+      },
+      {
+        "state": "NSW",
+        "region": "Newcastle",
+        "rate": 262
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond Valley - Coastal",
+        "rate": 171
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond Valley - Hinterland",
+        "rate": 231
+      },
+      {
+        "state": "NSW",
+        "region": "Tweed Valley",
+        "rate": 225
+      },
+      {
+        "state": "NSW",
+        "region": "Griffith - Murrumbidgee (West)",
+        "rate": 261
+      },
+      {
+        "state": "NSW",
+        "region": "Tumut - Tumbarumba",
+        "rate": 302
+      },
+      {
+        "state": "NSW",
+        "region": "Wagga Wagga",
+        "rate": 328
+      },
+      {
+        "state": "NSW",
+        "region": "Shoalhaven",
+        "rate": 180
+      },
+      {
+        "state": "NSW",
+        "region": "Southern Highlands",
+        "rate": 207
+      },
+      {
+        "state": "NSW",
+        "region": "Baulkham Hills",
+        "rate": 203
+      },
+      {
+        "state": "NSW",
+        "region": "Dural - Wisemans Ferry",
+        "rate": 156
+      },
+      {
+        "state": "NSW",
+        "region": "Rouse Hill - McGraths Hill",
+        "rate": 236
+      },
+      {
+        "state": "NSW",
+        "region": "Blacktown",
+        "rate": 212
+      },
+      {
+        "state": "NSW",
+        "region": "Blacktown - North",
+        "rate": 209
+      },
+      {
+        "state": "NSW",
+        "region": "Mount Druitt",
+        "rate": 134
+      },
+      {
+        "state": "NSW",
+        "region": "Botany",
+        "rate": 190
+      },
+      {
+        "state": "NSW",
+        "region": "Marrickville - Sydenham - Petersham",
+        "rate": 214
+      },
+      {
+        "state": "NSW",
+        "region": "Sydney Inner City",
+        "rate": 143
+      },
+      {
+        "state": "NSW",
+        "region": "Eastern Suburbs - North",
+        "rate": 136
+      },
+      {
+        "state": "NSW",
+        "region": "Eastern Suburbs - South",
+        "rate": 171
+      },
+      {
+        "state": "NSW",
+        "region": "Bankstown",
+        "rate": 176
+      },
+      {
+        "state": "NSW",
+        "region": "Canterbury",
+        "rate": 154
+      },
+      {
+        "state": "NSW",
+        "region": "Hurstville",
+        "rate": 142
+      },
+      {
+        "state": "NSW",
+        "region": "Kogarah - Rockdale",
+        "rate": 165
+      },
+      {
+        "state": "NSW",
+        "region": "Canada Bay",
+        "rate": 232
+      },
+      {
+        "state": "NSW",
+        "region": "Leichhardt",
+        "rate": 174
+      },
+      {
+        "state": "NSW",
+        "region": "Strathfield - Burwood - Ashfield",
+        "rate": 159
+      },
+      {
+        "state": "NSW",
+        "region": "Chatswood - Lane Cove",
+        "rate": 167
+      },
+      {
+        "state": "NSW",
+        "region": "Hornsby",
+        "rate": 208
+      },
+      {
+        "state": "NSW",
+        "region": "Ku-ring-gai",
+        "rate": 161
+      },
+      {
+        "state": "NSW",
+        "region": "North Sydney - Mosman",
+        "rate": 170
+      },
+      {
+        "state": "NSW",
+        "region": "Manly",
+        "rate": 176
+      },
+      {
+        "state": "NSW",
+        "region": "Pittwater",
+        "rate": 157
+      },
+      {
+        "state": "NSW",
+        "region": "Warringah",
+        "rate": 193
+      },
+      {
+        "state": "NSW",
+        "region": "Camden",
+        "rate": 230
+      },
+      {
+        "state": "NSW",
+        "region": "Campbelltown (NSW)",
+        "rate": 190
+      },
+      {
+        "state": "NSW",
+        "region": "Wollondilly",
+        "rate": 187
+      },
+      {
+        "state": "NSW",
+        "region": "Blue Mountains",
+        "rate": 223
+      },
+      {
+        "state": "NSW",
+        "region": "Penrith",
+        "rate": 268
+      },
+      {
+        "state": "NSW",
+        "region": "Richmond - Windsor",
+        "rate": 365
+      },
+      {
+        "state": "NSW",
+        "region": "St Marys",
+        "rate": 262
+      },
+      {
+        "state": "NSW",
+        "region": "Carlingford",
+        "rate": 165
+      },
+      {
+        "state": "NSW",
+        "region": "Merrylands - Guildford",
+        "rate": 219
+      },
+      {
+        "state": "NSW",
+        "region": "Parramatta",
+        "rate": 174
+      },
+      {
+        "state": "NSW",
+        "region": "Pennant Hills - Epping",
+        "rate": 180
+      },
+      {
+        "state": "NSW",
+        "region": "Ryde - Hunters Hill",
+        "rate": 154
+      },
+      {
+        "state": "NSW",
+        "region": "Bringelly - Green Valley",
+        "rate": 197
+      },
+      {
+        "state": "NSW",
+        "region": "Fairfield",
+        "rate": 142
+      },
+      {
+        "state": "NSW",
+        "region": "Liverpool",
+        "rate": 141
+      },
+      {
+        "state": "NSW",
+        "region": "Cronulla - Miranda - Caringbah",
+        "rate": 192
+      },
+      {
+        "state": "NSW",
+        "region": "Sutherland - Menai - Heathcote",
+        "rate": 254
+      },
+      {
+        "state": "Vic",
+        "region": "Ballarat",
+        "rate": 519
+      },
+      {
+        "state": "Vic",
+        "region": "Creswick - Daylesford - Ballan",
+        "rate": 397
+      },
+      {
+        "state": "Vic",
+        "region": "Maryborough - Pyrenees",
+        "rate": 476
+      },
+      {
+        "state": "Vic",
+        "region": "Bendigo",
+        "rate": 208
+      },
+      {
+        "state": "Vic",
+        "region": "Heathcote - Castlemaine - Kyneton",
+        "rate": 233
+      },
+      {
+        "state": "Vic",
+        "region": "Barwon - West",
+        "rate": 251
+      },
+      {
+        "state": "Vic",
+        "region": "Geelong",
+        "rate": 240
+      },
+      {
+        "state": "Vic",
+        "region": "Surf Coast - Bellarine Peninsula",
+        "rate": 304
+      },
+      {
+        "state": "Vic",
+        "region": "Upper Goulburn Valley",
+        "rate": 222
+      },
+      {
+        "state": "Vic",
+        "region": "Wangaratta - Benalla",
+        "rate": 242
+      },
+      {
+        "state": "Vic",
+        "region": "Wodonga - Alpine",
+        "rate": 222
+      },
+      {
+        "state": "Vic",
+        "region": "Baw Baw",
+        "rate": 281
+      },
+      {
+        "state": "Vic",
+        "region": "Gippsland - East",
+        "rate": 168
+      },
+      {
+        "state": "Vic",
+        "region": "Gippsland - South West",
+        "rate": 286
+      },
+      {
+        "state": "Vic",
+        "region": "Latrobe Valley",
+        "rate": 186
+      },
+      {
+        "state": "Vic",
+        "region": "Wellington",
+        "rate": 195
+      },
+      {
+        "state": "Vic",
+        "region": "Brunswick - Coburg",
+        "rate": 164
+      },
+      {
+        "state": "Vic",
+        "region": "Darebin - South",
+        "rate": 132
+      },
+      {
+        "state": "Vic",
+        "region": "Essendon",
+        "rate": 203
+      },
+      {
+        "state": "Vic",
+        "region": "Melbourne City",
+        "rate": 145
+      },
+      {
+        "state": "Vic",
+        "region": "Port Phillip",
+        "rate": 128
+      },
+      {
+        "state": "Vic",
+        "region": "Stonnington - West",
+        "rate": 147
+      },
+      {
+        "state": "Vic",
+        "region": "Yarra",
+        "rate": 147
+      },
+      {
+        "state": "Vic",
+        "region": "Boroondara",
+        "rate": 141
+      },
+      {
+        "state": "Vic",
+        "region": "Manningham - West",
+        "rate": 164
+      },
+      {
+        "state": "Vic",
+        "region": "Whitehorse - West",
+        "rate": 124
+      },
+      {
+        "state": "Vic",
+        "region": "Bayside",
+        "rate": 176
+      },
+      {
+        "state": "Vic",
+        "region": "Glen Eira",
+        "rate": 158
+      },
+      {
+        "state": "Vic",
+        "region": "Kingston",
+        "rate": 208
+      },
+      {
+        "state": "Vic",
+        "region": "Stonnington - East",
+        "rate": 184
+      },
+      {
+        "state": "Vic",
+        "region": "Banyule",
+        "rate": 136
+      },
+      {
+        "state": "Vic",
+        "region": "Darebin - North",
+        "rate": 149
+      },
+      {
+        "state": "Vic",
+        "region": "Nillumbik - Kinglake",
+        "rate": 198
+      },
+      {
+        "state": "Vic",
+        "region": "Whittlesea - Wallan",
+        "rate": 208
+      },
+      {
+        "state": "Vic",
+        "region": "Keilor",
+        "rate": 244
+      },
+      {
+        "state": "Vic",
+        "region": "Macedon Ranges",
+        "rate": 345
+      },
+      {
+        "state": "Vic",
+        "region": "Moreland - North",
+        "rate": 193
+      },
+      {
+        "state": "Vic",
+        "region": "Sunbury",
+        "rate": 315
+      },
+      {
+        "state": "Vic",
+        "region": "Tullamarine - Broadmeadows",
+        "rate": 204
+      },
+      {
+        "state": "Vic",
+        "region": "Knox",
+        "rate": 192
+      },
+      {
+        "state": "Vic",
+        "region": "Manningham - East",
+        "rate": 162
+      },
+      {
+        "state": "Vic",
+        "region": "Maroondah",
+        "rate": 183
+      },
+      {
+        "state": "Vic",
+        "region": "Whitehorse - East",
+        "rate": 185
+      },
+      {
+        "state": "Vic",
+        "region": "Yarra Ranges",
+        "rate": 215
+      },
+      {
+        "state": "Vic",
+        "region": "Cardinia",
+        "rate": 217
+      },
+      {
+        "state": "Vic",
+        "region": "Casey - North",
+        "rate": 217
+      },
+      {
+        "state": "Vic",
+        "region": "Casey - South",
+        "rate": 193
+      },
+      {
+        "state": "Vic",
+        "region": "Dandenong",
+        "rate": 147
+      },
+      {
+        "state": "Vic",
+        "region": "Monash",
+        "rate": 158
+      },
+      {
+        "state": "Vic",
+        "region": "Brimbank",
+        "rate": 173
+      },
+      {
+        "state": "Vic",
+        "region": "Hobsons Bay",
+        "rate": 176
+      },
+      {
+        "state": "Vic",
+        "region": "Maribyrnong",
+        "rate": 172
+      },
+      {
+        "state": "Vic",
+        "region": "Melton - Bacchus Marsh",
+        "rate": 240
+      },
+      {
+        "state": "Vic",
+        "region": "Wyndham",
+        "rate": 221
+      },
+      {
+        "state": "Vic",
+        "region": "Frankston",
+        "rate": 206
+      },
+      {
+        "state": "Vic",
+        "region": "Mornington Peninsula",
+        "rate": 199
+      },
+      {
+        "state": "Vic",
+        "region": "Grampians",
+        "rate": 379
+      },
+      {
+        "state": "Vic",
+        "region": "Mildura",
+        "rate": 240
+      },
+      {
+        "state": "Vic",
+        "region": "Murray River - Swan Hill",
+        "rate": 282
+      },
+      {
+        "state": "Vic",
+        "region": "Campaspe",
+        "rate": 203
+      },
+      {
+        "state": "Vic",
+        "region": "Shepparton",
+        "rate": 163
+      },
+      {
+        "state": "Vic",
+        "region": "Glenelg - Southern Grampians",
+        "rate": 328
+      },
+      {
+        "state": "Vic",
+        "region": "Colac - Corangamite",
+        "rate": 301
+      },
+      {
+        "state": "Vic",
+        "region": "Warrnambool",
+        "rate": 300
+      },
+      {
+        "state": "Qld",
+        "region": "Capalaba",
+        "rate": 320
+      },
+      {
+        "state": "Qld",
+        "region": "Cleveland - Stradbroke",
+        "rate": 311
+      },
+      {
+        "state": "Qld",
+        "region": "Wynnum - Manly",
+        "rate": 227
+      },
+      {
+        "state": "Qld",
+        "region": "Bald Hills - Everton Park",
+        "rate": 280
+      },
+      {
+        "state": "Qld",
+        "region": "Chermside",
+        "rate": 270
+      },
+      {
+        "state": "Qld",
+        "region": "Nundah",
+        "rate": 256
+      },
+      {
+        "state": "Qld",
+        "region": "Sandgate",
+        "rate": 216
+      },
+      {
+        "state": "Qld",
+        "region": "Carindale",
+        "rate": 240
+      },
+      {
+        "state": "Qld",
+        "region": "Holland Park - Yeronga",
+        "rate": 208
+      },
+      {
+        "state": "Qld",
+        "region": "Mt Gravatt",
+        "rate": 252
+      },
+      {
+        "state": "Qld",
+        "region": "Nathan",
+        "rate": 205
+      },
+      {
+        "state": "Qld",
+        "region": "Rocklea - Acacia Ridge",
+        "rate": 235
+      },
+      {
+        "state": "Qld",
+        "region": "Sunnybank",
+        "rate": 234
+      },
+      {
+        "state": "Qld",
+        "region": "Centenary",
+        "rate": 229
+      },
+      {
+        "state": "Qld",
+        "region": "Kenmore - Brookfield - Moggill",
+        "rate": 236
+      },
+      {
+        "state": "Qld",
+        "region": "Sherwood - Indooroopilly",
+        "rate": 181
+      },
+      {
+        "state": "Qld",
+        "region": "The Gap - Enoggera",
+        "rate": 258
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner",
+        "rate": 221
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - East",
+        "rate": 207
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - North",
+        "rate": 199
+      },
+      {
+        "state": "Qld",
+        "region": "Brisbane Inner - West",
+        "rate": 214
+      },
+      {
+        "state": "Qld",
+        "region": "Cairns - North",
+        "rate": 167
+      },
+      {
+        "state": "Qld",
+        "region": "Cairns - South",
+        "rate": 161
+      },
+      {
+        "state": "Qld",
+        "region": "Innisfail - Cassowary Coast",
+        "rate": 169
+      },
+      {
+        "state": "Qld",
+        "region": "Tablelands (East) - Kuranda",
+        "rate": 184
+      },
+      {
+        "state": "Qld",
+        "region": "Darling Downs (West) - Maranoa",
+        "rate": 262
+      },
+      {
+        "state": "Qld",
+        "region": "Darling Downs - East",
+        "rate": 520
+      },
+      {
+        "state": "Qld",
+        "region": "Granite Belt",
+        "rate": 323
+      },
+      {
+        "state": "Qld",
+        "region": "Central Highlands (Qld)",
+        "rate": 235
+      },
+      {
+        "state": "Qld",
+        "region": "Rockhampton",
+        "rate": 216
+      },
+      {
+        "state": "Qld",
+        "region": "Gladstone",
+        "rate": 247
+      },
+      {
+        "state": "Qld",
+        "region": "Broadbeach - Burleigh",
+        "rate": 274
+      },
+      {
+        "state": "Qld",
+        "region": "Coolangatta",
+        "rate": 229
+      },
+      {
+        "state": "Qld",
+        "region": "Gold Coast - North",
+        "rate": 367
+      },
+      {
+        "state": "Qld",
+        "region": "Gold Coast Hinterland",
+        "rate": 400
+      },
+      {
+        "state": "Qld",
+        "region": "Mudgeeraba - Tallebudgera",
+        "rate": 322
+      },
+      {
+        "state": "Qld",
+        "region": "Nerang",
+        "rate": 396
+      },
+      {
+        "state": "Qld",
+        "region": "Ormeau - Oxenford",
+        "rate": 384
+      },
+      {
+        "state": "Qld",
+        "region": "Robina",
+        "rate": 383
+      },
+      {
+        "state": "Qld",
+        "region": "Southport",
+        "rate": 262
+      },
+      {
+        "state": "Qld",
+        "region": "Surfers Paradise",
+        "rate": 347
+      },
+      {
+        "state": "Qld",
+        "region": "Forest Lake - Oxley",
+        "rate": 242
+      },
+      {
+        "state": "Qld",
+        "region": "Ipswich Hinterland",
+        "rate": 344
+      },
+      {
+        "state": "Qld",
+        "region": "Ipswich Inner",
+        "rate": 295
+      },
+      {
+        "state": "Qld",
+        "region": "Springfield - Redbank",
+        "rate": 255
+      },
+      {
+        "state": "Qld",
+        "region": "Beaudesert",
+        "rate": 420
+      },
+      {
+        "state": "Qld",
+        "region": "Beenleigh",
+        "rate": 321
+      },
+      {
+        "state": "Qld",
+        "region": "Browns Plains",
+        "rate": 220
+      },
+      {
+        "state": "Qld",
+        "region": "Jimboomba",
+        "rate": 400
+      },
+      {
+        "state": "Qld",
+        "region": "Loganlea - Carbrook",
+        "rate": 278
+      },
+      {
+        "state": "Qld",
+        "region": "Springwood - Kingston",
+        "rate": 291
+      },
+      {
+        "state": "Qld",
+        "region": "Bowen Basin - North",
+        "rate": 344
+      },
+      {
+        "state": "Qld",
+        "region": "Mackay",
+        "rate": 390
+      },
+      {
+        "state": "Qld",
+        "region": "Whitsunday",
+        "rate": 226
+      },
+      {
+        "state": "Qld",
+        "region": "Bribie - Beachmere",
+        "rate": 279
+      },
+      {
+        "state": "Qld",
+        "region": "Caboolture",
+        "rate": 351
+      },
+      {
+        "state": "Qld",
+        "region": "Caboolture Hinterland",
+        "rate": 389
+      },
+      {
+        "state": "Qld",
+        "region": "Narangba - Burpengary",
+        "rate": 346
+      },
+      {
+        "state": "Qld",
+        "region": "Redcliffe",
+        "rate": 341
+      },
+      {
+        "state": "Qld",
+        "region": "The Hills District",
+        "rate": 322
+      },
+      {
+        "state": "Qld",
+        "region": "North Lakes",
+        "rate": 309
+      },
+      {
+        "state": "Qld",
+        "region": "Strathpine",
+        "rate": 231
+      },
+      {
+        "state": "Qld",
+        "region": "Far North",
+        "rate": 168
+      },
+      {
+        "state": "Qld",
+        "region": "Outback - North",
+        "rate": 344
+      },
+      {
+        "state": "Qld",
+        "region": "Outback - South",
+        "rate": 277
+      },
+      {
+        "state": "Qld",
+        "region": "Buderim",
+        "rate": 335
+      },
+      {
+        "state": "Qld",
+        "region": "Caloundra",
+        "rate": 287
+      },
+      {
+        "state": "Qld",
+        "region": "Maroochy",
+        "rate": 232
+      },
+      {
+        "state": "Qld",
+        "region": "Noosa",
+        "rate": 204
+      },
+      {
+        "state": "Qld",
+        "region": "Sunshine Coast Hinterland",
+        "rate": 356
+      },
+      {
+        "state": "Qld",
+        "region": "Nambour",
+        "rate": 306
+      },
+      {
+        "state": "Qld",
+        "region": "Noosa Hinterland",
+        "rate": 253
+      },
+      {
+        "state": "Qld",
+        "region": "Toowoomba",
+        "rate": 457
+      },
+      {
+        "state": "Qld",
+        "region": "Charters Towers - Ayr - Ingham",
+        "rate": 272
+      },
+      {
+        "state": "Qld",
+        "region": "Townsville",
+        "rate": 342
+      },
+      {
+        "state": "Qld",
+        "region": "Bundaberg",
+        "rate": 326
+      },
+      {
+        "state": "Qld",
+        "region": "Burnett",
+        "rate": 267
+      },
+      {
+        "state": "Qld",
+        "region": "Gympie - Cooloola",
+        "rate": 256
+      },
+      {
+        "state": "Qld",
+        "region": "Hervey Bay",
+        "rate": 295
+      },
+      {
+        "state": "Qld",
+        "region": "Maryborough",
+        "rate": 315
+      },
+      {
+        "state": "SA",
+        "region": "Adelaide City",
+        "rate": 143
+      },
+      {
+        "state": "SA",
+        "region": "Adelaide Hills",
+        "rate": 309
+      },
+      {
+        "state": "SA",
+        "region": "Burnside",
+        "rate": 139
+      },
+      {
+        "state": "SA",
+        "region": "Campbelltown (SA)",
+        "rate": 225
+      },
+      {
+        "state": "SA",
+        "region": "Norwood - Payneham - St Peters",
+        "rate": 200
+      },
+      {
+        "state": "SA",
+        "region": "Prospect - Walkerville",
+        "rate": 183
+      },
+      {
+        "state": "SA",
+        "region": "Unley",
+        "rate": 221
+      },
+      {
+        "state": "SA",
+        "region": "Gawler - Two Wells",
+        "rate": 276
+      },
+      {
+        "state": "SA",
+        "region": "Playford",
+        "rate": 264
+      },
+      {
+        "state": "SA",
+        "region": "Port Adelaide - East",
+        "rate": 244
+      },
+      {
+        "state": "SA",
+        "region": "Salisbury",
+        "rate": 229
+      },
+      {
+        "state": "SA",
+        "region": "Tea Tree Gully",
+        "rate": 280
+      },
+      {
+        "state": "SA",
+        "region": "Holdfast Bay",
+        "rate": 343
+      },
+      {
+        "state": "SA",
+        "region": "Marion",
+        "rate": 249
+      },
+      {
+        "state": "SA",
+        "region": "Mitcham",
+        "rate": 283
+      },
+      {
+        "state": "SA",
+        "region": "Onkaparinga",
+        "rate": 256
+      },
+      {
+        "state": "SA",
+        "region": "Charles Sturt",
+        "rate": 188
+      },
+      {
+        "state": "SA",
+        "region": "Port Adelaide - West",
+        "rate": 246
+      },
+      {
+        "state": "SA",
+        "region": "West Torrens",
+        "rate": 182
+      },
+      {
+        "state": "SA",
+        "region": "Barossa",
+        "rate": 180
+      },
+      {
+        "state": "SA",
+        "region": "Lower North",
+        "rate": 259
+      },
+      {
+        "state": "SA",
+        "region": "Mid North",
+        "rate": 274
+      },
+      {
+        "state": "SA",
+        "region": "Yorke Peninsula",
+        "rate": 390
+      },
+      {
+        "state": "SA",
+        "region": "Eyre Peninsula and South West",
+        "rate": 166
+      },
+      {
+        "state": "SA",
+        "region": "Outback - North and East",
+        "rate": 156
+      },
+      {
+        "state": "SA",
+        "region": "Fleurieu - Kangaroo Island",
+        "rate": 301
+      },
+      {
+        "state": "SA",
+        "region": "Limestone Coast",
+        "rate": 240
+      },
+      {
+        "state": "SA",
+        "region": "Murray and Mallee",
+        "rate": 172
+      },
+      {
+        "state": "WA",
+        "region": "Augusta - Margaret River - Busselton",
+        "rate": 230
+      },
+      {
+        "state": "WA",
+        "region": "Bunbury",
+        "rate": 358
+      },
+      {
+        "state": "WA",
+        "region": "Manjimup",
+        "rate": 242
+      },
+      {
+        "state": "WA",
+        "region": "Mandurah",
+        "rate": 421
+      },
+      {
+        "state": "WA",
+        "region": "Cottesloe - Claremont",
+        "rate": 249
+      },
+      {
+        "state": "WA",
+        "region": "Perth City",
+        "rate": 219
+      },
+      {
+        "state": "WA",
+        "region": "Bayswater - Bassendean",
+        "rate": 177
+      },
+      {
+        "state": "WA",
+        "region": "Mundaring",
+        "rate": 179
+      },
+      {
+        "state": "WA",
+        "region": "Swan",
+        "rate": 204
+      },
+      {
+        "state": "WA",
+        "region": "Joondalup",
+        "rate": 255
+      },
+      {
+        "state": "WA",
+        "region": "Stirling",
+        "rate": 202
+      },
+      {
+        "state": "WA",
+        "region": "Wanneroo",
+        "rate": 239
+      },
+      {
+        "state": "WA",
+        "region": "Armadale",
+        "rate": 220
+      },
+      {
+        "state": "WA",
+        "region": "Belmont - Victoria Park",
+        "rate": 213
+      },
+      {
+        "state": "WA",
+        "region": "Canning",
+        "rate": 190
+      },
+      {
+        "state": "WA",
+        "region": "Gosnells",
+        "rate": 184
+      },
+      {
+        "state": "WA",
+        "region": "Kalamunda",
+        "rate": 219
+      },
+      {
+        "state": "WA",
+        "region": "Serpentine - Jarrahdale",
+        "rate": 288
+      },
+      {
+        "state": "WA",
+        "region": "South Perth",
+        "rate": 237
+      },
+      {
+        "state": "WA",
+        "region": "Cockburn",
+        "rate": 227
+      },
+      {
+        "state": "WA",
+        "region": "Fremantle",
+        "rate": 245
+      },
+      {
+        "state": "WA",
+        "region": "Kwinana",
+        "rate": 233
+      },
+      {
+        "state": "WA",
+        "region": "Melville",
+        "rate": 247
+      },
+      {
+        "state": "WA",
+        "region": "Rockingham",
+        "rate": 335
+      },
+      {
+        "state": "WA",
+        "region": "Albany",
+        "rate": 219
+      },
+      {
+        "state": "WA",
+        "region": "Wheat Belt - North",
+        "rate": 216
+      },
+      {
+        "state": "WA",
+        "region": "Wheat Belt - South",
+        "rate": 339
+      },
+      {
+        "state": "WA",
+        "region": "Kimberley",
+        "rate": 156
+      },
+      {
+        "state": "WA",
+        "region": "Gascoyne",
+        "rate": 300
+      },
+      {
+        "state": "WA",
+        "region": "Goldfields",
+        "rate": 155
+      },
+      {
+        "state": "WA",
+        "region": "Mid West",
+        "rate": 145
+      },
+      {
+        "state": "Tas",
+        "region": "Brighton",
+        "rate": 348
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - North East",
+        "rate": 280
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - North West",
+        "rate": 317
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart - South and West",
+        "rate": 300
+      },
+      {
+        "state": "Tas",
+        "region": "Hobart Inner",
+        "rate": 258
+      },
+      {
+        "state": "Tas",
+        "region": "Sorell - Dodges Ferry",
+        "rate": 368
+      },
+      {
+        "state": "Tas",
+        "region": "Launceston",
+        "rate": 246
+      },
+      {
+        "state": "Tas",
+        "region": "Meander Valley - West Tamar",
+        "rate": 381
+      },
+      {
+        "state": "Tas",
+        "region": "North East",
+        "rate": 204
+      },
+      {
+        "state": "Tas",
+        "region": "Central Highlands (Tas.)",
+        "rate": 387
+      },
+      {
+        "state": "Tas",
+        "region": "Huon - Bruny Island",
+        "rate": 348
+      },
+      {
+        "state": "Tas",
+        "region": "South East Coast",
+        "rate": 496
+      },
+      {
+        "state": "Tas",
+        "region": "Burnie - Ulverstone",
+        "rate": 203
+      },
+      {
+        "state": "Tas",
+        "region": "Devonport",
+        "rate": 249
+      },
+      {
+        "state": "Tas",
+        "region": "West Coast",
+        "rate": 307
+      },
+      {
+        "state": "NT",
+        "region": "Darwin City",
+        "rate": 114
+      },
+      {
+        "state": "NT",
+        "region": "Darwin Suburbs",
+        "rate": 150
+      },
+      {
+        "state": "NT",
+        "region": "Litchfield",
+        "rate": 272
+      },
+      {
+        "state": "NT",
+        "region": "Palmerston",
+        "rate": 261
+      },
+      {
+        "state": "NT",
+        "region": "Alice Springs",
+        "rate": 117
+      },
+      {
+        "state": "ACT",
+        "region": "Belconnen",
+        "rate": 175
+      },
+      {
+        "state": "ACT",
+        "region": "Gungahlin",
+        "rate": 173
+      },
+      {
+        "state": "ACT",
+        "region": "North Canberra",
+        "rate": 166
+      },
+      {
+        "state": "ACT",
+        "region": "South Canberra",
+        "rate": 152
+      },
+      {
+        "state": "ACT",
+        "region": "Tuggeranong",
+        "rate": 270
+      },
+      {
+        "state": "ACT",
+        "region": "Weston Creek",
+        "rate": 221
+      }
+    ]
+  },
+  "facet": {
+    "row": {
+      "field": "state",
+      "type": "nominal",
+      "sort": [
+        "NSW",
+        "Vic",
+        "Qld",
+        "SA",
+        "WA",
+        "Tas",
+        "NT",
+        "ACT"
+      ],
+      "header": {
+        "title": null,
+        "labels": false
+      }
+    }
+  },
+  "spacing": 0,
+  "spec": {
+    "width": 440,
+    "height": 40,
+    "layer": [
+      {
+        "transform": [
+          {
+            "density": "rate",
+            "groupby": [
+              "state"
+            ],
+            "extent": [
+              60,
+              560
+            ],
+            "bandwidth": 30,
+            "steps": 90
+          }
+        ],
+        "mark": {
+          "type": "area",
+          "opacity": 0.85,
+          "stroke": "#ffffff",
+          "strokeWidth": 1,
+          "interpolate": "monotone"
+        },
+        "encoding": {
+          "x": {
+            "field": "value",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                60,
+                560
+              ],
+              "nice": false
+            },
+            "axis": {
+              "title": "Hospitalisations per 100,000 women",
+              "values": [
+                100,
+                200,
+                300,
+                400,
+                500
+              ],
+              "grid": false
+            }
+          },
+          "y": {
+            "field": "density",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                0.0075
+              ]
+            },
+            "axis": null
+          },
+          "color": {
+            "condition": {
+              "test": "datum.state === 'Vic'",
+              "value": "#d88700"
+            },
+            "value": "#2f8a93"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "count",
+                "as": "n"
+              }
+            ],
+            "groupby": [
+              "state"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "baseline": "bottom",
+          "align": "right",
+          "dx": -8,
+          "dy": -1,
+          "color": "#18313b"
+        },
+        "encoding": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 40
+          },
+          "text": {
+            "field": "state",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "min",
+                "field": "rate",
+                "as": "low"
+              }
+            ],
+            "groupby": [
+              "state"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 10,
+          "baseline": "bottom",
+          "align": "right",
+          "dx": -3,
+          "dy": -1,
+          "color": "#18313b"
+        },
+        "encoding": {
+          "y": {
+            "value": 40
+          },
+          "x": {
+            "field": "low",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "low",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "max",
+                "field": "rate",
+                "as": "high"
+              }
+            ],
+            "groupby": [
+              "state"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 10,
+          "baseline": "bottom",
+          "align": "left",
+          "dx": 3,
+          "dy": -1,
+          "color": "#18313b"
+        },
+        "encoding": {
+          "y": {
+            "value": 40
+          },
+          "x": {
+            "field": "high",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "high",
+            "type": "quantitative"
+          }
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "y": "shared"
+    }
+  }
+}

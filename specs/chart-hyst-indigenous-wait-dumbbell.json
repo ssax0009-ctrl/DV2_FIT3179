@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": null,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "axis": {
+      "labelColor": "#18313b",
+      "titleColor": "#536b73",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "#b9c5ca",
+      "tickColor": "#b9c5ca",
+      "gridColor": "#e6ecea"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelColor": "#18313b",
+      "titleColor": "#536b73"
+    }
+  },
+  "description": "Dumbbell chart comparing hysterectomy waits for First Nations and other Australians, 2024-25: median days waited and percent waiting over 365 days.",
+  "data": {
+    "values": [
+      {
+        "measure": "Median days waited",
+        "group": "First Nations",
+        "value": 96
+      },
+      {
+        "measure": "Median days waited",
+        "group": "Other Australians",
+        "value": 72
+      },
+      {
+        "measure": "Waited over 365 days (%)",
+        "group": "First Nations",
+        "value": 10.7
+      },
+      {
+        "measure": "Waited over 365 days (%)",
+        "group": "Other Australians",
+        "value": 7.2
+      }
+    ]
+  },
+  "facet": {
+    "row": {
+      "field": "measure",
+      "type": "nominal",
+      "sort": [
+        "Median days waited",
+        "Waited over 365 days (%)"
+      ],
+      "header": {
+        "title": null,
+        "labelOrient": "top",
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelColor": "#18313b",
+        "labelPadding": 10
+      }
+    }
+  },
+  "padding": {
+    "left": 8,
+    "right": 28,
+    "top": 4,
+    "bottom": 4
+  },
+  "spec": {
+    "width": 440,
+    "height": 60,
+    "layer": [
+      {
+        "transform": [
+          {
+            "pivot": "group",
+            "value": "value",
+            "groupby": [
+              "measure"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "strokeWidth": 3,
+          "color": "#b9c5ca"
+        },
+        "encoding": {
+          "x": {
+            "field": "First Nations",
+            "type": "quantitative",
+            "scale": {
+              "domainMin": 0
+            },
+            "axis": {
+              "title": null,
+              "grid": true
+            }
+          },
+          "x2": {
+            "field": "Other Australians"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 170,
+          "opacity": 1
+        },
+        "encoding": {
+          "x": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "group",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "First Nations",
+                "Other Australians"
+              ],
+              "range": [
+                "#d88700",
+                "#2f8a93"
+              ]
+            },
+            "legend": {
+              "title": null,
+              "orient": "bottom"
+            }
+          },
+          "tooltip": [
+            {
+              "field": "group",
+              "title": "Group"
+            },
+            {
+              "field": "value",
+              "title": "Value"
+            }
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "dy": -16,
+          "fontSize": 12,
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "color": {
+            "condition": {
+              "test": "datum.group === 'First Nations'",
+              "value": "#b06c00"
+            },
+            "value": "#1f6a72"
+          }
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "x": "independent"
+    }
+  }
+}

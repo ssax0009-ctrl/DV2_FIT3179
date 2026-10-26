@@ -157,7 +157,7 @@ main {
   margin-bottom: 0.3rem;
   color: var(--teal);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
   font-weight: 500;
   line-height: 1.1;
 }
@@ -888,4 +888,55 @@ footer a {
     order: 1;
     width: 100%;
   }
+}
+
+/* ---------- Hero question and answer ---------- */
+.masthead-question {
+  max-width: 62ch;
+  margin: 0.4rem 0 1rem;
+  color: #eaf2ef;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.45;
+}
+
+.masthead-answer {
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid #a9d2c9;
+  color: #a9d2c9;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ---------- Chart tags and captions ---------- */
+.chart-tag {
+  display: inline-block;
+  margin: 0 0 0.35rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.chart-tag--access {
+  color: #7a4b00;
+  background: #fbebd0;
+}
+
+.chart-tag--activity {
+  color: #0b5c63;
+  background: #dcefee;
+}
+
+.chart-caption {
+  margin: 0.3rem 0 0;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.4;
 }

@@ -1,0 +1,251 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 460,
+  "height": 460,
+  "background": null,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "axis": {
+      "labelColor": "#18313b",
+      "titleColor": "#536b73",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "#b9c5ca",
+      "tickColor": "#b9c5ca",
+      "gridColor": "#e6ecea"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelColor": "#18313b",
+      "titleColor": "#536b73"
+    }
+  },
+  "description": "Radial chart of age-standardised hysterectomy rates by remoteness and SES group, 2021-22. Radius encodes the rate; colour identifies remoteness.",
+  "data": {
+    "values": [
+      {
+        "remoteness": "Major cities",
+        "ses": 1,
+        "rate": 210,
+        "order": 0,
+        "label": "SES 1 · 210"
+      },
+      {
+        "remoteness": "Major cities",
+        "ses": 2,
+        "rate": 226,
+        "order": 1,
+        "label": "SES 2 · 226"
+      },
+      {
+        "remoteness": "Major cities",
+        "ses": 3,
+        "rate": 241,
+        "order": 2,
+        "label": "SES 3 · 241"
+      },
+      {
+        "remoteness": "Major cities",
+        "ses": 4,
+        "rate": 236,
+        "order": 3,
+        "label": "SES 4 · 236"
+      },
+      {
+        "remoteness": "Major cities",
+        "ses": 5,
+        "rate": 195,
+        "order": 4,
+        "label": "SES 5 · 195"
+      },
+      {
+        "remoteness": "Inner regional",
+        "ses": 1,
+        "rate": 294,
+        "order": 5,
+        "label": "SES 1 · 294"
+      },
+      {
+        "remoteness": "Inner regional",
+        "ses": 2,
+        "rate": 298,
+        "order": 6,
+        "label": "SES 2 · 298"
+      },
+      {
+        "remoteness": "Inner regional",
+        "ses": 3,
+        "rate": 281,
+        "order": 7,
+        "label": "SES 3 · 281"
+      },
+      {
+        "remoteness": "Inner regional",
+        "ses": 4,
+        "rate": 279,
+        "order": 8,
+        "label": "SES 4 · 279"
+      },
+      {
+        "remoteness": "Outer regional",
+        "ses": 1,
+        "rate": 240,
+        "order": 9,
+        "label": "SES 1 · 240"
+      },
+      {
+        "remoteness": "Outer regional",
+        "ses": 2,
+        "rate": 288,
+        "order": 10,
+        "label": "SES 2 · 288"
+      },
+      {
+        "remoteness": "Outer regional",
+        "ses": 3,
+        "rate": 201,
+        "order": 11,
+        "label": "SES 3 · 201"
+      },
+      {
+        "remoteness": "Remote",
+        "ses": 1,
+        "rate": 164,
+        "order": 12,
+        "label": "SES 1 · 164"
+      },
+      {
+        "remoteness": "Remote",
+        "ses": 2,
+        "rate": 247,
+        "order": 13,
+        "label": "SES 2 · 247"
+      }
+    ]
+  },
+  "encoding": {
+    "radius": {
+      "field": "rate",
+      "type": "quantitative",
+      "scale": {
+        "type": "sqrt",
+        "zero": true,
+        "range": [
+          20,
+          175
+        ]
+      }
+    },
+    "color": {
+      "field": "remoteness",
+      "type": "nominal",
+      "sort": [
+        "Major cities",
+        "Inner regional",
+        "Outer regional",
+        "Remote"
+      ],
+      "scale": {
+        "domain": [
+          "Major cities",
+          "Inner regional",
+          "Outer regional",
+          "Remote"
+        ],
+        "range": [
+          "#4477aa",
+          "#228833",
+          "#cc9b00",
+          "#aa3377"
+        ]
+      },
+      "legend": {
+        "title": "Remoteness",
+        "orient": "bottom",
+        "columns": 4
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.order + 1",
+      "as": "end"
+    },
+    {
+      "calculate": "datum.order + 0.5",
+      "as": "mid"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5,
+        "innerRadius": 20
+      },
+      "encoding": {
+        "theta": {
+          "field": "order",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              14
+            ],
+            "zero": false
+          }
+        },
+        "theta2": {
+          "field": "end"
+        },
+        "tooltip": [
+          {
+            "field": "remoteness",
+            "title": "Remoteness"
+          },
+          {
+            "field": "ses",
+            "title": "SES group"
+          },
+          {
+            "field": "rate",
+            "title": "Rate per 100,000 women"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radiusOffset": 24,
+        "fontSize": 10,
+        "color": "#18313b"
+      },
+      "encoding": {
+        "theta": {
+          "field": "mid",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              14
+            ],
+            "zero": false
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "#18313b"
+        }
+      }
+    }
+  ]
+}

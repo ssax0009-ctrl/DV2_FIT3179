@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": null,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "axis": {
+      "labelColor": "#18313b",
+      "titleColor": "#536b73",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "#b9c5ca",
+      "tickColor": "#b9c5ca",
+      "gridColor": "#e6ecea"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelColor": "#18313b",
+      "titleColor": "#536b73"
+    }
+  },
+  "description": "Waffle charts, one per state or territory: 100 squares, with the private-patient share of hysterectomy hospitalisations filled, 2021-22.",
+  "data": {
+    "values": [
+      {
+        "state": "NSW",
+        "order": 0,
+        "private_pct": 64
+      },
+      {
+        "state": "Vic",
+        "order": 1,
+        "private_pct": 59
+      },
+      {
+        "state": "Qld",
+        "order": 2,
+        "private_pct": 61
+      },
+      {
+        "state": "SA",
+        "order": 3,
+        "private_pct": 63
+      },
+      {
+        "state": "WA",
+        "order": 4,
+        "private_pct": 71
+      },
+      {
+        "state": "Tas",
+        "order": 5,
+        "private_pct": 63
+      },
+      {
+        "state": "NT",
+        "order": 6,
+        "private_pct": 53
+      },
+      {
+        "state": "ACT",
+        "order": 7,
+        "private_pct": 60
+      }
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "sequence(100)",
+      "as": "cell"
+    },
+    {
+      "flatten": [
+        "cell"
+      ]
+    },
+    {
+      "calculate": "datum.cell % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor(datum.cell / 10)",
+      "as": "row"
+    },
+    {
+      "calculate": "datum.cell < datum.private_pct ? 'Private patients' : 'Public and other'",
+      "as": "sector"
+    },
+    {
+      "calculate": "datum.state + ' · ' + datum.private_pct + '% private'",
+      "as": "label"
+    }
+  ],
+  "facet": {
+    "field": "label",
+    "type": "nominal",
+    "sort": {
+      "field": "order",
+      "op": "min"
+    },
+    "header": {
+      "title": null,
+      "labelFontSize": 12,
+      "labelFontWeight": "bold",
+      "labelColor": "#18313b",
+      "labelPadding": 4
+    }
+  },
+  "columns": 4,
+  "spacing": {
+    "row": 14,
+    "column": 10
+  },
+  "spec": {
+    "width": 96,
+    "height": 96,
+    "mark": {
+      "type": "rect",
+      "stroke": "#ffffff",
+      "strokeWidth": 1
+    },
+    "encoding": {
+      "x": {
+        "field": "col",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "sort": "descending",
+        "axis": null
+      },
+      "color": {
+        "field": "sector",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Private patients",
+            "Public and other"
+          ],
+          "range": [
+            "#2f8a93",
+            "#dfe7e5"
+          ]
+        },
+        "legend": {
+          "title": null,
+          "orient": "bottom",
+          "symbolType": "square"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "state",
+          "title": "State"
+        },
+        {
+          "field": "private_pct",
+          "title": "Private share (%)"
+        }
+      ]
+    }
+  }
+}

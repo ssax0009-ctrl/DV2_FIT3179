@@ -1,0 +1,775 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 420,
+  "height": 420,
+  "background": null,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "axis": {
+      "labelColor": "#18313b",
+      "titleColor": "#536b73",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "#b9c5ca",
+      "tickColor": "#b9c5ca",
+      "gridColor": "#e6ecea"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "labelColor": "#18313b",
+      "titleColor": "#536b73"
+    }
+  },
+  "description": "Tile-grid map of the eight states and territories. Tile fill is the 2021-22 age-standardised hysterectomy rate; each tile holds a 2014-15 to 2021-22 trend line.",
+  "datasets": {
+    "tiles": [
+      {
+        "state": "NT",
+        "col": 1,
+        "row": 0,
+        "rate2021_22": 163
+      },
+      {
+        "state": "Qld",
+        "col": 2,
+        "row": 0,
+        "rate2021_22": 286
+      },
+      {
+        "state": "WA",
+        "col": 0,
+        "row": 1,
+        "rate2021_22": 236
+      },
+      {
+        "state": "SA",
+        "col": 1,
+        "row": 1,
+        "rate2021_22": 236
+      },
+      {
+        "state": "NSW",
+        "col": 2,
+        "row": 1,
+        "rate2021_22": 217
+      },
+      {
+        "state": "ACT",
+        "col": 3,
+        "row": 1,
+        "rate2021_22": 192
+      },
+      {
+        "state": "Vic",
+        "col": 2,
+        "row": 2,
+        "rate2021_22": 204
+      },
+      {
+        "state": "Tas",
+        "col": 2,
+        "row": 3,
+        "rate2021_22": 279
+      }
+    ],
+    "series": [
+      {
+        "state": "NSW",
+        "year": "2014–15",
+        "rate": 264
+      },
+      {
+        "state": "Vic",
+        "year": "2014–15",
+        "rate": 279
+      },
+      {
+        "state": "Qld",
+        "year": "2014–15",
+        "rate": 326
+      },
+      {
+        "state": "SA",
+        "year": "2014–15",
+        "rate": 320
+      },
+      {
+        "state": "WA",
+        "year": "2014–15",
+        "rate": 312
+      },
+      {
+        "state": "Tas",
+        "year": "2014–15",
+        "rate": 321
+      },
+      {
+        "state": "NT",
+        "year": "2014–15",
+        "rate": 237
+      },
+      {
+        "state": "ACT",
+        "year": "2014–15",
+        "rate": 223
+      },
+      {
+        "state": "NSW",
+        "year": "2015–16",
+        "rate": 260
+      },
+      {
+        "state": "Vic",
+        "year": "2015–16",
+        "rate": 277
+      },
+      {
+        "state": "Qld",
+        "year": "2015–16",
+        "rate": 324
+      },
+      {
+        "state": "SA",
+        "year": "2015–16",
+        "rate": 301
+      },
+      {
+        "state": "WA",
+        "year": "2015–16",
+        "rate": 328
+      },
+      {
+        "state": "Tas",
+        "year": "2015–16",
+        "rate": 383
+      },
+      {
+        "state": "NT",
+        "year": "2015–16",
+        "rate": 240
+      },
+      {
+        "state": "ACT",
+        "year": "2015–16",
+        "rate": 222
+      },
+      {
+        "state": "NSW",
+        "year": "2016–17",
+        "rate": 254
+      },
+      {
+        "state": "Vic",
+        "year": "2016–17",
+        "rate": 266
+      },
+      {
+        "state": "Qld",
+        "year": "2016–17",
+        "rate": 308
+      },
+      {
+        "state": "SA",
+        "year": "2016–17",
+        "rate": 281
+      },
+      {
+        "state": "WA",
+        "year": "2016–17",
+        "rate": 337
+      },
+      {
+        "state": "Tas",
+        "year": "2016–17",
+        "rate": 420
+      },
+      {
+        "state": "NT",
+        "year": "2016–17",
+        "rate": 200
+      },
+      {
+        "state": "ACT",
+        "year": "2016–17",
+        "rate": 248
+      },
+      {
+        "state": "NSW",
+        "year": "2017–18",
+        "rate": 247
+      },
+      {
+        "state": "Vic",
+        "year": "2017–18",
+        "rate": 252
+      },
+      {
+        "state": "Qld",
+        "year": "2017–18",
+        "rate": 301
+      },
+      {
+        "state": "SA",
+        "year": "2017–18",
+        "rate": 266
+      },
+      {
+        "state": "WA",
+        "year": "2017–18",
+        "rate": 316
+      },
+      {
+        "state": "Tas",
+        "year": "2017–18",
+        "rate": 309
+      },
+      {
+        "state": "NT",
+        "year": "2017–18",
+        "rate": 185
+      },
+      {
+        "state": "ACT",
+        "year": "2017–18",
+        "rate": 208
+      },
+      {
+        "state": "NSW",
+        "year": "2018–19",
+        "rate": 236
+      },
+      {
+        "state": "Vic",
+        "year": "2018–19",
+        "rate": 237
+      },
+      {
+        "state": "Qld",
+        "year": "2018–19",
+        "rate": 302
+      },
+      {
+        "state": "SA",
+        "year": "2018–19",
+        "rate": 258
+      },
+      {
+        "state": "WA",
+        "year": "2018–19",
+        "rate": 288
+      },
+      {
+        "state": "Tas",
+        "year": "2018–19",
+        "rate": 303
+      },
+      {
+        "state": "NT",
+        "year": "2018–19",
+        "rate": 207
+      },
+      {
+        "state": "ACT",
+        "year": "2018–19",
+        "rate": 172
+      },
+      {
+        "state": "NSW",
+        "year": "2019–20",
+        "rate": 208
+      },
+      {
+        "state": "Vic",
+        "year": "2019–20",
+        "rate": 209
+      },
+      {
+        "state": "Qld",
+        "year": "2019–20",
+        "rate": 285
+      },
+      {
+        "state": "SA",
+        "year": "2019–20",
+        "rate": 254
+      },
+      {
+        "state": "WA",
+        "year": "2019–20",
+        "rate": 240
+      },
+      {
+        "state": "Tas",
+        "year": "2019–20",
+        "rate": 245
+      },
+      {
+        "state": "NT",
+        "year": "2019–20",
+        "rate": 198
+      },
+      {
+        "state": "ACT",
+        "year": "2019–20",
+        "rate": 209
+      },
+      {
+        "state": "NSW",
+        "year": "2020–21",
+        "rate": 261
+      },
+      {
+        "state": "Vic",
+        "year": "2020–21",
+        "rate": 221
+      },
+      {
+        "state": "Qld",
+        "year": "2020–21",
+        "rate": 330
+      },
+      {
+        "state": "SA",
+        "year": "2020–21",
+        "rate": 246
+      },
+      {
+        "state": "WA",
+        "year": "2020–21",
+        "rate": 286
+      },
+      {
+        "state": "Tas",
+        "year": "2020–21",
+        "rate": 290
+      },
+      {
+        "state": "NT",
+        "year": "2020–21",
+        "rate": 215
+      },
+      {
+        "state": "ACT",
+        "year": "2020–21",
+        "rate": 274
+      },
+      {
+        "state": "NSW",
+        "year": "2021–22",
+        "rate": 217
+      },
+      {
+        "state": "Vic",
+        "year": "2021–22",
+        "rate": 204
+      },
+      {
+        "state": "Qld",
+        "year": "2021–22",
+        "rate": 286
+      },
+      {
+        "state": "SA",
+        "year": "2021–22",
+        "rate": 236
+      },
+      {
+        "state": "WA",
+        "year": "2021–22",
+        "rate": 236
+      },
+      {
+        "state": "Tas",
+        "year": "2021–22",
+        "rate": 279
+      },
+      {
+        "state": "NT",
+        "year": "2021–22",
+        "rate": 163
+      },
+      {
+        "state": "ACT",
+        "year": "2021–22",
+        "rate": 192
+      }
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "name": "tiles"
+      },
+      "transform": [
+        {
+          "calculate": "datum.col * 105",
+          "as": "x0"
+        },
+        {
+          "calculate": "datum.row * 105",
+          "as": "y0"
+        },
+        {
+          "calculate": "datum.x0 + 99",
+          "as": "x1"
+        },
+        {
+          "calculate": "datum.y0 + 99",
+          "as": "y1"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 4,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "rate2021_22",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              160,
+              290
+            ],
+            "range": [
+              "#e4f0ef",
+              "#7fb8bd"
+            ]
+          },
+          "legend": {
+            "title": "2021–22 rate",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 160,
+            "values": [
+              160,
+              200,
+              240,
+              280
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "rate2021_22",
+            "title": "2021–22 rate per 100,000"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "name": "series"
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "name": "tiles"
+            },
+            "key": "state",
+            "fields": [
+              "col",
+              "row"
+            ]
+          }
+        },
+        {
+          "calculate": "indexof([\"2014–15\", \"2015–16\", \"2016–17\", \"2017–18\", \"2018–19\", \"2019–20\", \"2020–21\", \"2021–22\"], datum.year)",
+          "as": "i"
+        },
+        {
+          "calculate": "datum.col * 105 + 10 + datum.i * (79 / 7)",
+          "as": "tx"
+        },
+        {
+          "calculate": "datum.row * 105 + 90 - (datum.rate - 150) / 280 * 46",
+          "as": "ty"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#18313b",
+        "strokeWidth": 1.6,
+        "interpolate": "linear"
+      },
+      "encoding": {
+        "x": {
+          "field": "tx",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "ty",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          }
+        },
+        "detail": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "order": {
+          "field": "i",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "name": "series"
+      },
+      "transform": [
+        {
+          "filter": "datum.year === '2021–22'"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "name": "tiles"
+            },
+            "key": "state",
+            "fields": [
+              "col",
+              "row"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.col * 105 + 89",
+          "as": "tx"
+        },
+        {
+          "calculate": "datum.row * 105 + 90 - (datum.rate - 150) / 280 * 46",
+          "as": "ty"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 28,
+        "color": "#d88700"
+      },
+      "encoding": {
+        "x": {
+          "field": "tx",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "ty",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "name": "tiles"
+      },
+      "transform": [
+        {
+          "calculate": "datum.col * 105 + 8",
+          "as": "tx"
+        },
+        {
+          "calculate": "datum.row * 105 + 17",
+          "as": "ty"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontWeight": "bold",
+        "fontSize": 13,
+        "color": "#18313b"
+      },
+      "encoding": {
+        "x": {
+          "field": "tx",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "ty",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "state"
+        }
+      }
+    },
+    {
+      "data": {
+        "name": "tiles"
+      },
+      "transform": [
+        {
+          "calculate": "datum.col * 105 + 91",
+          "as": "tx"
+        },
+        {
+          "calculate": "datum.row * 105 + 17",
+          "as": "ty"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 12,
+        "color": "#18313b"
+      },
+      "encoding": {
+        "x": {
+          "field": "tx",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "ty",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "rate2021_22"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 8,
+            "y": 320
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 10.5,
+        "color": "#536b73",
+        "text": [
+          "Line: 2014–15 to 2021–22",
+          "Dot and fill: 2021–22 rate",
+          "(per 100,000 women)"
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              420,
+              0
+            ],
+            "nice": false
+          }
+        }
+      }
+    }
+  ]
+}

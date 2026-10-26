@@ -13,7 +13,8 @@ const C = {
   waitingMap: {
     spec: "specs/map-hyst-waiting-times-lhn.json",
     renderer: "lhnWaitingMap",
-    title: "Longest hysterectomy waits cluster in NSW and Queensland networks",
+    title: "Longest hysterectomy waits cluster in NSW and Queensland networks · 2024–25",
+    tag: "access",
     idiom: "Choropleth + proportional symbols",
     axisTitles: {},
     caveat: "48 of 71 LHNs published; state values unpublished for ACT and NT",
@@ -22,6 +23,7 @@ const C = {
   volumeMap: {
     spec: "specs/map-hyst-volume.json",
     title: "Recorded hysterectomy hospitalisations by state · 2021–22",
+    tag: "activity",
     idiom: "Proportional-symbol map",
     axisTitles: {},
     caveat: "Counts reflect population size as well as hospitalisation frequency.",
@@ -31,23 +33,26 @@ const C = {
     spec: "specs/chart-sa3-strip.json",
     renderer: "dotmap",
     cardClass: "chart-card--dotmap",
-    title: "Where SA3 areas with published rates are located",
+    title: "Where SA3 areas with published rates are located · 2021–22",
+    tag: "activity",
     idiom: "Dot map",
     axisTitles: {},
     caveat: "316 rates shown; 24 are suppressed and state totals range from 5 to 87. Locations are schematic.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
-  strip: {
-    spec: "specs/chart-sa3-strip.json",
-    title: "SA3 hysterectomy rates by state and remoteness",
-    idiom: "Regional strip plot",
-    axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
-    caveat: "Small SA3 populations can make rates fragile; suppressed rates are omitted.",
+  ridgeline: {
+    spec: "specs/chart-sa3-ridgeline.json",
+    title: "SA3 hysterectomy rates by state · 2021–22",
+    tag: "activity",
+    idiom: "Ridgeline plot",
+    axisTitles: { x: "Hospitalisations per 100,000 women" },
+    caveat: "Each ridge smooths the SA3 rates in one state; numbers mark its lowest and highest area. Suppressed rates are omitted, and the ACT and NT curves rest on only 5 to 6 areas.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   range: {
     spec: "specs/chart-sa3-range.json",
     title: "SA3 rate ranges by state · 2021–22",
+    tag: "activity",
     idiom: "Interval plot",
     axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
     caveat: "24 SA3 values are suppressed; statewide counts of valid SA3s range from 5 to 87.",
@@ -56,22 +61,26 @@ const C = {
   slope: {
     spec: "specs/chart-hyst-slopegraph.json",
     title: "Hospitalisation rates by state in 2014–15 and 2021–22",
+    tag: "activity",
     idiom: "Slopegraph",
     axisTitles: { x: "Financial year", y: "Hospitalisations per 100,000 women" },
     caveat: "Age-standardised rates; SA and WA finish at the same rate.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 and 2021–22."
   },
-  bump: {
-    spec: "specs/chart-hyst-bump.json",
-    title: "Annual state rate rankings · 2014–15 to 2021–22",
-    idiom: "Bump chart",
-    axisTitles: { x: "Financial year", y: "State rank (1 = highest)" },
-    caveat: "Ranks compare state age-standardised rates in each year.",
+  tileGrid: {
+    spec: "specs/chart-hyst-tilegrid.json",
+    title: "Hysterectomy rates by state, tile-grid map · 2014–15 to 2021–22",
+    tag: "activity",
+    idiom: "Tile-grid map",
+    axisTitles: {},
+    caption: "Tiles are not to scale; positions are approximate.",
+    caveat: "Fill shows each state’s 2021–22 age-standardised rate per 100,000 women; each line runs from 2014–15 to 2021–22.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 to 2021–22."
   },
   heatmap: {
     spec: "specs/chart-hyst-heatmap.json",
-    title: "Annual age-standardised hysterectomy rates by state",
+    title: "Annual age-standardised hysterectomy rates by state · 2014–15 to 2021–22",
+    tag: "activity",
     idiom: "Heatmap",
     axisTitles: { x: "Financial year", y: "State or territory" },
     caveat: "Changes around 2019–20 to 2021–22 overlap with COVID-era restrictions.",
@@ -80,32 +89,43 @@ const C = {
   indigenousDumbbell: {
     spec: "specs/chart-hyst-indigenous-dumbbell.json",
     title: "Hysterectomy rates by Indigenous status and state · 2021–22",
+    tag: "activity",
     idiom: "Dumbbell plot",
     axisTitles: { x: "Age-standardised rate per 100,000 women" },
     caveat: "Hospitalisation rates are not measures of prevalence or need; Tasmania and ACT are suppressed.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
+  indigenousWait: {
+    spec: "specs/chart-hyst-indigenous-wait-dumbbell.json",
+    title: "Hysterectomy waits by Indigenous status · 2024–25",
+    tag: "access",
+    idiom: "Dumbbell plot",
+    axisTitles: {},
+    caveat: "Median days waited and the percentage of patients waiting over 365 days, for First Nations and other Australian women.",
+    source: "Source: AIHW hysterectomy waiting-time data, 2024–25; figures supplied for this project."
+  },
   privateShare: {
-    spec: "specs/chart-hyst-private-lollipop.json",
-    title: "Private-patient share by state · 2021–22",
-    idiom: "Lollipop plot",
-    axisTitles: { x: "Private patients (% of hysterectomy hospitalisations)", y: "State or territory" },
-    caveat: "The reference line is the national 63% share.",
+    spec: "specs/chart-hyst-private-waffle.json",
+    title: "Private-patient share of hysterectomy hospitalisations by state · 2021–22",
+    tag: "activity",
+    idiom: "Waffle chart",
+    axisTitles: {},
+    caveat: "Each square is 1% of a state’s hysterectomy hospitalisations; nationally, 63% were private.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   remotenessSes: {
-    spec: "specs/chart-hyst-remoteness-ses-nightingale.json",
-    renderer: "nightingale",
-    cardClass: "chart-card--nightingale",
+    spec: "specs/chart-hyst-remoteness-ses-radial.json",
     title: "Hysterectomy rates by remoteness and SES group · 2021–22",
-    idiom: "Nightingale chart",
+    tag: "activity",
+    idiom: "Radial chart",
     axisTitles: {},
-    caveat: "Arc span shows the age-standardised rate per 100,000; radial height shows hospitalisations. Colour identifies remoteness; hover a slice for its SES group and values.",
+    caveat: "Radius shows the age-standardised rate per 100,000 women, scaled so that area follows the rate. Colour marks remoteness; each slice is one SES group. Outer regional and remote areas have suppressed SES groups.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   endoLine: {
     spec: "specs/chart-endo-rate-line.json",
     title: "Annual endometriosis admissions and crude rates · 2015–16 to 2024–25",
+    tag: "activity",
     idiom: "Line chart",
     axisTitles: { x: "Financial year", y: "Admissions per 100,000 population" },
     caveat: "Crude rates are not age-adjusted and are not a measure of disease prevalence.",
@@ -114,6 +134,7 @@ const C = {
   waterfall: {
     spec: "specs/chart-endo-waterfall.json",
     title: "Change in admissions by urgency, 2015–16 to 2024–25",
+    tag: "activity",
     idiom: "Waterfall",
     axisTitles: { x: "Urgency group", y: "Hospitalisations" },
     caveat: "The waterfall compares total admissions at the start and end of the series.",
@@ -122,26 +143,21 @@ const C = {
   parallel: {
     spec: "specs/chart-endo-parallel.json",
     title: "Selected procedure rates by age group, 2024–25",
+    tag: "activity",
     idiom: "Parallel-coordinates plot",
     axisTitles: { x: "Age group", y: "Hospitalisations per 100,000 women" },
     caveat: "Rates are for selected procedures in 2024–25, not unique people.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2024–25."
   },
-  scatter: {
-    spec: "specs/chart-endo-age-scatter.json",
-    title: "Rates at ages 25–34 compared with ages 35–44",
-    idiom: "Scatterplot",
-    axisTitles: { x: "Rate at age 25–34 (per 100,000)", y: "Rate at age 35–44 (per 100,000)" },
-    caveat: "Points above the diagonal have a higher rate at ages 35–44.",
-    source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2024–25."
-  },
   sankey: {
     spec: "data/endo-sankey.json",
     renderer: "sankey",
-    title: "Procedure counts by age, procedure group and hospital sector",
+    title: "Procedure counts by age, procedure group and hospital sector · 2024–25",
+    tag: "activity",
     idiom: "Sankey",
     axisTitles: {},
-    caveat: "Age and sector are separate totals; suppressed age counts are omitted.",
+    caption: "Age, procedure and sector are separate totals; ribbons are not individual paths.",
+    caveat: "Suppressed age counts are omitted.",
     source: "Source: AIHW PHE 357, Table 9, Endometriosis hospital procedures, 2015–16 to 2024–25."
   }
 };
@@ -150,7 +166,7 @@ const story = {
   themes: [
     {
       id: "place",
-      title: "Where you live shapes the care you receive",
+      title: "Does where you live matter?",
       thesis:
         "Hospitalisation rates, local variation and waiting times show different ways care varies across Australia.",
       groups: [
@@ -193,7 +209,7 @@ const story = {
               footnote:
                 "Some SA3 rates are suppressed.",
               layout: "pair",
-              charts: [C.strip, C.range]
+              charts: [C.ridgeline, C.range]
             },
             {
               heading: "Selected local rates vary widely",
@@ -241,55 +257,8 @@ const story = {
       ]
     },
     {
-      id: "time",
-      title: "The picture is not fixed over time",
-      thesis:
-        "Comparing years shows that a single snapshot can mislead.",
-      groups: [
-        {
-          label: "Change across the years",
-          findings: [
-            {
-              heading: "Rates fell, but by different amounts",
-              text: [
-                "Every state’s rate fell between 2014–15 and 2021–22,",
-                "so the dominant story is decline, not divergence. The size",
-                "of the fall differed. South Australia dropped most, from",
-                "320 to 236 (down 84), while the ACT fell least,",
-                "from 223 to 192 (down 31). Because states fell at",
-                "different speeds, their rankings shifted: Victoria slipped from fifth",
-                "to sixth, the top places swapped between Queensland and",
-                "Tasmania, and the ACT and Northern Territory traded the bottom",
-                "spots. A single year’s ranking, such as the 2021–22",
-                "maps, is only one snapshot of a changing picture."
-              ].join("\n"),
-              layout: "pair",
-              charts: [C.slope, C.bump]
-            },
-            {
-              heading: "Tasmania’s peak came early",
-              text: [
-                "Tasmania peaked at 420 hospitalisations per 100,000 women",
-                "in 2016–17, the darkest tile on the heatmap, then",
-                "fell to 279 by 2021–22. Queensland stays consistently dark",
-                "across the years, while the Northern Territory stays among",
-                "the palest, so state differences are persistent as well as",
-                "changing. Across most states the 2019–20 column is paler",
-                "and the 2020–21 column darker, a dip and rebound",
-                "that overlaps with COVID-era restrictions. The overlap in timing",
-                "does not show that restrictions caused the pattern. The",
-                "heatmap shows how state patterns vary over time, not",
-                "why they changed."
-              ].join("\n"),
-              charts: [C.heatmap]
-            }
-          ]
-        }
-      ]
-    },
-    {
       id: "who",
-      title: "Who receives care, and in which sector?",
+      title: "Does who you are matter?",
       thesis:
         "Hospital records can be split by Indigenous status and by public or private funding, but they don’t show need.",
       groups: [
@@ -312,7 +281,8 @@ const story = {
                 "need, and small counts mean state differences should be read",
                 "cautiously."
               ].join("\n"),
-              charts: [C.indigenousDumbbell]
+              layout: "pair",
+              charts: [C.indigenousDumbbell, C.indigenousWait]
             }
           ]
         },
@@ -342,8 +312,55 @@ const story = {
       ]
     },
     {
+      id: "time",
+      title: "Is it changing?",
+      thesis:
+        "Comparing years shows that a single snapshot can mislead.",
+      groups: [
+        {
+          label: "Change across the years",
+          findings: [
+            {
+              heading: "Rates fell, but by different amounts",
+              text: [
+                "Every state’s rate fell between 2014–15 and 2021–22,",
+                "so the dominant story is decline, not divergence. The size",
+                "of the fall differed. South Australia dropped most, from",
+                "320 to 236 (down 84), while the ACT fell least,",
+                "from 223 to 192 (down 31). Because states fell at",
+                "different speeds, their rankings shifted: Victoria slipped from fifth",
+                "to sixth, the top places swapped between Queensland and",
+                "Tasmania, and the ACT and Northern Territory traded the bottom",
+                "spots. A single year’s ranking, such as the 2021–22",
+                "maps, is only one snapshot of a changing picture."
+              ].join("\n"),
+              layout: "pair",
+              charts: [C.slope, C.tileGrid]
+            },
+            {
+              heading: "Tasmania’s peak came early",
+              text: [
+                "Tasmania peaked at 420 hospitalisations per 100,000 women",
+                "in 2016–17, the darkest tile on the heatmap, then",
+                "fell to 279 by 2021–22. Queensland stays consistently dark",
+                "across the years, while the Northern Territory stays among",
+                "the palest, so state differences are persistent as well as",
+                "changing. Across most states the 2019–20 column is paler",
+                "and the 2020–21 column darker, a dip and rebound",
+                "that overlaps with COVID-era restrictions. The overlap in timing",
+                "does not show that restrictions caused the pattern. The",
+                "heatmap shows how state patterns vary over time, not",
+                "why they changed."
+              ].join("\n"),
+              charts: [C.heatmap]
+            }
+          ]
+        }
+      ]
+    },
+    {
       id: "endometriosis",
-      title: "Endometriosis: how admissions grew and who they involve",
+      title: "What about endometriosis?",
       thesis:
         "Admissions rose over the decade, and procedures differ by age.",
       groups: [
@@ -387,8 +404,7 @@ const story = {
                 "performed, not counts of unique women, and they say",
                 "nothing about how many women need treatment."
               ].join("\n"),
-              layout: "pair",
-              charts: [C.parallel, C.scatter]
+              charts: [C.parallel]
             },
             {
               heading: "Laparoscopic procedures dominate; private counts exceed public",
@@ -410,6 +426,13 @@ const story = {
           ]
         }
       ]
+    },
+    {
+      id: "verdict",
+      title: "Verdict",
+      thesis:
+        "Not equally. Waits, rates and funding differ by place and by group, though hospital data shows what happened, not who missed out.",
+      groups: []
     }
   ]
 };
@@ -430,6 +453,7 @@ function createChartCard(item, container) {
 
   const card = el("figure", `chart-card${item.cardClass ? ` ${item.cardClass}` : ""}`);
   const heading = el("h4", "chart-title", item.title);
+  const tag = item.tag ? el("p", `chart-tag chart-tag--${item.tag}`, item.tag.toUpperCase()) : null;
 
   const view = el("div", "chart-view");
   view.id = `chart-view-${index}`;
@@ -439,7 +463,8 @@ function createChartCard(item, container) {
   const caveat = el("p", "chart-caveat", item.caveat || "Rates describe recorded hospitalisations, not all people living with the condition.");
   const source = el("p", "chart-source", item.source || "Source: AIHW supplied data tables.");
   const figureNumber = el("figcaption", "chart-figure-number", `Figure ${index + 1}`);
-  card.append(heading, view, caveat, source, figureNumber);
+  const caption = item.caption ? el("p", "chart-caption", item.caption) : null;
+  card.append(...[tag, heading, view, caption, caveat, source, figureNumber].filter(Boolean));
   container.append(card);
   return view;
 }
@@ -1184,208 +1209,6 @@ function renderTreemap(target, specification) {
   target.setAttribute("aria-label", "Hysterectomy rate treemap by remoteness and SES group");
 }
 
-function renderNightingale(target, specification) {
-  const hierarchy = specification.data?.find((dataset) => dataset.name === "tree")?.values;
-  if (!Array.isArray(hierarchy)) {
-    throw new Error("The remoteness Nightingale chart has no hierarchy data.");
-  }
-
-  const regions = hierarchy.filter((record) => record.id !== 0 && record.parent === 0);
-  const regionById = new Map(regions.map((region) => [region.id, region]));
-  const regionOrder = ["Major cities", "Inner regional", "Outer regional", "Remote"];
-  const palette = {
-    "Major cities": "#4477aa",
-    "Inner regional": "#228833",
-    "Outer regional": "#cc9b00",
-    Remote: "#aa3377"
-  };
-  const groups = regionOrder.map((name) => {
-    const region = regions.find((record) => record.name === name);
-    if (!region) {
-      throw new Error(`The remoteness Nightingale chart is missing ${name} data.`);
-    }
-    const slices = hierarchy
-      .filter((record) => record.parent === region.id)
-      .sort((left, right) => left.order - right.order);
-    if (slices.length === 0) {
-      throw new Error(`The remoteness Nightingale chart is missing SES groups for ${name}.`);
-    }
-    slices.forEach((slice) => {
-      if (!Number.isFinite(slice.rate) || slice.rate <= 0 ||
-          !Number.isFinite(slice.value) || slice.value <= 0) {
-        throw new Error(`The remoteness Nightingale chart has invalid data for ${name}, ${slice.name}.`);
-      }
-    });
-    return { ...region, slices };
-  });
-
-  const totalRate = groups.reduce(
-    (sum, group) => sum + group.slices.reduce((groupSum, slice) => groupSum + slice.rate, 0),
-    0
-  );
-  const maxHospitalisations = Math.max(...groups.flatMap((group) => group.slices.map((slice) => slice.value)));
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  const width = 900;
-  const height = 680;
-  const centerX = 330;
-  const centerY = 308;
-  const innerRadius = 42;
-  const maximumRadius = 420;
-  const radialHeight = maximumRadius - innerRadius;
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-  svg.setAttribute("role", "img");
-  svg.setAttribute(
-    "aria-label",
-    "Nightingale chart of hysterectomy rates and hospitalisations by remoteness and SES group"
-  );
-
-  function svgElement(name, attributes = {}) {
-    const element = document.createElementNS(svgNS, name);
-    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
-    return element;
-  }
-
-  function textNode(text, x, y, attributes = {}) {
-    const element = svgElement("text", { x, y, ...attributes });
-    element.textContent = text;
-    return element;
-  }
-
-  function point(angle, radius) {
-    return {
-      x: centerX + radius * Math.cos(angle),
-      y: centerY + radius * Math.sin(angle)
-    };
-  }
-
-  function sectorPath(startAngle, endAngle, outerRadius) {
-    const outerStart = point(startAngle, outerRadius);
-    const outerEnd = point(endAngle, outerRadius);
-    const innerEnd = point(endAngle, innerRadius);
-    const innerStart = point(startAngle, innerRadius);
-    const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
-    return [
-      `M ${outerStart.x} ${outerStart.y}`,
-      `A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y}`,
-      `L ${innerEnd.x} ${innerEnd.y}`,
-      `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y}`,
-      "Z"
-    ].join(" ");
-  }
-
-  let angle = -Math.PI / 2;
-  groups.forEach((group) => {
-    const groupStart = angle;
-    group.slices.forEach((slice) => {
-      const angleSpan = (slice.rate / totalRate) * Math.PI * 2;
-      const endAngle = angle + angleSpan;
-      const outerRadius = innerRadius + (slice.value / maxHospitalisations) * radialHeight;
-      const sector = svgElement("path", {
-        d: sectorPath(angle, endAngle, outerRadius),
-        fill: palette[group.name],
-        stroke: "#ffffff",
-        "stroke-width": 1.5,
-        class: "nightingale-sector"
-      });
-      const tooltip = svgElement("title");
-      tooltip.textContent = `${group.name}, ${slice.name}: ${slice.rate} per 100,000 women; ${slice.value.toLocaleString("en-AU")} hospitalisations`;
-      sector.append(tooltip);
-      svg.append(sector);
-
-      const middleAngle = (angle + endAngle) / 2;
-      const middleRadius = (innerRadius + outerRadius) / 2;
-      if (outerRadius - innerRadius >= 28 && middleRadius * angleSpan >= 34) {
-        const labelPoint = point(middleAngle, middleRadius);
-        svg.append(textNode(slice.name, labelPoint.x, labelPoint.y, {
-          class: "nightingale-slice-label"
-        }));
-      }
-      angle = endAngle;
-    });
-
-    const groupEnd = angle;
-    const middleAngle = (groupStart + groupEnd) / 2;
-    const groupMaximum = Math.max(...group.slices.map((slice) => slice.value));
-    const groupRadius = innerRadius + (groupMaximum / maxHospitalisations) * radialHeight;
-    const labelPoint = point(middleAngle, groupRadius + 14);
-    const labelPosition = group.name === "Remote"
-      ? { x: 345, y: 216 }
-      : group.name === "Outer regional"
-        ? { x: 193, y: 300 }
-        : labelPoint;
-    const needsLeftOffset = group.name === "Remote" || group.name === "Outer regional";
-    const textAnchor = needsLeftOffset
-      ? "end"
-      : Math.abs(labelPosition.x - centerX) < 8
-      ? "middle"
-      : labelPosition.x < centerX ? "start" : "end";
-    svg.append(textNode(`${group.name} · ${group.overall}`, labelPosition.x, labelPosition.y, {
-      class: "nightingale-region-label",
-      style: `fill: ${palette[group.name]}`,
-      "text-anchor": textAnchor
-    }));
-  });
-
-  const radialTicks = [1000, 2000, 3000, 4000];
-  radialTicks.forEach((value) => {
-    if (value >= maxHospitalisations) return;
-    const radius = innerRadius + (value / maxHospitalisations) * radialHeight;
-    svg.append(svgElement("circle", {
-      cx: centerX,
-      cy: centerY,
-      r: radius,
-      class: "nightingale-guide"
-    }));
-  });
-
-  svg.append(svgElement("circle", {
-    cx: centerX,
-    cy: centerY,
-    r: innerRadius,
-    fill: "#ffffff",
-    stroke: "#d7e0dd",
-    "stroke-width": 1
-  }));
-  svg.append(textNode("Hospitalisations", centerX, centerY - 3, {
-    class: "nightingale-center-label",
-    "text-anchor": "middle"
-  }));
-  svg.append(textNode(`0–${maxHospitalisations.toLocaleString("en-AU")}`, centerX, centerY + 13, {
-    class: "nightingale-center-value",
-    "text-anchor": "middle"
-  }));
-
-  const legendY = 640;
-  svg.append(textNode("Arc: rate per 100,000 · Radial height: hospitalisations", 18, legendY - 3, {
-    class: "nightingale-legend-label"
-  }));
-  const legendGroups = groups.map((group, index) => {
-    const x = 470 + index * 96;
-    svg.append(svgElement("rect", {
-      x,
-      y: legendY - 12,
-      width: 10,
-      height: 10,
-      fill: palette[group.name]
-    }));
-    svg.append(textNode(group.name, x + 15, legendY - 3, {
-      class: "nightingale-legend-label"
-    }));
-    return group.name;
-  });
-  if (legendGroups.length !== regionById.size) {
-    throw new Error("The remoteness Nightingale chart has unmatched remoteness groups.");
-  }
-
-  target.replaceChildren(svg);
-  target.setAttribute("role", "group");
-  target.setAttribute(
-    "aria-label",
-    "Hysterectomy rates and hospitalisations by remoteness and SES group"
-  );
-}
-
 function renderSankey(target, records) {
   const ageGroups = [
     { field: "under25", label: "Under 25" },
@@ -1461,6 +1284,10 @@ function renderSankey(target, records) {
 
   function draw() {
     const year = select.value;
+    const titleNode = target.closest("figure")?.querySelector(".chart-title");
+    if (titleNode) {
+      titleNode.textContent = `Procedure counts by age, procedure group and hospital sector · ${String(year).replace("-", "–")}`;
+    }
     const yearRows = records.filter((record) => record.year === year);
     const procedures = [...new Set(yearRows.map((row) => row.procedure))];
     const procedureColors = new Map(procedures.map((name, index) => [
@@ -1631,10 +1458,6 @@ async function renderChart(item, container) {
     applyAxisTitles(specification, item.axisTitles || {});
     if (item.renderer === "dotmap") {
       await renderDotMap(target, specification);
-      return;
-    }
-    if (item.renderer === "nightingale") {
-      renderNightingale(target, specification);
       return;
     }
     if (item.renderer === "sankey") {
