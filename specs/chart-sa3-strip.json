@@ -7,7 +7,7 @@
       "font": "Georgia, serif",
       "fontSize": 15,
       "fontWeight": 500,
-      "color": "#18313b",
+      "color": "#800f2f",
       "anchor": "start",
       "offset": 12
     },
@@ -22,7 +22,7 @@
       "labelLimit": 150
     },
     "legend": {
-      "labelColor": "#536b73",
+      "labelColor": "#600000",
       "titleColor": "#344f58",
       "labelFontSize": 10,
       "titleFontSize": 11
@@ -2289,7 +2289,7 @@
           "type": "nominal",
           "title": "Remoteness",
           "scale": {
-            "scheme": "tableau10"
+            "range": ["#800f2f", "#f94144", "#f3722c", "#f9c74f"]
           },
           "legend": {
             "orient": "bottom",

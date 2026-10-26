@@ -1,0 +1,782 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Two stacked parallel-coordinates style panels: each line joins Other Australians to First Nations people for one state. NT and Vic highlighted; other states grey; Australia labelled. All elective surgery, 2024-25 (AIHW Table 4.8).",
+  "padding": {
+    "left": 5,
+    "right": 10,
+    "top": 5,
+    "bottom": 5
+  },
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "resolve": {
+    "scale": {
+      "x": "independent",
+      "y": "independent",
+      "color": "shared"
+    },
+    "legend": {
+      "color": "shared"
+    }
+  },
+  "vconcat": [
+    {
+      "title": {
+        "text": "Median wait (days)",
+        "anchor": "start",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "offset": 10
+      },
+      "width": 380,
+      "height": 150,
+      "data": {
+        "values": [
+          {
+            "state": "NSW",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 69,
+            "xpos": 0
+          },
+          {
+            "state": "NSW",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 78,
+            "xpos": 1
+          },
+          {
+            "state": "WA",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 45,
+            "xpos": 0
+          },
+          {
+            "state": "WA",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 49,
+            "xpos": 1
+          },
+          {
+            "state": "SA",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 51,
+            "xpos": 0
+          },
+          {
+            "state": "SA",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 63,
+            "xpos": 1
+          },
+          {
+            "state": "ACT",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 53,
+            "xpos": 0
+          },
+          {
+            "state": "ACT",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 73,
+            "xpos": 1
+          },
+          {
+            "state": "Qld",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 41,
+            "xpos": 0
+          },
+          {
+            "state": "Qld",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 50,
+            "xpos": 1
+          },
+          {
+            "state": "Tas",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 49,
+            "xpos": 0
+          },
+          {
+            "state": "Tas",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 63,
+            "xpos": 1
+          },
+          {
+            "state": "NT",
+            "colourGroup": "NT",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 37,
+            "xpos": 0
+          },
+          {
+            "state": "NT",
+            "colourGroup": "NT",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 57,
+            "xpos": 1
+          },
+          {
+            "state": "Vic",
+            "colourGroup": "Vic",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 28,
+            "xpos": 0
+          },
+          {
+            "state": "Vic",
+            "colourGroup": "Vic",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 41,
+            "xpos": 1
+          },
+          {
+            "state": "Australia",
+            "colourGroup": "Australia",
+            "group": "Other Australians",
+            "measure": "Median wait (days)",
+            "value": 45,
+            "xpos": 0
+          },
+          {
+            "state": "Australia",
+            "colourGroup": "Australia",
+            "group": "First Nations people",
+            "measure": "Median wait (days)",
+            "value": 59,
+            "xpos": 1
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeCap": "round"
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "orient": "bottom",
+                "values": [
+                  0,
+                  1
+                ],
+                "labelAngle": 0,
+                "labelFontSize": 12,
+                "labelPadding": 6,
+                "domain": false,
+                "ticks": false,
+                "grid": true,
+                "gridColor": "#9aa7ad",
+                "labelExpr": "datum.value == 0 ? 'Other Australians' : 'First Nations'"
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  80
+                ],
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "grid": false,
+                "tickCount": 4
+              }
+            },
+            "detail": {
+              "field": "state",
+              "type": "nominal"
+            },
+            "color": {
+              "field": "colourGroup",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Other states",
+                  "NT",
+                  "Vic",
+                  "Australia"
+                ],
+                "range": [
+                  "#c5ced2",
+                  "#d62728",
+                  "#7570b3",
+                  "#18313b"
+                ]
+              },
+              "legend": {
+                "title": null,
+                "orient": "bottom",
+                "direction": "horizontal",
+                "values": [
+                  "NT",
+                  "Vic",
+                  "Other states"
+                ],
+                "symbolType": "stroke",
+                "symbolStrokeWidth": 3,
+                "symbolSize": 220,
+                "labelFontSize": 12,
+                "columns": 3,
+                "columnPadding": 16,
+                "offset": 16
+              }
+            },
+            "strokeWidth": {
+              "condition": [
+                {
+                  "test": "datum.colourGroup == 'Australia'",
+                  "value": 4
+                },
+                {
+                  "test": "datum.colourGroup == 'Other states'",
+                  "value": 1.6
+                }
+              ],
+              "value": 3
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 55
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  80
+                ],
+                "nice": false
+              }
+            },
+            "color": {
+              "field": "colourGroup",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Other states",
+                  "NT",
+                  "Vic",
+                  "Australia"
+                ],
+                "range": [
+                  "#c5ced2",
+                  "#d62728",
+                  "#7570b3",
+                  "#18313b"
+                ]
+              },
+              "legend": null
+            },
+            "tooltip": [
+              {
+                "field": "state",
+                "title": "State"
+              },
+              {
+                "field": "group",
+                "title": "Group"
+              },
+              {
+                "field": "measure",
+                "title": "Measure"
+              },
+              {
+                "field": "value",
+                "title": "Value"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.state == 'Australia' && datum.group == 'First Nations people'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 10,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#18313b"
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  80
+                ],
+                "nice": false
+              }
+            },
+            "text": {
+              "value": "Australia"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": "Waited over 365 days (%)",
+        "anchor": "start",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "offset": 10
+      },
+      "width": 380,
+      "height": 150,
+      "data": {
+        "values": [
+          {
+            "state": "NSW",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 9.1,
+            "xpos": 0
+          },
+          {
+            "state": "NSW",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 10.3,
+            "xpos": 1
+          },
+          {
+            "state": "WA",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 5.2,
+            "xpos": 0
+          },
+          {
+            "state": "WA",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 6.3,
+            "xpos": 1
+          },
+          {
+            "state": "SA",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 6.0,
+            "xpos": 0
+          },
+          {
+            "state": "SA",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 5.4,
+            "xpos": 1
+          },
+          {
+            "state": "ACT",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 9.4,
+            "xpos": 0
+          },
+          {
+            "state": "ACT",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 10.1,
+            "xpos": 1
+          },
+          {
+            "state": "Qld",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 3.4,
+            "xpos": 0
+          },
+          {
+            "state": "Qld",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 3.9,
+            "xpos": 1
+          },
+          {
+            "state": "Tas",
+            "colourGroup": "Other states",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 4.9,
+            "xpos": 0
+          },
+          {
+            "state": "Tas",
+            "colourGroup": "Other states",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 6.7,
+            "xpos": 1
+          },
+          {
+            "state": "NT",
+            "colourGroup": "NT",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 6.0,
+            "xpos": 0
+          },
+          {
+            "state": "NT",
+            "colourGroup": "NT",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 13.4,
+            "xpos": 1
+          },
+          {
+            "state": "Vic",
+            "colourGroup": "Vic",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 4.2,
+            "xpos": 0
+          },
+          {
+            "state": "Vic",
+            "colourGroup": "Vic",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 6.8,
+            "xpos": 1
+          },
+          {
+            "state": "Australia",
+            "colourGroup": "Australia",
+            "group": "Other Australians",
+            "measure": "Waited over 365 days (%)",
+            "value": 5.9,
+            "xpos": 0
+          },
+          {
+            "state": "Australia",
+            "colourGroup": "Australia",
+            "group": "First Nations people",
+            "measure": "Waited over 365 days (%)",
+            "value": 7.4,
+            "xpos": 1
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeCap": "round"
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "orient": "bottom",
+                "values": [
+                  0,
+                  1
+                ],
+                "labelAngle": 0,
+                "labelFontSize": 12,
+                "labelPadding": 6,
+                "domain": false,
+                "ticks": false,
+                "grid": true,
+                "gridColor": "#9aa7ad",
+                "labelExpr": "datum.value == 0 ? 'Other Australians' : 'First Nations'"
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  14
+                ],
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "grid": false,
+                "tickCount": 4
+              }
+            },
+            "detail": {
+              "field": "state",
+              "type": "nominal"
+            },
+            "color": {
+              "field": "colourGroup",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Other states",
+                  "NT",
+                  "Vic",
+                  "Australia"
+                ],
+                "range": [
+                  "#c5ced2",
+                  "#d62728",
+                  "#7570b3",
+                  "#18313b"
+                ]
+              },
+              "legend": {
+                "title": null,
+                "orient": "bottom",
+                "direction": "horizontal",
+                "values": [
+                  "NT",
+                  "Vic",
+                  "Other states"
+                ],
+                "symbolType": "stroke",
+                "symbolStrokeWidth": 3,
+                "symbolSize": 220,
+                "labelFontSize": 12,
+                "columns": 3,
+                "columnPadding": 16,
+                "offset": 16
+              }
+            },
+            "strokeWidth": {
+              "condition": [
+                {
+                  "test": "datum.colourGroup == 'Australia'",
+                  "value": 4
+                },
+                {
+                  "test": "datum.colourGroup == 'Other states'",
+                  "value": 1.6
+                }
+              ],
+              "value": 3
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 55
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  14
+                ],
+                "nice": false
+              }
+            },
+            "color": {
+              "field": "colourGroup",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Other states",
+                  "NT",
+                  "Vic",
+                  "Australia"
+                ],
+                "range": [
+                  "#c5ced2",
+                  "#d62728",
+                  "#7570b3",
+                  "#18313b"
+                ]
+              },
+              "legend": null
+            },
+            "tooltip": [
+              {
+                "field": "state",
+                "title": "State"
+              },
+              {
+                "field": "group",
+                "title": "Group"
+              },
+              {
+                "field": "measure",
+                "title": "Measure"
+              },
+              {
+                "field": "value",
+                "title": "Value"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.state == 'Australia' && datum.group == 'First Nations people'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 10,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#18313b"
+          },
+          "encoding": {
+            "x": {
+              "field": "xpos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.4,
+                  1.4
+                ],
+                "nice": false
+              }
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  14
+                ],
+                "nice": false
+              }
+            },
+            "text": {
+              "value": "Australia"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 30
+}

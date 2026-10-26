@@ -1,15 +1,27 @@
+
 :root {
   color-scheme: light;
-  --ink: #18313b;
-  --muted: #536b73;
-  --paper: #f4f6f2;
-  --card: #ffffff;
-  --line: #d7e0dd;
-  --teal: #007f79;
-  --blue: #0072b2;
-  --orange: #d88700;
-  --purple: #8c5aa7;
-  --soft: #e7efeb;
+
+  /* Pink and orange palette */
+  --pink: #ff8fa0;
+  --pink-mid: #ffa7b4;
+  --pink-light: #ffcbd2;
+  --orange-light: #ffb972;
+  --orange: #ffa447;
+
+  /* Text colours */
+  --ink: #40242a;
+  --muted: #76535a;
+
+  /* Backgrounds and borders */
+  --paper: #fff7f7;
+  --card: #fff0f1;
+  --line: #ffcbd2;
+  --teal: var(--pink);
+  --blue: var(--orange);
+  --purple: var(--pink-mid);
+  --soft: var(--pink-light);
+
   font-family: "Aptos", "Segoe UI", Arial, sans-serif;
   font-synthesis: none;
 }
@@ -30,26 +42,39 @@ body {
 }
 
 a {
-  color: #005d81;
+  color: #a83e50;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: #003c54;
+  color: #71303d;
 }
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
 
 .masthead {
   padding: 4.5rem max(1.5rem, calc((100vw - 1180px) / 2)) 3rem;
-  color: #f5f8f5;
-  background: #173c49;
+  color: var(--ink);
+  background: var(--pink-light);
 }
 
 .masthead-inner {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .masthead h1,
@@ -61,14 +86,14 @@ a:hover {
 .eyebrow,
 .section-number {
   margin: 0;
-  color: #4b777c;
+  color: #a83e50;
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.14em;
 }
 
 .masthead .eyebrow {
-  color: #a9d2c9;
+  color: #71303d;
 }
 
 h1,
@@ -81,7 +106,8 @@ h1,
 .opening h2,
 .section-heading h2,
 .reading-note h2,
-.sources h2 {
+.sources h2,
+.theme-title {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 500;
   letter-spacing: -0.035em;
@@ -90,17 +116,43 @@ h1,
 .masthead h1 {
   width: 100%;
   max-width: 1100px;
-  margin: 1rem 0 0.75rem;
+  margin: 1rem auto 0.75rem;
   font-size: clamp(3rem, 7vw, 6.8rem);
   line-height: 0.98;
+  text-align: center;
 }
 
-.standfirst {
-  margin: 1rem 0 1.5rem;
-  color: #d3e0dc;
+.standfirst,
+.page-header__subtitle {
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto 1.5rem;
+  color: #634149;
   font-size: clamp(0.95rem, 1.35vw, 1.15rem);
   font-style: italic;
   line-height: 1.45;
+  text-align: center;
+}
+
+.masthead-question {
+  max-width: 62ch;
+  margin: 0.4rem 0 1rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.45;
+}
+
+.masthead-answer {
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--orange);
+  color: #71303d;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
 }
 
 .hero-meta {
@@ -108,9 +160,13 @@ h1,
   justify-content: space-between;
   gap: 1rem;
   padding-top: 0.8rem;
-  color: #c0d2ce;
+  color: #634149;
   font-size: 0.84rem;
 }
+
+/* ==========================================================
+   PAGE AND INTRODUCTION
+   ========================================================== */
 
 main {
   width: min(1180px, calc(100% - 3rem));
@@ -140,8 +196,8 @@ main {
 .stat-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid #b9cbc6;
-  border-bottom: 1px solid #b9cbc6;
+  border-top: 1px solid var(--pink-mid);
+  border-bottom: 1px solid var(--pink-mid);
 }
 
 .stat {
@@ -151,13 +207,13 @@ main {
 
 .stat + .stat {
   padding-left: 1rem;
-  border-left: 1px solid #b9cbc6;
+  border-left: 1px solid var(--pink-mid);
 }
 
 .stat strong {
   display: block;
   margin-bottom: 0.3rem;
-  color: var(--teal);
+  color: #a83e50;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.5rem, 2.4vw, 2.1rem);
   font-weight: 500;
@@ -170,6 +226,14 @@ main {
   font-size: 0.8rem;
   line-height: 1.4;
 }
+
+.brief-meta {
+  display: grid;
+}
+
+/* ==========================================================
+   STORY SECTIONS
+   ========================================================== */
 
 .story-section {
   padding: 3.7rem 0 3rem;
@@ -200,9 +264,46 @@ main {
 
 .story-note {
   margin: 1.55rem 0 1.7rem 156px;
-  color: #3e5a63;
+  color: var(--muted);
   font-size: 0.92rem;
 }
+
+.theme-header {
+  margin: 5rem 0 2.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--pink);
+}
+
+.theme-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.1;
+}
+
+.theme-thesis {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.story-theme + .story-theme {
+  margin-top: 5rem;
+}
+
+.group-label {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.evidence-group {
+  margin-top: 2.5rem;
+}
+
+/* ==========================================================
+   CHART LAYOUTS
+   ========================================================== */
 
 .chart-grid {
   display: grid;
@@ -210,6 +311,25 @@ main {
   gap: 1.1rem;
 }
 
+.chart-card {
+  min-width: 0;
+  margin: 0;
+  padding: 0.5rem 0;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.chart-card,
+.chart-card .chart-view,
+.chart-card .vega-embed,
+.chart-card .vega-embed > div {
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
 
 .chart-title {
   min-height: 2.6em;
@@ -233,7 +353,7 @@ main {
 
 .chart-source {
   padding-top: 0.2rem;
-  border-top: 1px solid #edf1ef;
+  border-top: 1px solid var(--pink-light);
 }
 
 .chart-figure-number {
@@ -243,50 +363,12 @@ main {
   text-align: center;
 }
 
-.dotmap-rate-label {
-  fill: #536b73;
-  font-size: 10px;
-}
-
-.dotmap-data-heading {
-  fill: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.dotmap-data-label {
-  fill: var(--ink);
-  font-size: 12px;
-}
-
-.lhn-waiting-map {
-  width: 100%;
-  height: auto;
-}
-
-.lhn-map-legend-heading {
-  fill: var(--ink);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-
-.lhn-map-extreme-label {
-  fill: #303a3e;
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.lhn-map-leader {
-  fill: none;
-  stroke: #8b9692;
-  stroke-width: 0.65;
-  opacity: 0.75;
-}
-
-.lhn-map-legend-label {
-  fill: #536b73;
-  font-size: 9px;
+.chart-caption {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.4;
 }
 
 .chart-view {
@@ -304,61 +386,485 @@ main {
   height: auto;
 }
 
-.chart-error {
-  padding: 1rem;
-  color: #762a28;
-  background: #fff0ee;
-  border: 1px solid #e5b8b2;
-  font-size: 0.9rem;
-}
-
-.sankey-controls {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0.5rem 0;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.sankey-controls label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.sankey-year {
-  padding: 0.3rem 0.5rem;
-  color: var(--ink);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  font: inherit;
-}
-
 .chart-view svg[role="img"] {
   width: 100%;
   height: auto;
 }
 
-.sankey-column-title {
+.chart-error {
+  padding: 1rem;
+  color: #71303d;
+  background: var(--pink-light);
+  border: 1px solid var(--pink);
+  font-size: 0.9rem;
+}
+
+.chart-card--dotmap .dotmap-data-heading {
+  font-size: 22px;
+}
+
+.chart-card--dotmap .dotmap-data-label {
+  font-size: 20px;
+}
+
+/* ==========================================================
+   CHART KEY
+   ========================================================== */
+
+.chart-key {
+  width: min(calc(100% - 48px), 1100px);
+  box-sizing: border-box;
+  margin: 28px auto 36px;
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  row-gap: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.chart-key-title {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.chart-key-row {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  margin: 0;
+}
+
+.chart-key-row:last-child {
+  margin-bottom: 0;
+}
+
+.chart-key-row .chart-tag {
+  flex: 0 0 5.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+.chart-key-text {
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.55;
+}
+
+.chart-tag {
+  display: inline-block;
+  margin: 0 0 0.35rem;
+  padding: 4px 7px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.chart-tag--access,
+.chart-tag--waiting,
+.chart-tag--funding {
+  color: #71303d;
+  background: var(--pink-light);
+}
+
+.chart-tag--activity,
+.chart-tag--geography {
+  color: #71303d;
+  background: var(--orange-light);
+}
+
+.chart-tag--trends {
+  color: #71303d;
+  background: var(--pink-mid);
+}
+
+.chart-tag--inequality {
+  color: #71303d;
+  background: var(--pink-light);
+}
+
+/* ==========================================================
+   FINDING LAYOUTS
+   ========================================================== */
+
+.finding {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.75rem 3rem;
+  align-items: center;
+  margin-block: 3rem;
+}
+
+.finding-text {
+  min-width: 0;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--pink);
+  text-align: left;
+}
+
+
+.finding-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.finding-text p {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.finding-text .finding-footnote {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+}
+
+.finding-charts {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.finding-charts > .chart-card {
+  min-width: 0;
+}
+
+/* Text only */
+.finding--text-only {
+  grid-template-columns: 1fr;
+}
+
+.finding--text-only > .finding-text {
+  max-width: 68ch;
+}
+
+/* Flip: charts left, text right */
+.finding--flip {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.finding--flip > .finding-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.finding--flip > .finding-charts {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Lead: text above charts */
+.finding--lead {
+  grid-template-columns: 1fr;
+}
+
+.finding--lead > .finding-text {
+  max-width: 68ch;
+}
+
+.finding--lead > .finding-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.finding--lead > .finding-charts > .chart-card--centered {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, 680px);
+}
+
+/* Lead caption: charts first, analysis below */
+.finding--lead-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.finding--lead-caption > .finding-charts {
+  order: 1;
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.finding--lead-caption > .finding-charts > .chart-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.finding--lead-caption > .finding-charts > .chart-card--centered {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, 680px);
+}
+
+.finding--lead-caption > .finding-text {
+  order: 2;
+  grid-row: 2;
+  grid-column: 1;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+  padding: 1.25rem 0 0;
+  border: 0;
+  border-top: 2px solid var(--pink);
+  text-align: left;
+}
+
+.finding--lead-caption > .finding-text h3 {
+  text-align: left;
+}
+
+.finding--lead-caption > .finding-text p {
+  max-width: 80ch;
+  margin: 0;
+  text-align: left;
+}
+
+/* Wide: one chart, analysis underneath */
+.finding--wide {
+  grid-template-columns: 1fr;
+}
+
+.finding--wide > .finding-charts {
+  order: 1;
+}
+
+.finding--wide > .finding-text {
+  order: 2;
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 0 2.5rem;
+  align-items: center;
+  padding: 1rem 0 0.9rem;
+  border: 0;
+  border-bottom: 3px solid var(--pink);
+}
+
+.finding--wide > .finding-text h3 {
+  margin: 0;
+}
+
+.finding--wide > .finding-text p {
+  max-width: 68ch;
+}
+
+/* Pair: two charts with text beneath */
+.finding--pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.finding--pair .finding-text {
+  grid-column: 1 / -1;
+  order: 2;
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 0 2.5rem;
+  align-items: center;
+  padding: 1rem 0 0.9rem;
+  border: 0;
+  border-bottom: 3px solid var(--pink);
+}
+
+.finding--pair .finding-text h3 {
+  margin: 0;
+}
+
+.finding--pair .finding-text p {
+  max-width: 68ch;
+}
+.finding--pair .finding-charts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+  width: 100%;
+}
+
+.finding--pair .chart-card {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.finding--pair .chart-card img,
+.finding--pair .chart-card svg,
+.finding--pair .chart-card canvas {
+  max-width: 100%;
+}
+
+/* Note: chart with a narrow supporting text column */
+.finding--note {
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 1.5rem 2rem;
+  align-items: end;
+}
+
+.finding--note > .finding-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.finding--note > .finding-charts {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.finding--note > .finding-text p {
+  font-size: 13px;
+}
+
+/* Automatically widen default findings with multiple charts */
+@supports selector(:has(*)) {
+  .finding:not([class*="finding--"]):has(
+    .finding-charts > .chart-card:nth-child(2)
+  ) {
+    grid-template-columns: 1fr;
+  }
+
+  .finding:not([class*="finding--"]):has(
+    .finding-charts > .chart-card:nth-child(2)
+  ) > .finding-text {
+    max-width: 68ch;
+  }
+
+  .finding:not([class*="finding--"]):has(
+    .finding-charts > .chart-card:nth-child(2)
+  ) > .finding-charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================
+   SVG CHART LABELS
+   ========================================================== */
+
+.dotmap-rate-label,
+.lhn-map-legend-label,
+.sankey-unit-label,
+.sankey-node-value,
+.treemap-legend-label,
+.nightingale-center-value,
+.nightingale-legend-label {
+  fill: var(--muted);
+}
+
+.dotmap-data-heading,
+.dotmap-data-label,
+.lhn-map-legend-heading,
+.sankey-column-title,
+.sankey-node-label,
+.nightingale-region-label,
+.nightingale-center-label,
+.treemap-group-label,
+.treemap-legend-title {
   fill: var(--ink);
+}
+
+.dotmap-data-heading {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dotmap-data-label {
+  font-size: 12px;
+}
+
+.dotmap-rate-label {
+  font-size: 10px;
+}
+
+.dotmap-state-label {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+.lhn-waiting-map {
+  width: 100%;
+  height: auto;
+}
+
+.lhn-map-legend-heading {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.lhn-map-extreme-label {
+  fill: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.lhn-map-leader {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 0.65;
+  opacity: 0.75;
+}
+
+.lhn-map-legend-label {
+  font-size: 9px;
+}
+
+.sankey-column-title {
   font-size: 14px;
   font-weight: 700;
 }
 
 .sankey-node-label {
-  fill: var(--ink);
   font-size: 12px;
   font-weight: 600;
 }
 
 .sankey-unit-label {
-  fill: var(--muted);
   font-size: 11px;
 }
 
+.sankey-node-value {
+  font-size: 11px;
+}
+
+.sankey-note {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 .treemap-group-label {
-  fill: var(--ink);
   font-size: 13px;
   font-weight: 700;
 }
@@ -372,13 +878,11 @@ main {
 }
 
 .treemap-legend-title {
-  fill: var(--ink);
   font-size: 12px;
   font-weight: 700;
 }
 
 .treemap-legend-label {
-  fill: var(--muted);
   font-size: 11px;
 }
 
@@ -387,11 +891,11 @@ main {
 }
 
 .nightingale-slice-label {
-  fill: #fff;
+  fill: var(--ink);
   font-size: 9px;
   font-weight: 700;
   paint-order: stroke;
-  stroke: rgb(24 49 59 / 45%);
+  stroke: rgb(255 255 255 / 75%);
   stroke-width: 2px;
   stroke-linejoin: round;
   text-anchor: middle;
@@ -400,14 +904,13 @@ main {
 }
 
 .nightingale-region-label {
-  fill: var(--ink);
   font-size: 11px;
   font-weight: 700;
 }
 
 .nightingale-guide {
   fill: none;
-  stroke: rgb(255 255 255 / 65%);
+  stroke: var(--pink-light);
   stroke-width: 1;
   pointer-events: none;
 }
@@ -415,36 +918,16 @@ main {
 .nightingale-center-label,
 .nightingale-center-value,
 .nightingale-legend-label {
-  fill: var(--muted);
   font-size: 10px;
 }
 
 .nightingale-center-label {
-  fill: var(--ink);
   font-weight: 700;
 }
 
-.sankey-node-value {
-  fill: var(--muted);
-  font-size: 11px;
-}
-
-.sankey-note {
-  margin: 0.5rem 0 0.75rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
-}
-
-.dotmap-state-label {
-  fill: #405b63;
-  font-size: 11px;
-  font-weight: 800;
-  paint-order: stroke;
-  stroke: #f4f6f2;
-  stroke-linejoin: round;
-  stroke-width: 3px;
-}
+/* ==========================================================
+   READING NOTES AND SOURCES
+   ========================================================== */
 
 .reading-note {
   padding: 3.5rem 0;
@@ -467,7 +950,7 @@ main {
   margin: 0;
   padding-top: 0.85rem;
   color: var(--muted);
-  border-top: 2px solid #8eaaa5;
+  border-top: 2px solid var(--pink);
   font-size: 0.92rem;
 }
 
@@ -483,7 +966,7 @@ main {
 .sources li {
   margin-bottom: 0.8rem;
   padding-left: 0.25rem;
-  color: #415d65;
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -500,24 +983,84 @@ main {
   border-top: 1px solid var(--line);
 }
 
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
 footer {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem max(1.5rem, calc((100vw - 1180px) / 2));
-  color: #d4e1dd;
-  background: #173c49;
+  color: #634149;
+  background: var(--pink-light);
   font-size: 0.76rem;
   letter-spacing: 0.06em;
 }
 
 footer a {
-  color: #d4e1dd;
+  color: #634149;
 }
 
-:focus-visible {
-  outline: 3px solid #d88700;
-  outline-offset: 3px;
+/* ==========================================================
+   RESPONSIVE LAYOUTS
+   ========================================================== */
+
+@media (max-width: 900px) {
+  .finding--note {
+    grid-template-columns: 1fr;
+  }
+
+  .finding--note > .finding-text {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .finding--note > .finding-charts {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .finding,
+  .finding--flip,
+  .finding--lead,
+  .finding--wide,
+  .finding--pair {
+    grid-template-columns: 1fr;
+  }
+
+  .finding > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--lead > .finding-text,
+  .finding--pair > .finding-text {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: none;
+  }
+
+  .finding--flip > .finding-charts,
+  .finding--lead > .finding-charts {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .finding--lead > .finding-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .finding--lead > .finding-charts > .chart-card--centered {
+    width: 100%;
+  }
+
+  .finding--wide > .finding-text {
+    grid-template-columns: 1fr;
+  }
+
+  .finding--wide > .finding-text h3 {
+    margin-bottom: 0.4rem;
+  }
 }
 
 @media (max-width: 760px) {
@@ -526,7 +1069,7 @@ footer a {
   }
 
   main {
-    width: min(100% - 2rem, 600px);
+    width: min(calc(100% - 2rem), 600px);
   }
 
   .opening {
@@ -564,6 +1107,81 @@ footer a {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+
+  .finding--pair .finding-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .finding > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--lead > .finding-text,
+  .finding--lead-caption > .finding-text,
+  .finding--wide > .finding-text,
+  .finding--pair > .finding-text,
+  .finding--note > .finding-text {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+
+  .finding--lead-caption > .finding-text {
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .finding--lead-caption > .finding-charts {
+    grid-row: 1;
+    grid-template-columns: 1fr;
+  }
+
+  .finding--lead-caption > .finding-charts > .chart-card--centered {
+    width: 100%;
+  }
+
+  .finding--flip > .finding-text {
+    border-right: 0;
+    padding-right: 0;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .finding--pair > .finding-text {
+    grid-row: auto;
+    order: 1;
+    width: 100%;
+  }
+
+  .finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--note > .finding-text {
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .chart-key {
+    width: calc(100% - 32px);
+    padding: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .chart-key-title {
+    grid-column: 1;
+  }
+
+  .chart-key-row {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .chart-key-row:has(.chart-tag--funding) {
+    grid-column: 1;
+    grid-row: auto;
+  }
 }
 
 @media (max-width: 460px) {
@@ -583,15 +1201,8 @@ footer a {
   }
 
   .stat + .stat {
-    border-top: 1px solid #b9cbc6;
+    border-top: 1px solid var(--pink-mid);
   }
-
-  .chart-card {
-    padding: 0.8rem 0.65rem 0.55rem;
-  }
-
-  .chart-card--dotmap .dotmap-data-heading { font-size: 22px; }
-  .chart-card--dotmap .dotmap-data-label { font-size: 20px; }
 
   footer {
     padding-right: 1rem;
@@ -604,780 +1215,3 @@ footer a {
     scroll-behavior: auto;
   }
 }
-.theme-header {
-  border-left: 4px solid var(--ink);
-  padding-left: 1rem;
-  margin: 5rem 0 2.5rem;
-}
-
-.story-theme + .story-theme {
-  margin-top: 5rem;
-}
-
-.theme-title { margin: 0; }
-.theme-thesis { margin: .25rem 0 0; color: #536b73; }
-.group-label {
-  margin: 0 0 1.5rem;
-  font-size: .8rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #536b73;
-}
-.evidence-group {
-  margin-top: 2.5rem;
-}
-.finding {
-  display: grid;
-  grid-template-columns: minmax(260px, 380px) 1fr;
-  gap: 3rem;
-  align-items: center;
-  margin-block: 2.5rem;
-}
-.finding-text { border-left: 4px solid var(--ink); padding-left: 1rem; }
-.finding-text h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
-.finding-text p { margin: 0; max-width: 56ch; line-height: 1.6; }
-.finding-charts { display: grid; gap: 1.5rem; }
-@media (max-width: 800px) { .finding { grid-template-columns: 1fr; } }
-
-/* ==========================================================
-   FINDING LAYOUTS
-   Replace the old `.finding`, `.finding-text`, `.finding-charts`
-   rules (the last block in your stylesheet) with everything below.
-
-   Usage: <section class="finding finding--VARIANT"> ... </section>
-   Variants: (none) | --flip | --lead | --wide | --pair | --note
-   ========================================================== */
-
-/* ---------- shared ---------- */
-.finding {
-  --text-col: minmax(300px, 0.9fr);
-  display: grid;
-  gap: 1.75rem 3rem;
-  margin-block: 3rem;
-  align-items: center;
-}
-
-.finding-text {
-  border-left: 4px solid var(--ink);
-  padding-left: 1rem;
-  text-align: center;
-}
-.finding-text h3 { margin: 0 0 .5rem; font-size: 1.1rem; line-height: 1.3; text-align: center; }
-.finding-text p  { margin: 0 auto; max-width: 68ch; line-height: 1.6; color: var(--muted); text-align: center; white-space: pre-line; }
-.finding-text .finding-footnote { margin-top: 0.5rem; font-size: 0.85rem; }
-
-.finding-charts { display: grid; gap: 1.25rem; min-width: 0; }
-.finding-charts > .chart-card { min-width: 0; }
-
-/* ---------- 1. DEFAULT: text left, charts right ----------
-   Best for: one chart, or two short charts.
-   Text now sticks to the top while the charts scroll past,
-   instead of floating in the vertical middle of a tall stack. */
-.finding {
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-}
-.finding > .finding-text {
-  position: static;
-}
-
-.finding--text-only {
-  grid-template-columns: 1fr;
-}
-.finding--text-only > .finding-text {
-  max-width: 68ch;
-}
-
-/* ---------- 2. --flip: charts left, text right ---------- */
-.finding--flip {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-}
-.finding--flip > .finding-text   { grid-column: 2; grid-row: 1; }
-.finding--flip > .finding-charts { grid-column: 1; grid-row: 1; }
-.finding--flip > .finding-text {
-  border-left: 0;
-  padding-left: 0;
-  border-right: 4px solid var(--ink);
-  padding-right: 1rem;
-}
-
-/* ---------- 3. --lead: text across the top, charts side by side below ----------
-   Best for: two or more charts that should be compared directly
-   (e.g. the choropleth + proportional-symbol maps in your screenshot). */
-.finding--lead {
-  grid-template-columns: 1fr;
-}
-.finding--lead > .finding-text {
-  position: static;
-  max-width: 68ch;
-}
-.finding--lead > .finding-charts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.1rem;
-}
-.finding--lead > .finding-charts > .chart-card--centered {
-  grid-column: 1 / -1;
-  justify-self: center;
-  width: min(100%, 680px);
-}
-
-.finding--lead-caption {
-  grid-template-columns: 1fr;
-}
-.finding--lead-caption > .finding-charts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.finding--lead-caption > .finding-charts > .chart-card--centered {
-  grid-column: 1 / -1;
-  justify-self: center;
-  width: min(100%, 680px);
-}
-.finding--lead-caption > .finding-text {
-  order: 2;
-  justify-self: center;
-  width: min(100%, 68ch);
-  padding: 1rem 0 0;
-  border-left: 0;
-  border-top: 3px solid var(--ink);
-  text-align: center;
-}
-.finding--lead-caption > .finding-text p {
-  max-width: none;
-  text-align: center;
-}
-.finding--lead-caption > .finding-charts {
-  order: 1;
-}
-
-/* ---------- 4. --wide: one big chart full width, text as a caption strip below ----------
-   Best for: a single wide chart (time series, big map, dense bar chart). */
-.finding--wide {
-  grid-template-columns: 1fr;
-}
-.finding--wide > .finding-charts { order: 1; }
-.finding--wide > .finding-text {
-  order: 2;
-  position: static;
-  display: grid;
-  grid-template-columns: minmax(200px, 300px) 1fr;
-  gap: 0 2.5rem;
-  align-items: center;
-  border-left: 0;
-  padding-left: 0;
-  border-bottom: 4px solid var(--ink);
-  padding-bottom: .9rem;
-}
-.finding--wide > .finding-text h3 { margin: 0; }
-.finding--wide > .finding-text p  { max-width: 68ch; text-align: center; }
-
-/* ---------- 5. --pair: charts as equal columns, text beneath both ----------
-   Best for: exactly two charts that make one comparison. */
-.finding--pair {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.finding--pair > .finding-text {
-  position: static;
-  grid-column: 1 / -1;
-  grid-row: 2;
-  justify-self: center;
-  width: min(100%, 68ch);
-  max-width: none;
-  padding: 0 0 .9rem;
-  border: 0;
-  border-bottom: 4px solid var(--ink);
-  text-align: center;
-}
-.finding--pair > .finding-text h3 { text-align: center; }
-.finding--pair > .finding-text p { max-width: 68ch; text-align: center; }
-.finding--pair > .finding-charts {
-  display: contents;                /* let the cards become grid items directly */
-}
-.finding--pair > .finding-charts > .chart-card {
-  grid-row: 1;
-  align-self: start;
-}
-
-/* ---------- 6. --note: chart dominates, text is a slim margin note ----------
-   Best for: a small supporting insight that doesn't deserve a full column. */
-.finding--note {
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 1.5rem 2rem;
-  align-items: end;                 /* note aligns with the bottom of the chart */
-}
-.finding--note > .finding-text   { grid-column: 2; grid-row: 1; position: static; }
-.finding--note > .finding-charts { grid-column: 1; grid-row: 1; }
-.finding--note > .finding-text p { font-size: 13px; }
-
-/* ---------- Smart fallback ----------
-   If you forget a modifier and the finding has 2+ charts,
-   automatically use the --lead layout instead of a tall narrow stack. */
-@supports selector(:has(*)) {
-  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) {
-    grid-template-columns: 1fr;
-  }
-  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) > .finding-text {
-    position: static;
-    max-width: 68ch;
-  }
-  .finding:not([class*="finding--"]):has(.finding-charts > .chart-card:nth-child(2)) > .finding-charts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* ---------- Responsive: everything collapses to one column ---------- */
-@media (max-width: 900px) {
-  .finding--note { grid-template-columns: 1fr; }
-  .finding--note > .finding-text   { grid-column: 1; grid-row: 2; }
-  .finding--note > .finding-charts { grid-column: 1; grid-row: 1; }
-}
-
-@media (max-width: 800px) {
-  .finding,
-  .finding--flip,
-  .finding--lead,
-  .finding--wide,
-  .finding--pair {
-    grid-template-columns: 1fr;
-  }
-  .finding > .finding-text,
-  .finding--flip > .finding-text,
-  .finding--lead > .finding-text,
-  .finding--pair > .finding-text {
-    position: static;
-    grid-column: 1;
-    grid-row: 1;                    /* text first on mobile */
-    max-width: none;
-  }
-  .finding--flip > .finding-charts,
-  .finding--lead > .finding-charts { grid-column: 1; grid-row: 2; }
-  .finding--lead > .finding-charts { grid-template-columns: 1fr; }
-  .finding--lead > .finding-charts > .chart-card--centered { width: 100%; }
-  .finding--lead-caption > .finding-text {
-    grid-row: 2;
-    width: 100%;
-  }
-  .finding--lead-caption > .finding-charts {
-    grid-row: 1;
-    grid-template-columns: 1fr;
-  }
-  .finding--lead-caption > .finding-charts > .chart-card--centered {
-    width: 100%;
-  }
-  .finding--flip > .finding-text {
-    border-right: 0; padding-right: 0;
-    border-left: 4px solid var(--ink); padding-left: 1rem;
-  }
-  .finding--wide > .finding-text { grid-template-columns: 1fr; }
-  .finding--wide > .finding-text h3 { margin-bottom: .4rem; }
-
-  /* --pair: put each chart in its own row, text last */
-  .finding--pair > .finding-charts > .chart-card { grid-row: auto; }
-  .finding--pair > .finding-text {
-    grid-row: auto;
-    order: 1;
-    width: 100%;
-  }
-}
-
-/* ---------- Hero question and answer ---------- */
-.masthead-question {
-  max-width: 62ch;
-  margin: 0.4rem 0 1rem;
-  color: #eaf2ef;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
-  line-height: 1.45;
-}
-
-.masthead-answer {
-  max-width: 62ch;
-  margin: 0 0 1.25rem;
-  padding-left: 0.9rem;
-  border-left: 3px solid #a9d2c9;
-  color: #a9d2c9;
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-/* ---------- Chart tags and captions ---------- */
-.chart-tag {
-  display: inline-block;
-  margin: 0 0 0.35rem;
-  padding: 0.12rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  line-height: 1.5;
-}
-
-.chart-tag--access {
-  color: #7a4b00;
-  background: #fbebd0;
-}
-
-.chart-tag--activity {
-  color: #0b5c63;
-  background: #dcefee;
-}
-
-.chart-caption {
-  margin: 0.3rem 0 0;
-  color: var(--ink);
-  font-size: 0.8rem;
-  font-style: italic;
-  line-height: 1.4;
-}
-
-/* ---------- Tag key ---------- */
-.chart-key {
-  max-width: 68ch;
-  margin: 2.5rem auto 0;
-  padding: 0.9rem 1.1rem;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-}
-
-.chart-key-title {
-  margin: 0 0 0.6rem;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-}
-
-.chart-key-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin: 0 0 0.5rem;
-}
-
-.chart-key-row:last-child { margin-bottom: 0; }
-.chart-key-row .chart-tag { flex: 0 0 5.2rem; margin: 0; text-align: center; }
-.chart-key-text { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
-
-
-/* Consistent editorial hierarchy */
-.theme-title {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-}
-
-
-
-.standfirst,
-.page-header__subtitle {
-  margin: 1rem 0 1.5rem;
-  color: #d3e0dc;
-  font-size: clamp(0.95rem, 1.35vw, 1.15rem);
-  font-style: italic;
-  line-height: 1.45;
-}
-
-.story-theme + .story-theme {
-  margin-top: 5rem;
-}
-
-.theme-header {
-  margin: 5rem 0 2.5rem;
-}
-
-.finding {
-  margin-block: 3rem;
-}
-
-
-/* ==================================================
-   CONSISTENT MIDDLE FINDING TEXT
-   Heading left | Explanation right | Divider below
-   Place at the VERY BOTTOM of styles.css
-   ================================================== */
-
-.finding > .finding-text,
-.finding--flip > .finding-text,
-.finding--lead > .finding-text,
-.finding--lead-caption > .finding-text,
-.finding--wide > .finding-text,
-.finding--pair > .finding-text,
-.finding--note > .finding-text {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  align-items: center;
-  gap: 2rem;
-
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 1.5rem 0;
-
-  border: 0;
-  border-bottom: 3px solid #18313b;
-  text-align: center;
-}
-
-/* Finding heading on the left */
-.finding > .finding-text h3,
-.finding--flip > .finding-text h3,
-.finding--lead > .finding-text h3,
-.finding--lead-caption > .finding-text h3,
-.finding--wide > .finding-text h3,
-.finding--pair > .finding-text h3,
-.finding--note > .finding-text h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
-}
-
-/* Explanatory paragraph on the right */
-.finding > .finding-text p,
-.finding--flip > .finding-text p,
-.finding--lead > .finding-text p,
-.finding--lead-caption > .finding-text p,
-.finding--wide > .finding-text p,
-.finding--pair > .finding-text p,
-.finding--note > .finding-text p {
-  max-width: 65ch;
-  margin: 0 auto;
-  color: #536b73;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  text-align: center;
-}
-
-/* Optional footnotes remain slightly smaller */
-.finding-text .finding-footnote {
-  font-size: 0.82rem;
-}
-
-/* Mobile: stack heading above explanation */
-@media (max-width: 700px) {
-  .finding > .finding-text,
-  .finding--flip > .finding-text,
-  .finding--lead > .finding-text,
-  .finding--lead-caption > .finding-text,
-  .finding--wide > .finding-text,
-  .finding--pair > .finding-text,
-  .finding--note > .finding-text {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    padding: 1.25rem 0;
-  }
-}
-/* ============================================
-   SIDE-BY-SIDE GRAPH ANALYSIS ONLY
-   Heading above paragraph; divider underneath
-   ============================================ */
-
-/* Default: text beside graph */
-.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text,
-.finding--flip > .finding-text,
-.finding--note > .finding-text {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  gap: 0.65rem;
-
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 1rem 0;
-
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid var(--ink);
-
-  text-align: left;
-}
-
-/* Bold subheading above the analysis */
-.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text h3,
-.finding--flip > .finding-text h3,
-.finding--note > .finding-text h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  text-align: left;
-}
-
-/* Analysis paragraph directly below the heading */
-.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text p,
-.finding--flip > .finding-text p,
-.finding--note > .finding-text p {
-  max-width: 65ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  text-align: left;
-}
-
-/* Footnotes remain smaller */
-.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text .finding-footnote,
-.finding--flip > .finding-text .finding-footnote,
-.finding--note > .finding-text .finding-footnote {
-  margin-top: 0.25rem;
-  font-size: 0.82rem;
-}
-
-/* Mobile: retain the same heading-above-text order */
-@media (max-width: 700px) {
-  .finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text,
-  .finding--flip > .finding-text,
-  .finding--note > .finding-text {
-    gap: 0.5rem;
-    padding: 0.75rem 0;
-  }
-}
-
-
-/* Full-width charts first, analysis underneath */
-.finding--lead-caption {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.finding--lead-caption > .finding-charts {
-  order: 1;
-  grid-row: 1;
-  grid-column: 1;
-  width: 100%;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.finding--lead-caption > .finding-text {
-  order: 2;
-  grid-row: 2;
-  grid-column: 1;
-  width: 100%;
-  max-width: none;
-  justify-self: stretch;
-  padding: 1.25rem 0 0;
-  border-left: 0;
-  border-top: 2px solid var(--ink);
-  text-align: left;
-}
-
-.finding--lead-caption > .finding-text h3 {
-  text-align: left;
-}
-
-.finding--lead-caption > .finding-text p {
-  max-width: 80ch;
-  margin: 0;
-  text-align: left;
-}
-
-.finding--lead-caption > .finding-charts > .chart-card {
-  width: 100%;
-  min-width: 0;
-}
-
-.finding--pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-}
-
-.finding--pair .finding-text {
-  grid-column: 1 / -1;
-  min-width: 0;
-}
-
-.finding--pair .finding-charts {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: start;
-  min-width: 0;
-  width: 100%;
-}
-
-.finding--pair .chart-card {
-  min-width: 0;
-  width: 100%;
-  margin: 0;
-}
-
-.finding--pair .chart-card img,
-.finding--pair .chart-card svg,
-.finding--pair .chart-card canvas {
-  max-width: 100%;
-}
-
-@media (max-width: 760px) {
-  .finding--pair .finding-charts {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.chart-key {
-  width: min(100% - 48px, 1100px);
-  box-sizing: border-box;
-  margin: 28px auto 36px;
-  padding: 22px 26px;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 32px;
-  row-gap: 18px;
-
-  background: var(--card, #fff);
-  border: 1px solid var(--border, #d9e1e3);
-  border-radius: 12px;
-}
-
-.chart-key-title {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-
-.chart-key-row {
-  display: grid;
-  grid-template-columns: 100px minmax(0, 1fr);
-  align-items: start;
-  gap: 12px;
-  margin: 0;
-}
-
-.chart-key-text {
-  font-size: 0.83rem;
-  line-height: 1.55;
-}
-
-.chart-tag {
-  display: inline-block;
-  padding: 4px 7px;
-  border-radius: 3px;
-  text-align: center;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-/* Tag colours */
-.chart-tag--waiting {
-  background: #fce9cb;
-  color: #895000;
-}
-
-.chart-tag--geography {
-  background: #dceafe;
-  color: #174ea6;
-}
-
-.chart-tag--trends {
-  background: #dff2e5;
-  color: #176b3a;
-}
-
-.chart-tag--inequality {
-  background: #eee3fc;
-  color: #6935a5;
-}
-
-.chart-tag--funding {
-  background: #fbe1e5;
-  color: #a12643;
-}
-
-@media (max-width: 650px) {
-.chart-key {
-  width: min(calc(100% - 48px), 1250px);
-  box-sizing: border-box;
-  margin: 28px auto 36px;
-  padding: 22px 28px;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 40px;
-  row-gap: 18px;
-
-  background: var(--card, #fff);
-  border: 1px solid var(--border, #d9e1e3);
-  border-radius: 12px;
-}
-
-.chart-key-title {
-  grid-column: 1 / -1;
-  margin: 0;
-}
-
-.chart-key-row {
-  display: grid;
-  grid-template-columns: 100px minmax(0, 1fr);
-  align-items: start;
-  gap: 12px;
-  margin: 0;
-}
-
-.chart-key-text {
-  font-size: 0.83rem;
-  line-height: 1.55;
-}
-
-/* Place Funding beside Geography */
-.chart-key-row:has(.chart-tag--funding) {
-  grid-column: 2;
-  grid-row: 3;
-}
-
-/* Keep the layout compact on mobile */
-@media (max-width: 650px) {
-  .chart-key {
-    width: calc(100% - 32px);
-    padding: 18px;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-  }
-
-  .chart-key-title {
-    grid-column: 1;
-  }
-
-  .chart-key-row:has(.chart-tag--funding) {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .chart-key-row {
-    grid-template-columns: 90px minmax(0, 1fr);
-    gap: 10px;
-  }
-}
-
-/* Widen the hero content to use more of the available screen */
-.hero,
-.hero-content,
-header .container,
-.hero .container {
-  width: 100% !important;
-  max-width: none !important;
-  box-sizing: border-box;
-}
-
-.hero h1,
-.hero-content h1 {
-  max-width: 1200px !important;
-}
-
-.hero p,
-.hero-content p {
-  max-width: 1200px !important;
-}
-

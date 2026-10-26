@@ -1,6 +1,119 @@
 {
-  "description": "State 50th-percentile hysterectomy waits and Local Hospital Network waits for 2024–25, with city insets.",
-  "boundariesUrl": "data/australia-states-v1.geojson",
-  "dataUrl": "data/hysterectomy-waiting-times-2024-25.json",
-  "maximumWaitDays": 350
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 440,
+  "height": 380,
+  "background": "transparent",
+  "padding": 5,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      133.5,
+      -28.6
+    ],
+    "scale": 560,
+    "translate": [
+      220,
+      190
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Local Hospital Network median hysterectomy waits, 2024–25.",
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia-states-v1.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f1e2e5",
+        "stroke": "#b98c97",
+        "strokeWidth": 0.7
+      },
+      "encoding": {}
+    },
+    {
+      "data": {
+        "url": "data/hysterectomy-waiting-times-2024-25.json",
+        "format": {
+          "type": "json",
+          "property": "localHospitalNetworks"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.availability === 'published' && isValid(datum.medianWaitDays) && isValid(datum.longitude) && isValid(datum.latitude)"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "fill": "#f9a550",
+        "fillOpacity": 0.7,
+        "stroke": "#7a3b00",
+        "strokeWidth": 0.7,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "medianWaitDays",
+          "type": "quantitative",
+          "title": "LHN wait (days)",
+          "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              350
+            ],
+            "range": [
+              0,
+              700
+            ],
+            "clamp": true,
+            "zero": true
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "values": [
+              50,
+              150,
+              250,
+              350
+            ],
+            "symbolFillColor": "#f9a550",
+            "symbolStrokeColor": "#7a3b00",
+            "titleFontSize": 10,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "network",
+            "type": "nominal",
+            "title": "LHN"
+          },
+          {
+            "field": "medianWaitDays",
+            "type": "quantitative",
+            "title": "Median wait (days)"
+          }
+        ]
+      }
+    }
+  ]
 }

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 440,
+  "height": 380,
+  "background": "transparent",
+  "padding": 5,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      133.5,
+      -28.6
+    ],
+    "scale": 560,
+    "translate": [
+      220,
+      190
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "State 50th-percentile hysterectomy waits, 2024–25. NT and ACT have no published median and are shown in grey.",
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia-states-v1.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d9d9d9",
+        "stroke": "#6b1a30",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.shapeName",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "value": "Median wait not published"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia-states-v1.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.shapeName",
+          "from": {
+            "data": {
+              "url": "data/hysterectomy-waiting-times-2024-25.json",
+              "format": {
+                "type": "json",
+                "property": "states"
+              }
+            },
+            "key": "stateName",
+            "fields": [
+              "medianWaitDays"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.medianWaitDays)"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#6b1a30",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "medianWaitDays",
+          "type": "quantitative",
+          "title": "State median wait (days)",
+          "scale": {
+            "domain": [
+              50,
+              100
+            ],
+            "range": [
+              "#fcc9d3",
+              "#7a0f2e"
+            ],
+            "clamp": true
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 120,
+            "values": [
+              50,
+              75,
+              100
+            ],
+            "titleFontSize": 10,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.shapeName",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "medianWaitDays",
+            "type": "quantitative",
+            "title": "Median wait (days)"
+          }
+        ]
+      }
+    }
+  ]
+}

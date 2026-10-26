@@ -10,15 +10,23 @@
 ------------------------------------------------------------------- */
 
 const C = {
-  waitingMap: {
-    figureName: "Figure 1",
-    spec: "specs/map-hyst-waiting-times-lhn.json",
-    renderer: "lhnWaitingMap",
-    title: "Longest elective surgery cluster in NSW and Queensland networks · 2024–25",
-    idiom: "Choropleth + proportional symbols",
+  waitingMapState: {
+    figureName: "Figure 1a",
+    spec: "specs/map-hyst-waiting-times-state.json",
+    title: "State median wait for hysterectomy · 2024–25",
+    idiom: "Choropleth",
     axisTitles: {},
-    caveat: "48 of 71 LHNs published; state values unpublished for ACT and NT",
-    source: "Source: AIHW state waiting-time table, 2024–25; supplied LHN waiting-time data and coordinates."
+    caveat: "Median wait is unpublished for ACT and NT (shown in grey).",
+    source: "Source: AIHW state waiting-time table, 2024–25."
+  },
+  waitingMapLhn: {
+    figureName: "Figure 1b",
+    spec: "specs/map-hyst-waiting-times-lhn.json",
+    title: "Wait time for Surgery by Local Hospital Network · 2024–25",
+    idiom: "Proportional symbols",
+    axisTitles: {},
+    caveat: "48 of 71 LHNs published.",
+    source: "Source: AIHW waiting-time data; supplied LHN waiting-time data and coordinates."
   },
   volumeMap: {
     figureName: "Figure 2",
@@ -166,9 +174,9 @@ const story = {
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figure 1 shows that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
-              layout: "wide",
-              charts: [C.waitingMap]
+              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figures 1a and 1b show that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
+              layout: "pair",
+              charts: [C.waitingMapState, C.waitingMapLhn]
             }
           ]
         },
@@ -1127,7 +1135,7 @@ function renderSankey(target, records) {
     { field: "private", label: "Private" },
     { field: "public", label: "Public" }
   ];
-  const colors = ["#0072b2", "#e69f00", "#009e73", "#cc79a7", "#56b4e9", "#d55e00"];
+  const colors = ["#03C33F", "#03C33F", "#FAFC97", "#FCB249", "#936ED4", "#d55e00"];
   const years = [...new Set(records.map((record) => record.year))];
   const controls = el("div", "sankey-controls");
   const label = el("label", "", "Year");
