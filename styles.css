@@ -1083,3 +1083,154 @@ footer a {
     padding: 1.25rem 0;
   }
 }
+/* ============================================
+   SIDE-BY-SIDE GRAPH ANALYSIS ONLY
+   Heading above paragraph; divider underneath
+   ============================================ */
+
+/* Default: text beside graph */
+.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text,
+.finding--flip > .finding-text,
+.finding--note > .finding-text {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.65rem;
+
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1rem 0;
+
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid var(--ink);
+
+  text-align: left;
+}
+
+/* Bold subheading above the analysis */
+.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text h3,
+.finding--flip > .finding-text h3,
+.finding--note > .finding-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Analysis paragraph directly below the heading */
+.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text p,
+.finding--flip > .finding-text p,
+.finding--note > .finding-text p {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+/* Footnotes remain smaller */
+.finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text .finding-footnote,
+.finding--flip > .finding-text .finding-footnote,
+.finding--note > .finding-text .finding-footnote {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+}
+
+/* Mobile: retain the same heading-above-text order */
+@media (max-width: 700px) {
+  .finding:not(.finding--wide):not(.finding--pair):not(.finding--lead):not(.finding--lead-caption):not(.finding--text-only) > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--note > .finding-text {
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+  }
+}
+
+
+/* Full-width charts first, analysis underneath */
+.finding--lead-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.finding--lead-caption > .finding-charts {
+  order: 1;
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.finding--lead-caption > .finding-text {
+  order: 2;
+  grid-row: 2;
+  grid-column: 1;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+  padding: 1.25rem 0 0;
+  border-left: 0;
+  border-top: 2px solid var(--ink);
+  text-align: left;
+}
+
+.finding--lead-caption > .finding-text h3 {
+  text-align: left;
+}
+
+.finding--lead-caption > .finding-text p {
+  max-width: 80ch;
+  margin: 0;
+  text-align: left;
+}
+
+.finding--lead-caption > .finding-charts > .chart-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.finding--pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.finding--pair .finding-text {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.finding--pair .finding-charts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+  width: 100%;
+}
+
+.finding--pair .chart-card {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.finding--pair .chart-card img,
+.finding--pair .chart-card svg,
+.finding--pair .chart-card canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 760px) {
+  .finding--pair .finding-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
