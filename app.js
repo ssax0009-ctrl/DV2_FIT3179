@@ -288,7 +288,7 @@ const story = {
           findings: [
             {
               heading: "Elective admissions drove most of the rise in endometriosis hospitalisations",
-              text: "Endometriosis hospitalisations increased from 17,630 in 2015–16 to 24,689 in 2024–25, a rise of 40%. Elective admissions accounted for 5,340 of the additional hospitalisations—around 76% of the overall increase. The crude hospitalisation rate peaked at 182.3 per 100,000 women in 2023–24 before easing to 179.0 in 2024–25. This points to a growing volume of recorded hospital care, particularly elective care, but does not establish whether endometriosis became more common or whether unmet need decreased.",
+              text: "Endometriosis hospitalisations increased from 17,630 in 2015–16 to 24,689 in 2024–25, a rise of 40%. Elective admissions accounted for 5,340 of the additional hospitalisations or around a 76% of the overall increase. The crude hospitalisation rate peaked at 182.3 per 100,000 women in 2023–24 before easing to 179.0 in 2024–25. This points to a growing volume of recorded hospital care, particularly elective care, but does not establish whether endometriosis became more common or whether unmet need decreased.",
               layout: "pair",
               charts: [C.endoLine, C.waterfall]
             }
@@ -304,7 +304,7 @@ const story = {
             },
             {
               heading: "Endometriosis procedures are concentrated in private hospitals",
-              text: "In 2024–25, 22,954 of the 30,568 recorded endometriosis-related procedures were privately funded—about 75%. Laparoscopic excision or diathermy was the most common selected procedure, with 15,398 procedures recorded. Women aged 25–44 accounted for around two-thirds of the total. The figures show that recorded procedures were concentrated in private care, but they do not establish whether patients had private insurance or whether public patients faced unmet need. The national private total is also incomplete because the ACT did not supply private hospital data.",
+              text: "In 2024–25, 22,954 of the 30,568 recorded endometriosis-related procedures were privately funded, about 75%. Laparoscopic excision or diathermy was the most common selected procedure, with 15,398 procedures recorded. Women aged 25–44 accounted for around two-thirds of the total. The figures show that recorded procedures were concentrated in private care, but they do not establish whether patients had private insurance or whether public patients faced unmet need. The national private total is also incomplete because the ACT did not supply private hospital data.",
               charts: [C.sankey]
             }
           ]
@@ -344,21 +344,61 @@ function el(tag, className, text) {
 function createChartCard(item, container) {
   const index = chartCounter++;
 
-  const card = el("figure", `chart-card${item.cardClass ? ` ${item.cardClass}` : ""}`);
+  const card = el(
+    "figure",
+    `chart-card${item.cardClass ? ` ${item.cardClass}` : ""}`
+  );
+
   const heading = el("h4", "chart-title", item.title);
-  const tag = item.tag ? el("p", `chart-tag chart-tag--${item.tag}`, item.tag.toUpperCase()) : null;
+
+  const tag = item.tag
+    ? el("p", `chart-tag chart-tag--${item.tag}`, item.tag.toUpperCase())
+    : null;
 
   const view = el("div", "chart-view");
   view.id = `chart-view-${index}`;
-  view.setAttribute("role", "img");
-  view.setAttribute("aria-label", `${item.title}. ${item.caveat || ""}`);
 
-  const caveat = el("p", "chart-caveat", item.caveat || "Rates describe recorded hospitalisations, not all people living with the condition.");
-  const source = el("p", "chart-source", item.source || "Source: AIHW supplied data tables.");
-  const figureNumber = el("figcaption", "chart-figure-number", `Figure ${index + 1}`);
-  const caption = item.caption ? el("p", "chart-caption", item.caption) : null;
-  card.append(...[tag, heading, view, caption, caveat, source, figureNumber].filter(Boolean));
+  // Let the rendered chart determine its height instead of
+  // enforcing a 250px minimum that can leave blank space.
+  view.style.minHeight = "0";
+  view.style.height = "auto";
+
+  view.setAttribute("role", "img");
+  view.setAttribute(
+    "aria-label",
+    `${item.title}. ${item.caveat || ""}`
+  );
+
+  const caveat = el(
+    "p",
+    "chart-caveat",
+    item.caveat ||
+      "Rates describe recorded hospitalisations, not all people living with the condition."
+  );
+
+  const source = el(
+    "p",
+    "chart-source",
+    item.source || "Source: AIHW supplied data tables."
+  );
+
+  const figureNumber = el(
+    "figcaption",
+    "chart-figure-number",
+    `Figure ${index + 1}`
+  );
+
+  const caption = item.caption
+    ? el("p", "chart-caption", item.caption)
+    : null;
+
+  card.append(
+    ...[tag, heading, view, caption, caveat, source, figureNumber]
+      .filter(Boolean)
+  );
+
   container.append(card);
+
   return view;
 }
 

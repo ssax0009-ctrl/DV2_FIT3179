@@ -969,3 +969,117 @@ footer a {
 .chart-key-row:last-child { margin-bottom: 0; }
 .chart-key-row .chart-tag { flex: 0 0 5.2rem; margin: 0; text-align: center; }
 .chart-key-text { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+
+
+/* Consistent editorial hierarchy */
+.theme-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+
+
+.standfirst,
+.page-header__subtitle {
+  margin: 1rem 0 1.5rem;
+  color: #d3e0dc;
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.story-theme + .story-theme {
+  margin-top: 5rem;
+}
+
+.theme-header {
+  margin: 5rem 0 2.5rem;
+}
+
+.finding {
+  margin-block: 3rem;
+}
+
+
+/* ==================================================
+   CONSISTENT MIDDLE FINDING TEXT
+   Heading left | Explanation right | Divider below
+   Place at the VERY BOTTOM of styles.css
+   ================================================== */
+
+.finding > .finding-text,
+.finding--flip > .finding-text,
+.finding--lead > .finding-text,
+.finding--lead-caption > .finding-text,
+.finding--wide > .finding-text,
+.finding--pair > .finding-text,
+.finding--note > .finding-text {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 2rem;
+
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem 0;
+
+  border: 0;
+  border-bottom: 3px solid #18313b;
+  text-align: center;
+}
+
+/* Finding heading on the left */
+.finding > .finding-text h3,
+.finding--flip > .finding-text h3,
+.finding--lead > .finding-text h3,
+.finding--lead-caption > .finding-text h3,
+.finding--wide > .finding-text h3,
+.finding--pair > .finding-text h3,
+.finding--note > .finding-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Explanatory paragraph on the right */
+.finding > .finding-text p,
+.finding--flip > .finding-text p,
+.finding--lead > .finding-text p,
+.finding--lead-caption > .finding-text p,
+.finding--wide > .finding-text p,
+.finding--pair > .finding-text p,
+.finding--note > .finding-text p {
+  max-width: 65ch;
+  margin: 0 auto;
+  color: #536b73;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+/* Optional footnotes remain slightly smaller */
+.finding-text .finding-footnote {
+  font-size: 0.82rem;
+}
+
+/* Mobile: stack heading above explanation */
+@media (max-width: 700px) {
+  .finding > .finding-text,
+  .finding--flip > .finding-text,
+  .finding--lead > .finding-text,
+  .finding--lead-caption > .finding-text,
+  .finding--wide > .finding-text,
+  .finding--pair > .finding-text,
+  .finding--note > .finding-text {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+}
