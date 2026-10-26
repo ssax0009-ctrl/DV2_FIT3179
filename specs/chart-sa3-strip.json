@@ -32,7 +32,7 @@
     }
   },
   "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
-  "title": "SA3 age-standardised rates within each state · 2021–22",
+  "title": "SA3 hysterectomy rates by state and remoteness · 2021–22",
   "data": {
     "values": [
       {
@@ -2251,77 +2251,81 @@
   },
   "width": 480,
   "height": 340,
-  "mark": {
-    "type": "circle",
-    "opacity": 0.66,
-    "size": 32,
-    "stroke": "#ffffff",
-    "strokeWidth": 0.45
-  },
-  "encoding": {
-    "x": {
-      "field": "rate",
-      "type": "quantitative",
-      "title": "Hospitalisations per 100,000 women",
-      "scale": {
-        "zero": false
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.66,
+        "size": 32,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.45
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "Hospitalisations per 100,000 women",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": null,
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ]
+        },
+        "color": {
+          "field": "remoteness",
+          "type": "nominal",
+          "title": "Remoteness",
+          "scale": {
+            "scheme": "tableau10"
+          },
+          "legend": {
+            "orient": "bottom",
+            "columns": 2
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "type": "nominal",
+            "title": "SA3 area"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Rate",
+            "format": ".0f"
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "title": "Female population",
+            "format": ","
+          },
+          {
+            "field": "remoteness",
+            "type": "nominal",
+            "title": "Remoteness"
+          }
+        ]
       }
-    },
-    "y": {
-      "field": "state",
-      "type": "nominal",
-      "title": null,
-      "sort": [
-        "NSW",
-        "Vic",
-        "Qld",
-        "SA",
-        "WA",
-        "Tas",
-        "NT",
-        "ACT"
-      ]
-    },
-    "color": {
-      "field": "remoteness",
-      "type": "nominal",
-      "title": "Remoteness",
-      "scale": {
-        "scheme": "tableau10"
-      },
-      "legend": {
-        "orient": "bottom",
-        "columns": 2
-      }
-    },
-    "tooltip": [
-      {
-        "field": "region",
-        "type": "nominal",
-        "title": "SA3 area"
-      },
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "rate",
-        "type": "quantitative",
-        "title": "Rate",
-        "format": ".0f"
-      },
-      {
-        "field": "population",
-        "type": "quantitative",
-        "title": "Female population",
-        "format": ","
-      },
-      {
-        "field": "remoteness",
-        "type": "nominal",
-        "title": "Remoteness"
-      }
-    ]
-  }
+    }
+  ]
 }

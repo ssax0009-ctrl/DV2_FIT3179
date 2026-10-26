@@ -3,14 +3,46 @@
   "description": "Private share of hysterectomy hospitalisations by state and territory, 2021–22.",
   "data": {
     "values": [
-      { "state": "NT", "baseline": 45, "share": 53, "label": "53%" },
-      { "state": "Vic", "baseline": 45, "share": 59, "label": "59%" },
-      { "state": "ACT", "baseline": 45, "share": 60, "label": "60%" },
-      { "state": "Qld", "baseline": 45, "share": 61, "label": "61%" },
-      { "state": "SA", "baseline": 45, "share": 63, "label": "63%" },
-      { "state": "Tas", "baseline": 45, "share": 63, "label": "63%" },
-      { "state": "NSW", "baseline": 45, "share": 64, "label": "64%" },
-      { "state": "WA", "baseline": 45, "share": 71, "label": "71%" }
+      {
+        "state": "NT",
+        "share": 53,
+        "label": "53%"
+      },
+      {
+        "state": "Vic",
+        "share": 59,
+        "label": "59%"
+      },
+      {
+        "state": "ACT",
+        "share": 60,
+        "label": "60%"
+      },
+      {
+        "state": "Qld",
+        "share": 61,
+        "label": "61%"
+      },
+      {
+        "state": "SA",
+        "share": 63,
+        "label": "63%"
+      },
+      {
+        "state": "Tas",
+        "share": 63,
+        "label": "63%"
+      },
+      {
+        "state": "NSW",
+        "share": 64,
+        "label": "64%"
+      },
+      {
+        "state": "WA",
+        "share": 71,
+        "label": "71%"
+      }
     ]
   },
   "width": 500,
@@ -27,102 +59,217 @@
       "labelFontSize": 11,
       "titleFontSize": 11
     },
-    "view": { "stroke": null }
+    "view": {
+      "stroke": null
+    }
   },
   "layer": [
     {
-      "mark": { "type": "rule", "color": "#aabbb6", "strokeWidth": 2 },
-      "encoding": {
-        "x": {
-          "field": "baseline",
-          "type": "quantitative",
-          "scale": { "domain": [45, 78], "nice": false }
-        },
-        "x2": { "field": "share" },
-        "y": {
-          "field": "state",
-          "type": "ordinal",
-          "sort": ["NT", "Vic", "ACT", "Qld", "SA", "Tas", "NSW", "WA"],
-          "axis": { "title": "State or territory" }
-        },
-        "tooltip": [
-          { "field": "state", "type": "nominal", "title": "State or territory" },
-          { "field": "share", "type": "quantitative", "title": "Private share", "format": ".0f", "formatType": "number" }
-        ]
-      }
-    },
-    {
-      "mark": { "type": "point", "filled": true, "size": 90, "color": "#0072b2" },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "color": "#0072b2"
+      },
       "encoding": {
         "x": {
           "field": "share",
           "type": "quantitative",
-          "scale": { "domain": [45, 78], "nice": false },
-          "axis": { "values": [45, 50, 55, 60, 65, 70, 75], "labelExpr": "datum.value + '%'", "grid": true }
+          "scale": {
+            "domain": [
+              0,
+              78
+            ],
+            "nice": false
+          },
+          "axis": {
+            "values": [
+              45,
+              50,
+              55,
+              60,
+              65,
+              70,
+              75
+            ],
+            "labelExpr": "datum.value + '%'",
+            "grid": true
+          }
         },
         "y": {
           "field": "state",
           "type": "ordinal",
-          "sort": ["NT", "Vic", "ACT", "Qld", "SA", "Tas", "NSW", "WA"],
-          "axis": { "title": "State or territory" }
+          "sort": [
+            "NT",
+            "Vic",
+            "ACT",
+            "Qld",
+            "SA",
+            "Tas",
+            "NSW",
+            "WA"
+          ],
+          "axis": {
+            "title": "State or territory"
+          }
         },
         "tooltip": [
-          { "field": "state", "type": "nominal", "title": "State or territory" },
-          { "field": "share", "type": "quantitative", "title": "Private share", "format": ".0f" }
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Private share",
+            "format": ".0f"
+          }
         ]
       }
     },
     {
-      "mark": { "type": "text", "align": "left", "dx": 8, "fontSize": 10, "color": "#344f58" },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 10,
+        "color": "#344f58"
+      },
       "encoding": {
         "x": {
           "field": "share",
           "type": "quantitative",
-          "scale": { "domain": [45, 78], "nice": false }
+          "scale": {
+            "domain": [
+              0,
+              78
+            ],
+            "nice": false
+          }
         },
         "y": {
           "field": "state",
           "type": "ordinal",
-          "sort": ["NT", "Vic", "ACT", "Qld", "SA", "Tas", "NSW", "WA"]
+          "sort": [
+            "NT",
+            "Vic",
+            "ACT",
+            "Qld",
+            "SA",
+            "Tas",
+            "NSW",
+            "WA"
+          ]
         },
-        "text": { "field": "label" }
+        "text": {
+          "field": "label"
+        }
       }
     },
     {
-      "data": { "values": [{ "nationalShare": 63 }] },
-      "mark": { "type": "rule", "color": "#d55e00", "strokeDash": [5, 4], "strokeWidth": 1.5 },
+      "data": {
+        "values": [
+          {
+            "nationalShare": 63
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#d55e00",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "strokeWidth": 1.5
+      },
       "encoding": {
         "x": {
           "field": "nationalShare",
           "type": "quantitative",
-          "scale": { "domain": [45, 78], "nice": false }
+          "scale": {
+            "domain": [
+              0,
+              78
+            ],
+            "nice": false
+          }
         },
         "y": {
           "datum": "NT",
           "type": "ordinal",
-          "sort": ["NT", "Vic", "ACT", "Qld", "SA", "Tas", "NSW", "WA"]
+          "sort": [
+            "NT",
+            "Vic",
+            "ACT",
+            "Qld",
+            "SA",
+            "Tas",
+            "NSW",
+            "WA"
+          ]
         },
-        "y2": { "datum": "WA" },
+        "y2": {
+          "datum": "WA"
+        },
         "tooltip": [
-          { "field": "nationalShare", "type": "quantitative", "title": "National private share", "format": ".0f" }
+          {
+            "field": "nationalShare",
+            "type": "quantitative",
+            "title": "National private share",
+            "format": ".0f"
+          }
         ]
       }
     },
     {
-      "data": { "values": [{ "state": "NT", "nationalShare": 63, "label": "National 63%" }] },
-      "mark": { "type": "text", "align": "center", "dy": -17, "fontSize": 10, "fontWeight": "bold", "color": "#a44800" },
+      "data": {
+        "values": [
+          {
+            "state": "NT",
+            "nationalShare": 63,
+            "label": "National 63%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -17,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#a44800"
+      },
       "encoding": {
         "x": {
           "field": "nationalShare",
           "type": "quantitative",
-          "scale": { "domain": [45, 78], "nice": false }
+          "scale": {
+            "domain": [
+              0,
+              78
+            ],
+            "nice": false
+          }
         },
         "y": {
           "field": "state",
           "type": "ordinal",
-          "sort": ["NT", "Vic", "ACT", "Qld", "SA", "Tas", "NSW", "WA"]
+          "sort": [
+            "NT",
+            "Vic",
+            "ACT",
+            "Qld",
+            "SA",
+            "Tas",
+            "NSW",
+            "WA"
+          ]
         },
-        "text": { "field": "label" }
+        "text": {
+          "field": "label"
+        }
       }
     }
   ]

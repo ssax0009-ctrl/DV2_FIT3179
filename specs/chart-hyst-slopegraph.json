@@ -270,6 +270,13 @@
       "transform": [
         {
           "filter": "datum.year === '2021–22'"
+        },
+        {
+          "calculate": "datum.state === 'SA' ? 'SA + WA 236' : datum.state === 'WA' ? '' : datum.state + ' ' + format(datum.rate, '.0f')",
+          "as": "label"
+        },
+        {
+          "filter": "datum.label !== ''"
         }
       ],
       "mark": {
@@ -296,7 +303,8 @@
           }
         },
         "text": {
-          "field": "state"
+          "field": "label",
+          "type": "nominal"
         },
         "color": {
           "field": "state",
@@ -324,6 +332,72 @@
             ]
           },
           "legend": null
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === '2014–15' && (datum.state === 'SA' || datum.state === 'ACT')"
+        },
+        {
+          "calculate": "datum.state + ' ' + format(datum.rate, '.0f')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 600,
+        "align": "right",
+        "dx": -7
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2021–22"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "NSW",
+              "Vic",
+              "Qld",
+              "SA",
+              "WA",
+              "Tas",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#0072B2",
+              "#D55E00",
+              "#009E73",
+              "#CC79A7",
+              "#E69F00",
+              "#56B4E9",
+              "#6B705C",
+              "#6A6A6A"
+            ]
+          },
+          "legend": null
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
         }
       }
     }

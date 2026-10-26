@@ -203,7 +203,7 @@
     {
       "mark": {
         "type": "tick",
-        "color": "#d88700",
+        "color": "#0072b2",
         "thickness": 2,
         "size": 18
       },
@@ -242,6 +242,102 @@
             "format": ".0f"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Vic",
+            "rate": 124,
+            "label": "124"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -9,
+        "fontSize": 10,
+        "fontWeight": 700,
+        "color": "#18313b",
+        "clip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ]
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Vic",
+            "rate": 519,
+            "label": "519"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "dy": -9,
+        "fontSize": 10,
+        "fontWeight": 700,
+        "color": "#18313b",
+        "clip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Vic",
+            "Qld",
+            "SA",
+            "WA",
+            "Tas",
+            "NT",
+            "ACT"
+          ]
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
       }
     }
   ]

@@ -64,7 +64,8 @@
             "high": 428.0,
             "variation": 3.2,
             "longitude": 147.01479622360483,
-            "latitude": -32.1655643438379
+            "latitude": -32.1655643438379,
+            "label": "NSW 7,059"
           },
           {
             "year": "2021–22",
@@ -92,7 +93,8 @@
             "high": 520.0,
             "variation": 3.2,
             "longitude": 144.54633181286812,
-            "latitude": -22.567758783615393
+            "latitude": -22.567758783615393,
+            "label": "Qld 5,997"
           },
           {
             "year": "2021–22",
@@ -134,7 +136,8 @@
             "high": 496.0,
             "variation": 2.4,
             "longitude": 146.59742353199263,
-            "latitude": -41.935713021117415
+            "latitude": -41.935713021117415,
+            "label": "Tas 616"
           },
           {
             "year": "2021–22",
@@ -222,13 +225,63 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 147.01479622360483,
+            "latitude": -32.1655643438379,
+            "label": "NSW 7,059"
+          },
+          {
+            "longitude": 144.54633181286812,
+            "latitude": -22.567758783615393,
+            "label": "Qld 5,997"
+          },
+          {
+            "longitude": 146.59742353199263,
+            "latitude": -41.935713021117415,
+            "label": "Tas 616"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#18313b",
+        "align": "center",
+        "dy": -10
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "width": 480,
   "height": 330,
   "projection": {
     "type": "conicEqualArea",
-    "rotate": [-134, 0, 0],
-    "parallels": [-18, -36]
+    "rotate": [
+      -134,
+      0,
+      0
+    ],
+    "parallels": [
+      -18,
+      -36
+    ]
   }
 }

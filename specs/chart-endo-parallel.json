@@ -32,7 +32,7 @@
     }
   },
   "description": "Women’s health hospital data supplied for FIT3179 Data Visualisation 2.",
-  "title": "Age-specific procedure rates · 2024–25",
+  "title": "Selected endometriosis procedure rates by age group · 2024–25",
   "data": {
     "values": [
       {
@@ -309,7 +309,8 @@
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 2
+        "strokeWidth": 2,
+        "opacity": 0.72
       },
       "encoding": {
         "x": {
@@ -332,12 +333,18 @@
           }
         },
         "color": {
-          "field": "procedure",
-          "type": "nominal",
-          "title": "Procedure",
-          "scale": {
-            "scheme": "tableau10"
-          }
+          "condition": [
+            {
+              "test": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity'",
+              "value": "#0072b2"
+            },
+            {
+              "test": "datum.procedure === 'Cystoscopy'",
+              "value": "#d55e00"
+            }
+          ],
+          "value": "#cbd5d3",
+          "legend": null
         },
         "detail": {
           "field": "procedure"
@@ -397,11 +404,18 @@
           }
         },
         "color": {
-          "field": "procedure",
-          "type": "nominal",
-          "scale": {
-            "scheme": "tableau10"
-          }
+          "condition": [
+            {
+              "test": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity'",
+              "value": "#0072b2"
+            },
+            {
+              "test": "datum.procedure === 'Cystoscopy'",
+              "value": "#d55e00"
+            }
+          ],
+          "value": "#cbd5d3",
+          "legend": null
         },
         "detail": {
           "field": "procedure"
@@ -430,6 +444,246 @@
             "format": ","
           }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity' && datum.ageGroup === '45 and over'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dx": 6,
+        "dy": -8,
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "value": "Laparoscopic excision"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Cystoscopy' && datum.ageGroup === '45 and over'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dx": 6,
+        "dy": 8,
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "value": "Cystoscopy"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity' && datum.ageGroup === '25–34'"
+        },
+        {
+          "calculate": "format(datum.rate, '.1f')",
+          "as": "valueLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "dy": -10
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "field": "valueLabel",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity' && datum.ageGroup === '35–44'"
+        },
+        {
+          "calculate": "format(datum.rate, '.1f')",
+          "as": "valueLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "dy": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "field": "valueLabel",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Cystoscopy' && datum.ageGroup === '25–34'"
+        },
+        {
+          "calculate": "format(datum.rate, '.1f')",
+          "as": "valueLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "dy": -10
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "field": "valueLabel",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.procedure === 'Cystoscopy' && datum.ageGroup === '35–44'"
+        },
+        {
+          "calculate": "format(datum.rate, '.1f')",
+          "as": "valueLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 600,
+        "color": "#18313b",
+        "dy": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "ageGroup",
+          "type": "ordinal",
+          "sort": [
+            "Under 25",
+            "25–34",
+            "35–44",
+            "45 and over"
+          ]
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "text": {
+          "field": "valueLabel",
+          "type": "nominal"
+        }
       }
     }
   ]

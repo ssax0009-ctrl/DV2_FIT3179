@@ -1,189 +1,106 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Hysterectomy rates by remoteness and socioeconomic quintile, 2021–22.",
+  "description": "Hysterectomy rates by remoteness and SES group, with tile area showing female population, 2021–22.",
   "data": {
     "values": [
-      { "remoteness": "Inner regional", "base": 3, "overall": 292, "low": 279, "high": 298, "q1": 294, "q2": 298, "q3": 281, "q4": 279, "q5": null, "suppressed": "SES 5 suppressed" },
-      { "remoteness": "Outer regional", "base": 2, "overall": 243, "low": 201, "high": 288, "q1": 240, "q2": 288, "q3": 201, "q4": null, "q5": null, "suppressed": "SES 4–5 suppressed" },
-      { "remoteness": "Major cities", "base": 1, "overall": 218, "low": 195, "high": 241, "q1": 210, "q2": 226, "q3": 241, "q4": 236, "q5": 195, "suppressed": "" },
-      { "remoteness": "Remote", "base": 0, "overall": 193, "low": 164, "high": 247, "q1": 164, "q2": 247, "q3": null, "q4": null, "q5": null, "suppressed": "SES 3–5 suppressed" }
+      {
+        "remoteness": "Inner regional",
+        "overall": 292,
+        "ses": "SES 1",
+        "rate": 294,
+        "population": 848726
+      },
+      {
+        "remoteness": "Inner regional",
+        "overall": 292,
+        "ses": "SES 2",
+        "rate": 298,
+        "population": 664291
+      },
+      {
+        "remoteness": "Inner regional",
+        "overall": 292,
+        "ses": "SES 3",
+        "rate": 281,
+        "population": 204647
+      },
+      {
+        "remoteness": "Inner regional",
+        "overall": 292,
+        "ses": "SES 4",
+        "rate": 279,
+        "population": 218122
+      },
+      {
+        "remoteness": "Outer regional",
+        "overall": 243,
+        "ses": "SES 1",
+        "rate": 240,
+        "population": 456929
+      },
+      {
+        "remoteness": "Outer regional",
+        "overall": 243,
+        "ses": "SES 2",
+        "rate": 288,
+        "population": 200804
+      },
+      {
+        "remoteness": "Outer regional",
+        "overall": 243,
+        "ses": "SES 3",
+        "rate": 201,
+        "population": 146110
+      },
+      {
+        "remoteness": "Major cities",
+        "overall": 218,
+        "ses": "SES 1",
+        "rate": 210,
+        "population": 1412409
+      },
+      {
+        "remoteness": "Major cities",
+        "overall": 218,
+        "ses": "SES 2",
+        "rate": 226,
+        "population": 1039020
+      },
+      {
+        "remoteness": "Major cities",
+        "overall": 218,
+        "ses": "SES 3",
+        "rate": 241,
+        "population": 1336563
+      },
+      {
+        "remoteness": "Major cities",
+        "overall": 218,
+        "ses": "SES 4",
+        "rate": 236,
+        "population": 1568886
+      },
+      {
+        "remoteness": "Major cities",
+        "overall": 218,
+        "ses": "SES 5",
+        "rate": 195,
+        "population": 2386632
+      },
+      {
+        "remoteness": "Remote",
+        "overall": 193,
+        "ses": "SES 1",
+        "rate": 164,
+        "population": 98481
+      },
+      {
+        "remoteness": "Remote",
+        "overall": 193,
+        "ses": "SES 2",
+        "rate": 247,
+        "population": 49573
+      }
     ]
-  },
-  "width": 540,
-  "height": 290,
-  "config": {
-    "background": "transparent",
-    "font": "Arial, sans-serif",
-    "axis": {
-      "labelColor": "#536b73",
-      "titleColor": "#344f58",
-      "gridColor": "#edf1ef",
-      "domainColor": "#aabbb6",
-      "tickColor": "#aabbb6",
-      "labelFontSize": 11,
-      "titleFontSize": 11
-    },
-    "view": { "stroke": null, "clip": false }
-  },
-  "layer": [
-    {
-      "mark": { "type": "rule", "color": "#aabbb6", "strokeWidth": 1.2 },
-      "encoding": {
-        "x": {
-          "field": "low",
-          "type": "quantitative",
-          "scale": { "domain": [150, 310], "nice": false },
-          "axis": { "values": [150, 190, 230, 270, 310], "grid": true }
-        },
-        "x2": { "field": "high" },
-        "y": {
-          "field": "base",
-          "type": "quantitative",
-          "scale": { "domain": [-0.5, 3.5], "nice": false },
-          "axis": {
-            "title": null,
-            "values": [3, 2, 1, 0],
-            "labelExpr": "datum.value === 3 ? 'Inner regional' : datum.value === 2 ? 'Outer regional' : datum.value === 1 ? 'Major cities' : 'Remote'",
-            "tickSize": 0,
-            "domain": false,
-            "grid": false
-          }
-        },
-        "tooltip": [
-          { "field": "remoteness", "type": "nominal", "title": "Remoteness" },
-          { "field": "low", "type": "quantitative", "title": "Lowest SES rate", "format": ".0f" },
-          { "field": "high", "type": "quantitative", "title": "Highest SES rate", "format": ".0f" }
-        ]
-      }
-    },
-    {
-      "transform": [
-        { "fold": ["q1", "q2", "q3", "q4", "q5"], "as": ["ses", "rate"] },
-        { "filter": "isValid(datum.rate)" },
-        { "calculate": "toNumber(replace(datum.ses, 'q', ''))", "as": "quintile" }
-      ],
-      "mark": { "type": "point", "filled": true, "size": 135, "stroke": "#ffffff", "strokeWidth": 0.7 },
-      "encoding": {
-        "x": {
-          "field": "rate",
-          "type": "quantitative",
-          "scale": { "domain": [150, 310], "nice": false },
-          "axis": { "values": [150, 190, 230, 270, 310], "grid": true }
-        },
-        "y": {
-          "field": "base",
-          "type": "quantitative",
-          "scale": { "domain": [-0.5, 3.5], "nice": false },
-          "axis": {
-            "title": null,
-            "values": [3, 2, 1, 0],
-            "labelExpr": "datum.value === 3 ? 'Inner regional' : datum.value === 2 ? 'Outer regional' : datum.value === 1 ? 'Major cities' : 'Remote'",
-            "tickSize": 0,
-            "domain": false,
-            "grid": false
-          }
-        },
-        "color": {
-          "field": "quintile",
-          "type": "ordinal",
-          "scale": {
-            "domain": [1, 2, 3, 4, 5],
-            "range": ["#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"]
-          },
-          "legend": null
-        },
-        "tooltip": [
-          { "field": "remoteness", "type": "nominal", "title": "Remoteness" },
-          { "field": "quintile", "type": "quantitative", "title": "SES quintile" },
-          { "field": "rate", "type": "quantitative", "title": "Rate per 100,000 women", "format": ".0f" }
-        ]
-      }
-    },
-    {
-      "transform": [
-        { "fold": ["q1", "q2", "q3", "q4", "q5"], "as": ["ses", "rate"] },
-        { "filter": "isValid(datum.rate)" },
-        { "calculate": "toNumber(replace(datum.ses, 'q', ''))", "as": "quintile" },
-        { "calculate": "datum.quintile <= 2 ? '#18313b' : '#ffffff'", "as": "labelColor" }
-      ],
-      "mark": { "type": "text", "fontSize": 9, "fontWeight": "bold", "baseline": "middle" },
-      "encoding": {
-        "x": {
-          "field": "rate",
-          "type": "quantitative",
-          "scale": { "domain": [150, 310], "nice": false }
-        },
-        "y": {
-          "field": "base",
-          "type": "quantitative",
-          "scale": { "domain": [-0.5, 3.5], "nice": false }
-        },
-        "text": { "field": "quintile", "type": "ordinal" },
-        "color": { "field": "labelColor", "type": "nominal", "scale": null }
-      }
-    },
-    {
-      "transform": [
-        { "filter": "isValid(datum.overall)" },
-        { "calculate": "datum.base + 0.25", "as": "overallY" }
-      ],
-      "mark": { "type": "point", "shape": "diamond", "filled": true, "size": 190, "color": "#176b63" },
-      "encoding": {
-        "x": {
-          "field": "overall",
-          "type": "quantitative",
-          "scale": { "domain": [150, 310], "nice": false },
-          "axis": { "values": [150, 190, 230, 270, 310], "grid": true }
-        },
-        "y": {
-          "field": "overallY",
-          "type": "quantitative",
-          "scale": { "domain": [-0.5, 3.5], "nice": false },
-          "axis": {
-            "title": null,
-            "values": [3, 2, 1, 0],
-            "labelExpr": "datum.value === 3 ? 'Inner regional' : datum.value === 2 ? 'Outer regional' : datum.value === 1 ? 'Major cities' : 'Remote'",
-            "tickSize": 0,
-            "domain": false,
-            "grid": false
-          }
-        },
-        "tooltip": [
-          { "field": "remoteness", "type": "nominal", "title": "Remoteness" },
-          { "field": "overall", "type": "quantitative", "title": "Overall rate per 100,000 women", "format": ".0f" }
-        ]
-      }
-    },
-    {
-      "transform": [
-        { "filter": "isValid(datum.overall)" },
-        { "calculate": "datum.base + 0.25", "as": "overallY" },
-        { "calculate": "datum.overall + 3", "as": "labelX" },
-        { "calculate": "format(datum.overall, '.0f')", "as": "overallLabel" }
-      ],
-      "mark": { "type": "text", "align": "left", "dx": 5, "fontSize": 10, "fontWeight": "bold", "color": "#176b63", "clip": false },
-      "encoding": {
-        "x": { "field": "labelX", "type": "quantitative", "scale": { "domain": [150, 310], "nice": false } },
-        "y": { "field": "overallY", "type": "quantitative", "scale": { "domain": [-0.5, 3.5], "nice": false } },
-        "text": { "field": "overallLabel" }
-      }
-    },
-    {
-      "transform": [{ "filter": "datum.suppressed !== ''" }],
-      "mark": { "type": "text", "align": "left", "dx": 8, "fontSize": 9, "color": "#536b73", "clip": false },
-      "encoding": {
-        "x": {
-          "datum": 310,
-          "type": "quantitative",
-          "scale": { "domain": [150, 310], "nice": false }
-        },
-        "y": {
-          "field": "base",
-          "type": "quantitative",
-          "scale": { "domain": [-0.5, 3.5], "nice": false }
-        },
-        "text": { "field": "suppressed" }
-      }
-    }
-  ]
+  }
 }
