@@ -11,66 +11,66 @@
 
 const C = {
   waitingMap: {
+    figureName: "Figure 1",
     spec: "specs/map-hyst-waiting-times-lhn.json",
     renderer: "lhnWaitingMap",
     title: "Longest elective surgery cluster in NSW and Queensland networks · 2024–25",
-    tag: "access",
     idiom: "Choropleth + proportional symbols",
     axisTitles: {},
     caveat: "48 of 71 LHNs published; state values unpublished for ACT and NT",
     source: "Source: AIHW state waiting-time table, 2024–25; supplied LHN waiting-time data and coordinates."
   },
   volumeMap: {
+    figureName: "Figure 2",
     spec: "specs/map-hyst-volume.json",
     title: "Recorded hysterectomy hospitalisations by state · 2021–22",
-    tag: "activity",
     idiom: "Proportional-symbol map",
     axisTitles: {},
     caveat: "Counts reflect population size as well as hospitalisation frequency.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   dotMap: {
+    figureName: "Figure 3",
     spec: "specs/chart-sa3-strip.json",
     renderer: "dotmap",
     cardClass: "chart-card--dotmap",
     title: "Where SA3 areas with published rates are located · 2021–22",
-    tag: "activity",
     idiom: "Dot map",
     axisTitles: {},
     caveat: "316 rates shown; 24 are suppressed and state totals range from 5 to 87. Locations are schematic.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   ridgeline: {
+    figureName: "Figure 4",
     spec: "specs/chart-sa3-ridgeline.json",
     title: "SA3 hysterectomy rates by state · 2021–22",
-    tag: "activity",
     idiom: "Ridgeline plot",
     axisTitles: { x: "Hospitalisations per 100,000 women" },
     caveat: "Each ridge smooths the SA3 rates in one state; numbers mark its lowest and highest area. Suppressed rates are omitted, and the ACT and NT curves rest on only 5 to 6 areas.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   range: {
+    figureName: "Figure 5",
     spec: "specs/chart-sa3-range.json",
     title: "SA3 rate ranges by state · 2021–22",
-    tag: "activity",
     idiom: "Interval plot",
     axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
     caveat: "24 SA3 values are suppressed; statewide counts of valid SA3s range from 5 to 87.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   slope: {
+    figureName: "Figure 6",
     spec: "specs/chart-hyst-slopegraph.json",
     title: "Hospitalisation rates by state in 2014–15 and 2021–22",
-    tag: "activity",
     idiom: "Slopegraph",
     axisTitles: { x: "Financial year", y: "Hospitalisations per 100,000 women" },
     caveat: "Age-standardised rates; SA and WA finish at the same rate.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 and 2021–22."
   },
   tileGrid: {
+    figureName: "Figure 7",
     spec: "specs/chart-hyst-tilegrid.json",
     title: "Hysterectomy rates by state, tile-grid map · 2014–15 to 2021–22",
-    tag: "activity",
     idiom: "Tile-grid map",
     axisTitles: {},
     caption: "Tiles are not to scale; positions are approximate.",
@@ -78,74 +78,73 @@ const C = {
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 to 2021–22."
   },
   heatmap: {
+    figureName: "Figure 8",
     spec: "specs/chart-hyst-heatmap.json",
     title: "Annual age-standardised hysterectomy rates by state · 2014–15 to 2021–22",
-    tag: "activity",
     idiom: "Heatmap",
     axisTitles: { x: "Financial year", y: "State or territory" },
     caveat: "Changes around 2019–20 to 2021–22 overlap with COVID-era restrictions.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 to 2021–22."
   },
   indigenousDumbbell: {
+    figureName: "Figure 9",
     spec: "specs/chart-hyst-indigenous-dumbbell.json",
     title: "Hysterectomy rates by Indigenous status and state · 2021–22",
-    tag: "activity",
     idiom: "Dumbbell plot",
     axisTitles: { x: "Age-standardised rate per 100,000 women" },
     caveat: "Hospitalisation rates are not measures of prevalence or need; Tasmania and ACT are suppressed.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
-
   privateShare: {
+    figureName: "Figure 10",
     spec: "specs/chart-hyst-private-waffle.json",
     title: "Private-patient share of hysterectomy hospitalisations by state · 2021–22",
-    tag: "activity",
     idiom: "Waffle chart",
     axisTitles: {},
     caveat: "Each square is 1% of a state’s hysterectomy hospitalisations; nationally, 63% were private.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   remotenessSes: {
+    figureName: "Figure 11",
     spec: "specs/chart-hyst-remoteness-ses-radial.json",
     title: "Hysterectomy rates by remoteness and SES group · 2021–22",
-    tag: "activity",
     idiom: "Radial chart",
     axisTitles: {},
     caveat: "Radius shows the age-standardised rate per 100,000 women, scaled so that area follows the rate. Colour marks remoteness; each slice is one SES group. Outer regional and remote areas have suppressed SES groups.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   endoLine: {
+    figureName: "Figure 12",
     spec: "specs/chart-endo-rate-line.json",
     title: "Annual endometriosis admissions and crude rates · 2015–16 to 2024–25",
-    tag: "activity",
     idiom: "Line chart",
     axisTitles: { x: "Financial year", y: "Admissions per 100,000 population" },
     caveat: "Crude rates are not age-adjusted and are not a measure of disease prevalence.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2015–16 to 2024–25."
   },
   waterfall: {
+    figureName: "Figure 13",
     spec: "specs/chart-endo-waterfall.json",
     title: "Change in admissions by urgency, 2015–16 to 2024–25",
-    tag: "activity",
     idiom: "Waterfall",
     axisTitles: { x: "Urgency group", y: "Hospitalisations" },
     caveat: "The waterfall compares total admissions at the start and end of the series.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2015–16 and 2024–25."
   },
   parallel: {
+    figureName: "Figure 14",
     spec: "specs/chart-endo-parallel.json",
     title: "Selected procedure rates by age group, 2024–25",
-    tag: "activity",
     idiom: "Parallel-coordinates plot",
     axisTitles: { x: "Age group", y: "Hospitalisations per 100,000 women" },
     caveat: "Rates are for selected procedures in 2024–25, not unique people.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2024–25."
   },
   sankey: {
+    figureName: "Figure 15",
     spec: "data/endo-sankey.json",
     renderer: "sankey",
     title: "Procedure counts by age, procedure group and hospital sector · 2024–25",
-    tag: "activity",
     idiom: "Sankey",
     axisTitles: {},
     caption: "Age, procedure and sector are separate totals; ribbons are not individual paths.",
@@ -167,7 +166,7 @@ const story = {
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. The figure “Longest elective surgery cluster in NSW and Queensland networks · 2024–25” shows that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
+              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figure 1 shows that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
               layout: "wide",
               charts: [C.waitingMap]
             }
@@ -178,13 +177,13 @@ const story = {
           findings: [
             {
               heading: "State averages conceal substantial local variation",
-              text: "The “SA3 hysterectomy rates by state · 2021–22” ridgeline plot and “SA3 rate ranges by state · 2021–22” interval plot show that areas within the same state can have very different rates. In Victoria, the range runs from 124 per 100,000 women in Whitehorse–West to 519 in Ballarat. The key story is not simply that states differ, but that the place someone lives within a state may also matter.",
+              text: "Figures 4 and 5 show that areas within the same state can have very different hysterectomy hospitalisation rates. In Victoria, the range runs from 124 per 100,000 women in Whitehorse–West to 519 in Ballarat. The key story is not simply that states differ, but that the place someone lives within a state may also matter.",
               layout: "pair",
               charts: [C.ridgeline, C.range]
             },
             {
               heading: "Local differences become visible on the map",
-              text: "The “Where SA3 areas with published rates are located · 2021–22” map adds a geographic dimension to the ranges: it shows where the measured areas sit, rather than only how high or low their rates are. The spread across the map reinforces that variation is not confined to one state or one region. The dots are schematic, however, so their positions show distribution rather than exact locations.",
+              text: "Figure 3 adds a geographic dimension to the ranges shown in Figure 5: it shows where the measured SA3 areas sit, rather than only how high or low their rates are. The spread across the map reinforces that variation is not confined to one state or one region. The dots are schematic, however, so their positions show distribution rather than exact locations.",
               layout: "flip",
               charts: [C.dotMap]
             }
@@ -195,7 +194,7 @@ const story = {
           findings: [
             {
               heading: "The highest rates are not found in the most remote areas",
-              text: "In “Hysterectomy rates by remoteness and SES group · 2021–22”, inner regional areas record 292 hospitalisations per 100,000 women, above major cities at 218 and remote areas at 193. This challenges a simple assumption that remoteness alone explains differences in care. The socioeconomic slices also show variation within remoteness categories, suggesting that geography and social circumstances should be considered together rather than as competing explanations.",
+              text: "In Figure 11, inner regional areas record 292 hospitalisations per 100,000 women, above major cities at 218 and remote areas at 193. This challenges a simple assumption that remoteness alone explains differences in care. The socioeconomic slices also show variation within remoteness categories, suggesting that geography and social circumstances should be considered together rather than as competing explanations.",
               charts: [C.remotenessSes]
             }
           ]
@@ -213,8 +212,8 @@ const story = {
           findings: [
             {
               heading: "National averages hide different state patterns",
-              text: "In 2021–22, First Nations women had a higher national hysterectomy hospitalisation rate than Other Australian women (251 versus 231 per 100,000). However, state-level patterns differed: First Nations women had higher rates in NSW, Victoria and Queensland, while Other Australian women had higher rates in WA and the NT. These contrasting results highlight how national averages can conceal geographic variation in recorded hysterectomy hospitalisations.",
-              charts:  [C.indigenousDumbbell]
+              text: "In 2021–22, First Nations women had a higher national hysterectomy hospitalisation rate than Other Australian women (251 versus 231 per 100,000). However, Figure 9 shows contrasting state-level patterns: First Nations women had higher rates in NSW, Victoria and Queensland, while Other Australian women had higher rates in WA and the NT. These results highlight how national averages can conceal geographic variation in recorded hysterectomy hospitalisations.",
+              charts: [C.indigenousDumbbell]
             }
           ]
         },
@@ -223,7 +222,7 @@ const story = {
           findings: [
             {
               heading: "Private hospitals account for most hysterectomy admissions",
-              text: "The “Private-patient share of hysterectomy hospitalisations by state · 2021–22” waffle chart shows that 63% of hysterectomy hospitalisations were privately funded nationally. The share ranges from 53% in the NT to 71% in WA, making the private sector the larger part of recorded activity in every state shown. This uneven funding mix matters because national totals can make the system look more uniform than the state-level picture suggests.",
+              text: "Figure 10 shows that 63% of hysterectomy hospitalisations were privately funded nationally. The share ranges from 53% in the NT to 71% in WA, making the private sector the larger part of recorded activity in every state shown. This uneven funding mix matters because national totals can make the system look more uniform than the state-level picture suggests.",
               charts: [C.privateShare]
             }
           ]
@@ -241,13 +240,13 @@ const story = {
           findings: [
             {
               heading: "Declining rates did not erase differences between states",
-              text: "The “Hospitalisation rates by state in 2014–15 and 2021–22” slopegraph shows broad declines, while the “Hysterectomy rates by state, tile-grid map · 2014–15 to 2021–22” reveals how uneven those trajectories were. The gap between the highest and lowest state rates widened from 103 to 123 per 100,000 women. A general decline in hysterectomy rates therefore did not mean states converged; the distance between them grew.",
+              text: "Figure 6 shows broad declines in hysterectomy hospitalisation rates, while Figure 7 reveals how uneven those trajectories were across states. The gap between the highest and lowest state rates widened from 103 to 123 per 100,000 women. A general decline in hysterectomy rates therefore did not mean states converged; the distance between them grew.",
               layout: "pair",
               charts: [C.slope, C.tileGrid]
             },
             {
               heading: "Tasmania followed a different trajectory",
-              text: "The “Annual age-standardised hysterectomy rates by state · 2014–15 to 2021–22” heatmap highlights Tasmania’s rise to 420 hospitalisations per 100,000 women in 2016–17, followed by a fall to 279 in 2021–22. That peak stands out against the broader pattern of declining rates and shows why a start-to-end comparison can miss important changes in between. The trajectory is unusual, but the data alone do not identify its cause.",
+              text: "Figure 8 highlights Tasmania’s rise to 420 hospitalisations per 100,000 women in 2016–17, followed by a fall to 279 in 2021–22. That peak stands out against the broader pattern of declining rates and shows why a start-to-end comparison can miss important changes in between. The trajectory is unusual, but the data alone do not identify its cause.",
               charts: [C.heatmap]
             }
           ]
@@ -265,7 +264,7 @@ const story = {
           findings: [
             {
               heading: "The rise in endometriosis admissions was driven mainly by elective care",
-              text: "The “Annual endometriosis admissions and crude rates · 2015–16 to 2024–25” line chart shows admissions rising from 17,630 to 24,689, an increase of about 40%. The “Change in admissions by urgency, 2015–16 to 2024–25” waterfall indicates that elective admissions account for around 76% of that growth. The increase is therefore concentrated in planned hospital care, making elective treatment an important part of the story behind rising recorded activity.",
+              text: "Figure 12 shows admissions rising from 17,630 to 24,689 between 2015–16 and 2024–25, an increase of about 40%. Figure 13 indicates that elective admissions account for around 76% of that growth. The increase is therefore concentrated in planned hospital care, making elective treatment an important part of the story behind rising recorded activity.",
               layout: "pair",
               charts: [C.endoLine, C.waterfall]
             }
@@ -276,12 +275,12 @@ const story = {
           findings: [
             {
               heading: "Procedure patterns peak during the main reproductive years",
-              text: "In “Selected procedure rates by age group, 2024–25”, six of ten selected procedures peak at ages 25–34 and four at 35–44. This pattern is consistent with endometriosis care being concentrated during reproductive years. Symptoms often improve after menopause, although the condition can persist. The decline in older age groups should therefore be read as a pattern in recorded procedures, not evidence that endometriosis disappears after a particular age.",
+              text: "In Figure 14, six of ten selected procedures peak at ages 25–34 and four at ages 35–44. This pattern is consistent with endometriosis care being concentrated during reproductive years. Symptoms often improve after menopause, although the condition can persist. The decline in older age groups should therefore be read as a pattern in recorded procedures, not evidence that endometriosis disappears after a particular age.",
               charts: [C.parallel]
             },
             {
               heading: "Private care dominates the recorded procedure flow",
-              text: "The “Procedure counts by age, procedure group and hospital sector · 2024–25” Sankey diagram shows that roughly 75% of recorded procedures were privately funded, with private care accounting for far more activity than public care. Laparoscopic excision or diathermy, a minimally invasive surgical approach used to treat endometriosis lesions, was the most common selected procedure, and women aged 25–44 accounted for around two-thirds of procedures. Together, these patterns show where treatment is concentrated and which procedure features most prominently in the recorded activity.",
+              text: "Figure 15 shows that roughly 75% of recorded procedures were privately funded, with private care accounting for far more activity than public care. Laparoscopic excision or diathermy, a minimally invasive surgical approach used to treat endometriosis lesions, was the most common selected procedure, and women aged 25–44 accounted for around two-thirds of procedures. Together, these patterns show where treatment is concentrated and which procedure features most prominently in the recorded activity.",
               charts: [C.sankey]
             }
           ]
@@ -297,7 +296,7 @@ const story = {
           findings: [
             {
               heading: "The data reveal variation in care, but not its full explanation",
-              text: "Across the figures, place is associated with different waiting times and hysterectomy rates; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
+              text: "Across Figures 1 and 3–15, place is associated with different waiting times and hysterectomy rates; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
               charts: []
             }
           ]
@@ -306,6 +305,7 @@ const story = {
     }
   ]
 };
+
 /* ---------- helpers ---------- */
 
 let chartCounter = 0;
@@ -327,9 +327,7 @@ function createChartCard(item, container) {
 
   const heading = el("h4", "chart-title", item.title);
 
-  const tag = item.tag
-    ? el("p", `chart-tag chart-tag--${item.tag}`, item.tag.toUpperCase())
-    : null;
+  
 
   const view = el("div", "chart-view");
   view.id = `chart-view-${index}`;
@@ -361,7 +359,7 @@ function createChartCard(item, container) {
   const figureNumber = el(
     "figcaption",
     "chart-figure-number",
-    `Figure ${index + 1}`
+    item.figureName
   );
 
   const caption = item.caption
@@ -369,7 +367,7 @@ function createChartCard(item, container) {
     : null;
 
   card.append(
-    ...[tag, heading, view, caption, caveat, source, figureNumber]
+    ...[heading, view, caption, caveat, source, figureNumber]
       .filter(Boolean)
   );
 
@@ -1470,30 +1468,10 @@ function getRoot() {
   }
   return root;
 }
-function buildTagKey() {
-  const key = el("aside", "chart-key");
-  key.setAttribute("aria-label", "How to read the chart tags");
-  key.append(el("p", "chart-key-title", "HOW TO READ THE CHART TAGS"));
-  [
-    {
-      type: "access",
-      term: "Access",
-      meaning: "How long admitted patients waited for a hysterectomy. Longer waits mean slower access to surgery."
-    },
-    {
-      type: "activity",
-      term: "Activity",
-      meaning: "How much hospital care was recorded: hospitalisation rates, admissions and procedure counts. These count care delivered, not care needed."
-    }
-  ].forEach(({ type, term, meaning }) => {
-    const row = el("p", "chart-key-row");
-    row.append(el("span", `chart-tag chart-tag--${type}`, term.toUpperCase()), el("span", "chart-key-text", meaning));
-    key.append(row);
-  });
-  return key;
-}
+
 
 /* ---------- start ---------- */
+
 
 const root = getRoot();
 
@@ -1506,7 +1484,7 @@ if (typeof vegaEmbed !== "function") {
     )
   );
 } else {
-  root.append(buildTagKey());
+  // Render the story directly, without the chart-tag key.
   story.themes.forEach((theme, i) => buildTheme(theme, root, i + 1));
 }
 
