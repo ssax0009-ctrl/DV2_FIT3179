@@ -327,7 +327,7 @@
         "y": {
           "field": "rate",
           "type": "quantitative",
-          "title": "Hospitalisations per 100,000",
+          "title": "Procedures per 100,000 women",
           "scale": {
             "zero": false
           }

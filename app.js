@@ -10,6 +10,16 @@
 ------------------------------------------------------------------- */
 
 const CHART_DISCRETE_COLORS = ["#FFA447", "#800F2F", "#590D22", "#333333"];
+const FIGURE_9_COLORS = [
+  "#0072B2",
+  "#FFA447",
+  "#800F2F",
+  "#009E73",
+  "#56B4E9",
+  "#CC79A7",
+  "#D55E00",
+  "#333333"
+];
 const CHART_CONTINUOUS_RANGE = ["#ffccd5", "#590d22"];
 const MAP_BORDER_COLOR = "#590d22";
 
@@ -31,7 +41,7 @@ const C = {
     title: "State hysterectomy wait times · 2024–2025",
     idiom: "Choropleth",
     axisTitles: {},
-    caveat: "Median wait is unpublished for ACT and NT (shown in orange).",
+    caveat: "State median wait is unpublished for ACT and NT (shown in orange).",
     source: "Source: AIHW state waiting-time table, 2024–25."
   },
   waitingMapLhn: {
@@ -40,7 +50,7 @@ const C = {
     title: "Hysterectomy wait times by local hospital network · 2024–2025",
     idiom: "Proportional symbols",
     axisTitles: {},
-    caveat: "48 of 71 LHNs published.",
+    caveat: "48 of 71 LHNs published; network data show 94 days for ACT and 57 for NT although state medians are unpublished.",
     source: "Source: AIHW waiting-time data; supplied LHN waiting-time data and coordinates."
   },
   volumeMap: {
@@ -160,7 +170,7 @@ const C = {
     spec: "specs/chart-endo-parallel.json",
     title: "Selected endometriosis procedure rates by age group · 2024–2025",
     idiom: "Parallel-coordinates plot",
-    axisTitles: { x: "Age group", y: "Hospitalisations per 100,000 women" },
+    axisTitles: { x: "Age group", y: "Procedures per 100,000 women" },
     caveat: "Rates are for selected procedures in 2024–25, not unique people.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2024–25."
   },
@@ -190,7 +200,7 @@ const story = {
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figures 1 and 2 show that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
+              text: "The 50-day median wait in Victoria versus 99 days in NSW shows that public-hospital timelines differ across states. These waits cover public hospitals only; in 2021–22, 63% of hysterectomy hospitalisations were privately funded (Figure 8). Figure 2 shows even wider local variation: NSW network waits range from 44 to 338 days, and Queensland’s from 56 to 324. State medians are unpublished for the ACT and NT (Figure 1), but supplied network data show 94 days for the ACT and 57 for the NT. State averages therefore conceal substantial network variation.",
               layout: "pair",
               charts: [C.waitingMapState, C.waitingMapLhn]
             }
@@ -264,7 +274,7 @@ const story = {
           findings: [
             {
               heading: "Declining rates did not erase differences between states",
-              text: "Figure 9 shows broad declines in hysterectomy hospitalisation rates, while Figure 10 reveals how uneven those trajectories were across states. The gap between the highest and lowest state rates widened from 103 to 123 per 100,000 women. A general decline in hysterectomy rates therefore did not mean states converged; the distance between them grew.",
+              text: "Figure 9 shows broad declines in hysterectomy hospitalisation rates, while Figure 10 shows how trajectories differed between states. Comparing only the 2014–15 and 2021–22 endpoints, the gap between the highest and lowest rates widened from 103 to 123 per 100,000 women. The gap was wider in between: in 2016–17, Tasmania’s rate of 420 versus the NT’s 200 created a 220-point difference (Figure 11). The endpoints alone therefore miss important variation over time.",
               layout: "pair",
               charts: [C.slope, C.tileGrid]
             },
@@ -320,7 +330,7 @@ const story = {
           findings: [
             {
               heading: "The data reveal variation in care, but not its full explanation",
-              text: "Across Figures 1–15, place is associated with different waiting times and hysterectomy rates; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
+              text: "Across Figures 1–15, place is associated with waiting times and hysterectomy rates measured in different years; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
               charts: []
             }
           ]
@@ -485,6 +495,9 @@ function applyChartPalette(specification, item) {
     } else if (type === "nominal" || type === "ordinal") {
       if (channel.scale !== null) {
         channel.scale = { ...(channel.scale || {}), range: CHART_DISCRETE_COLORS };
+        if (item?.figureName === "Figure 9") {
+          channel.scale.range = FIGURE_9_COLORS;
+        }
         delete channel.scale.scheme;
       }
     }
