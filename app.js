@@ -9,20 +9,35 @@
 
 ------------------------------------------------------------------- */
 
+const CHART_DISCRETE_COLORS = ["#FFA447", "#800F2F", "#590D22", "#333333"];
+const CHART_CONTINUOUS_RANGE = ["#ffccd5", "#590d22"];
+const MAP_BORDER_COLOR = "#590d22";
+
+function chartColorAt(proportion) {
+  const channels = CHART_CONTINUOUS_RANGE.map((color) =>
+    color.match(/[0-9a-f]{2}/gi).map((channel) => parseInt(channel, 16))
+  );
+  const bounded = Math.max(0, Math.min(1, proportion));
+  const rgb = channels[0].map((channel, index) =>
+    Math.round(channel + (channels[1][index] - channel) * bounded)
+  );
+  return `rgb(${rgb.join(", ")})`;
+}
+
 const C = {
   waitingMapState: {
-    figureName: "Figure 1a",
+    figureName: "Figure 1",
     spec: "specs/map-hyst-waiting-times-state.json",
-    title: "State median wait for hysterectomy · 2024–25",
+    title: "State hysterectomy wait times · 2024–2025",
     idiom: "Choropleth",
     axisTitles: {},
-    caveat: "Median wait is unpublished for ACT and NT (shown in grey).",
+    caveat: "Median wait is unpublished for ACT and NT (shown in orange).",
     source: "Source: AIHW state waiting-time table, 2024–25."
   },
   waitingMapLhn: {
-    figureName: "Figure 1b",
+    figureName: "Figure 2",
     spec: "specs/map-hyst-waiting-times-lhn.json",
-    title: "Wait time for Surgery by Local Hospital Network · 2024–25",
+    title: "Hysterectomy wait times by local hospital network · 2024–2025",
     idiom: "Proportional symbols",
     axisTitles: {},
     caveat: "48 of 71 LHNs published.",
@@ -31,100 +46,101 @@ const C = {
   volumeMap: {
     figureName: "Figure 2",
     spec: "specs/map-hyst-volume.json",
-    title: "Recorded hysterectomy hospitalisations by state · 2021–22",
+    title: "Recorded hysterectomy hospitalisations by state · 2021–2022",
     idiom: "Proportional-symbol map",
     axisTitles: {},
     caveat: "Counts reflect population size as well as hospitalisation frequency.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   dotMap: {
-    figureName: "Figure 3",
+    figureName: "Figure 5",
     spec: "specs/chart-sa3-strip.json",
     renderer: "dotmap",
     cardClass: "chart-card--dotmap",
-    title: "Where SA3 areas with published rates are located · 2021–22",
+    title: "Locations of SA3 areas with published hysterectomy hospitalisation rates · 2021–2022",
     idiom: "Dot map",
     axisTitles: {},
     caveat: "316 rates shown; 24 are suppressed and state totals range from 5 to 87. Locations are schematic.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   ridgeline: {
-    figureName: "Figure 4",
+    figureName: "Figure 3",
     spec: "specs/chart-sa3-ridgeline.json",
-    title: "SA3 hysterectomy rates by state · 2021–22",
+    title: "SA3 hysterectomy hospitalisation rates by state · 2021–2022",
     idiom: "Ridgeline plot",
     axisTitles: { x: "Hospitalisations per 100,000 women" },
     caveat: "Each ridge smooths the SA3 rates in one state; numbers mark its lowest and highest area. Suppressed rates are omitted, and the ACT and NT curves rest on only 5 to 6 areas.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   range: {
-    figureName: "Figure 5",
+    figureName: "Figure 4",
     spec: "specs/chart-sa3-range.json",
-    title: "SA3 rate ranges by state · 2021–22",
+    title: "SA3 hysterectomy hospitalisation rate ranges by state · 2021–2022",
     idiom: "Interval plot",
     axisTitles: { x: "Hospitalisations per 100,000 women", y: "State" },
     caveat: "24 SA3 values are suppressed; statewide counts of valid SA3s range from 5 to 87.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   slope: {
-    figureName: "Figure 6",
+    figureName: "Figure 9",
     spec: "specs/chart-hyst-slopegraph.json",
-    title: "Hospitalisation rates by state in 2014–15 and 2021–22",
+    title: "Hysterectomy hospitalisation rates by state · 2014–2022",
     idiom: "Slopegraph",
     axisTitles: { x: "Financial year", y: "Hospitalisations per 100,000 women" },
     caveat: "Age-standardised rates; SA and WA finish at the same rate.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 and 2021–22."
   },
   tileGrid: {
-    figureName: "Figure 7",
+    figureName: "Figure 10",
     spec: "specs/chart-hyst-tilegrid.json",
-    title: "Hysterectomy rates by state, tile-grid map · 2014–15 to 2021–22",
+    cardClass: "chart-card--tilegrid",
+    title: "Hysterectomy hospitalisation rates by state · 2014–2022",
     idiom: "Tile-grid map",
     axisTitles: {},
-    caption: "Tiles are not to scale; positions are approximate.",
     caveat: "Fill shows each state’s 2021–22 age-standardised rate per 100,000 women; each line runs from 2014–15 to 2021–22.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 to 2021–22."
   },
   heatmap: {
-    figureName: "Figure 8",
+    figureName: "Figure 11",
     spec: "specs/chart-hyst-heatmap.json",
-    title: "Annual age-standardised hysterectomy rates by state · 2014–15 to 2021–22",
+    title: "Annual age-standardised hysterectomy hospitalisation rates by state · 2014–2022",
     idiom: "Heatmap",
     axisTitles: { x: "Financial year", y: "State or territory" },
     caveat: "Changes around 2019–20 to 2021–22 overlap with COVID-era restrictions.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2014–15 to 2021–22."
   },
   indigenousDumbbell: {
-    figureName: "Figure 9",
+    figureName: "Figure 7",
     spec: "specs/chart-hyst-indigenous-dumbbell.json",
-    title: "Hysterectomy rates by Indigenous status and state · 2021–22",
+    title: "Hysterectomy hospitalisation rates by Indigenous status and state · 2021–2022",
     idiom: "Dumbbell plot",
     axisTitles: { x: "Age-standardised rate per 100,000 women" },
     caveat: "Hospitalisation rates are not measures of prevalence or need; Tasmania and ACT are suppressed.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   privateShare: {
-    figureName: "Figure 10",
+    figureName: "Figure 8",
     spec: "specs/chart-hyst-private-waffle.json",
-    title: "Private-patient share of hysterectomy hospitalisations by state · 2021–22",
+    title: "Private-patient share of hysterectomy hospitalisations by state · 2021–2022",
     idiom: "Waffle chart",
     axisTitles: {},
     caveat: "Each square is 1% of a state’s hysterectomy hospitalisations; nationally, 63% were private.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   remotenessSes: {
-    figureName: "Figure 11",
+    figureName: "Figure 6",
     spec: "specs/chart-hyst-remoteness-ses-radial.json",
-    title: "Hysterectomy rates by remoteness and SES group · 2021–22",
+    cardClass: "chart-card--remoteness",
+    title: "Hysterectomy hospitalisation rates by remoteness and SES group · 2021–2022",
     idiom: "Radial chart",
     axisTitles: {},
-    caveat: "Radius shows the age-standardised rate per 100,000 women, scaled so that area follows the rate. Colour marks remoteness; each slice is one SES group. Outer regional and remote areas have suppressed SES groups.",
+    caveat: "Area: age-standardised rate/100k; colour: remoteness; slices: SES; Outer Regional/Remote SES suppressed.",
     source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
   },
   endoLine: {
     figureName: "Figure 12",
     spec: "specs/chart-endo-rate-line.json",
-    title: "Annual endometriosis admissions and crude rates · 2015–16 to 2024–25",
+    title: "Annual endometriosis admissions and crude admission rates · 2015–2025",
     idiom: "Line chart",
     axisTitles: { x: "Financial year", y: "Admissions per 100,000 population" },
     caveat: "Crude rates are not age-adjusted and are not a measure of disease prevalence.",
@@ -133,7 +149,7 @@ const C = {
   waterfall: {
     figureName: "Figure 13",
     spec: "specs/chart-endo-waterfall.json",
-    title: "Change in admissions by urgency, 2015–16 to 2024–25",
+    title: "Change in endometriosis admissions by urgency · 2015–2025",
     idiom: "Waterfall",
     axisTitles: { x: "Urgency group", y: "Hospitalisations" },
     caveat: "The waterfall compares total admissions at the start and end of the series.",
@@ -142,7 +158,7 @@ const C = {
   parallel: {
     figureName: "Figure 14",
     spec: "specs/chart-endo-parallel.json",
-    title: "Selected procedure rates by age group, 2024–25",
+    title: "Selected endometriosis procedure rates by age group · 2024–2025",
     idiom: "Parallel-coordinates plot",
     axisTitles: { x: "Age group", y: "Hospitalisations per 100,000 women" },
     caveat: "Rates are for selected procedures in 2024–25, not unique people.",
@@ -152,7 +168,7 @@ const C = {
     figureName: "Figure 15",
     spec: "data/endo-sankey.json",
     renderer: "sankey",
-    title: "Procedure counts by age, procedure group and hospital sector · 2024–25",
+    title: "Endometriosis procedure counts by age, procedure group and hospital sector · 2024–2025",
     idiom: "Sankey",
     axisTitles: {},
     caption: "Age, procedure and sector are separate totals; ribbons are not individual paths.",
@@ -174,7 +190,7 @@ const story = {
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figures 1a and 1b show that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
+              text: "The gap between Victoria’s 50-day median wait and NSW’s 99 days suggests that patients can face very different timelines for the same procedure. Figures 1 and 2 show that state averages are only part of the picture: waits vary sharply between local hospital networks too. That means a state-level comparison can conceal the experience of patients living within it.",
               layout: "pair",
               charts: [C.waitingMapState, C.waitingMapLhn]
             }
@@ -185,13 +201,13 @@ const story = {
           findings: [
             {
               heading: "State averages conceal substantial local variation",
-              text: "Figures 4 and 5 show that areas within the same state can have very different hysterectomy hospitalisation rates. In Victoria, the range runs from 124 per 100,000 women in Whitehorse–West to 519 in Ballarat. The key story is not simply that states differ, but that the place someone lives within a state may also matter.",
+              text: "Figures 3 and 4 show that areas within the same state can have very different hysterectomy hospitalisation rates. In Victoria, the range runs from 124 per 100,000 women in Whitehorse–West to 519 in Ballarat. The key story is not simply that states differ, but that the place someone lives within a state may also matter.",
               layout: "pair",
               charts: [C.ridgeline, C.range]
             },
             {
               heading: "Local differences become visible on the map",
-              text: "Figure 3 adds a geographic dimension to the ranges shown in Figure 5: it shows where the measured SA3 areas sit, rather than only how high or low their rates are. The spread across the map reinforces that variation is not confined to one state or one region. The dots are schematic, however, so their positions show distribution rather than exact locations.",
+              text: "Figure 5 adds a geographic dimension to the ranges shown in Figure 4: it shows where the measured SA3 areas sit, rather than only how high or low their rates are. The spread across the map reinforces that variation is not confined to one state or one region. The dots are schematic, however, so their positions show distribution rather than exact locations.",
               layout: "flip",
               charts: [C.dotMap]
             }
@@ -202,7 +218,7 @@ const story = {
           findings: [
             {
               heading: "The highest rates are not found in the most remote areas",
-              text: "In Figure 11, inner regional areas record 292 hospitalisations per 100,000 women, above major cities at 218 and remote areas at 193. This challenges a simple assumption that remoteness alone explains differences in care. The socioeconomic slices also show variation within remoteness categories, suggesting that geography and social circumstances should be considered together rather than as competing explanations.",
+              text: "In Figure 6, inner regional areas record 292 hospitalisations per 100,000 women, above major cities at 218 and remote areas at 193. This challenges a simple assumption that remoteness alone explains differences in care. The socioeconomic slices also show variation within remoteness categories, suggesting that geography and social circumstances should be considered together rather than as competing explanations.",
               charts: [C.remotenessSes]
             }
           ]
@@ -220,7 +236,7 @@ const story = {
           findings: [
             {
               heading: "National averages hide different state patterns",
-              text: "In 2021–22, First Nations women had a higher national hysterectomy hospitalisation rate than Other Australian women (251 versus 231 per 100,000). However, Figure 9 shows contrasting state-level patterns: First Nations women had higher rates in NSW, Victoria and Queensland, while Other Australian women had higher rates in WA and the NT. These results highlight how national averages can conceal geographic variation in recorded hysterectomy hospitalisations.",
+              text: "In 2021–22, First Nations women had a higher national hysterectomy hospitalisation rate than Other Australian women (251 versus 231 per 100,000). However, Figure 7 shows contrasting state-level patterns: First Nations women had higher rates in NSW, Victoria and Queensland, while Other Australian women had higher rates in WA and the NT. These results highlight how national averages can conceal geographic variation in recorded hysterectomy hospitalisations.",
               charts: [C.indigenousDumbbell]
             }
           ]
@@ -230,7 +246,7 @@ const story = {
           findings: [
             {
               heading: "Private hospitals account for most hysterectomy admissions",
-              text: "Figure 10 shows that 63% of hysterectomy hospitalisations were privately funded nationally. The share ranges from 53% in the NT to 71% in WA, making the private sector the larger part of recorded activity in every state shown. This uneven funding mix matters because national totals can make the system look more uniform than the state-level picture suggests.",
+              text: "Figure 8 shows that 63% of hysterectomy hospitalisations were privately funded nationally. The share ranges from 53% in the NT to 71% in WA, making the private sector the larger part of recorded activity in every state shown. This uneven funding mix matters because national totals can make the system look more uniform than the state-level picture suggests.",
               charts: [C.privateShare]
             }
           ]
@@ -248,13 +264,13 @@ const story = {
           findings: [
             {
               heading: "Declining rates did not erase differences between states",
-              text: "Figure 6 shows broad declines in hysterectomy hospitalisation rates, while Figure 7 reveals how uneven those trajectories were across states. The gap between the highest and lowest state rates widened from 103 to 123 per 100,000 women. A general decline in hysterectomy rates therefore did not mean states converged; the distance between them grew.",
+              text: "Figure 9 shows broad declines in hysterectomy hospitalisation rates, while Figure 10 reveals how uneven those trajectories were across states. The gap between the highest and lowest state rates widened from 103 to 123 per 100,000 women. A general decline in hysterectomy rates therefore did not mean states converged; the distance between them grew.",
               layout: "pair",
               charts: [C.slope, C.tileGrid]
             },
             {
               heading: "Tasmania followed a different trajectory",
-              text: "Figure 8 highlights Tasmania’s rise to 420 hospitalisations per 100,000 women in 2016–17, followed by a fall to 279 in 2021–22. That peak stands out against the broader pattern of declining rates and shows why a start-to-end comparison can miss important changes in between. The trajectory is unusual, but the data alone do not identify its cause.",
+              text: "Figure 11 highlights Tasmania’s rise to 420 hospitalisations per 100,000 women in 2016–17, followed by a fall to 279 in 2021–22. That peak stands out against the broader pattern of declining rates and shows why a start-to-end comparison can miss important changes in between. The trajectory is unusual, but the data alone do not identify its cause.",
               charts: [C.heatmap]
             }
           ]
@@ -304,7 +320,7 @@ const story = {
           findings: [
             {
               heading: "The data reveal variation in care, but not its full explanation",
-              text: "Across Figures 1 and 3–15, place is associated with different waiting times and hysterectomy rates; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
+              text: "Across Figures 1–15, place is associated with different waiting times and hysterectomy rates; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
               charts: []
             }
           ]
@@ -334,8 +350,6 @@ function createChartCard(item, container) {
   );
 
   const heading = el("h4", "chart-title", item.title);
-
-  
 
   const view = el("div", "chart-view");
   view.id = `chart-view-${index}`;
@@ -403,6 +417,181 @@ function applyAxisTitles(specification, titles) {
   visit(specification);
 }
 
+function applyChartPalette(specification, item) {
+  const isMap = Boolean(specification.projection) ||
+    item?.idiom?.toLowerCase().includes("map");
+  const useMaroonLines = ["Figure 2", "Figure 3", "Figure 4", "Figure 12", "Figure 13"]
+    .includes(item?.figureName);
+  const staticColorMap = new Map();
+  const nextStaticColor = (color) => {
+    if (!staticColorMap.has(color)) {
+      staticColorMap.set(color, CHART_DISCRETE_COLORS[staticColorMap.size % CHART_DISCRETE_COLORS.length]);
+    }
+    return staticColorMap.get(color);
+  };
+  const isColor = (value) =>
+    typeof value === "string" &&
+    (/^#[0-9a-f]{3,8}$/i.test(value) || /^(rgb|hsl)a?\(/i.test(value));
+
+  const config = specification.config || {};
+  const range = config.range || {};
+  config.range = {
+    ...range,
+    category: CHART_DISCRETE_COLORS,
+    ramp: CHART_CONTINUOUS_RANGE
+  };
+  if (config.title && typeof config.title === "object") {
+    config.title.color = "#333333";
+  }
+  if (config.axis) {
+    config.axis.labelColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+    config.axis.titleColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+    config.axis.domainColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+    config.axis.tickColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+    config.axis.grid = false;
+  }
+  if (config.legend) {
+    config.legend.labelColor = "#333333";
+    config.legend.titleColor = "#333333";
+  }
+  specification.config = config;
+
+  function applyColorChannel(channel) {
+    if (!channel || typeof channel !== "object") return;
+    if (item?.figureName === "Figure 3") return;
+    if (item?.figureName === "Figure 8") return;
+    if (item?.figureName === "Figure 10" && channel.condition) return;
+    if (item?.figureName === "Figure 11" &&
+      channel.condition?.test === "datum.year === '2016–17'") return;
+    const conditions = Array.isArray(channel.condition)
+      ? channel.condition
+      : [channel.condition];
+    const typedChannels = [channel, ...conditions].filter((condition) =>
+      condition && typeof condition === "object" && condition.type
+    );
+    const type = typedChannels.length ? typedChannels[0].type : channel.type;
+    if (item?.figureName === "Figure 13" && type === "nominal" &&
+      channel.scale !== null) {
+      channel.scale = {
+        ...(channel.scale || {}),
+        range: ["#ff8fa3", "#800F2F"]
+      };
+      delete channel.scale.scheme;
+    } else if (type === "quantitative" || type === "temporal") {
+      if (channel.scale !== null) {
+        channel.scale = { ...(channel.scale || {}), range: CHART_CONTINUOUS_RANGE };
+        delete channel.scale.scheme;
+      }
+    } else if (type === "nominal" || type === "ordinal") {
+      if (channel.scale !== null) {
+        channel.scale = { ...(channel.scale || {}), range: CHART_DISCRETE_COLORS };
+        delete channel.scale.scheme;
+      }
+    }
+
+    if (isColor(channel.value)) channel.value = nextStaticColor(channel.value);
+    conditions.forEach((condition) => {
+      if (condition && isColor(condition.value)) {
+        condition.value = nextStaticColor(condition.value);
+      }
+    });
+    if (item?.figureName === "Figure 14") {
+      if (channel.value === CHART_DISCRETE_COLORS[0]) channel.value = "#ffccd5";
+      conditions.forEach((condition) => {
+        if (condition?.value === CHART_DISCRETE_COLORS[0]) {
+          condition.value = "#ffccd5";
+        }
+      });
+    }
+  }
+
+  function visit(node) {
+    if (!node || typeof node !== "object") return;
+    if (node.encoding) {
+      ["color", "fill", "stroke"].forEach((channelName) => {
+        if (useMaroonLines && ["line", "rule", "tick"].includes(node.mark?.type) &&
+          node.encoding[channelName]) {
+          node.encoding[channelName] = { value: MAP_BORDER_COLOR };
+        } else {
+          applyColorChannel(node.encoding[channelName]);
+        }
+      });
+    }
+    if (node.mark && typeof node.mark === "object") {
+      if (isMap && node.mark.type === "geoshape" &&
+        !node.encoding?.color && !node.encoding?.fill) {
+        node.mark.fill = "#FFCCD5";
+      }
+      ["color", "fill", "stroke"].forEach((attribute) => {
+        const color = node.mark[attribute];
+        if (attribute === "stroke" && isMap && isColor(color)) {
+          node.mark[attribute] = MAP_BORDER_COLOR;
+        } else if (item?.spec === "specs/map-hyst-waiting-times-lhn.json" &&
+          node.mark.type === "geoshape" && attribute === "fill") {
+          node.mark[attribute] = "#FFCCD5";
+        } else if (item?.figureName === "Figure 7" &&
+          node.mark.type === "rect" && attribute === "color" && isColor(color)) {
+          node.mark[attribute] = "#FFDFE8";
+          node.mark.opacity = 0.5;
+        } else if (!isColor(color) || /^(#fff(?:fff)?|#ffffff)$/i.test(color)) {
+          return;
+        } else {
+          node.mark[attribute] = node.mark.type === "text" || attribute === "stroke"
+            ? "#333333"
+            : nextStaticColor(color);
+        }
+      });
+      if (isMap && node.mark.type === "geoshape") {
+        node.mark.stroke = MAP_BORDER_COLOR;
+      }
+      if (node.mark.point && typeof node.mark.point === "object") {
+        const inheritedColor = node.mark.color || node.mark.fill;
+        if (inheritedColor && !node.mark.point.color && !node.mark.point.fill) {
+          node.mark.point.color = inheritedColor;
+        }
+      }
+      if (useMaroonLines && ["line", "rule", "tick"].includes(node.mark.type)) {
+        node.mark.color = MAP_BORDER_COLOR;
+      }
+      if (item?.figureName === "Figure 12" && node.mark.type === "line") {
+        node.mark.color = "#ff8fa3";
+        if (node.mark.point && typeof node.mark.point === "object") {
+          node.mark.point.color = "#ff8fa3";
+        }
+      }
+      if (item?.figureName === "Figure 7" && node.mark.type === "rule") {
+        node.mark.color = "#432818";
+      }
+    }
+    if (node.header && typeof node.header === "object") {
+      node.header.labelColor = "#333333";
+    }
+    if (node.title && typeof node.title === "object") {
+      node.title.color = "#333333";
+    }
+    if (node.axis && typeof node.axis === "object") {
+      node.axis.labelColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+      node.axis.titleColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+      node.axis.domainColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+      node.axis.tickColor = useMaroonLines ? MAP_BORDER_COLOR : "#333333";
+      node.axis.grid = false;
+    }
+    if (node.legend && typeof node.legend === "object") {
+      node.legend.labelColor = "#333333";
+      node.legend.titleColor = "#333333";
+      if (isMap && node.legend.symbolStrokeColor) {
+        node.legend.symbolStrokeColor = MAP_BORDER_COLOR;
+      }
+    }
+    Object.values(node).forEach((value) => {
+      if (Array.isArray(value)) value.forEach(visit);
+      else if (value && typeof value === "object") visit(value);
+    });
+  }
+
+  visit(specification);
+}
+
 async function renderLhnWaitingMap(target, specification) {
   const [boundaryResponse, dataResponse] = await Promise.all([
     fetch(specification.boundariesUrl),
@@ -454,16 +643,11 @@ async function renderLhnWaitingMap(target, specification) {
   };
   const stateByName = new Map(stateRecords.map((state) => [state.stateName, state]));
   const stateColor = (wait) => {
-    if (!Number.isFinite(wait)) return "#d9d9d9";
+    if (!Number.isFinite(wait)) return "#FFCCD5";
     const fraction = Math.max(0, Math.min(1, (wait - 50) / 50));
-    const start = [222, 235, 247];
-    const end = [33, 113, 181];
-    const rgb = start.map((channel, index) =>
-      Math.round(channel + (end[index] - channel) * fraction)
-    );
-    return `rgb(${rgb.join(", ")})`;
+    return chartColorAt(fraction);
   };
-  const radiusFor = (wait) => 12 * Math.sqrt(Math.min(wait, 350) / 350);
+  const radiusFor = (wait) => 11 * Math.sqrt(Math.min(wait, 350) / 350);
   const defs = element("defs");
   const stateGradientId = `lhn-state-wait-gradient-${target.id}`;
   const stateGradient = element("linearGradient", {
@@ -474,14 +658,14 @@ async function renderLhnWaitingMap(target, specification) {
     y2: "0%"
   });
   stateGradient.append(
-    element("stop", { offset: "0%", "stop-color": "#deebf7" }),
-    element("stop", { offset: "100%", "stop-color": "#2171b5" })
+    element("stop", { offset: "0%", "stop-color": CHART_CONTINUOUS_RANGE[0] }),
+    element("stop", { offset: "100%", "stop-color": CHART_CONTINUOUS_RANGE[1] })
   );
   defs.append(stateGradient);
   svg.append(defs);
 
   const extent = { west: 110, east: 155, south: -45, north: -5 };
-  const mapArea = { x: 22, y: 22, width: 585, height: 455 };
+  const mapArea = { x: 44, y: 38, width: 540, height: 420 };
   const centerLatitude = (extent.south + extent.north) / 2;
   const longitudeScale = Math.cos(centerLatitude * Math.PI / 180);
   const geoWidth = (extent.east - extent.west) * longitudeScale;
@@ -507,7 +691,7 @@ async function renderLhnWaitingMap(target, specification) {
     svg.append(element("path", {
       d: path,
       fill: stateColor(state?.medianWaitDays),
-      stroke: "#ffffff",
+      stroke: MAP_BORDER_COLOR,
       "stroke-width": 1.1,
       "fill-rule": "evenodd",
       class: "lhn-map-state"
@@ -530,9 +714,9 @@ async function renderLhnWaitingMap(target, specification) {
         cx: point.x,
         cy: point.y,
         r: radiusFor(network.medianWaitDays),
-        fill: "#f2c94c",
+        fill: CHART_DISCRETE_COLORS[3],
         "fill-opacity": 0.6,
-        stroke: "#4d4b3f",
+        stroke: MAP_BORDER_COLOR,
         "stroke-width": 0.8,
         class: "lhn-map-circle"
       });
@@ -575,9 +759,9 @@ async function renderLhnWaitingMap(target, specification) {
       cx: x,
       cy,
       r: radiusFor(wait),
-      fill: "#f2c94c",
+      fill: CHART_DISCRETE_COLORS[3],
       "fill-opacity": 0.6,
-      stroke: "#4d4b3f",
+      stroke: MAP_BORDER_COLOR,
       "stroke-width": 0.8,
       class: "lhn-map-circle"
     }));
@@ -591,7 +775,7 @@ async function renderLhnWaitingMap(target, specification) {
     height: 10,
     rx: 1,
     fill: `url(#${stateGradientId})`,
-    stroke: "#b9c5ca",
+    stroke: MAP_BORDER_COLOR,
     "stroke-width": 0.5
   }));
   svg.append(label("50", legendX, 190, "lhn-map-legend-label"));
@@ -601,8 +785,8 @@ async function renderLhnWaitingMap(target, specification) {
     y: 201,
     width: 10,
     height: 10,
-    fill: "#d9d9d9",
-    stroke: "#aab3b6",
+    fill: CHART_DISCRETE_COLORS[0],
+    stroke: MAP_BORDER_COLOR,
     "stroke-width": 0.6
   }));
   svg.append(label("Not published (ACT, NT)", legendX + 16, 210, "lhn-map-legend-label"));
@@ -639,7 +823,7 @@ async function renderDotMap(target, specification) {
   );
   const svgNS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("viewBox", "0 0 760 600");
+  svg.setAttribute("viewBox", "0 0 760 630");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", "Schematic dot map of Australian SA3 areas with selected area statistics");
 
@@ -725,20 +909,8 @@ async function renderDotMap(target, specification) {
   }
 
   function rateColor(rate) {
-    const stops = [
-      { value: 114, color: [222, 235, 247] },
-      { value: 317, color: [107, 174, 214] },
-      { value: 519, color: [8, 81, 156] }
-    ];
-    const bounded = Math.max(stops[0].value, Math.min(stops[2].value, rate));
-    const upperIndex = stops.findIndex((stop) => stop.value >= bounded);
-    const upper = stops[Math.max(1, upperIndex)];
-    const lower = stops[Math.max(0, upperIndex - 1)];
-    const fraction = (bounded - lower.value) / (upper.value - lower.value);
-    const channels = lower.color.map((channel, index) =>
-      Math.round(channel + (upper.color[index] - channel) * fraction)
-    );
-    return `rgb(${channels.join(", ")})`;
+    const proportion = (rate - 114) / (519 - 114);
+    return chartColorAt(proportion);
   }
 
   function stateSeed(state) {
@@ -754,8 +926,8 @@ async function renderDotMap(target, specification) {
     );
     svg.append(svgElement("path", {
       d: paths.join(" "),
-      fill: "#eef2ef",
-      stroke: "#9eafaa",
+      fill: "#FFCCD5",
+      stroke: MAP_BORDER_COLOR,
       "stroke-width": "1.2",
       "fill-rule": "evenodd"
     }));
@@ -792,7 +964,7 @@ async function renderDotMap(target, specification) {
       r: 3,
       fill: rateColor(rate),
       "fill-opacity": "0.85",
-      stroke: "#ffffff",
+      stroke: MAP_BORDER_COLOR,
       "stroke-width": "0.8"
     });
     const title = svgElement("title");
@@ -812,8 +984,8 @@ async function renderDotMap(target, specification) {
   const defs = svgElement("defs");
   const gradient = svgElement("linearGradient", { id: "sa3-rate-gradient" });
   gradient.append(
-    svgElement("stop", { offset: "0%", "stop-color": "#deebf7" }),
-    svgElement("stop", { offset: "100%", "stop-color": "#08519c" })
+    svgElement("stop", { offset: "0%", "stop-color": CHART_CONTINUOUS_RANGE[0] }),
+    svgElement("stop", { offset: "100%", "stop-color": CHART_CONTINUOUS_RANGE[1] })
   );
   defs.append(gradient);
   svg.prepend(defs);
@@ -853,7 +1025,7 @@ async function renderDotMap(target, specification) {
       admissions: 12
     }
   ];
-  svg.append(textNode("Selected areas · rate per 100,000 · hospitalisations · female population", 380, 535, {
+  svg.append(textNode("Selected areas · rate per 100,000 · hospitalisations · female population", 380, 544, {
     "text-anchor": "middle",
     class: "dotmap-data-heading"
   }));
@@ -864,7 +1036,7 @@ async function renderDotMap(target, specification) {
     svg.append(textNode(
       `${area.region}: ${area.rate} · ${area.admissions} hospitalisations${population}`,
       380,
-      552 + index * 17,
+      568 + index * 20,
       { "text-anchor": "middle", class: "dotmap-data-label" }
     ));
   });
@@ -977,13 +1149,8 @@ function renderTreemap(target, specification) {
   }
 
   function colorForRate(rate) {
-    const start = [226, 242, 238];
-    const end = [92, 151, 139];
     const proportion = maxRate === minRate ? 0.5 : (rate - minRate) / (maxRate - minRate);
-    const rgb = start.map((channel, index) =>
-      Math.round(channel + (end[index] - channel) * proportion)
-    );
-    return `rgb(${rgb.join(", ")})`;
+    return chartColorAt(proportion);
   }
 
   function addGroupLabel(group, rect) {
@@ -993,7 +1160,7 @@ function renderTreemap(target, specification) {
       width: rect.width,
       height: rect.height,
       fill: "none",
-      stroke: "#18313b",
+      stroke: "#333333",
       "stroke-width": 2
     }));
     const labelY = group.name === "Remote" ? rect.y + rect.height + 16 : rect.y + 17;
@@ -1135,7 +1302,7 @@ function renderSankey(target, records) {
     { field: "private", label: "Private" },
     { field: "public", label: "Public" }
   ];
-  const colors = ["#03C33F", "#03C33F", "#FAFC97", "#FCB249", "#936ED4", "#d55e00"];
+  const colors = ["#ff8fa3", "#FFBC42", "#D81159", "#8F2D56", "#218380", "#73D2DE"];
   const years = [...new Set(records.map((record) => record.year))];
   const controls = el("div", "sankey-controls");
   const label = el("label", "", "Year");
@@ -1325,7 +1492,7 @@ function renderSankey(target, records) {
           width: nodeWidth,
           height: node.height,
           rx: 2,
-          fill: index === 1 ? procedureColors.get(node.name) : "#58727a"
+          fill: index === 1 ? procedureColors.get(node.name) : "#333333"
         });
         const title = svgElement("title");
         title.textContent = `${node.name}: ${formatCount(node.value)} procedures`;
@@ -1355,6 +1522,25 @@ function renderSankey(target, records) {
   target.setAttribute("role", "group");
   target.setAttribute("aria-label", "Sankey diagram of endometriosis procedure counts with year selector");
 }
+
+function alignChartSourceRule(view) {
+  const card = view.closest(".chart-card");
+  const notes = card?.querySelectorAll(".chart-caption, .chart-caveat, .chart-source");
+  const graphic = view.querySelector("svg, canvas");
+
+  if (!notes?.length || !graphic) return;
+
+  const updateNoteWidths = () => {
+    const width = `${graphic.getBoundingClientRect().width}px`;
+    notes.forEach((note) => {
+      note.style.width = width;
+    });
+  };
+
+  updateNoteWidths();
+  new ResizeObserver(updateNoteWidths).observe(graphic);
+}
+
 async function renderChart(item, container) {
   const target = createChartCard(item, container);
 
@@ -1370,16 +1556,19 @@ async function renderChart(item, container) {
     // Custom renderers
     if (item.renderer === "lhnWaitingMap") {
       await renderLhnWaitingMap(target, specification);
+      alignChartSourceRule(target);
       return;
     }
 
     if (item.renderer === "dotmap") {
       await renderDotMap(target, specification);
+      alignChartSourceRule(target);
       return;
     }
 
     if (item.renderer === "sankey") {
       renderSankey(target, specification);
+      alignChartSourceRule(target);
       return;
     }
 
@@ -1387,6 +1576,7 @@ async function renderChart(item, container) {
 
     // Standard Vega-Lite charts
     specification.title = null;
+    applyChartPalette(specification, item);
     applyAxisTitles(specification, item.axisTitles || {});
 
     await vegaEmbed(target, specification, {
@@ -1394,6 +1584,7 @@ async function renderChart(item, container) {
       renderer: "svg",
       tooltip: { theme: "light" }
     });
+    alignChartSourceRule(target);
 
   } catch (error) {
     console.error(`Error rendering chart "${item.title}":`, error);
@@ -1411,14 +1602,18 @@ async function renderChart(item, container) {
 /* ---------- builders ---------- */
 
 function buildFinding(finding, parent) {
+  const includesFigure7 = finding.charts.some((item) => item.figureName === "Figure 7");
+  const includesFigure8 = finding.charts.some((item) => item.figureName === "Figure 8");
   const article = el(
     "article",
-    `finding${finding.layout ? ` finding--${finding.layout}` : ""}${finding.charts.length ? "" : " finding--text-only"}`
+    `finding${finding.layout ? ` finding--${finding.layout}` : ""}${finding.charts.length ? "" : " finding--text-only"}${includesFigure7 ? " finding--figure-7" : ""}${includesFigure8 ? " finding--figure-8" : ""}`
   );
 
   const text = el("div", "finding-text");
-  text.append(el("h3", "", finding.heading), el("p", "", finding.text));
-  if (finding.footnote) text.append(el("p", "finding-footnote", finding.footnote));
+  const analysis = el("div", "finding-analysis");
+  analysis.append(el("p", "", finding.text));
+  if (finding.footnote) analysis.append(el("p", "finding-footnote", finding.footnote));
+  text.append(el("h3", "", finding.heading), analysis);
 
   let charts = null;
   article.append(text);
@@ -1467,9 +1662,11 @@ function getRoot() {
     root = el("div");
     root.id = "story-root";
     const main = document.querySelector("main") || document.body;
+    const glossary = main.querySelector(".glossary");
     const sources = main.querySelector(".sources");
-    if (sources) {
-      main.insertBefore(root, sources);
+    const before = glossary || sources;
+    if (before) {
+      main.insertBefore(root, before);
     } else {
       main.append(root);
     }

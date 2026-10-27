@@ -21,7 +21,7 @@
       "stroke": null
     }
   },
-  "description": "State 50th-percentile hysterectomy waits, 2024–25. NT and ACT have no published median and are shown in grey.",
+  "description": "State 50th-percentile hysterectomy waits, 2024–25. NT and ACT have no published median and are shown in orange.",
   "layer": [
     {
       "data": {
@@ -33,9 +33,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#d9d9d9",
-        "stroke": "#6b1a30",
-        "strokeWidth": 0.8
+        "fill": "#FFA447"
       },
       "encoding": {
         "tooltip": [
@@ -80,9 +78,7 @@
         }
       ],
       "mark": {
-        "type": "geoshape",
-        "stroke": "#6b1a30",
-        "strokeWidth": 0.8
+        "type": "geoshape"
       },
       "encoding": {
         "color": {

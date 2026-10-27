@@ -424,9 +424,7 @@
       ],
       "mark": {
         "type": "rect",
-        "cornerRadius": 4,
-        "stroke": "#ffffff",
-        "strokeWidth": 1
+        "cornerRadius": 4
       },
       "encoding": {
         "x": {
@@ -475,9 +473,10 @@
           },
           "legend": {
             "title": "2021–22 rate",
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 160,
+            "orient": "right",
+            "direction": "vertical",
+            "gradientLength": 180,
+            "gradientThickness": 14,
             "values": [
               160,
               200,
@@ -531,7 +530,6 @@
       ],
       "mark": {
         "type": "line",
-        "color": "#18313b",
         "strokeWidth": 1.6,
         "interpolate": "linear"
       },
@@ -561,6 +559,13 @@
         "detail": {
           "field": "state",
           "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.state === 'Qld' || datum.state === 'Tas'",
+            "value": "#fbc7d0"
+          },
+          "value": "#590d22"
         },
         "order": {
           "field": "i",
@@ -601,10 +606,16 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 28,
-        "color": "#d88700"
+        "size": 28
       },
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.state === 'Qld' || datum.state === 'Tas'",
+            "value": "#fbc7d0"
+          },
+          "value": "#590d22"
+        },
         "x": {
           "field": "tx",
           "type": "quantitative",
@@ -647,10 +658,16 @@
         "type": "text",
         "align": "left",
         "fontWeight": "bold",
-        "fontSize": 13,
-        "color": "#18313b"
+        "fontSize": 13
       },
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.state === 'Qld' || datum.state === 'Tas'",
+            "value": "#d59ba5"
+          },
+          "value": "#333333"
+        },
         "x": {
           "field": "tx",
           "type": "quantitative",
@@ -695,10 +712,16 @@
       "mark": {
         "type": "text",
         "align": "right",
-        "fontSize": 12,
-        "color": "#18313b"
+        "fontSize": 12
       },
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.state === 'Qld' || datum.state === 'Tas'",
+            "value": "#d59ba5"
+          },
+          "value": "#333333"
+        },
         "x": {
           "field": "tx",
           "type": "quantitative",

@@ -174,9 +174,7 @@
         }
       ],
       "mark": {
-        "type": "geoshape",
-        "stroke": "#ffffff",
-        "strokeWidth": 0.8
+        "type": "geoshape"
       },
       "encoding": {
         "color": {

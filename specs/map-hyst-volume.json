@@ -44,9 +44,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e5ece8",
-        "stroke": "#ffffff",
-        "strokeWidth": 0.8
+        "fill": "#e5ece8"
       }
     },
     {

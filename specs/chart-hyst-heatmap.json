@@ -554,6 +554,13 @@
         "text": {
           "field": "label",
           "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.year === '2016–17'",
+            "value": "#ffccd5"
+          },
+          "value": "#18313b"
         }
       }
     }

@@ -449,13 +449,13 @@
     {
       "transform": [
         {
-          "filter": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity' && datum.ageGroup === '45 and over'"
+          "filter": "datum.procedure === 'Laparoscopic excision of lesion of pelvic cavity' && datum.ageGroup === 'Under 25'"
         }
       ],
       "mark": {
         "type": "text",
         "dx": 6,
-        "dy": -8,
+        "dy": -15,
         "fontSize": 9,
         "fontWeight": 600,
         "color": "#18313b",
@@ -487,13 +487,13 @@
     {
       "transform": [
         {
-          "filter": "datum.procedure === 'Cystoscopy' && datum.ageGroup === '45 and over'"
+          "filter": "datum.procedure === 'Cystoscopy' && datum.ageGroup === 'Under 25'"
         }
       ],
       "mark": {
         "type": "text",
         "dx": 6,
-        "dy": 8,
+        "dy": -30,
         "fontSize": 9,
         "fontWeight": 600,
         "color": "#18313b",

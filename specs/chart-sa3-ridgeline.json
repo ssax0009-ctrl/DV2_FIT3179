@@ -1630,7 +1630,7 @@
   "spacing": 0,
   "spec": {
     "width": 440,
-    "height": 40,
+    "height": 60,
     "layer": [
       {
         "transform": [
@@ -1681,19 +1681,16 @@
             "field": "density",
             "type": "quantitative",
             "scale": {
-              "domain": [
-                0,
-                0.0075
-              ]
+              "domain": [-0.003, 0.0075]
             },
             "axis": null
           },
           "color": {
             "condition": {
               "test": "datum.state === 'Vic'",
-              "value": "#d88700"
+              "value": "#800F2F"
             },
-            "value": "#2f8a93"
+            "value": "#FFCCD5"
           }
         }
       },
@@ -1752,15 +1749,14 @@
         "mark": {
           "type": "text",
           "fontSize": 10,
-          "baseline": "bottom",
+          "baseline": "top",
           "align": "right",
           "dx": -3,
-          "dy": -1,
           "color": "#18313b"
         },
         "encoding": {
           "y": {
-            "value": 40
+            "value": 46
           },
           "x": {
             "field": "low",
@@ -1790,15 +1786,14 @@
         "mark": {
           "type": "text",
           "fontSize": 10,
-          "baseline": "bottom",
+          "baseline": "top",
           "align": "left",
           "dx": 3,
-          "dy": -1,
           "color": "#18313b"
         },
         "encoding": {
           "y": {
-            "value": 40
+            "value": 46
           },
           "x": {
             "field": "high",

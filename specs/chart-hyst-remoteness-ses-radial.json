@@ -165,8 +165,10 @@
       },
       "legend": {
         "title": "Remoteness",
-        "orient": "bottom",
-        "columns": 4
+        "orient": "right",
+        "direction": "vertical",
+        "columns": 1,
+        "offset": 8
       }
     }
   },
@@ -223,8 +225,7 @@
       "mark": {
         "type": "text",
         "radiusOffset": 24,
-        "fontSize": 10,
-        "color": "#18313b"
+        "fontSize": 10
       },
       "encoding": {
         "theta": {
@@ -243,7 +244,8 @@
           "type": "nominal"
         },
         "color": {
-          "value": "#18313b"
+          "field": "remoteness",
+          "type": "nominal"
         }
       }
     }

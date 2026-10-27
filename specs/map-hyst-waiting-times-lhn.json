@@ -33,9 +33,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f1e2e5",
-        "stroke": "#b98c97",
-        "strokeWidth": 0.7
+        "fill": "#FFCCD5"
       },
       "encoding": {}
     },
@@ -89,6 +87,8 @@
           },
           "legend": {
             "orient": "bottom-left",
+            "direction": "horizontal",
+            "offset": 4,
             "values": [
               50,
               150,
