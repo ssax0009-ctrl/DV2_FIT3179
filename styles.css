@@ -854,8 +854,6 @@ main {
 
 .dotmap-rate-label,
 .lhn-map-legend-label,
-.sankey-unit-label,
-.sankey-node-value,
 .treemap-legend-label,
 .nightingale-center-value,
 .nightingale-legend-label {
@@ -865,8 +863,6 @@ main {
 .dotmap-data-heading,
 .dotmap-data-label,
 .lhn-map-legend-heading,
-.sankey-column-title,
-.sankey-node-label,
 .nightingale-region-label,
 .nightingale-center-label,
 .treemap-group-label,
@@ -923,31 +919,6 @@ main {
 
 .lhn-map-legend-label {
   font-size: 9px;
-}
-
-.sankey-column-title {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.sankey-node-label {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.sankey-unit-label {
-  font-size: 11px;
-}
-
-.sankey-node-value {
-  font-size: 11px;
-}
-
-.sankey-note {
-  margin: 0.5rem 0 0.75rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
 }
 
 .treemap-group-label {

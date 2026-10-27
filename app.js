@@ -174,17 +174,6 @@ const C = {
     caveat: "Rates are for selected procedures in 2024–25, not unique people.",
     source: "Source: AIHW PHE 357, Endometriosis hospital procedures, 2024–25."
   },
-  sankey: {
-    figureName: "Figure 15",
-    spec: "data/endo-sankey.json",
-    renderer: "sankey",
-    title: "Endometriosis procedure counts by age, procedure group and hospital sector · 2024–2025",
-    idiom: "Sankey",
-    axisTitles: {},
-    caption: "Age, procedure and sector are separate totals; ribbons are not individual paths.",
-    caveat: "Suppressed age counts are omitted.",
-    source: "Source: AIHW PHE 357, Table 9, Endometriosis hospital procedures, 2015–16 to 2024–25."
-  }
 };
 
 const story = {
@@ -291,7 +280,7 @@ const story = {
       id: "endometriosis",
       title: "Endometriosis Hospitalisations and Procedures",
       thesis:
-        "Endometriosis hospitalisations have increased, while procedure patterns differ by age and hospital sector. Together, these charts show how recorded treatment is distributed and not the full prevalence of the condition.",
+        "Endometriosis hospitalisations have increased, while recorded procedure patterns differ by age. These charts describe hospital activity, not the full prevalence of the condition.",
       groups: [
         {
           label: "Growth in hospital activity",
@@ -311,11 +300,6 @@ const story = {
               heading: "Procedure patterns peak during the main reproductive years",
               text: "In Figure 14, six of ten selected procedures peak at ages 25–34 and four at ages 35–44. This pattern is consistent with endometriosis care being concentrated during reproductive years. Symptoms often improve after menopause, although the condition can persist. The decline in older age groups should therefore be read as a pattern in recorded procedures, not evidence that endometriosis disappears after a particular age.",
               charts: [C.parallel]
-            },
-            {
-              heading: "Private care dominates the recorded procedure flow",
-              text: "Figure 15 shows that roughly 75% of recorded procedures were privately funded, with private care accounting for far more activity than public care. Laparoscopic excision or diathermy, a minimally invasive surgical approach used to treat endometriosis lesions, was the most common selected procedure, and women aged 25–44 accounted for around two-thirds of procedures. Together, these patterns show where treatment is concentrated and which procedure features most prominently in the recorded activity.",
-              charts: [C.sankey]
             }
           ]
         }
@@ -330,7 +314,7 @@ const story = {
           findings: [
             {
               heading: "The data reveal variation in care, but not its full explanation",
-              text: "Across Figures 1–15, place is associated with waiting times and hysterectomy rates measured in different years; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in private hospitals and reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
+              text: "Across Figures 1–14, place is associated with waiting times and hysterectomy rates measured in different years; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
               charts: []
             }
           ]
@@ -810,8 +794,12 @@ async function renderLhnWaitingMap(target, specification) {
     `Map of Australian state waiting times and ${publishedCount} published LHN median waits. Circle size shows waits from 0 to 350 days.`
   );
 }
-async function renderDotMap(target, specification) {
-  const boundaryResponse = await fetch("data/australia-states-v1.geojson");
+async function prepareDotMap(specification) {
+  const boundaryUrl = specification.usermeta?.boundaryDataUrl;
+  if (typeof boundaryUrl !== "string") {
+    throw new Error("The dot map is missing its state boundary data URL.");
+  }
+  const boundaryResponse = await fetch(boundaryUrl);
   if (!boundaryResponse.ok) {
     throw new Error(`Could not load Australia state boundaries: ${boundaryResponse.status}`);
   }
@@ -819,6 +807,9 @@ async function renderDotMap(target, specification) {
   const records = specification.data?.values;
   if (!Array.isArray(records) || records.length === 0) {
     throw new Error("The dot map has no SA3 records to display.");
+  }
+  if (!Array.isArray(boundaries.features)) {
+    throw new Error("The dot map boundary file has no geographic features.");
   }
 
   const stateCodes = {
@@ -834,27 +825,11 @@ async function renderDotMap(target, specification) {
   const stateFeatures = new Map(
     boundaries.features.map((feature) => [feature.properties.shapeISO, feature])
   );
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("viewBox", "0 0 760 630");
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "Schematic dot map of Australian SA3 areas with selected area statistics");
-
   const mapBounds = { x: 145, y: 52, width: 470, height: 405 };
   const project = (longitude, latitude) => ({
     x: mapBounds.x + ((longitude - 110) / 46) * mapBounds.width,
     y: mapBounds.y + ((-10 - latitude) / 37) * mapBounds.height
   });
-  const stateLabelPositions = {
-    WA: [121.7, -25.4],
-    NT: [133.5, -17.6],
-    Qld: [145.3, -20.6],
-    SA: [135.3, -31.5],
-    NSW: [149.3, -31.1],
-    Vic: [144.6, -38.0],
-    Tas: [147.2, -43.1],
-    ACT: [150.5, -35.5]
-  };
   const stateAbbreviations = Object.keys(stateCodes);
   const grouped = new Map(stateAbbreviations.map((state) => [state, []]));
   records.forEach((record) => {
@@ -862,22 +837,10 @@ async function renderDotMap(target, specification) {
     if (group) group.push(record);
   });
 
-  function svgElement(name, attributes = {}) {
-    const element = document.createElementNS(svgNS, name);
-    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
-    return element;
-  }
-
-  function textNode(text, x, y, attributes = {}) {
-    const node = svgElement("text", { x, y, ...attributes });
-    node.textContent = text;
-    return node;
-  }
-
   function geometryRings(geometry) {
     if (geometry.type === "Polygon") return [geometry.coordinates];
     if (geometry.type === "MultiPolygon") return geometry.coordinates;
-    throw new Error(`Unsupported state boundary geometry: ${geometry.type}`);
+    throw new Error(`Unsupported SA3 map boundary geometry: ${geometry.type}`);
   }
 
   function insideRing(longitude, latitude, ring) {
@@ -921,36 +884,34 @@ async function renderDotMap(target, specification) {
     throw new Error(`Could not position SA3 dots within ${feature.properties.shapeName}.`);
   }
 
-  function rateColor(rate) {
-    const proportion = (rate - 114) / (519 - 114);
-    return chartColorAt(proportion);
-  }
-
   function stateSeed(state) {
     return [...state].reduce((total, character) => total + character.charCodeAt(0), 1) * 100;
   }
 
-  boundaries.features.forEach((feature) => {
-    const paths = geometryRings(feature.geometry).map((rings) =>
-      rings[0].map(([longitude, latitude], index) => {
+  const projectedBoundaries = boundaries.features.map((feature) => {
+    const polygons = geometryRings(feature.geometry).map((rings) =>
+      [rings[0].map(([longitude, latitude]) => {
         const point = project(longitude, latitude);
-        return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
-      }).join(" ") + " Z"
+        return [point.x, point.y];
+      })]
     );
-    svg.append(svgElement("path", {
-      d: paths.join(" "),
-      fill: "#FFCCD5",
-      stroke: MAP_BORDER_COLOR,
-      "stroke-width": "1.2",
-      "fill-rule": "evenodd"
-    }));
+    return {
+      type: "Feature",
+      properties: feature.properties,
+      geometry: {
+        type: polygons.length === 1 && feature.geometry.type === "Polygon"
+          ? "Polygon"
+          : "MultiPolygon",
+        coordinates: feature.geometry.type === "Polygon" ? polygons[0] : polygons
+      }
+    };
   });
 
   const points = [];
   stateAbbreviations.forEach((state) => {
     const feature = stateFeatures.get(stateCodes[state]);
-    const stateRecords = grouped.get(state) || [];
     if (!feature) throw new Error(`Australia boundary is missing for ${state}.`);
+    const stateRecords = grouped.get(state) || [];
     const exteriorPoints = geometryRings(feature.geometry).flatMap((rings) => rings[0]);
     const bounds = {
       west: Math.min(...exteriorPoints.map(([longitude]) => longitude)),
@@ -964,98 +925,17 @@ async function renderDotMap(target, specification) {
         stateSeed(state) + index + 1,
         bounds
       );
-      const projected = project(longitude, latitude);
-      points.push({ ...record, x: projected.x, y: projected.y });
+      const position = project(longitude, latitude);
+      points.push({ ...record, x: position.x, y: position.y });
     });
   });
 
-  points.forEach((point) => {
-    const rate = Number(point.rate);
-    const circle = svgElement("circle", {
-      cx: point.x,
-      cy: point.y,
-      r: 3,
-      fill: rateColor(rate),
-      "fill-opacity": "0.85",
-      stroke: MAP_BORDER_COLOR,
-      "stroke-width": "0.8"
-    });
-    const title = svgElement("title");
-    title.textContent = `${point.region}, ${point.state}: ${rate} hospitalisations per 100,000 women`;
-    circle.append(title);
-    svg.append(circle);
+  specification.data.values = points;
+  specification.datasets.stateBoundaries = projectedBoundaries;
+  specification.datasets.stateLabels = specification.datasets.stateLabels.map((label) => {
+    const position = project(label.longitude, label.latitude);
+    return { ...label, x: position.x, y: position.y };
   });
-
-  Object.entries(stateLabelPositions).forEach(([state, coordinates]) => {
-    const position = project(coordinates[0], coordinates[1]);
-    svg.append(textNode(state.toUpperCase(), position.x, position.y, {
-      "text-anchor": "middle",
-      class: "dotmap-state-label"
-    }));
-  });
-
-  const defs = svgElement("defs");
-  const gradient = svgElement("linearGradient", { id: "sa3-rate-gradient" });
-  gradient.append(
-    svgElement("stop", { offset: "0%", "stop-color": CHART_CONTINUOUS_RANGE[0] }),
-    svgElement("stop", { offset: "100%", "stop-color": CHART_CONTINUOUS_RANGE[1] })
-  );
-  defs.append(gradient);
-  svg.prepend(defs);
-  svg.append(textNode("SA3 rate per 100,000", 365, 476, {
-    "text-anchor": "middle",
-    class: "dotmap-rate-label"
-  }));
-  svg.append(svgElement("rect", {
-    x: 250,
-    y: 488,
-    width: 230,
-    height: 12,
-    rx: 2,
-    fill: "url(#sa3-rate-gradient)"
-  }));
-  svg.append(textNode("Lower · 114", 250, 516, { class: "dotmap-rate-label" }));
-  svg.append(textNode("Higher · 519", 480, 516, {
-    "text-anchor": "end",
-    class: "dotmap-rate-label"
-  }));
-  const selectedAreas = [
-    {
-      region: "Ballarat",
-      rate: 519,
-      admissions: 235,
-      population: 48988
-    },
-    {
-      region: "Whitehorse - West",
-      rate: 124,
-      admissions: 56,
-      population: 47554
-    },
-    {
-      region: "Darwin City",
-      rate: 114,
-      admissions: 12
-    }
-  ];
-  svg.append(textNode("Selected areas · rate per 100,000 · hospitalisations · female population", 380, 544, {
-    "text-anchor": "middle",
-    class: "dotmap-data-heading"
-  }));
-  selectedAreas.forEach((area, index) => {
-    const population = area.population
-      ? ` · population ${area.population.toLocaleString("en-AU")}`
-      : "";
-    svg.append(textNode(
-      `${area.region}: ${area.rate} · ${area.admissions} hospitalisations${population}`,
-      380,
-      568 + index * 20,
-      { "text-anchor": "middle", class: "dotmap-data-label" }
-    ));
-  });
-  target.replaceChildren(svg);
-  target.setAttribute("role", "group");
-  target.setAttribute("aria-label", "Schematic dot map and selected SA3 statistics");
 }
 
 function renderTreemap(target, specification) {
@@ -1304,238 +1184,6 @@ function renderTreemap(target, specification) {
   target.setAttribute("aria-label", "Hysterectomy rate treemap by remoteness and SES group");
 }
 
-function renderSankey(target, records) {
-  const ageGroups = [
-    { field: "under25", label: "Under 25" },
-    { field: "age25to34", label: "25–34" },
-    { field: "age35to44", label: "35–44" },
-    { field: "age45plus", label: "45 and over" }
-  ];
-  const sectors = [
-    { field: "private", label: "Private" },
-    { field: "public", label: "Public" }
-  ];
-  const colors = ["#ff8fa3", "#FFBC42", "#D81159", "#8F2D56", "#218380", "#73D2DE"];
-  const years = [...new Set(records.map((record) => record.year))];
-  const controls = el("div", "sankey-controls");
-  const label = el("label", "", "Year");
-  const select = el("select", "sankey-year");
-  select.setAttribute("aria-label", "Select year for procedure counts");
-  years.forEach((year) => {
-    const option = el("option", "", year);
-    option.value = year;
-    select.append(option);
-  });
-  select.value = years[years.length - 1];
-  label.append(select);
-  controls.append(label);
-
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("viewBox", "0 0 900 500");
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "Sankey diagram of endometriosis procedure counts");
-  const chartTop = 54;
-  const chartHeight = 385;
-  const gap = 22;
-  const nodeWidth = 18;
-  const columns = [
-    { x: 180, label: "Age group" },
-    { x: 435, label: "Procedure group" },
-    { x: 700, label: "Hospital sector" }
-  ];
-  const formatCount = (value) => Math.round(value).toLocaleString("en-AU");
-  const shortProcedureName = (name) => name
-    .replace("Laparoscopic excision of lesion of pelvic cavity", "Laparoscopic excision")
-    .replace("Laparoscopic diathermy of lesion of pelvic cavity", "Laparoscopic diathermy")
-    .replace("Dilation and curettage of uterus [D&C]", "Dilation and curettage");
-
-  function svgElement(name, attributes = {}) {
-    const element = document.createElementNS(svgNS, name);
-    Object.entries(attributes).forEach(([key, value]) => {
-      element.setAttribute(key, value);
-    });
-    return element;
-  }
-
-  function textNode(text, x, y, className, anchor = "start") {
-    const node = svgElement("text", { x, y, class: className, "text-anchor": anchor });
-    node.textContent = text;
-    return node;
-  }
-
-  function placeNodes(nodes, x, scale) {
-    const height = (node) => node.value * scale;
-    const totalHeight = nodes.reduce((sum, node) => sum + height(node), 0) +
-      Math.max(0, nodes.length - 1) * gap;
-    let y = chartTop + (chartHeight - totalHeight) / 2;
-    nodes.forEach((node) => {
-      node.x = x;
-      node.y = y;
-      node.height = height(node);
-      y += node.height + gap;
-    });
-  }
-
-  function draw() {
-    const year = select.value;
-    const titleNode = target.closest("figure")?.querySelector(".chart-title");
-    if (titleNode) {
-      titleNode.textContent = `Procedure counts by age, procedure group and hospital sector · ${String(year).replace("-", "–")}`;
-    }
-    const yearRows = records.filter((record) => record.year === year);
-    const procedures = [...new Set(yearRows.map((row) => row.procedure))];
-    const procedureColors = new Map(procedures.map((name, index) => [
-      name,
-      colors[index % colors.length]
-    ]));
-    const leftLinks = [];
-    const rightLinks = [];
-    const ageValues = new Map(ageGroups.map((group) => [group.label, 0]));
-    const sectorValues = new Map(sectors.map((sector) => [sector.label, 0]));
-    const procedureValues = new Map(procedures.map((name) => [
-      name,
-      { incoming: 0, outgoing: 0 }
-    ]));
-
-    yearRows.forEach((row) => {
-      ageGroups.forEach((group) => {
-        const value = row[group.field];
-        if (typeof value === "number" && value > 0) {
-          leftLinks.push({ source: group.label, target: row.procedure, value });
-          ageValues.set(group.label, ageValues.get(group.label) + value);
-          procedureValues.get(row.procedure).incoming += value;
-        }
-      });
-      sectors.forEach((sector) => {
-        const value = row[sector.field];
-        if (typeof value === "number" && value > 0) {
-          rightLinks.push({ source: row.procedure, target: sector.label, value });
-          sectorValues.set(sector.label, sectorValues.get(sector.label) + value);
-          procedureValues.get(row.procedure).outgoing += value;
-        }
-      });
-    });
-
-    const ageNodes = ageGroups.map(({ label: name }) => ({
-      name,
-      value: ageValues.get(name)
-    })).filter((node) => node.value > 0);
-    const procedureNodes = procedures.map((name) => ({
-      name,
-      value: Math.max(
-        procedureValues.get(name).incoming,
-        procedureValues.get(name).outgoing
-      )
-    })).filter((node) => node.value > 0);
-    const sectorNodes = sectors.map(({ label: name }) => ({
-      name,
-      value: sectorValues.get(name)
-    })).filter((node) => node.value > 0);
-    const stages = [ageNodes, procedureNodes, sectorNodes];
-    const largestTotal = Math.max(...stages.map((stage) =>
-      stage.reduce((sum, node) => sum + node.value, 0)
-    ));
-    const largestStage = Math.max(...stages.map((stage) => stage.length));
-    const scale = (chartHeight - Math.max(0, largestStage - 1) * gap) / largestTotal;
-    placeNodes(ageNodes, columns[0].x, scale);
-    placeNodes(procedureNodes, columns[1].x, scale);
-    placeNodes(sectorNodes, columns[2].x, scale);
-
-    const nodeMaps = stages.map((stage) => new Map(stage.map((node) => [node.name, node])));
-    const linkOffsets = (links, sourceMap, targetMap) => {
-      const sourceOffsets = new Map();
-      const targetOffsets = new Map();
-      links.forEach((link) => {
-        const source = sourceMap.get(link.source);
-        const target = targetMap.get(link.target);
-        const sourceOffset = sourceOffsets.get(link.source) || 0;
-        const targetOffset = targetOffsets.get(link.target) || 0;
-        link.x0 = source.x + nodeWidth;
-        link.y0 = source.y + sourceOffset * scale;
-        link.x1 = target.x;
-        link.y1 = target.y + targetOffset * scale;
-        link.thickness = link.value * scale;
-        link.color = procedureColors.get(
-          sourceMap === nodeMaps[0] ? link.target : link.source
-        );
-        sourceOffsets.set(link.source, sourceOffset + link.value);
-        targetOffsets.set(link.target, targetOffset + link.value);
-      });
-    };
-    linkOffsets(leftLinks, nodeMaps[0], nodeMaps[1]);
-    linkOffsets(rightLinks, nodeMaps[1], nodeMaps[2]);
-
-    svg.replaceChildren();
-    columns.forEach((column) => {
-      svg.append(textNode(column.label, column.x, 26, "sankey-column-title", "middle"));
-    });
-    svg.append(textNode(
-      "Unit: procedure counts, not hospitalisations",
-      450,
-      45,
-      "sankey-unit-label",
-      "middle"
-    ));
-
-    [...leftLinks, ...rightLinks].forEach((link) => {
-      const curve = (link.x0 + link.x1) / 2;
-      const shape = svgElement("path", {
-        d: [
-          `M ${link.x0} ${link.y0}`,
-          `C ${curve} ${link.y0}, ${curve} ${link.y1}, ${link.x1} ${link.y1}`,
-          `L ${link.x1} ${link.y1 + link.thickness}`,
-          `C ${curve} ${link.y1 + link.thickness}, ${curve} ${link.y0 + link.thickness},`,
-          `${link.x0} ${link.y0 + link.thickness} Z`
-        ].join(" "),
-        fill: link.color,
-        "fill-opacity": "0.38"
-      });
-      const title = svgElement("title");
-      title.textContent = `${link.source} → ${link.target}: ${formatCount(link.value)} procedures`;
-      shape.append(title);
-      svg.append(shape);
-    });
-
-    stages.forEach((stage, index) => {
-      stage.forEach((node) => {
-        const rect = svgElement("rect", {
-          x: node.x,
-          y: node.y,
-          width: nodeWidth,
-          height: node.height,
-          rx: 2,
-          fill: index === 1 ? procedureColors.get(node.name) : "#333333"
-        });
-        const title = svgElement("title");
-        title.textContent = `${node.name}: ${formatCount(node.value)} procedures`;
-        rect.append(title);
-        svg.append(rect);
-
-        const labelX = index === 0 ? node.x - 8 : node.x + nodeWidth + 8;
-        const anchor = index === 0 ? "end" : "start";
-        const label = index === 1 ? shortProcedureName(node.name) : node.name;
-        svg.append(textNode(
-          `${label} · ${formatCount(node.value)}`,
-          labelX,
-          node.y + Math.min(node.height / 2, 14),
-          "sankey-node-label",
-          anchor
-        ));
-      });
-    });
-
-    if (!target.contains(controls)) {
-      target.replaceChildren(controls, svg);
-    }
-  }
-
-  select.addEventListener("change", draw);
-  draw();
-  target.setAttribute("role", "group");
-  target.setAttribute("aria-label", "Sankey diagram of endometriosis procedure counts with year selector");
-}
-
 function alignChartSourceRule(view) {
   const card = view.closest(".chart-card");
   const notes = card?.querySelectorAll(".chart-caption, .chart-caveat, .chart-source");
@@ -1574,22 +1222,12 @@ async function renderChart(item, container) {
     }
 
     if (item.renderer === "dotmap") {
-      await renderDotMap(target, specification);
-      alignChartSourceRule(target);
-      return;
+      await prepareDotMap(specification);
     }
-
-    if (item.renderer === "sankey") {
-      renderSankey(target, specification);
-      alignChartSourceRule(target);
-      return;
-    }
-
-
 
     // Standard Vega-Lite charts
     specification.title = null;
-    applyChartPalette(specification, item);
+    if (item.renderer !== "dotmap") applyChartPalette(specification, item);
     applyAxisTitles(specification, item.axisTitles || {});
 
     await vegaEmbed(target, specification, {
