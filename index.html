@@ -104,43 +104,69 @@
     </section>
 
     <section class="sources" aria-labelledby="sources-title">
-      <p class="eyebrow">SOURCES & METHODS</p>
-      <h2 id="sources-title">Built from published Australian data.</h2>
+      <p class="eyebrow">REFERENCES</p>
+      <h2 id="sources-title">Data sources (APA 7th edition).</h2>
       <ul class="references">
         <li>
-          Australian Institute of Health and Welfare. (2026).
-          <cite>Endometriosis hospital procedures</cite> (Cat. no. PHE 357)
-          [Supplementary data tables].
+          Australian Bureau of Statistics. (2021).
+          <cite>Australian Statistical Geography Standard (ASGS): Edition 3,
+          July 2021–June 2026—Digital boundary files</cite> [Data set].
+          <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files/SA3_2021_AUST_SHP_GDA2020.zip" target="_blank" rel="noreferrer">Download the 2021 SA3 boundary file (GDA2020)</a>.
+          Figure 5 uses the 2021 SA3 boundaries in GDA2020, joined to AIHW
+          records by SA3 code.
         </li>
         <li>
           Australian Institute of Health and Welfare. (n.d.).
-          <cite>Australian atlas of healthcare variation time series 2014–15 to
+          <cite>Australian Atlas of Healthcare Variation time series 2014–15 to
           2021–22: Hysterectomy hospitalisations</cite> [Data set].
-          Project-supplied workbook, including the Hospitalisations (SA3)
-          worksheet. Source notes identify the National Hospital Morbidity
-          Database and Australian Bureau of Statistics estimated resident populations.
+          <a href="https://github.com/ssax0009-ctrl/DV2_FIT3179/blob/main/hysterectomy-hospitalisations-data-file.xlsx" target="_blank" rel="noreferrer">Project workbook (Excel)</a>.
+          Worksheets used include Hospitalisations (SA3), Hospitalisations
+          (State), Remoteness x SES, Indigenous status (State), and Patient
+          funding status (State). Source notes identify the National Hospital
+          Morbidity Database and ABS estimated resident populations.
         </li>
         <li>
           Australian Institute of Health and Welfare. (n.d.).
           <cite>Elective surgery waiting times 2024–25: Australian hospital
-          statistics</cite> [Data set]. Project-supplied workbook.
-          Table 4.7 was used for state-level procedure waits. Accompanying
-          project-supplied hospital and Local Hospital Network (LHN) files
-          contain the mapped wait values; LHN records with coordinates were
-          supplied for mapping, and values marked NP or left blank are shown
-          as unavailable. Figure 1 uses the supplied
-          <cite>hysterectomy_waiting_times_by_state_2024-25.csv</cite> state
-          values; Figure 2 uses
-          <cite>hysterectomy_median_days_by_LHN_with_coordinates_2018-19_to_2024-25.csv</cite>.
+          statistics</cite> [Data set].
+          <a href="https://github.com/ssax0009-ctrl/DV2_FIT3179/blob/main/Elective-surgery-waiting-times-2024-25.xlsx" target="_blank" rel="noreferrer">AIHW data workbook (Excel copy)</a>.
+          Table 4.7 is the source for state-level hysterectomy waiting times.
         </li>
         <li>
-          Australian Bureau of Statistics. (2021).
-          <cite>Australian Statistical Geography Standard (ASGS): Edition 3,
-          July 2021–June 2026</cite>.
-          <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026" target="_blank" rel="noreferrer">https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026</a>
-          Figure 5 uses the 2021 SA3 digital boundaries
-          (<cite>SA3_2021_AUST_GDA2020</cite>, GDA2020), joined to the AIHW
-          SA3 records by SA3 code.
+          Australian Institute of Health and Welfare. (2026).
+          <cite>Endometriosis hospital procedures: Supplementary data tables</cite>
+          (Cat. no. PHE 357) [Data set].
+          <a href="https://github.com/ssax0009-ctrl/DV2_FIT3179/blob/main/aihw-phe357-data-table-Endometriosis-hospital-procedures.xlsx" target="_blank" rel="noreferrer">Project workbook (Excel)</a>.
+          Tables 1, 2 and 4 provide the time-series, urgency and age-group data.
+        </li>
+        <li>
+          geoBoundaries. (2023).
+          <cite>geoBoundaries: Australia, administrative level 1 (gbOpen)</cite>
+          [Data set].
+          <a href="https://www.geoboundaries.org/api/current/gbOpen/AUS/ADM1/" target="_blank" rel="noreferrer">https://www.geoboundaries.org/api/current/gbOpen/AUS/ADM1/</a>.
+        </li>
+        <li>
+          Australian Institute of Health and Welfare. (2025, November 25).
+          <cite>Waiting times by intended procedure</cite>.
+          <a href="https://www.aihw.gov.au/hospitals/topics/elective-surgery/waiting-times-by-surgical-specialty-waiting-times-by-intended-procedure-a57ccc30427bd0cc3ab50bc99d244ed3" target="_blank" rel="noreferrer">https://www.aihw.gov.au/hospitals/topics/elective-surgery/waiting-times-by-surgical-specialty-waiting-times-by-intended-procedure-a57ccc30427bd0cc3ab50bc99d244ed3</a>.
+          Figure 2 uses the 2024–25 hospital-level hysterectomy values from
+          this AIHW source; blank and unpublished values are not mapped.
+        </li>
+        <li>
+          Australian Institute of Health and Welfare. (n.d.).
+          <cite>Hysterectomy waiting times by state, 2024–25</cite> [Data set].
+          <a href="https://github.com/ssax0009-ctrl/DV2_FIT3179/blob/main/hysterectomy_waiting_times_by_state_2024-25.csv" target="_blank" rel="noreferrer">State data extract (CSV)</a>.
+          State figures are from Table 4.7 of <cite>Elective surgery waiting
+          times 2024–25: Australian hospital statistics</cite>.
+        </li>
+        <li>
+          Jorm, L., &amp; Barbieri, S. (2019).
+          <cite>Hospital IDs, names and coordinates (CSV)</cite> [Data set].
+          figshare.
+          <a href="https://doi.org/10.6084/m9.figshare.8319737.v1" target="_blank" rel="noreferrer">https://doi.org/10.6084/m9.figshare.8319737.v1</a>.
+          Coordinates were used to locate the hospital-level waiting-time
+          records; LHN labels and bed-size categories are from the supplied
+          MyHospitals contact-details CSV.
         </li>
         <li>
           Runfola, D., Anderson, A., Baier, H., Crittenden, M., Dowker, E.,
@@ -148,9 +174,8 @@
           Mulder, M., Panganiban, J., Peck, A., Seitz, L., Shea, S., Slevin, H.,
           Youngerman, R., &amp; Hobbs, L. (2020). geoBoundaries: A global database
           of political administrative boundaries. <cite>PLOS ONE, 15</cite>(4),
-          e0231866.
-          <a href="https://doi.org/10.1371/journal.pone.0231866" target="_blank" rel="noreferrer">https://doi.org/10.1371/journal.pone.0231866</a>
-          (gbOpen Australia ADM1 boundary data).
+          Article e0231866.
+          <a href="https://doi.org/10.1371/journal.pone.0231866" target="_blank" rel="noreferrer">https://doi.org/10.1371/journal.pone.0231866</a>.
         </li>
       </ul>
       <p class="method-note">

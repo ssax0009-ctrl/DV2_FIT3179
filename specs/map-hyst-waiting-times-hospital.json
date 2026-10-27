@@ -1,0 +1,122 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 440,
+  "height": 380,
+  "background": "transparent",
+  "padding": 5,
+  "projection": {
+    "type": "mercator",
+    "center": [133.5, -28.6],
+    "scale": 560,
+    "translate": [220, 190]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "description": "Hospital-level median hysterectomy waits of at least 120 days in 2024–25, plotted at matched hospital coordinates.",
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia-states-v1.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#FFCCD5",
+        "stroke": "#590D22",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/hysterectomy-waiting-times-hospital-2024-25.json",
+        "format": {
+          "type": "json",
+          "property": "hospitalWaits"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.medianWaitDays >= 120 && isValid(datum.longitude) && isValid(datum.latitude)"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "filled": true,
+        "fill": "#f9a550",
+        "fillOpacity": 0.72,
+        "stroke": "#7a3b00",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "medianWaitDays",
+          "type": "quantitative",
+          "title": "Median wait (days)",
+          "scale": {
+            "type": "linear",
+            "domain": [120, 400],
+            "range": [16, 220],
+            "clamp": true,
+            "zero": true
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "offset": 4,
+            "values": [150, 250, 350],
+            "symbolFillColor": "#f9a550",
+            "symbolStrokeColor": "#7a3b00",
+            "titleFontSize": 10,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "hospital",
+            "type": "nominal",
+            "title": "Hospital"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "lhn",
+            "type": "nominal",
+            "title": "LHN"
+          },
+          {
+            "field": "medianWaitDays",
+            "type": "quantitative",
+            "title": "Median wait (days)"
+          },
+          {
+            "field": "beds",
+            "type": "nominal",
+            "title": "Beds"
+          },
+          {
+            "field": "coordinateMatch",
+            "type": "nominal",
+            "title": "Coordinate match"
+          }
+        ]
+      }
+    }
+  ]
+}
