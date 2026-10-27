@@ -463,14 +463,6 @@ main {
   font-size: 0.9rem;
 }
 
-.chart-card--dotmap .dotmap-data-heading {
-  font-size: 17px;
-}
-
-.chart-card--dotmap .dotmap-data-label {
-  font-size: 14px;
-}
-
 /* ==========================================================
    CHART KEY
    ========================================================== */
@@ -852,7 +844,6 @@ main {
    SVG CHART LABELS
    ========================================================== */
 
-.dotmap-rate-label,
 .lhn-map-legend-label,
 .treemap-legend-label,
 .nightingale-center-value,
@@ -860,8 +851,6 @@ main {
   fill: var(--muted);
 }
 
-.dotmap-data-heading,
-.dotmap-data-label,
 .lhn-map-legend-heading,
 .nightingale-region-label,
 .nightingale-center-label,
@@ -870,28 +859,7 @@ main {
   fill: var(--ink);
 }
 
-.dotmap-data-heading {
-  font-size: 12px;
-  font-weight: 700;
-}
 
-.dotmap-data-label {
-  font-size: 12px;
-}
-
-.dotmap-rate-label {
-  font-size: 10px;
-}
-
-.dotmap-state-label {
-  fill: var(--ink);
-  font-size: 11px;
-  font-weight: 800;
-  paint-order: stroke;
-  stroke: var(--paper);
-  stroke-linejoin: round;
-  stroke-width: 3px;
-}
 
 .lhn-waiting-map {
   width: 100%;

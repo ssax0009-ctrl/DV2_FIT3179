@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Age-standardised hysterectomy hospitalisation rates by SA3 in 2021–22, joined by SA3 code to ABS ASGS Edition 3 boundaries.",
+  "width": 760,
+  "height": 560,
+  "background": "transparent",
+  "padding": 5,
+  "projection": {
+    "type": "mercator",
+    "center": [133.5, -28.6],
+    "scale": 780,
+    "translate": [380, 280]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "orient": "bottom",
+      "direction": "horizontal"
+    }
+  },
+  "data": {
+    "url": "data/hysterectomy-sa3-rates-2021-22.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.properties.availability === 'suppressed'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e6e1e2",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.45
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.sa3Name",
+            "type": "nominal",
+            "title": "SA3 area"
+          },
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "value": "Rate suppressed by source"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.properties.availability === 'published'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.45
+      },
+      "encoding": {
+        "color": {
+          "field": "properties.rate",
+          "type": "quantitative",
+          "title": "Age-standardised rate per 100,000 women",
+          "scale": {
+            "domain": [114, 519],
+            "range": ["#ffccd5", "#590d22"],
+            "clamp": true
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.sa3Name",
+            "type": "nominal",
+            "title": "SA3 area"
+          },
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "properties.rate",
+            "type": "quantitative",
+            "title": "Hospitalisations per 100,000 women",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -64,14 +64,13 @@ const C = {
   },
   dotMap: {
     figureName: "Figure 5",
-    spec: "specs/chart-sa3-strip.json",
-    renderer: "dotmap",
-    cardClass: "chart-card--dotmap",
-    title: "Locations of SA3 areas with published hysterectomy hospitalisation rates · 2021–2022",
-    idiom: "Dot map",
+    spec: "specs/chart-sa3-choropleth.json",
+    skipPalette: true,
+    title: "Age-standardised hysterectomy hospitalisation rates by SA3 · 2021–2022",
+    idiom: "SA3 choropleth map",
     axisTitles: {},
-    caveat: "316 rates shown; 24 are suppressed and state totals range from 5 to 87. Locations are schematic.",
-    source: "Source: AIHW Australian Atlas of Healthcare Variation Time Series, 2021–22."
+    caveat: "316 published SA3 rates are mapped to 2021 ABS boundaries; 20 suppressed state and territory rates are shaded grey. Other Territories are excluded.",
+    source: "Source: AIHW hysterectomy workbook, Hospitalisations (SA3), 2021–22; ABS ASGS Edition 3 SA3 boundaries, GDA2020."
   },
   ridgeline: {
     figureName: "Figure 3",
@@ -189,7 +188,7 @@ const story = {
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The 50-day median wait in Victoria versus 99 days in NSW shows that public-hospital timelines differ across states. Comparing sources, Queensland had the highest 2021–22 hysterectomy hospitalisation rate (286 per 100,000; Figure 9), while NSW had the longest published state median wait in 2024–25 (99 days; Figure 1); Victoria had a lower rate of 204 and the shortest published wait, 50 days. These are different measures from different years, so the contrast does not show that one causes or predicts the other. It does show why hospitalisation rates and waiting times should not be treated as interchangeable measures of access or need. These waits cover public hospitals only; in 2021–22, 63% of hysterectomy hospitalisations were privately funded (Figure 8). Figure 2 shows even wider local variation: NSW network waits range from 44 to 338 days, and Queensland’s from 56 to 324. State medians are unpublished for the ACT and NT (Figure 1), but supplied network data show 94 days for the ACT and 57 for the NT. State averages therefore conceal substantial network variation.",
+              text: "In 2024–25, NSW had the longest published state median wait (99 days) and Victoria the shortest (50 days; Figure 1). In 2021–22, Queensland had the highest hysterectomy hospitalisation rate (286 per 100,000), while Victoria’s was 204 (Figure 9). These different measures and years cannot establish a link between waiting times and hospitalisation rates. Local waits also varied widely: NSW ranged from 44 to 338 days and Queensland from 56 to 324 (Figure 2). ACT and NT state medians were unpublished, though their network waits were 94 and 57 days. These waits cover public hospitals; 63% of hysterectomies were privately funded in 2021–22 (Figure 8).",
               layout: "pair",
               charts: [C.waitingMapState, C.waitingMapLhn]
             }
@@ -206,7 +205,7 @@ const story = {
             },
             {
               heading: "Local differences become visible on the map",
-              text: "Figure 5 adds a geographic dimension to the ranges shown in Figure 4: it shows where the measured SA3 areas sit, rather than only how high or low their rates are. The spread across the map reinforces that variation is not confined to one state or one region. The dots are schematic, however, so their positions show distribution rather than exact locations.",
+              text: "Figure 5 maps the published SA3 rates onto their actual 2021 ABS statistical-area boundaries, adding geographic context to the ranges in Figure 4. Darker shading indicates higher age-standardised hospitalisation rates; grey areas have suppressed rates. The map suggests some broad geographic patterning, but rates also vary sharply between nearby areas, so the overall picture is far from uniform. The interval plot makes the lowest-to-highest values easier to compare.",
               layout: "flip",
               charts: [C.dotMap]
             }
@@ -794,150 +793,6 @@ async function renderLhnWaitingMap(target, specification) {
     `Map of Australian state waiting times and ${publishedCount} published LHN median waits. Circle size shows waits from 0 to 350 days.`
   );
 }
-async function prepareDotMap(specification) {
-  const boundaryUrl = specification.usermeta?.boundaryDataUrl;
-  if (typeof boundaryUrl !== "string") {
-    throw new Error("The dot map is missing its state boundary data URL.");
-  }
-  const boundaryResponse = await fetch(boundaryUrl);
-  if (!boundaryResponse.ok) {
-    throw new Error(`Could not load Australia state boundaries: ${boundaryResponse.status}`);
-  }
-  const boundaries = await boundaryResponse.json();
-  const records = specification.data?.values;
-  if (!Array.isArray(records) || records.length === 0) {
-    throw new Error("The dot map has no SA3 records to display.");
-  }
-  if (!Array.isArray(boundaries.features)) {
-    throw new Error("The dot map boundary file has no geographic features.");
-  }
-
-  const stateCodes = {
-    NSW: "AU-NSW",
-    Vic: "AU-VIC",
-    Qld: "AU-QLD",
-    SA: "AU-SA",
-    WA: "AU-WA",
-    Tas: "AU-TAS",
-    NT: "AU-NT",
-    ACT: "AU-ACT"
-  };
-  const stateFeatures = new Map(
-    boundaries.features.map((feature) => [feature.properties.shapeISO, feature])
-  );
-  const mapBounds = { x: 145, y: 52, width: 470, height: 405 };
-  const project = (longitude, latitude) => ({
-    x: mapBounds.x + ((longitude - 110) / 46) * mapBounds.width,
-    y: mapBounds.y + ((-10 - latitude) / 37) * mapBounds.height
-  });
-  const stateAbbreviations = Object.keys(stateCodes);
-  const grouped = new Map(stateAbbreviations.map((state) => [state, []]));
-  records.forEach((record) => {
-    const group = grouped.get(record.state);
-    if (group) group.push(record);
-  });
-
-  function geometryRings(geometry) {
-    if (geometry.type === "Polygon") return [geometry.coordinates];
-    if (geometry.type === "MultiPolygon") return geometry.coordinates;
-    throw new Error(`Unsupported SA3 map boundary geometry: ${geometry.type}`);
-  }
-
-  function insideRing(longitude, latitude, ring) {
-    let inside = false;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const [xi, yi] = ring[i];
-      const [xj, yj] = ring[j];
-      const crosses = (yi > latitude) !== (yj > latitude) &&
-        longitude < ((xj - xi) * (latitude - yi)) / (yj - yi) + xi;
-      if (crosses) inside = !inside;
-    }
-    return inside;
-  }
-
-  function insideFeature(longitude, latitude, feature) {
-    return geometryRings(feature.geometry).some((rings) =>
-      insideRing(longitude, latitude, rings[0]) &&
-      !rings.slice(1).some((hole) => insideRing(longitude, latitude, hole))
-    );
-  }
-
-  function halton(index, base) {
-    let fraction = 1;
-    let result = 0;
-    while (index > 0) {
-      fraction /= base;
-      result += fraction * (index % base);
-      index = Math.floor(index / base);
-    }
-    return result;
-  }
-
-  function sampleInside(feature, index, bounds) {
-    let candidate = index;
-    while (candidate < index + 100000) {
-      const longitude = bounds.west + halton(candidate, 2) * (bounds.east - bounds.west);
-      const latitude = bounds.south + halton(candidate, 3) * (bounds.north - bounds.south);
-      if (insideFeature(longitude, latitude, feature)) return [longitude, latitude];
-      candidate += 1;
-    }
-    throw new Error(`Could not position SA3 dots within ${feature.properties.shapeName}.`);
-  }
-
-  function stateSeed(state) {
-    return [...state].reduce((total, character) => total + character.charCodeAt(0), 1) * 100;
-  }
-
-  const projectedBoundaries = boundaries.features.map((feature) => {
-    const polygons = geometryRings(feature.geometry).map((rings) =>
-      [rings[0].map(([longitude, latitude]) => {
-        const point = project(longitude, latitude);
-        return [point.x, point.y];
-      })]
-    );
-    return {
-      type: "Feature",
-      properties: feature.properties,
-      geometry: {
-        type: polygons.length === 1 && feature.geometry.type === "Polygon"
-          ? "Polygon"
-          : "MultiPolygon",
-        coordinates: feature.geometry.type === "Polygon" ? polygons[0] : polygons
-      }
-    };
-  });
-
-  const points = [];
-  stateAbbreviations.forEach((state) => {
-    const feature = stateFeatures.get(stateCodes[state]);
-    if (!feature) throw new Error(`Australia boundary is missing for ${state}.`);
-    const stateRecords = grouped.get(state) || [];
-    const exteriorPoints = geometryRings(feature.geometry).flatMap((rings) => rings[0]);
-    const bounds = {
-      west: Math.min(...exteriorPoints.map(([longitude]) => longitude)),
-      east: Math.max(...exteriorPoints.map(([longitude]) => longitude)),
-      south: Math.min(...exteriorPoints.map(([, latitude]) => latitude)),
-      north: Math.max(...exteriorPoints.map(([, latitude]) => latitude))
-    };
-    stateRecords.forEach((record, index) => {
-      const [longitude, latitude] = sampleInside(
-        feature,
-        stateSeed(state) + index + 1,
-        bounds
-      );
-      const position = project(longitude, latitude);
-      points.push({ ...record, x: position.x, y: position.y });
-    });
-  });
-
-  specification.data.values = points;
-  specification.datasets.stateBoundaries = projectedBoundaries;
-  specification.datasets.stateLabels = specification.datasets.stateLabels.map((label) => {
-    const position = project(label.longitude, label.latitude);
-    return { ...label, x: position.x, y: position.y };
-  });
-}
-
 function renderTreemap(target, specification) {
   const records = specification.data?.values;
 
@@ -1221,13 +1076,9 @@ async function renderChart(item, container) {
       return;
     }
 
-    if (item.renderer === "dotmap") {
-      await prepareDotMap(specification);
-    }
-
     // Standard Vega-Lite charts
     specification.title = null;
-    if (item.renderer !== "dotmap") applyChartPalette(specification, item);
+    if (!item.skipPalette) applyChartPalette(specification, item);
     applyAxisTitles(specification, item.axisTitles || {});
 
     await vegaEmbed(target, specification, {
