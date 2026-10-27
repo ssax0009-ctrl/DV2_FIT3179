@@ -42,7 +42,7 @@ const C = {
     idiom: "Choropleth",
     axisTitles: {},
     caveat: "State median wait is unpublished for ACT and NT (shown in orange).",
-    source: "Source: AIHW state waiting-time table, 2024–25."
+    source: "Source: AIHW Elective surgery waiting times 2024–25, Table 4.7; supplied state waiting-time CSV."
   },
   waitingMapLhn: {
     figureName: "Figure 2",
@@ -51,7 +51,7 @@ const C = {
     idiom: "Proportional symbols",
     axisTitles: {},
     caveat: "48 of 71 LHNs published; network data show 94 days for ACT and 57 for NT although state medians are unpublished.",
-    source: "Source: AIHW waiting-time data; supplied LHN waiting-time data and coordinates."
+    source: "Source: AIHW waiting-time data; supplied LHN waiting-time CSV and coordinates."
   },
   volumeMap: {
     figureName: "Figure 2",
@@ -182,14 +182,14 @@ const story = {
       id: "place",
       title: "Geographic Variation in Healthcare",
       thesis:
-        "Waiting times and hysterectomy rates vary across Australia. Comparing national, state and local patterns shows how geography can shape the experience of care.",
+        "Waiting times and hysterectomy rates vary across Australia. Combining AIHW waiting-time data with hysterectomy hospitalisation rates shows how different measures and places reveal different patterns of care.",
       groups: [
         {
           label: "Waiting for care",
           findings: [
             {
               heading: "Waiting times differ across states and hospital networks",
-              text: "The 50-day median wait in Victoria versus 99 days in NSW shows that public-hospital timelines differ across states. These waits cover public hospitals only; in 2021–22, 63% of hysterectomy hospitalisations were privately funded (Figure 8). Figure 2 shows even wider local variation: NSW network waits range from 44 to 338 days, and Queensland’s from 56 to 324. State medians are unpublished for the ACT and NT (Figure 1), but supplied network data show 94 days for the ACT and 57 for the NT. State averages therefore conceal substantial network variation.",
+              text: "The 50-day median wait in Victoria versus 99 days in NSW shows that public-hospital timelines differ across states. Comparing sources, Queensland had the highest 2021–22 hysterectomy hospitalisation rate (286 per 100,000; Figure 9), while NSW had the longest published state median wait in 2024–25 (99 days; Figure 1); Victoria had a lower rate of 204 and the shortest published wait, 50 days. These are different measures from different years, so the contrast does not show that one causes or predicts the other. It does show why hospitalisation rates and waiting times should not be treated as interchangeable measures of access or need. These waits cover public hospitals only; in 2021–22, 63% of hysterectomy hospitalisations were privately funded (Figure 8). Figure 2 shows even wider local variation: NSW network waits range from 44 to 338 days, and Queensland’s from 56 to 324. State medians are unpublished for the ACT and NT (Figure 1), but supplied network data show 94 days for the ACT and 57 for the NT. State averages therefore conceal substantial network variation.",
               layout: "pair",
               charts: [C.waitingMapState, C.waitingMapLhn]
             }
@@ -314,7 +314,7 @@ const story = {
           findings: [
             {
               heading: "The data reveal variation in care, but not its full explanation",
-              text: "Across Figures 1–14, place is associated with waiting times and hysterectomy rates measured in different years; state-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
+              text: "Across Figures 1–14, AIHW elective-surgery waiting-time data for 2024–25 and hysterectomy hospitalisation-rate data through 2021–22 show different state patterns: the highest historical rate and longest later wait are in different states. Because the datasets measure different outcomes in different years, this comparison is descriptive, not evidence that waiting time and hospitalisation rates are linked. State-level patterns also vary by Indigenous status and funding sector. Meanwhile, endometriosis hospitalisations have grown, particularly through elective care, and recorded procedures are concentrated in reproductive-age groups. Together, these findings show that healthcare activity is unevenly distributed. Explaining whether those differences reflect need, access or service organisation requires evidence beyond hospital records alone.",
               charts: []
             }
           ]
